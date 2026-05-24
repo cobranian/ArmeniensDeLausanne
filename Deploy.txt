@@ -1,0 +1,153 @@
+DEPLOYING ArmeniensDeLausanne
+==============================
+
+Public URL:        https://www.armeniensdelausanne.ch  (canonical, once DNS is set up)
+Apex (redirect):   https://armeniensdelausanne.ch     -> 301 to www
+Firebase URL:      https://armeniensdelausanne.web.app (always works, hidden once domain is live)
+GitHub:            https://github.com/cobranian/ArmeniensDeLausanne
+Firebase Console:  https://console.firebase.google.com/project/armeniensdelausanne
+Domain registrar:  Infomaniak (manager.infomaniak.com)
+
+
+METHOD 1 — Manual deploy (currently the only working method)
+-------------------------------------------------------------
+
+Prerequisites (one-time setup):
+  - Firebase CLI installed:  npm install -g firebase-tools
+  - Logged in:                firebase login
+  - Project selected:         already set in .firebaserc (armeniensdelausanne)
+
+To deploy:
+
+  1. Open a terminal in the ArmeniensDeLausanne/ folder.
+  2. Run:
+         firebase deploy --only hosting
+  3. Wait for "Deploy complete!". The Hosting URL printed at the end is live.
+
+That's it. The whole folder is uploaded except files listed under
+"ignore" in firebase.json (firebase.json, .firebaserc, .firebase/,
+node_modules/, dotfiles, CLAUDE.md, README.md).
+
+
+METHOD 2 — Auto-deploy via GitHub Actions (NOT YET SET UP)
+-----------------------------------------------------------
+
+Goal: every `git push` to main automatically deploys to the live site,
+and every pull request gets a temporary preview URL.
+
+One-time setup (run from inside ArmeniensDeLausanne/):
+
+         firebase init hosting:github
+
+Answer the prompts:
+  - Are you ready to proceed?                                  Y
+  - For which GitHub repository...?                            cobranian/ArmeniensDeLausanne
+  - Set up the workflow to run a build script before deploy?   N
+  - Set up automatic deployment to live channel on PR merge?   Y
+  - GitHub branch for live channel?                            main
+
+This will:
+  - Open a browser to authorize Firebase to access your GitHub.
+  - Create a Google Cloud service account.
+  - Add its key as a GitHub secret (FIREBASE_SERVICE_ACCOUNT_ARMENIENSDELAUSANNE).
+  - Write two files:
+        .github/workflows/firebase-hosting-merge.yml
+        .github/workflows/firebase-hosting-pull-request.yml
+
+After it finishes:
+
+         git add .github
+         git commit -m "Add Firebase Hosting GitHub Actions workflows"
+         git push
+
+From then on, deploy = git push. No more `firebase deploy` needed.
+
+
+CUSTOM DOMAIN — www.armeniensdelausanne.ch (Infomaniak)
+--------------------------------------------------------
+
+Goal: site loads as https://www.armeniensdelausanne.ch with valid HTTPS.
+The bare https://armeniensdelausanne.ch issues a 301 redirect to www.
+
+This is a DNS setup, NOT an HTTP redirect. Firebase serves the site
+under the custom domain; the .web.app URL stays hidden.
+
+Part A — Add the two domains in Firebase Console
+  https://console.firebase.google.com/project/armeniensdelausanne/hosting/sites
+
+  Domain 1 — www (serves the site):
+    1. Add custom domain  ->  www.armeniensdelausanne.ch  ->  Continue
+    2. Choose "Quick setup"
+    3. Copy the A (or CNAME) record Firebase shows for www
+    4. Copy the TXT verification record
+
+  Domain 2 — apex (redirects to www):
+    1. Add custom domain  ->  armeniensdelausanne.ch  ->  Continue
+    2. Choose "Redirect to an existing site"  (not Quick setup)
+    3. Destination URL:  https://www.armeniensdelausanne.ch
+    4. Copy the two A records Firebase shows for the apex
+    5. Copy the TXT verification record
+
+Part B — Add the DNS records at Infomaniak
+  Manager Infomaniak -> Domain -> armeniensdelausanne.ch -> DNS tab
+
+  | Type        | Host | Value                                |
+  |-------------|------|--------------------------------------|
+  | TXT         | @    | google-site-verification=... (apex)  |
+  | TXT         | www  | google-site-verification=... (www)   |
+  | A           | @    | Firebase apex IP #1                  |
+  | A           | @    | Firebase apex IP #2                  |
+  | A or CNAME  | www  | (what Firebase shows for www)        |
+
+  Infomaniak quirks:
+    - Delete any pre-existing A records on @ (Infomaniak parking page)
+      before adding Firebase's, otherwise routing is unpredictable.
+    - Do NOT enable Infomaniak's "Web redirection" feature for this
+      domain — Firebase handles the redirect.
+    - Leave MX, SPF, and any email-related records alone.
+
+Part C — Wait and verify
+  - TXT verification: minutes.
+  - SSL certificate provisioning: usually 30 min to a few hours, max 24h.
+  - Both domains show "Connected" with green status in Firebase Console.
+
+  Verification commands (PowerShell):
+
+      nslookup www.armeniensdelausanne.ch
+      nslookup armeniensdelausanne.ch
+      # Both should resolve to Firebase's IPs once propagated.
+
+      curl -I https://armeniensdelausanne.ch
+      # Expect:  HTTP/2 301,  Location: https://www.armeniensdelausanne.ch/
+
+      curl -I https://www.armeniensdelausanne.ch
+      # Expect:  HTTP/2 200
+
+
+TROUBLESHOOTING
+---------------
+
+"Site Not Found" on the live URL
+  - Means nothing has been deployed yet. Run Method 1 once to seed it.
+
+"firebase: command not found"
+  - Run:  npm install -g firebase-tools
+
+"Error: HTTP Error: 401, Request had invalid authentication credentials"
+  - Run:  firebase login --reauth
+
+Wrong Firebase project selected
+  - Run:  firebase use armeniensdelausanne
+
+Want to test before deploying live? Use a preview channel:
+         firebase hosting:channel:deploy preview-name
+  Firebase prints a temporary URL valid for 7 days by default.
+
+Custom domain stuck on "Pending" for over 24h
+  - Re-check DNS records at Infomaniak match exactly what Firebase shows.
+  - Confirm no conflicting A/CNAME records exist on @ or www.
+  - Disable Infomaniak's "Web redirection" if it was enabled.
+
+"Site Not Secure" warning on www.armeniensdelausanne.ch
+  - SSL cert is still provisioning. Wait up to 24h. If still failing,
+    remove and re-add the domain in Firebase Console.
