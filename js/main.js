@@ -100,16 +100,4 @@
     });
   }
 
-  /* ---- Formulaire de démonstration ---- */
-  var form = document.querySelector(".contact-form");
-  if (form) {
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      alert(
-        "Ce formulaire est une démonstration : le site est statique et " +
-        "n'envoie rien. Connectez-le à un service d'envoi (ex. Formspree) " +
-        "ou utilisez l'adresse e-mail indiquée."
-      );
-    });
-  }
 })();
