@@ -1,0 +1,624 @@
+/* =========================================================================
+   Arméniens de Lausanne — i18n
+   Dictionnaires FR / EN / HY + commutateur de langue.
+   Vanille, sans dépendance. Le défaut est FR ; ?lang=… ou localStorage
+   peuvent override. La langue choisie est persistée.
+   ========================================================================= */
+(function () {
+  "use strict";
+
+  var STORAGE_KEY = "alausanne.lang";
+  var DEFAULT_LANG = "fr";
+  var SUPPORTED = ["fr", "en", "hy"];
+
+  /* -------------------------------------------------------------------------
+     Dictionnaires
+     ------------------------------------------------------------------------- */
+  var dict = {
+    fr: {
+      /* document */
+      "doc.title": "Arméniens de Lausanne — Revue communautaire",
+      "doc.description": "La communauté arménienne de Lausanne : histoire, culture, cuisine, mémoire et vie associative — une revue continue, depuis la Suisse romande.",
+
+      /* skip + masthead */
+      "nav.skip": "Aller au contenu principal",
+      "masthead.vol": "Vol.&nbsp;I",
+      "masthead.num": "N°&nbsp;01",
+      "masthead.wordmark.word1": "Arméniens",
+      "masthead.wordmark.word2": "Lausanne",
+      "masthead.wordmark.aria": "Arméniens de Lausanne, accueil",
+      "masthead.edition": "Édition continue",
+      "masthead.location": "Suisse romande",
+      "masthead.tagline.fr": "<em>Une revue continue de la communauté arménienne de Lausanne</em>",
+
+      /* lang switcher */
+      "lang.switcher.label": "Langue",
+
+      /* nav */
+      "nav.aria.primary": "Navigation principale",
+      "nav.open": "Ouvrir le menu",
+      "nav.close": "Fermer le menu",
+      "nav.home": "Accueil",
+      "nav.community": "Communauté",
+      "nav.history": "Histoire",
+      "nav.culture": "Culture",
+      "nav.cuisine": "Cuisine",
+      "nav.agenda": "Agenda",
+      "nav.cta": "Nous rejoindre",
+
+      /* hero */
+      "hero.title.line1": "Arméniens",
+      "hero.title.line2": "<em>de</em>&nbsp;Lausanne",
+      "hero.lead": "Préserver nos racines, transmettre notre culture et vivre notre mémoire — <em>ensemble, au cœur de la Suisse romande.</em>",
+      "hero.cta1": "Lire la revue",
+      "hero.cta2": "Rejoindre la communauté",
+      "hero.toc.label": "Sommaire",
+      "hero.toc.community": "Communauté",
+      "hero.toc.history": "Histoire&nbsp;&amp;&nbsp;Patrimoine",
+      "hero.toc.culture": "Culture&nbsp;&amp;&nbsp;Arts",
+      "hero.toc.cuisine": "La&nbsp;table",
+      "hero.toc.agenda": "Agenda",
+      "hero.image.alt": "Les ruines de la cathédrale de Zvartnots avec le mont Ararat enneigé en arrière-plan, paysage d'Arménie.",
+      "hero.frontispiece.label": "Frontispice",
+      "hero.frontispiece.body": "<em>Les ruines de Zvartnots devant l'Ararat</em> — emblème d'une mémoire qui demeure.",
+
+      /* community */
+      "community.label": "Communauté",
+      "community.eyebrow": "Qui sommes-nous",
+      "community.title": "Une&nbsp;communauté vivante <em>en&nbsp;terre vaudoise.</em>",
+      "community.lead": "La communauté arménienne de Lausanne réunit des familles et des individus attachés à une histoire millénaire et à une culture qu'ils font vivre, génération après génération, loin de la terre d'origine. Issue d'une longue histoire de migrations et de résilience, la diaspora arménienne de Suisse romande s'inscrit aujourd'hui pleinement dans la vie locale tout en cultivant sa singularité.",
+      "community.p2": "Notre association a pour vocation de rassembler, de transmettre la langue et les traditions aux plus jeunes, de préserver la mémoire et de tisser des liens de solidarité — entre Arméniens, et avec toutes celles et ceux qui souhaitent découvrir cette culture.",
+      "community.pillars.label": "Nos quatre engagements",
+      "community.pillar1.title": "Transmettre",
+      "community.pillar1.desc": "Langue, musique, danse et savoir-faire confiés aux nouvelles générations.",
+      "community.pillar2.title": "Rassembler",
+      "community.pillar2.desc": "Des rencontres régulières, des fêtes et des moments de partage.",
+      "community.pillar3.title": "Se souvenir",
+      "community.pillar3.desc": "Honorer la mémoire et faire connaître l'histoire arménienne.",
+      "community.pillar4.title": "Accueillir",
+      "community.pillar4.desc": "Une porte ouverte à toute personne curieuse de l'Arménie.",
+
+      /* history */
+      "history.label": "Histoire",
+      "history.eyebrow": "Histoire &amp; Patrimoine",
+      "history.title": "Aux sources d'une des plus anciennes <em>civilisations.</em>",
+      "history.sub": "Du mont Ararat aux monastères de pierre, un héritage de plus de trois mille ans.",
+      "history.feature.alt": "« La descente de Noé du mont Ararat », peinture d'Ivan Aïvazovski",
+      "history.feature.caption": "Ivan Aïvazovski — <em>La descente de Noé du mont Ararat</em>",
+      "history.feature.title": "Le berceau d'Ararat",
+      "history.feature.body": "Le mont Ararat, où la tradition situe l'arche de Noé, domine l'imaginaire arménien. Première nation à adopter le christianisme comme religion d'État en 301, l'Arménie a forgé une identité indissociable de sa foi, de ses églises et de ses khatchkars — ces croix de pierre sculptées.",
+      "history.feature.pull": "<em>« Nous sommes nos montagnes. »</em>",
+      "history.timeline.label": "Chronologie",
+      "history.timeline.301": "L'Arménie adopte le christianisme comme religion d'État, une première mondiale.",
+      "history.timeline.405": "Mesrop Machtots crée l'alphabet arménien, pilier de la culture écrite.",
+      "history.timeline.1915": "Le génocide des Arméniens ; l'exil façonne la diaspora mondiale, jusqu'en Suisse.",
+      "history.timeline.1991": "L'Arménie retrouve son indépendance.",
+      "history.gallery.alt1": "Le temple hellénistique de Garni, surplombant une gorge en Arménie",
+      "history.gallery.cap1": "Le temple de Garni, <em>vestige hellénistique</em>",
+      "history.gallery.alt2": "Église arménienne traditionnelle dans un paysage de pierres, peinture",
+      "history.gallery.cap2": "L'architecture sacrée arménienne",
+      "history.gallery.alt3": "Le monument « Nous sommes nos montagnes », sculpture monumentale en tuf",
+      "history.gallery.cap3": "<em>« Nous sommes nos montagnes »</em> — emblème identitaire",
+
+      /* culture */
+      "culture.label": "Culture &amp; Arts",
+      "culture.eyebrow": "Culture &amp; Arts",
+      "culture.title": "Une culture <em>qui chante,</em> danse <em>et</em> peint.",
+      "culture.sub": "La langue, la musique du doudouk, la danse et une peinture flamboyante.",
+      "culture.feature.alt": "Danseurs arméniens en costumes traditionnels lors d'une fête",
+      "culture.feature.caption": "La danse traditionnelle, <em>transmise de génération en génération</em>",
+      "culture.feature.title": "Le geste et le chant",
+      "culture.feature.body": "Les danses circulaires, les costumes brodés et la voix nostalgique du doudouk — flûte en bois d'abricotier classée par l'UNESCO — accompagnent chaque grande occasion. La langue arménienne, avec son alphabet unique, demeure le fil rouge de cette transmission.",
+      "culture.feature.pull": "<em>Le doudouk pleure ce que les mots taisent.</em>",
+      "culture.gallery.alt1": "Autoportrait de 1960 du peintre Minas Avetissian, couleurs vives",
+      "culture.gallery.cap1": "Minas Avetissian — <em>Autoportrait (1960)</em>",
+      "culture.gallery.alt2": "Paysage arménien aux couleurs intenses, peinture expressionniste",
+      "culture.gallery.cap2": "La lumière et les couleurs de l'Arménie",
+      "culture.gallery.alt3": "Deux femmes attablées à la lueur d'une bougie, peinture moderne arménienne",
+      "culture.gallery.cap3": "Scène d'intimité, <em>peinture moderne</em>",
+
+      /* cuisine */
+      "cuisine.label": "La&nbsp;table",
+      "cuisine.eyebrow": "Cuisine",
+      "cuisine.title": "La table arménienne, <em>généreuse et partagée.</em>",
+      "cuisine.sub": "Une cuisine de transmission, où chaque plat raconte une famille.",
+      "cuisine.dish1.alt": "Manti arméniens : petits raviolis nappés de yaourt à l'ail",
+      "cuisine.dish1.n": "N°&nbsp;01",
+      "cuisine.dish1.name": "Manti",
+      "cuisine.dish1.desc": "Minuscules raviolis de viande, nappés de yaourt à l'ail.",
+      "cuisine.dish2.alt": "Dolma : feuilles de chou farcies, plat traditionnel arménien",
+      "cuisine.dish2.n": "N°&nbsp;02",
+      "cuisine.dish2.name": "Dolma",
+      "cuisine.dish2.desc": "Feuilles de chou ou de vigne farcies, mijotées avec soin.",
+
+      /* events */
+      "events.label": "Agenda",
+      "events.eyebrow": "Prochains rendez-vous",
+      "events.title": "L'agenda <em>de la saison.</em>",
+      "events.sub": "Rejoignez-nous lors de nos rencontres ouvertes à toutes et à tous.",
+      "events.evt1.month": "Avr.",
+      "events.evt1.kicker": "Commémoration",
+      "events.evt1.title": "Hommage du 24&nbsp;avril",
+      "events.evt1.meta": "18h00&nbsp;·&nbsp;Lausanne&nbsp;·&nbsp;<em>[lieu à compléter]</em>",
+      "events.evt1.desc": "Hommage et recueillement à la mémoire des victimes du génocide de 1915.",
+      "events.evt2.month": "Mens.",
+      "events.evt2.kicker": "Atelier régulier",
+      "events.evt2.title": "Cours de langue arménienne",
+      "events.evt2.meta": "Samedi&nbsp;·&nbsp;<em>[horaire à compléter]</em>&nbsp;·&nbsp;Lausanne",
+      "events.evt2.desc": "Apprentissage de l'arménien pour enfants et adultes, tous niveaux.",
+      "events.evt3.month": "Été",
+      "events.evt3.kicker": "Fête de saison",
+      "events.evt3.title": "Soirée culturelle &amp;&nbsp;Vardavar",
+      "events.evt3.meta": "<em>[date à compléter]</em>&nbsp;·&nbsp;Lausanne",
+      "events.evt3.desc": "Musique, danse, cuisine et célébration de la fête de Vardavar.",
+      "events.note": "Les dates et lieux sont des exemples à adapter par l'association.",
+
+      /* contact */
+      "contact.label": "Correspondance",
+      "contact.eyebrow": "Nous rejoindre",
+      "contact.title": "Prenons <em>contact.</em>",
+      "contact.sub": "Une question, l'envie d'adhérer ou de participer à la vie de la communauté&nbsp;? Écrivez-nous.",
+      "contact.form.kicker": "Correspondance",
+      "contact.form.lead": "Le moyen le plus simple de nous joindre&nbsp;: <em>un courrier électronique.</em> Présentez-vous en quelques mots et nous reviendrons vers vous.",
+      "contact.form.cta": "Écrire à contact@armeniensdelausanne.ch",
+      "contact.form.hint": "Le lien ouvre votre application de messagerie. Vous pouvez aussi copier l'adresse&nbsp;: <code>contact@armeniensdelausanne.ch</code>",
+      "contact.info.kicker": "Coordonnées",
+      "contact.info.title": "La rédaction",
+      "contact.info.email.label": "E-mail",
+      "contact.info.address.label": "Adresse",
+      "contact.info.address.value": "Lausanne, Suisse<br /><em>[à compléter]</em>",
+      "contact.info.social.label": "Réseaux",
+      "contact.info.social.value": "Facebook · Instagram<br /><em>[liens à compléter]</em>",
+      "contact.info.note": "Les coordonnées ci-dessus sont des champs à renseigner par l'association.",
+
+      /* footer */
+      "footer.brand.name": "Arméniens de Lausanne",
+      "footer.brand.sub": "<em>Revue communautaire — Vol.&nbsp;I, édition continue.</em>",
+      "footer.nav.aria": "Liens de pied de page",
+      "footer.nav.label": "Sommaire",
+      "footer.nav.community": "Communauté",
+      "footer.nav.history": "Histoire",
+      "footer.nav.culture": "Culture",
+      "footer.nav.cuisine": "Cuisine",
+      "footer.nav.agenda": "Agenda",
+      "footer.nav.contact": "Contact",
+      "footer.colophon.label": "Colophon",
+      "footer.colophon.body": "Composé en <em>Fraunces</em> et <em>Spectral</em>.<br />Palette&nbsp;: grenade, abricot, cobalt, parchemin.<br />Site statique, sans suivi.",
+      "footer.colophon.region": "Suisse romande",
+      "footer.totop.aria": "Retour en haut",
+      "footer.totop.text": "Haut de page"
+    },
+
+    en: {
+      "doc.title": "Armenians of Lausanne — Community chronicle",
+      "doc.description": "The Armenian community of Lausanne: history, culture, cuisine, memory and community life — an ongoing chronicle, from French-speaking Switzerland.",
+
+      "nav.skip": "Skip to main content",
+      "masthead.vol": "Vol.&nbsp;I",
+      "masthead.num": "No.&nbsp;01",
+      "masthead.wordmark.word1": "Armenians",
+      "masthead.wordmark.word2": "Lausanne",
+      "masthead.wordmark.aria": "Armenians of Lausanne, home",
+      "masthead.edition": "Ongoing edition",
+      "masthead.location": "French-speaking Switzerland",
+      "masthead.tagline.fr": "<em>A continuing chronicle of the Armenian community of Lausanne</em>",
+
+      "lang.switcher.label": "Language",
+
+      "nav.aria.primary": "Main navigation",
+      "nav.open": "Open menu",
+      "nav.close": "Close menu",
+      "nav.home": "Home",
+      "nav.community": "Community",
+      "nav.history": "History",
+      "nav.culture": "Culture",
+      "nav.cuisine": "Cuisine",
+      "nav.agenda": "Agenda",
+      "nav.cta": "Join us",
+
+      "hero.title.line1": "Armenians",
+      "hero.title.line2": "<em>of</em>&nbsp;Lausanne",
+      "hero.lead": "Preserving our roots, passing on our culture and living our memory — <em>together, in the heart of French-speaking Switzerland.</em>",
+      "hero.cta1": "Read the chronicle",
+      "hero.cta2": "Join the community",
+      "hero.toc.label": "Contents",
+      "hero.toc.community": "Community",
+      "hero.toc.history": "History&nbsp;&amp;&nbsp;Heritage",
+      "hero.toc.culture": "Culture&nbsp;&amp;&nbsp;Arts",
+      "hero.toc.cuisine": "The&nbsp;table",
+      "hero.toc.agenda": "Agenda",
+      "hero.image.alt": "The ruins of Zvartnots Cathedral with snow-capped Mount Ararat in the background, an Armenian landscape.",
+      "hero.frontispiece.label": "Frontispiece",
+      "hero.frontispiece.body": "<em>The ruins of Zvartnots before Ararat</em> — emblem of a memory that endures.",
+
+      "community.label": "Community",
+      "community.eyebrow": "Who we are",
+      "community.title": "A&nbsp;living community <em>in&nbsp;the canton of Vaud.</em>",
+      "community.lead": "The Armenian community of Lausanne brings together families and individuals devoted to a thousand-year history and a culture they keep alive, generation after generation, far from the land of origin. Born of a long history of migration and resilience, the Armenian diaspora of French-speaking Switzerland is today fully part of local life while cultivating its singularity.",
+      "community.p2": "Our association exists to bring people together, to pass on the language and traditions to the young, to preserve memory, and to weave bonds of solidarity — among Armenians, and with everyone who wishes to discover this culture.",
+      "community.pillars.label": "Our four commitments",
+      "community.pillar1.title": "Transmit",
+      "community.pillar1.desc": "Language, music, dance and craft, entrusted to the new generations.",
+      "community.pillar2.title": "Gather",
+      "community.pillar2.desc": "Regular gatherings, celebrations and moments of sharing.",
+      "community.pillar3.title": "Remember",
+      "community.pillar3.desc": "Honoring memory and sharing Armenian history.",
+      "community.pillar4.title": "Welcome",
+      "community.pillar4.desc": "An open door to anyone curious about Armenia.",
+
+      "history.label": "History",
+      "history.eyebrow": "History &amp; Heritage",
+      "history.title": "At the source of one of the oldest <em>civilizations.</em>",
+      "history.sub": "From Mount Ararat to monasteries of stone, a heritage spanning more than three thousand years.",
+      "history.feature.alt": "'The Descent of Noah from Mount Ararat', a painting by Ivan Aivazovsky",
+      "history.feature.caption": "Ivan Aivazovsky — <em>The Descent of Noah from Mount Ararat</em>",
+      "history.feature.title": "The cradle of Ararat",
+      "history.feature.body": "Mount Ararat, where tradition places Noah's ark, presides over the Armenian imagination. The first nation to adopt Christianity as its state religion in 301, Armenia forged an identity inseparable from its faith, its churches and its khachkars — those carved stone crosses.",
+      "history.feature.pull": "<em>'We are our mountains.'</em>",
+      "history.timeline.label": "Timeline",
+      "history.timeline.301": "Armenia adopts Christianity as its state religion — a world first.",
+      "history.timeline.405": "Mesrop Mashtots creates the Armenian alphabet, the cornerstone of written culture.",
+      "history.timeline.1915": "The Armenian Genocide; exile shapes a worldwide diaspora, all the way to Switzerland.",
+      "history.timeline.1991": "Armenia regains its independence.",
+      "history.gallery.alt1": "The Hellenistic temple of Garni, overlooking a gorge in Armenia",
+      "history.gallery.cap1": "The temple of Garni, <em>a Hellenistic vestige</em>",
+      "history.gallery.alt2": "Traditional Armenian church in a stony landscape, painting",
+      "history.gallery.cap2": "Sacred Armenian architecture",
+      "history.gallery.alt3": "The 'We Are Our Mountains' monument, a monumental tufa sculpture",
+      "history.gallery.cap3": "<em>'We are our mountains'</em> — emblem of identity",
+
+      "culture.label": "Culture &amp; Arts",
+      "culture.eyebrow": "Culture &amp; Arts",
+      "culture.title": "A culture <em>that sings,</em> dances <em>and</em> paints.",
+      "culture.sub": "The language, the music of the duduk, the dance, and a vivid painting tradition.",
+      "culture.feature.alt": "Armenian dancers in traditional costumes during a celebration",
+      "culture.feature.caption": "Traditional dance, <em>passed down from generation to generation</em>",
+      "culture.feature.title": "Gesture and song",
+      "culture.feature.body": "Round dances, embroidered costumes and the wistful voice of the duduk — an apricot-wood flute inscribed on UNESCO's list — accompany every major occasion. The Armenian language, with its unique alphabet, remains the unbroken thread of this transmission.",
+      "culture.feature.pull": "<em>The duduk weeps what words cannot speak.</em>",
+      "culture.gallery.alt1": "1960 self-portrait by the painter Minas Avetisyan, vivid colors",
+      "culture.gallery.cap1": "Minas Avetisyan — <em>Self-portrait (1960)</em>",
+      "culture.gallery.alt2": "Armenian landscape in intense colors, expressionist painting",
+      "culture.gallery.cap2": "The light and colors of Armenia",
+      "culture.gallery.alt3": "Two women at a table by candlelight, modern Armenian painting",
+      "culture.gallery.cap3": "Intimate scene, <em>modern painting</em>",
+
+      "cuisine.label": "The&nbsp;table",
+      "cuisine.eyebrow": "Cuisine",
+      "cuisine.title": "The Armenian table, <em>generous and shared.</em>",
+      "cuisine.sub": "A cuisine of transmission, where every dish tells a family.",
+      "cuisine.dish1.alt": "Armenian manti: tiny ravioli topped with garlic yogurt",
+      "cuisine.dish1.n": "No.&nbsp;01",
+      "cuisine.dish1.name": "Manti",
+      "cuisine.dish1.desc": "Tiny meat ravioli, topped with garlic yogurt.",
+      "cuisine.dish2.alt": "Dolma: stuffed cabbage leaves, a traditional Armenian dish",
+      "cuisine.dish2.n": "No.&nbsp;02",
+      "cuisine.dish2.name": "Dolma",
+      "cuisine.dish2.desc": "Cabbage or grape leaves stuffed and gently simmered.",
+
+      "events.label": "Agenda",
+      "events.eyebrow": "Upcoming events",
+      "events.title": "The season's <em>agenda.</em>",
+      "events.sub": "Join us at our gatherings, open to all.",
+      "events.evt1.month": "Apr.",
+      "events.evt1.kicker": "Commemoration",
+      "events.evt1.title": "Tribute of 24&nbsp;April",
+      "events.evt1.meta": "6:00&nbsp;p.m.&nbsp;·&nbsp;Lausanne&nbsp;·&nbsp;<em>[venue to complete]</em>",
+      "events.evt1.desc": "Tribute and reflection in memory of the victims of the 1915 genocide.",
+      "events.evt2.month": "Mthly.",
+      "events.evt2.kicker": "Regular workshop",
+      "events.evt2.title": "Armenian language class",
+      "events.evt2.meta": "Saturday&nbsp;·&nbsp;<em>[time to complete]</em>&nbsp;·&nbsp;Lausanne",
+      "events.evt2.desc": "Learning Armenian for children and adults, all levels.",
+      "events.evt3.month": "Sum.",
+      "events.evt3.kicker": "Seasonal festival",
+      "events.evt3.title": "Cultural evening &amp;&nbsp;Vardavar",
+      "events.evt3.meta": "<em>[date to complete]</em>&nbsp;·&nbsp;Lausanne",
+      "events.evt3.desc": "Music, dance, cuisine and the celebration of Vardavar.",
+      "events.note": "The dates and venues are placeholders to be adapted by the association.",
+
+      "contact.label": "Correspondence",
+      "contact.eyebrow": "Join us",
+      "contact.title": "Let's get <em>in touch.</em>",
+      "contact.sub": "A question, a wish to join, or to take part in community life?&nbsp;Write to us.",
+      "contact.form.kicker": "Correspondence",
+      "contact.form.lead": "The simplest way to reach us:&nbsp;<em>an email.</em> Tell us about yourself in a few words and we will get back to you.",
+      "contact.form.cta": "Email contact@armeniensdelausanne.ch",
+      "contact.form.hint": "The link opens your email app. You can also copy the address:&nbsp;<code>contact@armeniensdelausanne.ch</code>",
+      "contact.info.kicker": "Contact",
+      "contact.info.title": "The editorial team",
+      "contact.info.email.label": "Email",
+      "contact.info.address.label": "Address",
+      "contact.info.address.value": "Lausanne, Switzerland<br /><em>[to complete]</em>",
+      "contact.info.social.label": "Social",
+      "contact.info.social.value": "Facebook · Instagram<br /><em>[links to complete]</em>",
+      "contact.info.note": "The contact details above are fields to be filled in by the association.",
+
+      "footer.brand.name": "Armenians of Lausanne",
+      "footer.brand.sub": "<em>Community chronicle — Vol.&nbsp;I, ongoing edition.</em>",
+      "footer.nav.aria": "Footer links",
+      "footer.nav.label": "Contents",
+      "footer.nav.community": "Community",
+      "footer.nav.history": "History",
+      "footer.nav.culture": "Culture",
+      "footer.nav.cuisine": "Cuisine",
+      "footer.nav.agenda": "Agenda",
+      "footer.nav.contact": "Contact",
+      "footer.colophon.label": "Colophon",
+      "footer.colophon.body": "Typeset in <em>Fraunces</em> and <em>Spectral</em>.<br />Palette:&nbsp;pomegranate, apricot, cobalt, parchment.<br />Static site, no tracking.",
+      "footer.colophon.region": "French-speaking Switzerland",
+      "footer.totop.aria": "Back to top",
+      "footer.totop.text": "Top of page"
+    },
+
+    hy: {
+      "doc.title": "Լոզանի հայերը — Համայնքային հանդես",
+      "doc.description": "Լոզանի հայ համայնքը՝ պատմություն, մշակույթ, խոհանոց, հիշողություն և համայնքային կյանք։ Շարունակական հանդես՝ Ֆրանսախոս Շվեյցարիայից։",
+
+      "nav.skip": "Անցնել հիմնական բովանդակությանը",
+      "masthead.vol": "Հատոր&nbsp;Ա",
+      "masthead.num": "Հմր&nbsp;01",
+      "masthead.wordmark.word1": "Լոզանի",
+      "masthead.wordmark.word2": "հայերը",
+      "masthead.wordmark.aria": "Լոզանի հայերը, գլխավոր",
+      "masthead.edition": "Շարունակական թողարկում",
+      "masthead.location": "Ֆրանսախոս Շվեյցարիա",
+      "masthead.tagline.fr": "<em>Լոզանի հայ համայնքի շարունակական հանդեսը</em>",
+
+      "lang.switcher.label": "Լեզու",
+
+      "nav.aria.primary": "Հիմնական նավարկում",
+      "nav.open": "Բացել մենյուն",
+      "nav.close": "Փակել մենյուն",
+      "nav.home": "Գլխավոր",
+      "nav.community": "Համայնք",
+      "nav.history": "Պատմություն",
+      "nav.culture": "Մշակույթ",
+      "nav.cuisine": "Խոհանոց",
+      "nav.agenda": "Օրակարգ",
+      "nav.cta": "Միանալ մեզ",
+
+      "hero.title.line1": "Լոզանի",
+      "hero.title.line2": "հայերը",
+      "hero.lead": "Պահպանել մեր արմատները, փոխանցել մեր մշակույթը և ապրել մեր հիշողությունը — <em>միասին՝ Ֆրանսախոս Շվեյցարիայի սրտում։</em>",
+      "hero.cta1": "Կարդալ հանդեսը",
+      "hero.cta2": "Միանալ համայնքին",
+      "hero.toc.label": "Բովանդակություն",
+      "hero.toc.community": "Համայնք",
+      "hero.toc.history": "Պատմություն&nbsp;և&nbsp;ժառանգություն",
+      "hero.toc.culture": "Մշակույթ&nbsp;և&nbsp;արվեստ",
+      "hero.toc.cuisine": "Սեղանը",
+      "hero.toc.agenda": "Օրակարգ",
+      "hero.image.alt": "Զվարթնոցի տաճարի ավերակները՝ ձյունածածկ Արարատ լեռան ֆոնին, հայկական բնանկար։",
+      "hero.frontispiece.label": "Շապիկ",
+      "hero.frontispiece.body": "<em>Զվարթնոցի ավերակներն Արարատի դիմաց</em>՝ մնայուն հիշողության խորհրդանիշը։",
+
+      "community.label": "Համայնք",
+      "community.eyebrow": "Ով ենք մենք",
+      "community.title": "Կենդանի համայնք <em>Վոյի կանտոնում։</em>",
+      "community.lead": "Լոզանի հայ համայնքը միավորում է հազարամյա պատմությանն ու մշակույթին նվիրված ընտանիքների և անհատների, որոնք սերնդեսերունդ կենդանի են պահում այն՝ հայրենիքից հեռու։ Գաղթի ու հարատևության երկար պատմությունից ծնված Ֆրանսախոս Շվեյցարիայի հայ սփյուռքն այսօր լիարժեքորեն ներգրավված է տեղական կյանքին՝ պահպանելով իր ինքնատիպությունը։",
+      "community.p2": "Մեր ընկերակցության կոչումն է միավորել, լեզուն ու ավանդույթները փոխանցել երիտասարդներին, պահպանել հիշողությունը և հյուսել համերաշխության կապեր՝ հայերի միջև և բոլոր նրանց հետ, ովքեր ցանկանում են ճանաչել այս մշակույթը։",
+      "community.pillars.label": "Մեր չորս ուխտերը",
+      "community.pillar1.title": "Փոխանցել",
+      "community.pillar1.desc": "Լեզու, երաժշտություն, պար և արհեստներ՝ վստահված նոր սերունդներին։",
+      "community.pillar2.title": "Միավորել",
+      "community.pillar2.desc": "Կանոնավոր հանդիպումներ, տոներ և կիսելու պահեր։",
+      "community.pillar3.title": "Հիշել",
+      "community.pillar3.desc": "Հարգել հիշողությունը և ճանաչելի դարձնել հայոց պատմությունը։",
+      "community.pillar4.title": "Ընդունել",
+      "community.pillar4.desc": "Բաց դռներ Հայաստանով հետաքրքրված ամեն մեկի համար։",
+
+      "history.label": "Պատմություն",
+      "history.eyebrow": "Պատմություն և ժառանգություն",
+      "history.title": "Հնագույն քաղաքակրթություններից մեկի <em>ակունքներում։</em>",
+      "history.sub": "Արարատ լեռնից մինչև քարե վանքերը՝ ավելի քան երեք հազարամյա ժառանգություն։",
+      "history.feature.alt": "«Նոյի իջնելը Արարատից», Հովհաննես Այվազովսկու նկար",
+      "history.feature.caption": "Հովհաննես Այվազովսկի՝ <em>Նոյի իջնելը Արարատից</em>",
+      "history.feature.title": "Արարատի օրրանը",
+      "history.feature.body": "Արարատ լեռը, ուր ավանդույթը զետեղում է Նոյյան տապանը, իշխում է հայի երևակայության մեջ։ 301 թվականին քրիստոնեությունը որպես պետական կրոն ընդունած առաջին ազգը՝ Հայաստանը կերտել է իր հավատին, եկեղեցիներին ու քարակերտ խաչքարերին անքակտելիորեն կապված ինքնություն։",
+      "history.feature.pull": "<em>«Մենք մեր լեռներն ենք»։</em>",
+      "history.timeline.label": "Ժամանակագրություն",
+      "history.timeline.301": "Հայաստանն ընդունում է քրիստոնեությունը որպես պետական կրոն՝ համաշխարհային առաջին անգամ։",
+      "history.timeline.405": "Մեսրոպ Մաշտոցը ստեղծում է հայոց այբուբենը՝ գրավոր մշակույթի հիմնասյունը։",
+      "history.timeline.1915": "Հայոց ցեղասպանությունը. աքսորը ձևավորում է համաշխարհային սփյուռքը՝ մինչև Շվեյցարիա։",
+      "history.timeline.1991": "Հայաստանը վերականգնում է իր անկախությունը։",
+      "history.gallery.alt1": "Հելլենիստական Գառնիի տաճարը՝ կիրճի վրա, Հայաստանում",
+      "history.gallery.cap1": "Գառնիի տաճարը՝ <em>հելլենիստական ժառանգություն</em>",
+      "history.gallery.alt2": "Ավանդական հայկական եկեղեցի քարքարոտ բնանկարում, գեղանկար",
+      "history.gallery.cap2": "Հայկական սրբազան ճարտարապետությունը",
+      "history.gallery.alt3": "«Մենք մեր լեռներն ենք» հուշարձանը՝ տուֆից կերտված հուշակոթող",
+      "history.gallery.cap3": "<em>«Մենք մեր լեռներն ենք»</em>՝ ինքնության խորհրդանիշ",
+
+      "culture.label": "Մշակույթ և արվեստ",
+      "culture.eyebrow": "Մշակույթ և արվեստ",
+      "culture.title": "Մշակույթ, որ <em>երգում է,</em> պարում <em>և</em> նկարում։",
+      "culture.sub": "Լեզուն, դուդուկի երաժշտությունը, պարը և բոցավառ գեղանկարչությունը։",
+      "culture.feature.alt": "Հայ պարողներ ավանդական տարազներով՝ տոնակատարության ընթացքում",
+      "culture.feature.caption": "Ավանդական պարը՝ <em>սերնդեսերունդ փոխանցվող</em>",
+      "culture.feature.title": "Շարժուն և երգ",
+      "culture.feature.body": "Շուրջպարերը, ասեղնագործ տարազները և դուդուկի կարոտաբեր ձայնը՝ ՅՈՒՆԵՍԿՕ-ի ցանկում ընդգրկված ծիրանի փայտից սրինգը՝ ուղեկցում են ամեն մեծ առիթ։ Հայերենը՝ իր ինքնատիպ այբուբենով, մնում է այս փոխանցման կարմիր թելը։",
+      "culture.feature.pull": "<em>Դուդուկը լալիս է այն, ինչ բառերը լռում են։</em>",
+      "culture.gallery.alt1": "Մինաս Ավետիսյան նկարչի 1960 թվականի ինքնանկարը, վառ գույներով",
+      "culture.gallery.cap1": "Մինաս Ավետիսյան՝ <em>Ինքնանկար (1960)</em>",
+      "culture.gallery.alt2": "Հայկական բնանկար ուժեղ գույներով, էքսպրեսիոնիստական նկար",
+      "culture.gallery.cap2": "Հայաստանի լույսն ու գույները",
+      "culture.gallery.alt3": "Երկու կին սեղանի շուրջ՝ մոմի լույսի տակ, ժամանակակից հայկական նկար",
+      "culture.gallery.cap3": "Մտերմիկ տեսարան՝ <em>ժամանակակից գեղանկար</em>",
+
+      "cuisine.label": "Սեղանը",
+      "cuisine.eyebrow": "Խոհանոց",
+      "cuisine.title": "Հայկական սեղանը՝ <em>առատաձեռն և համահավաք։</em>",
+      "cuisine.sub": "Փոխանցման խոհանոց, ուր ամեն ուտեստ պատմում է մի ընտանիք։",
+      "cuisine.dish1.alt": "Հայկական մանթի՝ սխտորով մածնի մեջ մանր պելմեններ",
+      "cuisine.dish1.n": "Հմր&nbsp;01",
+      "cuisine.dish1.name": "Մանթի",
+      "cuisine.dish1.desc": "Մսով մանր պելմեններ՝ սխտորով մածնի մեջ։",
+      "cuisine.dish2.alt": "Տոլմա՝ լցոնված կաղամբի տերևներ, ավանդական հայկական ճաշատեսակ",
+      "cuisine.dish2.n": "Հմր&nbsp;02",
+      "cuisine.dish2.name": "Տոլմա",
+      "cuisine.dish2.desc": "Կաղամբի կամ խաղողի լցոնված տերևներ՝ խնամքով եփված։",
+
+      "events.label": "Օրակարգ",
+      "events.eyebrow": "Առաջիկա միջոցառումներ",
+      "events.title": "Եղանակի <em>օրակարգը։</em>",
+      "events.sub": "Միացեք մեզ բոլորի համար բաց հանդիպումներին։",
+      "events.evt1.month": "Ապր.",
+      "events.evt1.kicker": "Հիշատակում",
+      "events.evt1.title": "Ապրիլի&nbsp;24-ի հարգանք",
+      "events.evt1.meta": "ժ.&nbsp;18:00&nbsp;·&nbsp;Լոզան&nbsp;·&nbsp;<em>[վայրը՝ լրացնելու]</em>",
+      "events.evt1.desc": "Հարգանք և խոնարհում 1915 թվականի ցեղասպանության զոհերի հիշատակին։",
+      "events.evt2.month": "Ամս.",
+      "events.evt2.kicker": "Կանոնավոր արհեստանոց",
+      "events.evt2.title": "Հայերենի դասընթաց",
+      "events.evt2.meta": "Շաբաթ&nbsp;·&nbsp;<em>[ժամը՝ լրացնելու]</em>&nbsp;·&nbsp;Լոզան",
+      "events.evt2.desc": "Հայերենի ուսուցում՝ երեխաների և մեծահասակների համար, բոլոր մակարդակներով։",
+      "events.evt3.month": "Ամառ",
+      "events.evt3.kicker": "Եղանակային տոն",
+      "events.evt3.title": "Մշակութային երեկո և Վարդավառ",
+      "events.evt3.meta": "<em>[ամսաթիվ՝ լրացնելու]</em>&nbsp;·&nbsp;Լոզան",
+      "events.evt3.desc": "Երաժշտություն, պար, խոհանոց և Վարդավառի տոնակատարություն։",
+      "events.note": "Ամսաթվերն ու վայրերը ընկերակցության կողմից փոփոխելու օրինակներ են։",
+
+      "contact.label": "Նամակագրություն",
+      "contact.eyebrow": "Միանալ մեզ",
+      "contact.title": "Կապ <em>հաստատենք։</em>",
+      "contact.sub": "Հարց ունե՞ք, ցանկանու՞մ եք միանալ կամ մասնակցել համայնքի կյանքին։&nbsp;Գրե՛ք մեզ։",
+      "contact.form.kicker": "Նամակագրություն",
+      "contact.form.lead": "Մեզ հետ կապվելու ամենահեշտ ճանապարհը՝&nbsp;<em>էլեկտրոնային նամակ։</em> Մի քանի բառով ներկայացեք մեզ, և մենք կպատասխանենք ձեզ։",
+      "contact.form.cta": "Գրել contact@armeniensdelausanne.ch հասցեին",
+      "contact.form.hint": "Հղումը կբացի ձեր փոստի հավելվածը։ Կարող եք նաև պատճենել հասցեն՝&nbsp;<code>contact@armeniensdelausanne.ch</code>",
+      "contact.info.kicker": "Կոնտակտներ",
+      "contact.info.title": "Խմբագրությունը",
+      "contact.info.email.label": "Էլ. փոստ",
+      "contact.info.address.label": "Հասցե",
+      "contact.info.address.value": "Լոզան, Շվեյցարիա<br /><em>[լրացնելու]</em>",
+      "contact.info.social.label": "Սոցցանցեր",
+      "contact.info.social.value": "Facebook · Instagram<br /><em>[հղումները՝ լրացնելու]</em>",
+      "contact.info.note": "Վերը նշված կոնտակտները ընկերակցության կողմից լրացնելու դաշտեր են։",
+
+      "footer.brand.name": "Լոզանի հայերը",
+      "footer.brand.sub": "<em>Համայնքային հանդես՝ հատոր&nbsp;Ա, շարունակական թողարկում։</em>",
+      "footer.nav.aria": "Ստորին հղումներ",
+      "footer.nav.label": "Բովանդակություն",
+      "footer.nav.community": "Համայնք",
+      "footer.nav.history": "Պատմություն",
+      "footer.nav.culture": "Մշակույթ",
+      "footer.nav.cuisine": "Խոհանոց",
+      "footer.nav.agenda": "Օրակարգ",
+      "footer.nav.contact": "Կապ",
+      "footer.colophon.label": "Կոլոֆոն",
+      "footer.colophon.body": "Շարադրված է <em>Fraunces</em> և <em>Spectral</em> տառատեսակներով։<br />Գունապնակ՝&nbsp;նուռ, ծիրան, կոբալտ, մագաղաթ։<br />Ստատիկ կայք՝ առանց հետևումի։",
+      "footer.colophon.region": "Ֆրանսախոս Շվեյցարիա",
+      "footer.totop.aria": "Վերև",
+      "footer.totop.text": "Վերև"
+    }
+  };
+
+  /* -------------------------------------------------------------------------
+     Resolution + application
+     ------------------------------------------------------------------------- */
+  function t(lang, key) {
+    var lDict = dict[lang];
+    if (lDict && lDict[key] !== undefined) return lDict[key];
+    var fallback = dict[DEFAULT_LANG];
+    if (fallback && fallback[key] !== undefined) return fallback[key];
+    return key;
+  }
+
+  function getInitialLang() {
+    try {
+      var params = new URLSearchParams(window.location.search);
+      var q = params.get("lang");
+      if (q && SUPPORTED.indexOf(q) !== -1) return q;
+      var stored = window.localStorage.getItem(STORAGE_KEY);
+      if (stored && SUPPORTED.indexOf(stored) !== -1) return stored;
+    } catch (e) { /* private mode / no storage */ }
+    return DEFAULT_LANG;
+  }
+
+  var ATTR_MAP = {
+    "data-i18n-alt": "alt",
+    "data-i18n-aria-label": "aria-label",
+    "data-i18n-title": "title"
+  };
+
+  function apply(lang) {
+    if (SUPPORTED.indexOf(lang) === -1) lang = DEFAULT_LANG;
+
+    // <html lang>
+    document.documentElement.setAttribute("lang", lang);
+
+    // text/html nodes
+    var nodes = document.querySelectorAll("[data-i18n]");
+    Array.prototype.forEach.call(nodes, function (el) {
+      el.innerHTML = t(lang, el.getAttribute("data-i18n"));
+    });
+
+    // attribute nodes
+    Object.keys(ATTR_MAP).forEach(function (dataAttr) {
+      var realAttr = ATTR_MAP[dataAttr];
+      var matches = document.querySelectorAll("[" + dataAttr + "]");
+      Array.prototype.forEach.call(matches, function (el) {
+        el.setAttribute(realAttr, t(lang, el.getAttribute(dataAttr)));
+      });
+    });
+
+    // document title + meta description
+    document.title = t(lang, "doc.title");
+    var metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute("content", t(lang, "doc.description"));
+
+    // active language pill
+    var langButtons = document.querySelectorAll(".lang-switcher [data-lang]");
+    Array.prototype.forEach.call(langButtons, function (btn) {
+      var isActive = btn.getAttribute("data-lang") === lang;
+      btn.setAttribute("aria-current", isActive ? "true" : "false");
+      btn.classList.toggle("is-active", isActive);
+    });
+
+    try { window.localStorage.setItem(STORAGE_KEY, lang); } catch (e) {}
+
+    // let other scripts (main.js) react if needed
+    try {
+      document.dispatchEvent(new CustomEvent("i18n:applied", { detail: { lang: lang } }));
+    } catch (e) {
+      // older IE fallback — not strictly needed for modern browsers
+      var evt = document.createEvent("Event");
+      evt.initEvent("i18n:applied", true, true);
+      document.dispatchEvent(evt);
+    }
+  }
+
+  function init() {
+    var lang = getInitialLang();
+    apply(lang);
+
+    var switcher = document.querySelector(".lang-switcher");
+    if (switcher) {
+      switcher.addEventListener("click", function (e) {
+        var btn = e.target.closest && e.target.closest("[data-lang]");
+        if (!btn) return;
+        var nextLang = btn.getAttribute("data-lang");
+        if (SUPPORTED.indexOf(nextLang) === -1) return;
+        apply(nextLang);
+      });
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+
+  /* Public surface for main.js (nav toggle aria-label) */
+  window.ALI18n = {
+    t: function (key) {
+      var lang = document.documentElement.getAttribute("lang") || DEFAULT_LANG;
+      if (SUPPORTED.indexOf(lang) === -1) lang = DEFAULT_LANG;
+      return t(lang, key);
+    },
+    apply: apply,
+    SUPPORTED: SUPPORTED
+  };
+})();

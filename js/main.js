@@ -23,18 +23,34 @@
   var toggle = document.getElementById("navToggle");
   var nav = document.getElementById("primaryNav");
 
+  function tr(key, fallback) {
+    if (window.ALI18n && typeof window.ALI18n.t === "function") {
+      return window.ALI18n.t(key);
+    }
+    return fallback;
+  }
+
   function closeNav() {
     if (!nav || !toggle) return;
     nav.classList.remove("is-open");
     toggle.setAttribute("aria-expanded", "false");
-    toggle.setAttribute("aria-label", "Ouvrir le menu");
+    toggle.setAttribute("aria-label", tr("nav.open", "Ouvrir le menu"));
+  }
+
+  // Set initial aria-label from the active language and refresh when language changes.
+  if (toggle) {
+    toggle.setAttribute("aria-label", tr("nav.open", "Ouvrir le menu"));
+    document.addEventListener("i18n:applied", function () {
+      var open = toggle.getAttribute("aria-expanded") === "true";
+      toggle.setAttribute("aria-label", open ? tr("nav.close", "Fermer le menu") : tr("nav.open", "Ouvrir le menu"));
+    });
   }
 
   if (toggle && nav) {
     toggle.addEventListener("click", function () {
       var open = nav.classList.toggle("is-open");
       toggle.setAttribute("aria-expanded", String(open));
-      toggle.setAttribute("aria-label", open ? "Fermer le menu" : "Ouvrir le menu");
+      toggle.setAttribute("aria-label", open ? tr("nav.close", "Fermer le menu") : tr("nav.open", "Ouvrir le menu"));
     });
 
     // Fermer après clic sur un lien (navigation par ancre).

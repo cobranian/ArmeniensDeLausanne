@@ -40,6 +40,11 @@ Single-page site; everything is in **`index.html`** as anchored `<section>`s
 - **`js/main.js`** — vanilla, no deps, IIFE. Handles: footer year, sticky-header
   `is-scrolled` state, mobile nav toggle, scroll-spy active nav link, and
   `IntersectionObserver` reveal animations. All progressive enhancement.
+- **`js/i18n.js`** — FR / EN / HY dictionaries + a `data-i18n` runtime swap.
+  Loads before `main.js` (both `defer` → order preserved). Reads initial
+  language from `?lang=` then `localStorage["alausanne.lang"]`, defaults to FR.
+  Exposes `window.ALI18n.t(key)` and dispatches `i18n:applied` on every change
+  — `main.js` listens to that to refresh the mobile-nav `aria-label`.
 - **`index.html`** sets `document.documentElement.classList.add('js')` inline in
   `<head>` — this is what gates the JS-only CSS. Don't remove it.
 - **`Images/`** — source photos/paintings, referenced in place. One filename has
@@ -49,16 +54,26 @@ Single-page site; everything is in **`index.html`** as anchored `<section>`s
 
 ## Content & conventions
 
-- **All copy lives in `index.html`.** Events (`#evenements`) and contact details
-  (`#contact`) are placeholder/example content; unknown real-world facts are
-  marked `[à compléter]`. Do not invent specific facts (address, founding year,
-  real email, member counts) — keep them as `[à compléter]` placeholders.
-- **Contact form is non-functional by design** (static site, no server). It
-  `preventDefault`s and alerts. To make it real: set the `action` to a form
-  service (e.g. Formspree) — don't add a backend without discussing it.
+- **Copy lives in two places.** The default-FR copy is in `index.html` next to
+  its `data-i18n="…"` key. The EN and HY translations for the same key live in
+  `js/i18n.js`. Adding or changing user-visible text means editing **both**:
+  the HTML (FR + the key) **and** all three dictionaries in `i18n.js`. Missing
+  keys silently fall back to FR.
+- Events (`#evenements`) and contact details (`#contact`) are placeholder/
+  example content; unknown real-world facts are marked `[à compléter]` (and
+  `[to complete]` / `[լրացնելու]` in the other languages). Do not invent
+  specific facts (address, founding year, real email, member counts) — keep
+  them as placeholders.
+- **Contact section is mailto-only** (static site, no server). The
+  `link-submit` is a plain `<a href="mailto:…">`, not a form — no fields,
+  no JS submit handler. To add a real form with input fields: route through
+  a form service (e.g. Formspree) — don't add a backend without discussing it.
 - **No build-only syntax** (no JSX/TS/SCSS, no bare `import` specifiers). ES
   modules and Google Fonts via `<link>` are fine. Keep relative asset paths.
 - **Open decision (deferred):** how non-technical volunteers will manage events
   long-term (headless CMS with public read token vs. tiny serverless proxy).
   Until decided, events stay hand-edited in `index.html`. See README.
-- **i18n** is not implemented; French only. Revisit if multilingual is needed.
+- **i18n** is FR (default) / EN / HY, swapped client-side by `js/i18n.js`.
+  Translatable text uses `data-i18n="key"` (innerHTML), translatable attrs
+  use `data-i18n-alt`, `data-i18n-aria-label`, `data-i18n-title`. The visible
+  switcher lives in the utility bar at the top of the header.

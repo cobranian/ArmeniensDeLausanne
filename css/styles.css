@@ -204,6 +204,74 @@ em { font-style: italic; }
   transition: padding .3s var(--ease), box-shadow .3s var(--ease);
 }
 
+/* Utility bar — language switcher above the masthead */
+.utility-bar {
+  background: var(--ivory);
+  border-bottom: 1px solid var(--rule);
+  transition: max-height .3s var(--ease), opacity .25s var(--ease), padding .3s var(--ease);
+  overflow: hidden;
+}
+.utility-inner {
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding: .35rem var(--pad-x);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.lang-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  font-family: var(--f-body);
+  font-size: var(--fs-tiny);
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+.lang-switcher button {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  padding: .25rem .4rem;
+  margin: 0;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  color: var(--ink-mute);
+  cursor: pointer;
+  transition: color .2s var(--ease);
+  position: relative;
+}
+.lang-switcher button:hover,
+.lang-switcher button:focus-visible {
+  color: var(--ink);
+  outline: none;
+}
+.lang-switcher button.is-active {
+  color: var(--pomegranate);
+}
+.lang-switcher button.is-active::after {
+  content: "";
+  position: absolute;
+  left: .4rem; right: .4rem;
+  bottom: .05rem;
+  height: 1.5px;
+  background: var(--pomegranate);
+}
+.lang-switcher .lang-sep {
+  color: var(--apricot);
+  user-select: none;
+}
+/* When the header collapses on scroll, hide the utility bar to keep the
+   sticky chrome compact. */
+.site-header.is-scrolled .utility-bar {
+  max-height: 0;
+  padding: 0;
+  opacity: 0;
+  border-bottom-color: transparent;
+}
+
 .masthead {
   max-width: var(--maxw);
   margin-inline: auto;
@@ -372,7 +440,8 @@ em { font-style: italic; }
 .nav-toggle {
   display: none;
   position: absolute;
-  top: .9rem;
+  /* sits below the utility bar (language switcher) on mobile */
+  top: 2.75rem;
   right: var(--pad-x);
   width: 44px; height: 44px;
   background: transparent;
@@ -381,7 +450,10 @@ em { font-style: italic; }
   cursor: pointer;
   padding: 0;
   z-index: 60;
+  transition: top .3s var(--ease);
 }
+/* When scrolled, the utility bar collapses — bring the toggle back up. */
+.site-header.is-scrolled .nav-toggle { top: .35rem; }
 .nav-toggle span {
   display: block;
   width: 22px; height: 1.5px;
