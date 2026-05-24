@@ -1,0 +1,13 @@
+# Firebase
+.firebase/
+firebase-debug.log
+firebase-debug.*.log
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+
+# Node (unused firebase SDK dep — not needed for static hosting)
+node_modules/
+package.json
+package-lock.json

@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Arméniens de Lausanne — Revue communautaire</title>
+  <meta name="description" content="La communauté arménienne de Lausanne : histoire, culture, cuisine, mémoire et vie associative — une revue continue, depuis la Suisse romande." />
+  <meta name="theme-color" content="#1A1410" />
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Noto+Serif+Armenian:wght@400;500;700&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- Marque le document comme « JS actif » : sans JavaScript, tout le contenu reste visible. -->
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body class="journal">
+
+  <a class="skip-link" href="#main">Aller au contenu principal</a>
+
+  <!-- ============ MASTHEAD ============ -->
+  <header class="site-header" id="siteHeader">
+    <div class="masthead">
+      <div class="masthead-row masthead-top">
+        <p class="masthead-meta meta-left">
+          <span class="vol">Vol.&nbsp;I</span>
+          <span class="dot" aria-hidden="true">·</span>
+          <span>N°&nbsp;01</span>
+        </p>
+        <a class="masthead-wordmark" href="#accueil" aria-label="Arméniens de Lausanne, accueil">
+          <span class="wm-word">Arméniens</span>
+          <span class="wm-orn" aria-hidden="true">
+            <svg viewBox="0 0 36 36" width="22" height="22">
+              <path d="M18 2 L34 18 L18 34 L2 18 Z" fill="none" stroke="currentColor" stroke-width="1.1"/>
+              <path d="M18 9 L27 18 L18 27 L9 18 Z" fill="none" stroke="currentColor" stroke-width="1"/>
+              <line x1="18" y1="13" x2="18" y2="23" stroke="currentColor" stroke-width="1"/>
+              <line x1="13" y1="18" x2="23" y2="18" stroke="currentColor" stroke-width="1"/>
+            </svg>
+          </span>
+          <span class="wm-word">Lausanne</span>
+        </a>
+        <p class="masthead-meta meta-right">
+          <span>Édition continue</span>
+          <span class="dot" aria-hidden="true">·</span>
+          <span class="loc">Suisse romande</span>
+        </p>
+      </div>
+
+      <div class="masthead-row masthead-rule" aria-hidden="true"></div>
+
+      <div class="masthead-row masthead-bottom">
+        <p class="tagline" lang="hy">Լոզանի հայ համայնք</p>
+        <p class="tagline-fr"><em>Une revue continue de la communauté arménienne de Lausanne</em></p>
+      </div>
+    </div>
+
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Ouvrir le menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="primary-nav" id="primaryNav" aria-label="Navigation principale">
+      <ul>
+        <li><a href="#accueil"><span class="n">I</span><span class="t">Accueil</span></a></li>
+        <li><a href="#communaute"><span class="n">II</span><span class="t">Communauté</span></a></li>
+        <li><a href="#histoire"><span class="n">III</span><span class="t">Histoire</span></a></li>
+        <li><a href="#culture"><span class="n">IV</span><span class="t">Culture</span></a></li>
+        <li><a href="#cuisine"><span class="n">V</span><span class="t">Cuisine</span></a></li>
+        <li><a href="#evenements"><span class="n">VI</span><span class="t">Agenda</span></a></li>
+        <li><a class="nav-cta" href="#contact"><span class="t">Nous rejoindre</span><span class="arr" aria-hidden="true">→</span></a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- ============ HERO / ACCUEIL ============ -->
+    <section class="hero" id="accueil">
+      <div class="hero-grid">
+        <div class="hero-text">
+          <p class="kicker" lang="hy">Բարի&nbsp;գալուստ</p>
+          <h1 class="hero-title">
+            <span class="ht-line ht-1">Arméniens</span>
+            <span class="ht-line ht-2"><em>de</em>&nbsp;Lausanne</span>
+          </h1>
+          <p class="hero-lead">
+            Préserver nos racines, transmettre notre culture et vivre notre
+            mémoire — <em>ensemble, au cœur de la Suisse romande.</em>
+          </p>
+          <div class="hero-actions">
+            <a class="link-arrow" href="#culture">
+              <span>Lire la revue</span>
+              <span class="arr" aria-hidden="true">→</span>
+            </a>
+            <a class="link-arrow link-arrow-muted" href="#contact">
+              <span>Rejoindre la communauté</span>
+              <span class="arr" aria-hidden="true">→</span>
+            </a>
+          </div>
+          <ul class="hero-toc" aria-label="Sommaire">
+            <li><span class="toc-n">I</span><a href="#communaute">Communauté</a></li>
+            <li><span class="toc-n">II</span><a href="#histoire">Histoire&nbsp;&amp;&nbsp;Patrimoine</a></li>
+            <li><span class="toc-n">III</span><a href="#culture">Culture&nbsp;&amp;&nbsp;Arts</a></li>
+            <li><span class="toc-n">IV</span><a href="#cuisine">La&nbsp;table</a></li>
+            <li><span class="toc-n">V</span><a href="#evenements">Agenda</a></li>
+          </ul>
+        </div>
+
+        <figure class="hero-media">
+          <div class="hero-media-frame">
+            <img src="Images/ArmenianHeritage.webp"
+                 alt="Les ruines de la cathédrale de Zvartnots avec le mont Ararat enneigé en arrière-plan, paysage d'Arménie." />
+          </div>
+          <figcaption>
+            <span class="fc-label">Frontispice</span>
+            <span class="fc-body"><em>Les ruines de Zvartnots devant l'Ararat</em> — emblème d'une mémoire qui demeure.</span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="tricolor" aria-hidden="true"><span></span><span></span><span></span></div>
+    </section>
+
+
+    <!-- ============ I. NOTRE COMMUNAUTÉ ============ -->
+    <section class="section" id="communaute">
+      <div class="section-rule" aria-hidden="true">
+        <span class="sr-num">§&nbsp;I</span>
+        <span class="sr-line"></span>
+        <span class="sr-orn">
+          <svg viewBox="0 0 36 36" width="14" height="14">
+            <path d="M18 2 L34 18 L18 34 L2 18 Z" fill="none" stroke="currentColor" stroke-width="1.2"/>
+            <line x1="18" y1="10" x2="18" y2="26" stroke="currentColor" stroke-width="1"/>
+            <line x1="10" y1="18" x2="26" y2="18" stroke="currentColor" stroke-width="1"/>
+          </svg>
+        </span>
+        <span class="sr-line"></span>
+        <span class="sr-name">Communauté</span>
+      </div>
+
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">Qui sommes-nous</p>
+          <h2>Une&nbsp;communauté vivante <em>en&nbsp;terre vaudoise.</em></h2>
+        </header>
+
+        <div class="prose-grid">
+          <div class="prose">
+            <p class="lead">
+              La communauté arménienne de Lausanne réunit des familles et des
+              individus attachés à une histoire millénaire et à une culture
+              qu'ils font vivre, génération après génération, loin de la terre
+              d'origine. Issue d'une longue histoire de migrations et de
+              résilience, la diaspora arménienne de Suisse romande s'inscrit
+              aujourd'hui pleinement dans la vie locale tout en cultivant sa
+              singularité.
+            </p>
+            <p>
+              Notre association a pour vocation de rassembler, de transmettre la
+              langue et les traditions aux plus jeunes, de préserver la mémoire
+              et de tisser des liens de solidarité — entre Arméniens, et avec
+              toutes celles et ceux qui souhaitent découvrir cette culture.
+            </p>
+          </div>
+
+          <ol class="pillars" aria-label="Nos quatre engagements">
+            <li>
+              <span class="p-num">01</span>
+              <h3>Transmettre</h3>
+              <p>Langue, musique, danse et savoir-faire confiés aux nouvelles générations.</p>
+            </li>
+            <li>
+              <span class="p-num">02</span>
+              <h3>Rassembler</h3>
+              <p>Des rencontres régulières, des fêtes et des moments de partage.</p>
+            </li>
+            <li>
+              <span class="p-num">03</span>
+              <h3>Se souvenir</h3>
+              <p>Honorer la mémoire et faire connaître l'histoire arménienne.</p>
+            </li>
+            <li>
+              <span class="p-num">04</span>
+              <h3>Accueillir</h3>
+              <p>Une porte ouverte à toute personne curieuse de l'Arménie.</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============ II. HISTOIRE & PATRIMOINE ============ -->
+    <section class="section section-dark" id="histoire">
+      <div class="section-rule" aria-hidden="true">
+        <span class="sr-num">§&nbsp;II</span>
+        <span class="sr-line"></span>
+        <span class="sr-orn">
+          <svg viewBox="0 0 36 36" width="14" height="14">
+            <path d="M18 2 L34 18 L18 34 L2 18 Z" fill="none" stroke="currentColor" stroke-width="1.2"/>
+            <line x1="18" y1="10" x2="18" y2="26" stroke="currentColor" stroke-width="1"/>
+            <line x1="10" y1="18" x2="26" y2="18" stroke="currentColor" stroke-width="1"/>
+          </svg>
+        </span>
+        <span class="sr-line"></span>
+        <span class="sr-name">Histoire</span>
+      </div>
+
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">Histoire &amp; Patrimoine</p>
+          <h2>Aux sources d'une des plus anciennes <em>civilisations.</em></h2>
+          <p class="section-sub">
+            Du mont Ararat aux monastères de pierre, un héritage de plus de
+            trois mille ans.
+          </p>
+        </header>
+
+        <article class="feature">
+          <figure class="feature-media">
+            <img src="Images/Aivazovsky_-_Descent_of_Noah_from_Ararat.jpg"
+                 alt="« La descente de Noé du mont Ararat », peinture d'Ivan Aïvazovski" loading="lazy" />
+            <figcaption>Ivan Aïvazovski — <em>La descente de Noé du mont Ararat</em></figcaption>
+          </figure>
+          <div class="feature-text">
+            <p class="ft-num">01</p>
+            <h3>Le berceau d'Ararat</h3>
+            <p>
+              Le mont Ararat, où la tradition situe l'arche de Noé, domine
+              l'imaginaire arménien. Première nation à adopter le christianisme
+              comme religion d'État en 301, l'Arménie a forgé une identité
+              indissociable de sa foi, de ses églises et de ses khatchkars —
+              ces croix de pierre sculptées.
+            </p>
+            <p class="ft-pull">
+              <em>« Nous sommes nos montagnes. »</em>
+            </p>
+          </div>
+        </article>
+
+        <div class="timeline" aria-label="Chronologie">
+          <ol>
+            <li class="tl-item">
+              <span class="tl-year">301</span>
+              <p>L'Arménie adopte le christianisme comme religion d'État, une première mondiale.</p>
+            </li>
+            <li class="tl-item">
+              <span class="tl-year">405</span>
+              <p>Mesrop Machtots crée l'alphabet arménien, pilier de la culture écrite.</p>
+            </li>
+            <li class="tl-item">
+              <span class="tl-year">1915</span>
+              <p>Le génocide des Arméniens ; l'exil façonne la diaspora mondiale, jusqu'en Suisse.</p>
+            </li>
+            <li class="tl-item">
+              <span class="tl-year">1991</span>
+              <p>L'Arménie retrouve son indépendance.</p>
+            </li>
+          </ol>
+        </div>
+
+        <div class="gallery gallery-3">
+          <figure>
+            <img src="Images/ArmenianHeriatag3.webp"
+                 alt="Le temple hellénistique de Garni, surplombant une gorge en Arménie" loading="lazy" />
+            <figcaption><span class="g-num">i.</span>Le temple de Garni, <em>vestige hellénistique</em></figcaption>
+          </figure>
+          <figure>
+            <img src="Images/images.jpeg"
+                 alt="Église arménienne traditionnelle dans un paysage de pierres, peinture" loading="lazy" />
+            <figcaption><span class="g-num">ii.</span>L'architecture sacrée arménienne</figcaption>
+          </figure>
+          <figure>
+            <img src="Images/ArmenianHeritage2.webp"
+                 alt="Le monument « Nous sommes nos montagnes », sculpture monumentale en tuf" loading="lazy" />
+            <figcaption><span class="g-num">iii.</span><em>« Nous sommes nos montagnes »</em> — emblème identitaire</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============ III. CULTURE & ARTS ============ -->
+    <section class="section" id="culture">
+      <div class="section-rule" aria-hidden="true">
+        <span class="sr-num">§&nbsp;III</span>
+        <span class="sr-line"></span>
+        <span class="sr-orn">
+          <svg viewBox="0 0 36 36" width="14" height="14">
+            <path d="M18 2 L34 18 L18 34 L2 18 Z" fill="none" stroke="currentColor" stroke-width="1.2"/>
+            <line x1="18" y1="10" x2="18" y2="26" stroke="currentColor" stroke-width="1"/>
+            <line x1="10" y1="18" x2="26" y2="18" stroke="currentColor" stroke-width="1"/>
+          </svg>
+        </span>
+        <span class="sr-line"></span>
+        <span class="sr-name">Culture &amp; Arts</span>
+      </div>
+
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">Culture &amp; Arts</p>
+          <h2>Une culture <em>qui chante,</em> danse <em>et</em> peint.</h2>
+          <p class="section-sub">
+            La langue, la musique du doudouk, la danse et une peinture flamboyante.
+          </p>
+        </header>
+
+        <article class="feature feature-reverse">
+          <figure class="feature-media">
+            <img src="Images/Armenan-Dancers.webp"
+                 alt="Danseurs arméniens en costumes traditionnels lors d'une fête" loading="lazy" />
+            <figcaption>La danse traditionnelle, <em>transmise de génération en génération</em></figcaption>
+          </figure>
+          <div class="feature-text">
+            <p class="ft-num">02</p>
+            <h3>Le geste et le chant</h3>
+            <p>
+              Les danses circulaires, les costumes brodés et la voix nostalgique
+              du doudouk — flûte en bois d'abricotier classée par l'UNESCO —
+              accompagnent chaque grande occasion. La langue arménienne, avec son
+              alphabet unique, demeure le fil rouge de cette transmission.
+            </p>
+            <p class="ft-pull">
+              <em>Le doudouk pleure ce que les mots taisent.</em>
+            </p>
+          </div>
+        </article>
+
+        <div class="gallery gallery-3">
+          <figure>
+            <img src="Images/MinasAvetisyan-Self-Portrait-1960.jpg"
+                 alt="Autoportrait de 1960 du peintre Minas Avetissian, couleurs vives" loading="lazy" />
+            <figcaption><span class="g-num">i.</span>Minas Avetissian — <em>Autoportrait (1960)</em></figcaption>
+          </figure>
+          <figure>
+            <img src="Images/1437053995-894.webp"
+                 alt="Paysage arménien aux couleurs intenses, peinture expressionniste" loading="lazy" />
+            <figcaption><span class="g-num">ii.</span>La lumière et les couleurs de l'Arménie</figcaption>
+          </figure>
+          <figure>
+            <img src="Images/images%20(1).jpeg"
+                 alt="Deux femmes attablées à la lueur d'une bougie, peinture moderne arménienne" loading="lazy" />
+            <figcaption><span class="g-num">iii.</span>Scène d'intimité, <em>peinture moderne</em></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============ IV. CUISINE ============ -->
+    <section class="section section-dark" id="cuisine">
+      <div class="section-rule" aria-hidden="true">
+        <span class="sr-num">§&nbsp;IV</span>
+        <span class="sr-line"></span>
+        <span class="sr-orn">
+          <svg viewBox="0 0 36 36" width="14" height="14">
+            <path d="M18 2 L34 18 L18 34 L2 18 Z" fill="none" stroke="currentColor" stroke-width="1.2"/>
+            <line x1="18" y1="10" x2="18" y2="26" stroke="currentColor" stroke-width="1"/>
+            <line x1="10" y1="18" x2="26" y2="18" stroke="currentColor" stroke-width="1"/>
+          </svg>
+        </span>
+        <span class="sr-line"></span>
+        <span class="sr-name">La&nbsp;table</span>
+      </div>
+
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">Cuisine</p>
+          <h2>La table arménienne, <em>généreuse et partagée.</em></h2>
+          <p class="section-sub">
+            Une cuisine de transmission, où chaque plat raconte une famille.
+          </p>
+        </header>
+
+        <div class="gallery gallery-2 gallery-dishes">
+          <figure class="dish">
+            <img src="Images/armenian-manti-food.jpg"
+                 alt="Manti arméniens : petits raviolis nappés de yaourt à l'ail" loading="lazy" />
+            <figcaption>
+              <span class="dish-n">N°&nbsp;01</span>
+              <strong>Manti</strong>
+              <span class="dish-desc">Minuscules raviolis de viande, nappés de yaourt à l'ail.</span>
+            </figcaption>
+          </figure>
+          <figure class="dish">
+            <img src="Images/avandakan-utestner.png"
+                 alt="Dolma : feuilles de chou farcies, plat traditionnel arménien" loading="lazy" />
+            <figcaption>
+              <span class="dish-n">N°&nbsp;02</span>
+              <strong>Dolma</strong>
+              <span class="dish-desc">Feuilles de chou ou de vigne farcies, mijotées avec soin.</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============ V. ÉVÉNEMENTS / AGENDA ============ -->
+    <section class="section" id="evenements">
+      <div class="section-rule" aria-hidden="true">
+        <span class="sr-num">§&nbsp;V</span>
+        <span class="sr-line"></span>
+        <span class="sr-orn">
+          <svg viewBox="0 0 36 36" width="14" height="14">
+            <path d="M18 2 L34 18 L18 34 L2 18 Z" fill="none" stroke="currentColor" stroke-width="1.2"/>
+            <line x1="18" y1="10" x2="18" y2="26" stroke="currentColor" stroke-width="1"/>
+            <line x1="10" y1="18" x2="26" y2="18" stroke="currentColor" stroke-width="1"/>
+          </svg>
+        </span>
+        <span class="sr-line"></span>
+        <span class="sr-name">Agenda</span>
+      </div>
+
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">Prochains rendez-vous</p>
+          <h2>L'agenda <em>de la saison.</em></h2>
+          <p class="section-sub">
+            Rejoignez-nous lors de nos rencontres ouvertes à toutes et à tous.
+          </p>
+        </header>
+
+        <!--
+          ÉVÉNEMENTS — exemples à modifier.
+          Pour ajouter/modifier un événement : dupliquez un bloc <article class="event-card">,
+          mettez à jour la date, le titre, le lieu et la description. (Contenu fictif à adapter.)
+        -->
+        <ol class="events">
+          <li>
+            <article class="event-card">
+              <div class="event-date">
+                <span class="d">24</span>
+                <span class="m">Avr.</span>
+              </div>
+              <div class="event-body">
+                <p class="event-kicker">Commémoration</p>
+                <h3>Hommage du 24&nbsp;avril</h3>
+                <p class="event-meta">18h00&nbsp;·&nbsp;Lausanne&nbsp;·&nbsp;<em>[lieu à compléter]</em></p>
+                <p>Hommage et recueillement à la mémoire des victimes du génocide de 1915.</p>
+              </div>
+              <div class="event-edge" aria-hidden="true"></div>
+            </article>
+          </li>
+          <li>
+            <article class="event-card">
+              <div class="event-date">
+                <span class="d">—</span>
+                <span class="m">Mens.</span>
+              </div>
+              <div class="event-body">
+                <p class="event-kicker">Atelier régulier</p>
+                <h3>Cours de langue arménienne</h3>
+                <p class="event-meta">Samedi&nbsp;·&nbsp;<em>[horaire à compléter]</em>&nbsp;·&nbsp;Lausanne</p>
+                <p>Apprentissage de l'arménien pour enfants et adultes, tous niveaux.</p>
+              </div>
+              <div class="event-edge" aria-hidden="true"></div>
+            </article>
+          </li>
+          <li>
+            <article class="event-card">
+              <div class="event-date">
+                <span class="d">??</span>
+                <span class="m">Été</span>
+              </div>
+              <div class="event-body">
+                <p class="event-kicker">Fête de saison</p>
+                <h3>Soirée culturelle &amp;&nbsp;Vardavar</h3>
+                <p class="event-meta"><em>[date à compléter]</em>&nbsp;·&nbsp;Lausanne</p>
+                <p>Musique, danse, cuisine et célébration de la fête de Vardavar.</p>
+              </div>
+              <div class="event-edge" aria-hidden="true"></div>
+            </article>
+          </li>
+        </ol>
+
+        <p class="events-note">
+          <span class="orn-tiny" aria-hidden="true">◇</span>
+          Les dates et lieux sont des exemples à adapter par l'association.
+        </p>
+      </div>
+    </section>
+
+
+    <!-- ============ VI. CONTACT / NOUS REJOINDRE ============ -->
+    <section class="section section-contact" id="contact">
+      <div class="section-rule" aria-hidden="true">
+        <span class="sr-num">§&nbsp;VI</span>
+        <span class="sr-line"></span>
+        <span class="sr-orn">
+          <svg viewBox="0 0 36 36" width="14" height="14">
+            <path d="M18 2 L34 18 L18 34 L2 18 Z" fill="none" stroke="currentColor" stroke-width="1.2"/>
+            <line x1="18" y1="10" x2="18" y2="26" stroke="currentColor" stroke-width="1"/>
+            <line x1="10" y1="18" x2="26" y2="18" stroke="currentColor" stroke-width="1"/>
+          </svg>
+        </span>
+        <span class="sr-line"></span>
+        <span class="sr-name">Correspondance</span>
+      </div>
+
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">Nous rejoindre</p>
+          <h2>Prenons <em>contact.</em></h2>
+          <p class="section-sub">
+            Une question, l'envie d'adhérer ou de participer à la vie de la
+            communauté&nbsp;? Écrivez-nous.
+          </p>
+        </header>
+
+        <div class="contact-grid">
+          <div class="contact-form">
+            <p class="form-kicker">Correspondance</p>
+            <p class="contact-lead">
+              Le moyen le plus simple de nous joindre&nbsp;:
+              <em>un courrier électronique.</em> Présentez-vous en quelques
+              mots et nous reviendrons vers vous.
+            </p>
+            <a class="link-submit" href="mailto:contact@armeniendelausanne.ch">
+              <span>Écrire à contact@armeniendelausanne.ch</span>
+              <span class="arr" aria-hidden="true">→</span>
+            </a>
+            <p class="form-hint">
+              Le lien ouvre votre application de messagerie. Vous pouvez aussi
+              copier l'adresse&nbsp;:
+              <code>contact@armeniendelausanne.ch</code>
+            </p>
+          </div>
+
+          <aside class="contact-info">
+            <p class="ci-kicker">Coordonnées</p>
+            <h3>La rédaction</h3>
+            <dl class="ci-list">
+              <div>
+                <dt>E-mail</dt>
+                <dd><a href="mailto:contact@armeniendelausanne.ch">contact@armeniendelausanne.ch</a></dd>
+              </div>
+              <div>
+                <dt>Adresse</dt>
+                <dd>Lausanne, Suisse<br /><em>[à compléter]</em></dd>
+              </div>
+              <div>
+                <dt>Réseaux</dt>
+                <dd>Facebook · Instagram<br /><em>[liens à compléter]</em></dd>
+              </div>
+            </dl>
+            <p class="contact-note">
+              Les coordonnées ci-dessus sont des champs à renseigner par
+              l'association.
+            </p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ============ COLOPHON / FOOTER ============ -->
+  <footer class="site-footer colophon">
+    <div class="container">
+
+      <div class="colophon-rule" aria-hidden="true">
+        <span class="sr-line"></span>
+        <span class="sr-orn">
+          <svg viewBox="0 0 36 36" width="16" height="16">
+            <path d="M18 2 L34 18 L18 34 L2 18 Z" fill="none" stroke="currentColor" stroke-width="1.2"/>
+            <line x1="18" y1="10" x2="18" y2="26" stroke="currentColor" stroke-width="1"/>
+            <line x1="10" y1="18" x2="26" y2="18" stroke="currentColor" stroke-width="1"/>
+          </svg>
+        </span>
+        <span class="sr-line"></span>
+      </div>
+
+      <div class="colophon-grid">
+
+        <div class="colophon-brand">
+          <p class="cb-mark">A·L</p>
+          <p class="cb-name">Arméniens de Lausanne</p>
+          <p class="cb-hy" lang="hy">Լոզանի հայ համայնք</p>
+          <p class="cb-sub"><em>Revue communautaire — Vol.&nbsp;I, édition continue.</em></p>
+        </div>
+
+        <nav class="footer-nav" aria-label="Liens de pied de page">
+          <p class="fn-label">Sommaire</p>
+          <ul>
+            <li><a href="#communaute"><span>I.</span> Communauté</a></li>
+            <li><a href="#histoire"><span>II.</span> Histoire</a></li>
+            <li><a href="#culture"><span>III.</span> Culture</a></li>
+            <li><a href="#cuisine"><span>IV.</span> Cuisine</a></li>
+            <li><a href="#evenements"><span>V.</span> Agenda</a></li>
+            <li><a href="#contact"><span>VI.</span> Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="colophon-meta">
+          <p class="fn-label">Colophon</p>
+          <p>
+            Composé en <em>Fraunces</em> et <em>Spectral</em>.<br />
+            Palette&nbsp;: grenade, abricot, cobalt, parchemin.<br />
+            Site statique, sans suivi.
+          </p>
+          <p class="cm-legal">© <span id="year">2026</span> · Suisse romande</p>
+        </div>
+
+      </div>
+
+      <a class="to-top" href="#accueil" aria-label="Retour en haut">
+        <span class="tt-line"></span>
+        <span class="tt-arr" aria-hidden="true">↑</span>
+        <span class="tt-text">Haut de page</span>
+      </a>
+
+    </div>
+
+    <div class="tricolor" aria-hidden="true"><span></span><span></span><span></span></div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
