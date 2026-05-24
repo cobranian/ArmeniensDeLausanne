@@ -1,9 +1,9 @@
 DEPLOYING ArmeniensDeLausanne
 ==============================
 
-Public URL:        https://www.armeniensdelausanne.ch  (canonical, once DNS is set up)
-Apex (redirect):   https://armeniensdelausanne.ch     -> 301 to www
-Firebase URL:      https://armeniensdelausanne.web.app (always works, hidden once domain is live)
+Public URL:        https://armeniensdelausanne.ch       (canonical, apex)
+www (redirect):    https://www.armeniensdelausanne.ch  -> 301 to apex
+Firebase URL:      https://armeniensdelausanne.web.app  (always works, hidden behind custom domain)
 GitHub:            https://github.com/cobranian/ArmeniensDeLausanne
 Firebase Console:  https://console.firebase.google.com/project/armeniensdelausanne
 Domain registrar:  Infomaniak (manager.infomaniak.com)
@@ -63,29 +63,30 @@ After it finishes:
 From then on, deploy = git push. No more `firebase deploy` needed.
 
 
-CUSTOM DOMAIN — www.armeniensdelausanne.ch (Infomaniak)
---------------------------------------------------------
+CUSTOM DOMAIN — armeniensdelausanne.ch (Infomaniak)
+----------------------------------------------------
 
-Goal: site loads as https://www.armeniensdelausanne.ch with valid HTTPS.
-The bare https://armeniensdelausanne.ch issues a 301 redirect to www.
+Current setup: apex serves the site, www redirects to apex.
+  https://armeniensdelausanne.ch       -> serves the site (canonical)
+  https://www.armeniensdelausanne.ch  -> 301 to apex
 
 This is a DNS setup, NOT an HTTP redirect. Firebase serves the site
 under the custom domain; the .web.app URL stays hidden.
 
-Part A — Add the two domains in Firebase Console
+Part A — The two domains in Firebase Console (both already added)
   https://console.firebase.google.com/project/armeniensdelausanne/hosting/sites
 
-  Domain 1 — www (serves the site):
-    1. Add custom domain  ->  www.armeniensdelausanne.ch  ->  Continue
+  Domain 1 — apex (serves the site):
+    1. Add custom domain  ->  armeniensdelausanne.ch  ->  Continue
     2. Choose "Quick setup"
-    3. Copy the A (or CNAME) record Firebase shows for www
+    3. Copy the A record(s) Firebase shows for the apex
     4. Copy the TXT verification record
 
-  Domain 2 — apex (redirects to www):
-    1. Add custom domain  ->  armeniensdelausanne.ch  ->  Continue
+  Domain 2 — www (redirects to apex):
+    1. Add custom domain  ->  www.armeniensdelausanne.ch  ->  Continue
     2. Choose "Redirect to an existing site"  (not Quick setup)
-    3. Destination URL:  https://www.armeniensdelausanne.ch
-    4. Copy the two A records Firebase shows for the apex
+    3. Destination URL:  https://armeniensdelausanne.ch
+    4. Copy the CNAME (www -> armeniensdelausanne.web.app)
     5. Copy the TXT verification record
 
 Part B — Add the DNS records at Infomaniak
@@ -95,9 +96,9 @@ Part B — Add the DNS records at Infomaniak
   |-------------|------|--------------------------------------|
   | TXT         | @    | google-site-verification=... (apex)  |
   | TXT         | www  | google-site-verification=... (www)   |
-  | A           | @    | Firebase apex IP #1                  |
-  | A           | @    | Firebase apex IP #2                  |
-  | A or CNAME  | www  | (what Firebase shows for www)        |
+  | A           | @    | Firebase apex IP (e.g. 199.36.158.100) |
+  | A           | @    | Firebase apex IP #2 (recommended)    |
+  | CNAME       | www  | armeniensdelausanne.web.app          |
 
   Infomaniak quirks:
     - Delete any pre-existing A records on @ (Infomaniak parking page)
@@ -113,15 +114,15 @@ Part C — Wait and verify
 
   Verification commands (PowerShell):
 
-      nslookup www.armeniensdelausanne.ch
-      nslookup armeniensdelausanne.ch
-      # Both should resolve to Firebase's IPs once propagated.
+      Resolve-DnsName armeniensdelausanne.ch -Type A
+      Resolve-DnsName www.armeniensdelausanne.ch
+      # Apex resolves to Firebase IPs; www is a CNAME to web.app.
 
       curl -I https://armeniensdelausanne.ch
-      # Expect:  HTTP/2 301,  Location: https://www.armeniensdelausanne.ch/
+      # Expect:  HTTP/1.1 200 OK
 
       curl -I https://www.armeniensdelausanne.ch
-      # Expect:  HTTP/2 200
+      # Expect:  HTTP/1.1 301,  Location: https://armeniensdelausanne.ch/
 
 
 TROUBLESHOOTING
