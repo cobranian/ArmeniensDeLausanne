@@ -22,12 +22,9 @@
 
       /* skip + masthead */
       "nav.skip": "Aller au contenu principal",
-      "masthead.vol": "Vol.&nbsp;I",
-      "masthead.num": "N°&nbsp;01",
       "masthead.wordmark.word1": "Arméniens",
       "masthead.wordmark.word2": "Lausanne",
       "masthead.wordmark.aria": "Arméniens de Lausanne, accueil",
-      "masthead.edition": "Édition continue",
       "masthead.location": "Suisse romande",
       "masthead.tagline.fr": "<em>Une revue continue de la communauté arménienne de Lausanne</em>",
 
@@ -194,12 +191,9 @@
       "doc.description": "The Armenian community of Lausanne: history, culture, cuisine, memory and community life — an ongoing chronicle, from French-speaking Switzerland.",
 
       "nav.skip": "Skip to main content",
-      "masthead.vol": "Vol.&nbsp;I",
-      "masthead.num": "No.&nbsp;01",
       "masthead.wordmark.word1": "Armenians",
       "masthead.wordmark.word2": "Lausanne",
       "masthead.wordmark.aria": "Armenians of Lausanne, home",
-      "masthead.edition": "Ongoing edition",
       "masthead.location": "French-speaking Switzerland",
       "masthead.tagline.fr": "<em>A continuing chronicle of the Armenian community of Lausanne</em>",
 
@@ -356,12 +350,9 @@
       "doc.description": "Լոզանի հայ համայնքը՝ պատմություն, մշակույթ, խոհանոց, հիշողություն և համայնքային կյանք։ Շարունակական հանդես՝ Ֆրանսախոս Շվեյցարիայից։",
 
       "nav.skip": "Անցնել հիմնական բովանդակությանը",
-      "masthead.vol": "Հատոր&nbsp;Ա",
-      "masthead.num": "Հմր&nbsp;01",
       "masthead.wordmark.word1": "Լոզանի",
       "masthead.wordmark.word2": "հայերը",
       "masthead.wordmark.aria": "Լոզանի հայերը, գլխավոր",
-      "masthead.edition": "Շարունակական թողարկում",
       "masthead.location": "Ֆրանսախոս Շվեյցարիա",
       "masthead.tagline.fr": "<em>Լոզանի հայ համայնքի շարունակական հանդեսը</em>",
 
