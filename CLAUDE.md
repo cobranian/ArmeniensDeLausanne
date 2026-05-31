@@ -59,20 +59,26 @@ Single-page site; everything is in **`index.html`** as anchored `<section>`s
   `js/i18n.js`. Adding or changing user-visible text means editing **both**:
   the HTML (FR + the key) **and** all three dictionaries in `i18n.js`. Missing
   keys silently fall back to FR.
-- Events (`#evenements`) and contact details (`#contact`) are placeholder/
-  example content; unknown real-world facts are marked `[à compléter]` (and
-  `[to complete]` / `[լրացնելու]` in the other languages). Do not invent
-  specific facts (address, founding year, real email, member counts) — keep
-  them as placeholders.
+- **Events (`#evenements`) are auto-generated** from a daily snapshot of
+  [armenopole.com/ArmenianEvents](https://armenopole.com/ArmenianEvents) by
+  `.github/workflows/agenda-refresh.yml` (cron) → `scripts/scrape-armenopole.mjs`
+  → `js/agenda-data.js`. The renderer (`js/agenda.js`) groups the events by
+  country → region → city. **Never hand-edit `js/agenda-data.js`** — it's
+  overwritten on every scrape. To change the visual layout, edit `js/agenda.js`
+  or the `.agenda*` block in `css/styles.css`. To change which source feeds
+  the agenda, edit `scripts/scrape-armenopole.mjs`. Country labels in the
+  three languages live in the `COUNTRY_LABELS` table in `js/agenda.js`.
+- Contact details (`#contact`) are placeholder/example content; unknown
+  real-world facts are marked `[à compléter]` (and `[to complete]` /
+  `[լրացնելու]` in the other languages). Do not invent specific facts
+  (address, founding year, real email, member counts) — keep them as
+  placeholders.
 - **Contact section is mailto-only** (static site, no server). The
   `link-submit` is a plain `<a href="mailto:…">`, not a form — no fields,
   no JS submit handler. To add a real form with input fields: route through
   a form service (e.g. Formspree) — don't add a backend without discussing it.
 - **No build-only syntax** (no JSX/TS/SCSS, no bare `import` specifiers). ES
   modules and Google Fonts via `<link>` are fine. Keep relative asset paths.
-- **Open decision (deferred):** how non-technical volunteers will manage events
-  long-term (headless CMS with public read token vs. tiny serverless proxy).
-  Until decided, events stay hand-edited in `index.html`. See README.
 - **i18n** is FR (default) / EN / HY, swapped client-side by `js/i18n.js`.
   Translatable text uses `data-i18n="key"` (innerHTML), translatable attrs
   use `data-i18n-alt`, `data-i18n-aria-label`, `data-i18n-title`. The visible

@@ -1,0 +1,197 @@
+#!/usr/bin/env node
+/* =========================================================================
+   Arméniens de Lausanne — Agenda scraper
+
+   Fetches https://armenopole.com/ArmenianEvents, extracts every event card,
+   normalises country / region / date / time / title / URL, and writes the
+   result to ../js/agenda-data.js in the exact shape expected by
+   js/agenda.js (window.AL_AGENDA).
+
+   Run by the daily `.github/workflows/agenda-refresh.yml` cron, but also
+   safe to run locally:
+
+     npm install cheerio        # one-off, dev only — see .gitignore
+     node scripts/scrape-armenopole.mjs
+
+   The script is intentionally defensive: if Armenopole changes their markup
+   and the event count drops below a sanity threshold, it exits non-zero
+   without overwriting the file, so the workflow fails loudly instead of
+   wiping out the agenda.
+   ========================================================================= */
+
+import { writeFileSync, readFileSync, existsSync } from "node:fs";
+import { resolve, dirname } from "node:path";
+import { fileURLToPath } from "node:url";
+import * as cheerio from "cheerio";
+
+const SOURCE_URL = "https://armenopole.com/ArmenianEvents";
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const OUTPUT = resolve(__dirname, "..", "js", "agenda-data.js");
+const USER_AGENT = "ArmeniensDeLausanne-AgendaBot/1.0 (+https://armeniensdelausanne.ch; contact@armeniensdelausanne.ch)";
+
+/* Sanity floor — Armenopole consistently lists 100+ upcoming events.
+   If we drop below this, something has likely broken and we'd rather
+   keep the previous file than ship an empty agenda. */
+const MIN_EVENTS = 40;
+
+const MONTH = {
+  JAN: 1, FEB: 2, MAR: 3, APR: 4, MAY: 5, JUN: 6,
+  JUL: 7, AUG: 8, SEP: 9, OCT: 10, NOV: 11, DEC: 12
+};
+
+async function fetchHtml(url) {
+  const res = await fetch(url, {
+    headers: { "User-Agent": USER_AGENT, "Accept": "text/html,*/*" },
+    redirect: "follow"
+  });
+  if (!res.ok) throw new Error(`HTTP ${res.status} ${res.statusText} for ${url}`);
+  return res.text();
+}
+
+function inferYear(month, day, today) {
+  const year = today.getFullYear();
+  const candidate = new Date(year, month - 1, day);
+  // Armenopole only renders upcoming events by default. If the parsed
+  // (month, day) is before today, it must roll over into next year.
+  return candidate < today ? year + 1 : year;
+}
+
+function parseEvents(html) {
+  const $ = cheerio.load(html);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const events = [];
+  $("div.event-details").each((_, el) => {
+    const $el = $(el);
+    const monthRaw = $el.find(".monthshortname").first().text().trim().toUpperCase();
+    const dayRaw = $el.find(".daynumber").first().text().trim();
+    const timeRaw = $el.find(".daytime").first().text().trim();
+
+    const titleAnchor = $el.find(".event-title-container a").first();
+    const title = titleAnchor.find("h2").first().text().trim() || titleAnchor.attr("title") || "";
+    const href = (titleAnchor.attr("href") || "").trim();
+
+    const region = $el.find(".location-container .region-name").first().text().trim();
+    const country = ($el.find(".location-container .flag-icon").first().attr("title") || "").trim();
+
+    if (!title || !href || !MONTH[monthRaw] || !dayRaw) return;
+
+    const month = MONTH[monthRaw];
+    const day = Number(dayRaw);
+    if (!Number.isInteger(day) || day < 1 || day > 31) return;
+
+    const year = inferYear(month, day, today);
+    const iso = `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+
+    const time = /^\d{1,2}:\d{2}$/.test(timeRaw)
+      ? timeRaw.padStart(5, "0")
+      : "";
+
+    const url = href.startsWith("http") ? href : `https://armenopole.com${href}`;
+
+    events.push({
+      c: country,
+      r: region,
+      ct: "",
+      d: iso,
+      t: time,
+      n: title,
+      u: url
+    });
+  });
+
+  // Stable sort by country → region → city → date → time, matching what
+  // js/agenda.js does for rendering. We pre-sort here purely for diff
+  // readability — daily commits stay minimal when nothing material changes.
+  events.sort((a, b) =>
+    a.c.localeCompare(b.c) ||
+    a.r.localeCompare(b.r) ||
+    a.ct.localeCompare(b.ct) ||
+    a.d.localeCompare(b.d) ||
+    a.t.localeCompare(b.t) ||
+    a.n.localeCompare(b.n)
+  );
+
+  return events;
+}
+
+function serializeEvent(e) {
+  // Explicit key order so the rendered file stays consistent and diff-able
+  // (JSON.stringify on the whole object would order keys by insertion, which
+  // is fine here, but being explicit also documents the schema).
+  return `    { "c": ${JSON.stringify(e.c)}, "r": ${JSON.stringify(e.r)}, "ct": ${JSON.stringify(e.ct)}, "d": ${JSON.stringify(e.d)}, "t": ${JSON.stringify(e.t)}, "n": ${JSON.stringify(e.n)}, "u": ${JSON.stringify(e.u)} }`;
+}
+
+function buildFile(events) {
+  const header =
+`/* ===========================================================================
+   Arméniens de Lausanne — Agenda dataset
+
+   AUTO-GENERATED by scripts/scrape-armenopole.mjs from
+     ${SOURCE_URL}
+   Last refresh: ${new Date().toISOString()}
+   Event count: ${events.length}
+
+   DO NOT HAND-EDIT — changes will be overwritten on the next scheduled
+   scrape (see .github/workflows/agenda-refresh.yml).
+
+   Field key:
+     c  = country (canonical English, from Armenopole's flag title)
+     r  = region / state / city (Armenopole's .region-name, mixed)
+     ct = city subgroup (reserved; currently empty)
+     d  = date, ISO YYYY-MM-DD (year inferred from today + month/day)
+     t  = time, HH:MM (24h) — empty when Armenopole omits it
+     n  = event title, in source language
+     u  = full URL on armenopole.com
+   =========================================================================== */
+(function () {
+  "use strict";
+
+  window.AL_AGENDA = [
+`;
+  const body = events.map(serializeEvent).join(",\n");
+  const footer = `
+  ];
+})();
+`;
+  return header + body + footer;
+}
+
+async function main() {
+  console.log(`[scrape] GET ${SOURCE_URL}`);
+  const html = await fetchHtml(SOURCE_URL);
+  console.log(`[scrape] fetched ${html.length} bytes`);
+
+  const events = parseEvents(html);
+  console.log(`[scrape] parsed ${events.length} events`);
+
+  if (events.length < MIN_EVENTS) {
+    console.error(
+      `[scrape] event count ${events.length} is below the sanity floor ` +
+      `(${MIN_EVENTS}). Armenopole's markup may have changed. Refusing to ` +
+      `overwrite ${OUTPUT}.`
+    );
+    process.exit(2);
+  }
+
+  const next = buildFile(events);
+  // Avoid touching the file when only the timestamp would change — this
+  // keeps the daily commit a true no-op when no events shifted.
+  if (existsSync(OUTPUT)) {
+    const prev = readFileSync(OUTPUT, "utf8");
+    const stripTimestamp = (s) => s.replace(/Last refresh: [^\n]+\n/, "");
+    if (stripTimestamp(prev) === stripTimestamp(next)) {
+      console.log(`[scrape] no changes — leaving ${OUTPUT} as-is.`);
+      return;
+    }
+  }
+
+  writeFileSync(OUTPUT, next, "utf8");
+  console.log(`[scrape] wrote ${events.length} events → ${OUTPUT}`);
+}
+
+main().catch((err) => {
+  console.error("[scrape] failed:", err);
+  process.exit(1);
+});

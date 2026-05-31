@@ -1,0 +1,85 @@
+name: Daily agenda refresh
+
+# Re-scrapes https://armenopole.com/ArmenianEvents once a day, commits
+# js/agenda-data.js back to main if anything changed, then redeploys the
+# site to Firebase Hosting.
+#
+# One-time setup required in the repository:
+#   1. Settings → Secrets and variables → Actions → New repository secret
+#      Name:  FIREBASE_SERVICE_ACCOUNT_ARMENIENSDELAUSANNE
+#      Value: contents of a Firebase service-account JSON key.
+#             Generate it via:
+#               Firebase Console
+#                 → Project settings
+#                 → Service accounts
+#                 → Generate new private key
+#             Paste the entire JSON (including braces) as the secret value.
+#   2. Settings → Actions → General → Workflow permissions
+#      → "Read and write permissions" must be enabled so the bot can push
+#        the refreshed js/agenda-data.js back to main.
+
+on:
+  schedule:
+    # 04:12 UTC daily — early Europe morning. Slightly off the hour so
+    # we're not competing with everyone else's hourly crons.
+    - cron: '12 4 * * *'
+  workflow_dispatch: {}
+
+# Avoid two refreshes racing each other; if a previous run is still
+# going, queue the next one rather than running in parallel.
+concurrency:
+  group: agenda-refresh
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install scraper dependency (cheerio)
+        run: npm install --no-save --no-audit --no-fund cheerio@1
+
+      - name: Scrape armenopole.com → js/agenda-data.js
+        run: node scripts/scrape-armenopole.mjs
+
+      - name: Detect changes
+        id: diff
+        run: |
+          if git diff --quiet -- js/agenda-data.js; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No change to js/agenda-data.js."
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "js/agenda-data.js updated:"
+            git --no-pager diff --stat -- js/agenda-data.js
+          fi
+
+      - name: Commit refreshed data
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          git config user.name  "agenda-bot"
+          git config user.email "agenda-bot@users.noreply.github.com"
+          git add js/agenda-data.js
+          git commit -m "chore(agenda): refresh from armenopole.com"
+          git push
+
+      - name: Deploy to Firebase Hosting
+        if: steps.diff.outputs.changed == 'true'
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_ARMENIENSDELAUSANNE }}
+          projectId: armeniensdelausanne
+          channelId: live

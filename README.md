@@ -29,9 +29,12 @@ Images/            Photos et peintures (référencées telles quelles)
 
 Tout le texte est dans `index.html`. Points d'édition fréquents :
 
-- **Événements** — section `#evenements`. Dupliquez un bloc
-  `<article class="event-card">` et mettez à jour date / titre / lieu.
-  Les événements actuels sont des **exemples** à adapter.
+- **Événements** — section `#evenements`. La liste est **rafraîchie
+  automatiquement** chaque jour depuis [armenopole.com](https://armenopole.com/ArmenianEvents)
+  (voir « Agenda — mise à jour automatique » plus bas). Ne **pas** éditer
+  `js/agenda-data.js` à la main : les modifications seront écrasées au
+  prochain scrape. Pour changer la mise en forme ou les libellés UI, voir
+  `js/agenda.js` et la section `.agenda*` de `css/styles.css`.
 - **Coordonnées** — section `#contact` : remplacez les valeurs marquées
   `[à compléter]` (e-mail, adresse, réseaux sociaux).
 - **Formulaire** — purement démonstratif (site statique = pas de serveur).
@@ -72,9 +75,49 @@ firebase deploy --only hosting
   fréquents : extraire ce dossier dans son propre dépôt GitHub puis ajouter
   un *workflow* GitHub Actions qui exécute `firebase deploy` à chaque *push*.
 
+## Agenda — mise à jour automatique
+
+L'agenda (`#evenements`) est généré à partir d'un instantané quotidien de
+[armenopole.com/ArmenianEvents](https://armenopole.com/ArmenianEvents).
+
+- **Workflow** : `.github/workflows/agenda-refresh.yml` (cron `12 4 * * *`,
+  soit ~06h12 heure de Lausanne).
+- **Scraper** : `scripts/scrape-armenopole.mjs` — fetch + parse (cheerio) +
+  écrit `js/agenda-data.js` (trié par pays → région → ville → date → heure).
+- **Rendu côté navigateur** : `js/agenda.js` regroupe les événements en
+  `<details>` repliables par pays. Suisse ouverte par défaut.
+- **Sécurité du contenu** : si Armenopole change leur HTML et que moins de
+  40 événements sont parsés, le scraper sort en erreur sans toucher au
+  fichier — l'ancien agenda reste affiché jusqu'à correction.
+
+### Déclencher manuellement
+
+GitHub → onglet *Actions* → *Daily agenda refresh* → *Run workflow*.
+
+### Secret GitHub requis (une fois)
+
+Pour que le workflow puisse déployer sur Firebase après commit :
+
+1. Firebase Console → *Project settings* → *Service accounts* → *Generate
+   new private key* → télécharge un JSON.
+2. GitHub → *Settings* → *Secrets and variables* → *Actions* → *New
+   repository secret* :
+   - Nom : `FIREBASE_SERVICE_ACCOUNT_ARMENIENSDELAUSANNE`
+   - Valeur : contenu intégral du JSON (accolades incluses).
+3. *Settings* → *Actions* → *General* → *Workflow permissions* → cocher
+   *Read and write permissions* (sinon le bot ne peut pas commit/push).
+
+Sans ce secret, la moitié *commit* du workflow fonctionne, mais l'étape
+*deploy* échoue — pas de déploiement Firebase, le site reste en l'état
+jusqu'à un `firebase deploy --only hosting` manuel.
+
+### Lancer le scraper en local (debug)
+
+```bash
+npm install cheerio     # dépendance dev uniquement (gitignored)
+node scripts/scrape-armenopole.mjs
+```
+
 ## À décider plus tard
 
-- Source de données pour des événements gérés par des bénévoles non techniciens
-  (discussion en cours : CMS « headless » à jeton public vs petite fonction
-  serverless). Aujourd'hui : événements en statique dans `index.html`.
 - Multilingue (français / arménien / anglais) si besoin.
