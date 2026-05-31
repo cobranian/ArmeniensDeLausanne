@@ -454,62 +454,24 @@
         </header>
 
         <!--
-          ÉVÉNEMENTS — exemples à modifier.
-          Pour ajouter/modifier un événement : dupliquez un bloc <article class="event-card">,
-          mettez à jour la date, le titre, le lieu et la description. Pensez aussi à fournir
-          les traductions correspondantes dans `js/i18n.js`. (Contenu fictif à adapter.)
+          AGENDA — événements de la diaspora et d'Arménie, regroupés par
+          pays → région → ville. Les entrées sont rendues par js/agenda.js
+          à partir de js/agenda-data.js (instantané sourcé sur
+          armenopole.com). Pour mettre à jour la liste, modifiez
+          agenda-data.js.
         -->
-        <ol class="events">
-          <li>
-            <article class="event-card">
-              <div class="event-date">
-                <span class="d">24</span>
-                <span class="m" data-i18n="events.evt1.month">Avr.</span>
-              </div>
-              <div class="event-body">
-                <p class="event-kicker" data-i18n="events.evt1.kicker">Commémoration</p>
-                <h3 data-i18n="events.evt1.title">Hommage du 24&nbsp;avril</h3>
-                <p class="event-meta" data-i18n="events.evt1.meta">18h00&nbsp;·&nbsp;Lausanne&nbsp;·&nbsp;<em>[lieu à compléter]</em></p>
-                <p data-i18n="events.evt1.desc">Hommage et recueillement à la mémoire des victimes du génocide de 1915.</p>
-              </div>
-              <div class="event-edge" aria-hidden="true"></div>
-            </article>
-          </li>
-          <li>
-            <article class="event-card">
-              <div class="event-date">
-                <span class="d">—</span>
-                <span class="m" data-i18n="events.evt2.month">Mens.</span>
-              </div>
-              <div class="event-body">
-                <p class="event-kicker" data-i18n="events.evt2.kicker">Atelier régulier</p>
-                <h3 data-i18n="events.evt2.title">Cours de langue arménienne</h3>
-                <p class="event-meta" data-i18n="events.evt2.meta">Samedi&nbsp;·&nbsp;<em>[horaire à compléter]</em>&nbsp;·&nbsp;Lausanne</p>
-                <p data-i18n="events.evt2.desc">Apprentissage de l'arménien pour enfants et adultes, tous niveaux.</p>
-              </div>
-              <div class="event-edge" aria-hidden="true"></div>
-            </article>
-          </li>
-          <li>
-            <article class="event-card">
-              <div class="event-date">
-                <span class="d">??</span>
-                <span class="m" data-i18n="events.evt3.month">Été</span>
-              </div>
-              <div class="event-body">
-                <p class="event-kicker" data-i18n="events.evt3.kicker">Fête de saison</p>
-                <h3 data-i18n="events.evt3.title">Soirée culturelle &amp;&nbsp;Vardavar</h3>
-                <p class="event-meta" data-i18n="events.evt3.meta"><em>[date à compléter]</em>&nbsp;·&nbsp;Lausanne</p>
-                <p data-i18n="events.evt3.desc">Musique, danse, cuisine et célébration de la fête de Vardavar.</p>
-              </div>
-              <div class="event-edge" aria-hidden="true"></div>
-            </article>
-          </li>
-        </ol>
+        <div id="agendaList" class="agenda" aria-live="polite"></div>
+        <noscript>
+          <p class="events-note" style="margin-top:1rem;">
+            <span class="orn-tiny" aria-hidden="true">◇</span>
+            L'agenda complet nécessite JavaScript&nbsp;— consultez
+            <a href="https://armenopole.com/ArmenianEvents" target="_blank" rel="noopener noreferrer">armenopole.com/ArmenianEvents</a>.
+          </p>
+        </noscript>
 
         <p class="events-note">
           <span class="orn-tiny" aria-hidden="true">◇</span>
-          <span data-i18n="events.note">Les dates et lieux sont des exemples à adapter par l'association.</span>
+          <span data-i18n="events.source">Source&nbsp;: <a href="https://armenopole.com/ArmenianEvents" target="_blank" rel="noopener noreferrer">armenopole.com</a>&nbsp;— instantané du 31&nbsp;mai 2026.</span>
         </p>
       </div>
     </section>
@@ -649,6 +611,8 @@
     <div class="tricolor" aria-hidden="true"><span></span><span></span><span></span></div>
   </footer>
 
+  <script src="js/agenda-data.js" defer></script>
+  <script src="js/agenda.js" defer></script>
   <script src="js/i18n.js" defer></script>
   <script src="js/main.js" defer></script>
 </body>

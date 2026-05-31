@@ -1139,6 +1139,193 @@ em { font-style: italic; }
   gap: .55rem;
 }
 .events-note .orn-tiny { color: var(--apricot); font-style: normal; }
+.events-note a { color: var(--pomegranate); border-bottom: 1px solid currentColor; }
+.events-note a:hover { color: var(--pomegranate-2); }
+
+/* -----------------------------------------------------------------------
+   Agenda (grouped by country → region → city, JS-rendered)
+   ----------------------------------------------------------------------- */
+.agenda {
+  border-top: 1px solid var(--rule-strong);
+  margin-bottom: .5rem;
+}
+.agenda:empty + noscript + .events-note,
+.agenda:empty {
+  /* hide the rule when nothing has rendered yet (no-JS or pre-init) */
+}
+
+.agenda-country {
+  border-bottom: 1px solid var(--rule);
+}
+.agenda-country > summary {
+  list-style: none;
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: clamp(.95rem, 1.8vw, 1.3rem) 0;
+  cursor: pointer;
+  color: var(--ink);
+  transition: color .25s var(--ease);
+}
+.agenda-country > summary::-webkit-details-marker { display: none; }
+.agenda-country > summary::after {
+  content: "+";
+  font-family: var(--f-display);
+  font-style: italic;
+  font-variation-settings: "opsz" 48, "SOFT" 100, "wght" 300;
+  font-size: 1.4rem;
+  color: var(--apricot);
+  line-height: 1;
+  margin-left: .25rem;
+  transition: color .25s var(--ease);
+}
+.agenda-country[open] > summary::after { content: "−"; }
+.agenda-country > summary:hover { color: var(--pomegranate); }
+.agenda-country > summary:hover::after { color: var(--pomegranate); }
+.agenda-country > summary:focus-visible {
+  outline: 2px dashed var(--pomegranate);
+  outline-offset: 4px;
+}
+
+.ag-country-name {
+  font-family: var(--f-display);
+  font-size: clamp(1.45rem, 2vw, 1.85rem);
+  font-variation-settings: "opsz" 72, "SOFT" 50, "wght" 500;
+  letter-spacing: -.008em;
+  line-height: 1.05;
+  flex: 0 0 auto;
+}
+.ag-count {
+  flex: 1 1 auto;
+  text-align: right;
+  font-family: var(--f-body);
+  font-style: italic;
+  font-size: var(--fs-small);
+  color: var(--ink-mute);
+  letter-spacing: .02em;
+}
+
+.agenda-country-body {
+  padding: .5rem 0 1.2rem;
+}
+
+.agenda-region + .agenda-region { margin-top: 1.2rem; }
+.ag-region-name {
+  font-family: var(--f-body);
+  font-size: var(--fs-tiny);
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--pomegranate);
+  margin: .4rem 0 .55rem;
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+}
+.ag-region-name::before {
+  content: "";
+  width: 1.4rem;
+  height: 1px;
+  background: currentColor;
+  display: inline-block;
+}
+
+.agenda-events {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px dashed var(--rule);
+}
+.ag-evt {
+  display: grid;
+  grid-template-columns: 6.5rem 8rem 1fr;
+  gap: clamp(.65rem, 1.4vw, 1.25rem);
+  align-items: baseline;
+  padding: .55rem 0;
+  border-bottom: 1px dashed var(--rule);
+  font-family: var(--f-body);
+  font-size: .98rem;
+  line-height: 1.4;
+}
+.ag-when {
+  display: inline-flex;
+  align-items: baseline;
+  gap: .45rem;
+  white-space: nowrap;
+  color: var(--apricot);
+  font-family: var(--f-display);
+  font-style: italic;
+  font-variation-settings: "opsz" 48, "SOFT" 100, "wght" 400;
+}
+.ag-when .ag-date { font-size: 1.05rem; }
+.ag-when .ag-time {
+  font-family: var(--f-body);
+  font-style: normal;
+  font-size: .8rem;
+  letter-spacing: .04em;
+  color: var(--ink-mute);
+}
+.ag-city {
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: .92rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ag-city-empty::before { content: "—"; color: var(--rule-strong); font-style: normal; }
+.ag-title {
+  color: var(--ink);
+  border-bottom: 1px solid transparent;
+  display: inline-flex;
+  align-items: baseline;
+  gap: .45rem;
+  min-width: 0;
+  transition: color .2s var(--ease), border-color .2s var(--ease);
+}
+.ag-title .ag-arr {
+  font-family: var(--f-display);
+  font-style: italic;
+  color: var(--apricot);
+  opacity: 0;
+  transform: translateX(-3px);
+  transition: opacity .25s var(--ease), transform .25s var(--ease);
+}
+.ag-title:hover {
+  color: var(--pomegranate);
+  border-color: var(--pomegranate);
+}
+.ag-title:hover .ag-arr { opacity: 1; transform: translateX(0); color: var(--pomegranate); }
+
+/* Agenda — responsive */
+@media (max-width: 820px) {
+  .ag-evt {
+    grid-template-columns: 5.5rem 1fr;
+    grid-template-areas:
+      "when title"
+      "city title";
+    row-gap: .15rem;
+    column-gap: .9rem;
+    padding: .75rem 0;
+  }
+  .ag-when  { grid-area: when; }
+  .ag-city  { grid-area: city; font-size: .85rem; }
+  .ag-title { grid-area: title; }
+}
+@media (max-width: 520px) {
+  .ag-evt {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "when"
+      "city"
+      "title";
+    row-gap: .15rem;
+    padding: .8rem 0;
+  }
+  .ag-city.ag-city-empty { display: none; }
+  .agenda-country > summary { padding-block: .85rem; }
+  .ag-country-name { font-size: 1.3rem; }
+}
 
 /* =========================================================================
    13. CONTACT
