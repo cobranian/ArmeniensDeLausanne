@@ -88,7 +88,7 @@
 
   /* ---- Apparition au défilement ---- */
   var revealTargets = document.querySelectorAll(
-    ".section-head, .feature, .pillars li, .gallery figure, .timeline, .event-card, .contact-form, .contact-info"
+    ".section-head, .feature, .dance-course, .pillars li, .gallery figure, .timeline, .event-card, .contact-form, .contact-info"
   );
   Array.prototype.forEach.call(revealTargets, function (el) {
     el.classList.add("reveal");
