@@ -389,6 +389,8 @@ em { font-style: italic; }
   text-align: right;
 }
 .primary-nav a .t { display: inline-block; }
+/* Page-feuilleton (hors sections numérotées) : repère ♪ droit, non chiffré */
+.primary-nav a.nav-feature .n { font-style: normal; font-size: .92rem; }
 .primary-nav a:hover,
 .primary-nav a.is-active { color: var(--ink); }
 .primary-nav a.is-active::after {
