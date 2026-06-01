@@ -27,7 +27,6 @@
     { "c": "Armenia", "r": "Yerevan", "ct": "", "d": "2026-06-02", "t": "19:00", "n": "Viva Verdi", "u": "https://armenopole.com/viva-verdi.html" },
     { "c": "Armenia", "r": "Yerevan", "ct": "", "d": "2026-06-03", "t": "16:30", "n": "Celebrating the Life & Legacy of Dr. Haroutune K. Armenian", "u": "https://armenopole.com/celebrating-the-life-legacy-of-dr-haroutune-k-armenian.html" },
     { "c": "Armenia", "r": "Yerevan", "ct": "", "d": "2026-06-03", "t": "19:00", "n": "Shake Tadevosyan - Philharmonia Piano Series", "u": "https://armenopole.com/shake-tadevosyan-philharmonia-piano-series.html" },
-    { "c": "Armenia", "r": "Yerevan", "ct": "", "d": "2026-06-05", "t": "16:00", "n": "Yerevan Wine Days Festival 2026", "u": "https://armenopole.com/yerevan-wine-days-festival-2026.html" },
     { "c": "Armenia", "r": "Yerevan", "ct": "", "d": "2026-06-06", "t": "19:30", "n": "Սերը վերջին հարկում", "u": "https://armenopole.com/1esrtbj3.html" },
     { "c": "Armenia", "r": "Yerevan", "ct": "", "d": "2026-06-08", "t": "20:00", "n": "Lara Fabian Live Concert", "u": "https://armenopole.com/lara-fabian-live-concert.html" },
     { "c": "Armenia", "r": "Yerevan", "ct": "", "d": "2026-06-10", "t": "19:00", "n": "Takahiro Akiba - Solo Recital", "u": "https://armenopole.com/takahiro-akiba-solo-recital.html" },
