@@ -20,9 +20,9 @@ name: Daily agenda refresh
 
 on:
   schedule:
-    # 04:12 UTC daily — early Europe morning. Slightly off the hour so
-    # we're not competing with everyone else's hourly crons.
-    - cron: '12 4 * * *'
+    # 02:00 UTC daily — early Europe morning (04:00 Lausanne in summer/CEST,
+    # 03:00 in winter/CET).
+    - cron: '0 2 * * *'
   workflow_dispatch: {}
 
 # Avoid two refreshes racing each other; if a previous run is still
