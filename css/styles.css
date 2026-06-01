@@ -907,6 +907,7 @@ em { font-style: italic; }
   color: var(--apricot-soft);
   border-color: var(--rule-dark);
 }
+.feature-text .ft-more { margin: 1.3rem 0 0; }
 
 /* =========================================================================
    9b. COURS DE DANSE — encart praxis (Groupe MARGARIT) dans #culture
