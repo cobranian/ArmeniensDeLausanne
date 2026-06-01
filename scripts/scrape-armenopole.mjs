@@ -27,6 +27,11 @@ import * as cheerio from "cheerio";
 const SOURCE_URL = "https://armenopole.com/ArmenianEvents";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUTPUT = resolve(__dirname, "..", "js", "agenda-data.js");
+// The visible "snapshot date" label lives in these two files (FR in the HTML,
+// FR/EN/HY in the i18n dictionaries). They're rewritten in lockstep with
+// OUTPUT so the label always reflects the date of the latest data change.
+const INDEX_HTML = resolve(__dirname, "..", "index.html");
+const I18N_JS = resolve(__dirname, "..", "js", "i18n.js");
 const USER_AGENT = "ArmeniensDeLausanne-AgendaBot/1.0 (+https://armeniensdelausanne.ch; contact@armeniensdelausanne.ch)";
 
 /* Sanity floor — Armenopole consistently lists 100+ upcoming events.
@@ -158,6 +163,71 @@ function buildFile(events) {
   return header + body + footer;
 }
 
+/* ---- Snapshot-date label -------------------------------------------------
+   The "instantané du …" / "snapshot dated …" / "… դրությամբ" line is shown
+   under the agenda. We rewrite it here so it can't drift from the data.
+   Day/month/year are formatted per locale; `&nbsp;` is kept between day and
+   month to match the existing markup (and prevent an awkward line break). */
+const FR_MONTHS = ["janvier", "février", "mars", "avril", "mai", "juin",
+  "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
+const EN_MONTHS = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"];
+// Genitive forms ("of June"), as the Armenian phrase requires.
+const HY_MONTHS = ["հունվարի", "փետրվարի", "մարտի", "ապրիլի", "մայիսի", "հունիսի",
+  "հուլիսի", "օգոստոսի", "սեպտեմբերի", "հոկտեմբերի", "նոյեմբերի", "դեկտեմբերի"];
+
+function formatSnapshotDates(date) {
+  const d = date.getDate();
+  const m = date.getMonth(); // 0-based
+  const y = date.getFullYear();
+  return {
+    // French uses the ordinal "1er" for the first of the month only.
+    fr: `${d === 1 ? "1er" : d}&nbsp;${FR_MONTHS[m]} ${y}`,
+    en: `${d}&nbsp;${EN_MONTHS[m]} ${y}`,
+    hy: `${y} թ. ${HY_MONTHS[m]} ${d}-ի դրությամբ`
+  };
+}
+
+// Apply [{ re, value }] replacements to a file. `value` is treated literally
+// (no $-substitution). Returns true if the file content changed. Warns if a
+// pattern matched nothing — markup may have been reworded.
+function rewriteFile(path, label, replacers) {
+  let txt = readFileSync(path, "utf8");
+  const before = txt;
+  for (const { re, value } of replacers) {
+    if (!re.test(txt)) {
+      console.warn(`[scrape] ${label}: pattern ${re} not found — skipped.`);
+      continue;
+    }
+    txt = txt.replace(re, () => value);
+  }
+  if (txt !== before) {
+    writeFileSync(path, txt, "utf8");
+    return true;
+  }
+  return false;
+}
+
+function updateSnapshotLabels(date) {
+  const s = formatSnapshotDates(date);
+  // Date runs from the day up to the terminating "." — neither contains
+  // "." or "<", so the match can't escape the label.
+  const frRe = /instantané du [^.<]*\./;
+  const enRe = /snapshot dated [^.<]*\./;
+  // Armenian phrase ends with "։" (U+0589), not an ASCII period.
+  const hyRe = /\d{4} թ\. \S+ \d{1,2}-ի դրությամբ/;
+
+  const html = rewriteFile(INDEX_HTML, "index.html", [
+    { re: frRe, value: `instantané du ${s.fr}.` }
+  ]);
+  const i18n = rewriteFile(I18N_JS, "i18n.js", [
+    { re: frRe, value: `instantané du ${s.fr}.` },
+    { re: enRe, value: `snapshot dated ${s.en}.` },
+    { re: hyRe, value: s.hy }
+  ]);
+  if (html || i18n) console.log(`[scrape] snapshot label → ${s.en}`);
+}
+
 async function main() {
   console.log(`[scrape] GET ${SOURCE_URL}`);
   const html = await fetchHtml(SOURCE_URL);
@@ -189,6 +259,11 @@ async function main() {
 
   writeFileSync(OUTPUT, next, "utf8");
   console.log(`[scrape] wrote ${events.length} events → ${OUTPUT}`);
+
+  // Keep the visible snapshot-date label in lockstep with the data. Only
+  // reached when the dataset actually changed, so the label tracks the
+  // last real refresh rather than bumping every day for a no-op.
+  updateSnapshotLabels(new Date());
 }
 
 main().catch((err) => {

@@ -68,6 +68,15 @@ Single-page site; everything is in **`index.html`** as anchored `<section>`s
   or the `.agenda*` block in `css/styles.css`. To change which source feeds
   the agenda, edit `scripts/scrape-armenopole.mjs`. Country labels in the
   three languages live in the `COUNTRY_LABELS` table in `js/agenda.js`.
+- **The "snapshot date" label is also auto-maintained.** The
+  `events.source` line ("instantané du …" / "snapshot dated …" / "…
+  դրությամբ") is rewritten by `scripts/scrape-armenopole.mjs`
+  (`updateSnapshotLabels`) in **`index.html`** (FR) and **`js/i18n.js`**
+  (FR/EN/HY) every time the dataset changes, so the date can't drift from
+  the data. Don't hand-edit the date. If you reword that sentence, keep the
+  literal anchors the scraper greps for — `instantané du …<date>.`,
+  `snapshot dated …<date>.`, and `<year> թ. <month> <day>-ի դրությամբ` —
+  or update the regexes in `updateSnapshotLabels` to match.
 - Contact details (`#contact`) are placeholder/example content; unknown
   real-world facts are marked `[à compléter]` (and `[to complete]` /
   `[լրացնելու]` in the other languages). Do not invent specific facts
