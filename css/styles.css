@@ -1219,6 +1219,104 @@ em { font-style: italic; }
 .gallery figcaption em { font-style: italic; color: var(--ink); }
 .section-dark .gallery figcaption em { color: var(--night-text); }
 
+/* PAINTERS GATE — threshold into the full painters gallery (peintres.html) */
+.pgate {
+  margin: clamp(2.5rem, 6vw, 4.5rem) 0 0;
+  padding: clamp(1.8rem, 4vw, 3rem) 0 0;
+  border-top: 1px solid var(--rule);
+}
+.pgate-head { max-width: 64ch; }
+.pgate-kicker {
+  font-family: var(--f-body);
+  font-size: var(--fs-small);
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 0 0 .7rem;
+}
+.pgate-kicker [lang="hy"] { color: var(--pomegranate); letter-spacing: .04em; }
+.pgate-head h3 {
+  font-family: var(--f-display);
+  font-weight: 500;
+  font-size: clamp(1.6rem, 3.4vw, 2.6rem);
+  line-height: 1.05;
+  margin: 0 0 .8rem;
+  color: var(--ink);
+}
+.pgate-head h3 em { font-style: italic; color: var(--pomegranate); }
+.pgate-lead { margin: 0; color: var(--ink-soft); max-width: 58ch; }
+
+.pgate-grid {
+  list-style: none;
+  margin: clamp(1.8rem, 4vw, 2.8rem) 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.2rem, 2.4vw, 2rem);
+}
+.pcard a {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  position: relative;
+}
+.pc-media {
+  margin: 0;
+  overflow: hidden;
+  background: var(--rule);
+  box-shadow: 0 18px 36px -22px rgba(26,20,16,.45);
+}
+.pc-media img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  filter: saturate(.96) contrast(1.03);
+  transition: transform .9s var(--ease), filter .5s var(--ease);
+}
+.pcard a:hover .pc-media img,
+.pcard a:focus-visible .pc-media img { transform: scale(1.04); filter: saturate(1.04) contrast(1.05); }
+.pcard a:focus-visible { outline: 2px solid var(--pomegranate); outline-offset: 4px; }
+.pc-n {
+  display: inline-block;
+  font-family: var(--f-display);
+  font-style: italic;
+  color: var(--apricot);
+  margin: .85rem .5rem 0 0;
+  font-size: .95rem;
+}
+.pc-name {
+  font-family: var(--f-body);
+  font-size: var(--fs-small);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.pc-word {
+  display: block;
+  margin-top: .2rem;
+  font-family: var(--f-display);
+  font-style: italic;
+  font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+  line-height: 1.1;
+  color: var(--ink);
+  transition: color .35s var(--ease);
+}
+.pc-word::after {
+  content: " →";
+  font-style: normal;
+  color: var(--pomegranate);
+  opacity: 0;
+  display: inline-block;
+  transform: translateX(-6px);
+  transition: opacity .3s var(--ease), transform .3s var(--ease);
+}
+.pcard a:hover .pc-word,
+.pcard a:focus-visible .pc-word { color: var(--pomegranate); }
+.pcard a:hover .pc-word::after,
+.pcard a:focus-visible .pc-word::after { opacity: 1; transform: translateX(0); }
+.pgate-cta { margin: clamp(1.6rem, 3.5vw, 2.4rem) 0 0; }
+
 /* CUISINE — dish cards with editorial labels */
 .gallery-dishes .dish figure,
 .gallery-dishes .dish {
@@ -1994,6 +2092,10 @@ html.js .hero-media { animation-delay: .25s; animation-duration: 1.3s; }
 @media (max-width: 700px) {
   .gallery-3,
   .gallery-2 { grid-template-columns: 1fr; }
+
+  .pgate-grid { grid-template-columns: 1fr 1fr; gap: clamp(1rem, 4vw, 1.6rem); }
+  .pgate-grid .pcard:last-child { grid-column: 1 / -1; }
+  .pgate-grid .pcard:last-child .pc-media img { aspect-ratio: 16 / 9; }
 
   .colophon-grid { grid-template-columns: 1fr; }
   .colophon-brand { grid-column: auto; }
