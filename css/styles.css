@@ -1251,8 +1251,18 @@ em { font-style: italic; }
   margin: clamp(1.8rem, 4vw, 2.8rem) 0 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(1.2rem, 2.4vw, 2rem);
+  grid-template-columns: repeat(5, 1fr);
+  gap: clamp(1.1rem, 2vw, 1.7rem);
+}
+/* 5 cards don't tile in 3 cols — drop to 2 (last spans full) then 1 */
+@media (max-width: 1000px) {
+  .pgate-grid { grid-template-columns: repeat(2, 1fr); gap: clamp(1rem, 4vw, 1.6rem); }
+  .pgate-grid .pcard:last-child { grid-column: 1 / -1; }
+  .pgate-grid .pcard:last-child .pc-media img { aspect-ratio: 16 / 9; }
+}
+@media (max-width: 520px) {
+  .pgate-grid { grid-template-columns: 1fr; }
+  .pgate-grid .pcard:last-child .pc-media img { aspect-ratio: 4 / 5; }
 }
 .pcard a {
   display: block;
@@ -2092,10 +2102,6 @@ html.js .hero-media { animation-delay: .25s; animation-duration: 1.3s; }
 @media (max-width: 700px) {
   .gallery-3,
   .gallery-2 { grid-template-columns: 1fr; }
-
-  .pgate-grid { grid-template-columns: 1fr 1fr; gap: clamp(1rem, 4vw, 1.6rem); }
-  .pgate-grid .pcard:last-child { grid-column: 1 / -1; }
-  .pgate-grid .pcard:last-child .pc-media img { aspect-ratio: 16 / 9; }
 
   .colophon-grid { grid-template-columns: 1fr; }
   .colophon-brand { grid-column: auto; }

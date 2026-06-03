@@ -140,14 +140,14 @@ section{ position:relative; z-index:2; }
   border-top:1px solid var(--ink-faint); border-bottom:1px solid var(--ink-faint);
 }
 .index-grid{ display:grid; grid-template-columns:1fr; }
-@media (min-width:760px){ .index-grid{ grid-template-columns:repeat(3,1fr); } }
+@media (min-width:1080px){ .index-grid{ grid-template-columns:repeat(5,1fr); } }
 .idx{
   padding:clamp(1.6rem,3vw,2.4rem) clamp(1.2rem,2vw,1.8rem);
   border-bottom:1px solid var(--ink-faint);
   display:block; text-decoration:none; color:inherit;
   position:relative; transition:background .4s var(--ease);
 }
-@media (min-width:760px){
+@media (min-width:1080px){
   .idx{ border-bottom:none; border-right:1px solid var(--ink-faint); }
   .idx:last-child{ border-right:none; }
 }
@@ -340,9 +340,10 @@ footer a:hover{ border-color:var(--pom); }
       <span class="l2 reveal d2">dit de nous.</span>
     </h1>
     <p class="lead reveal d3">
-      Trois peintres, trois manières de dire l'Arménie&nbsp;: le <em>feu</em> qui
+      Cinq peintres, cinq manières de dire l'Arménie&nbsp;: le <em>feu</em> qui
       embrase la toile, le <em>silence</em> des figures suspendues, la <em>lumière</em>
-      crue des hauts plateaux. Une même terre, traduite trois fois en couleur.
+      crue des hauts plateaux, la <em>grâce</em> des figures allongées, la
+      <em>floraison</em> débordante des bouquets. Une même terre, traduite en couleur.
     </p>
   </section>
 
@@ -366,6 +367,18 @@ footer a:hover{ border-color:var(--pom); }
         <p class="ix-name">Armen Harutyunyan<br>« Lorenc »</p>
         <p class="ix-meta">Peinture contemporaine · la lumière</p>
         <span class="ix-word">La lumière</span>
+      </a>
+      <a class="idx" href="#matevos">
+        <span class="ix-n">iv.</span>
+        <p class="ix-name">Matevos Sargsyan</p>
+        <p class="ix-meta">Peinture contemporaine · la grâce</p>
+        <span class="ix-word">La grâce</span>
+      </a>
+      <a class="idx" href="#shahen">
+        <span class="ix-n">v.</span>
+        <p class="ix-name">Shahen Ordubekyan</p>
+        <p class="ix-meta">Peinture contemporaine · la floraison</p>
+        <span class="ix-word">La floraison</span>
       </a>
     </div>
   </nav>
@@ -589,6 +602,170 @@ footer a:hover{ border-color:var(--pom); }
                loading="lazy" decoding="async" style="aspect-ratio:1170/962;" />
         </button>
         <figcaption><span class="p-num">vi.</span><span class="p-cap">Gorge en automne</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <div class="between reveal" aria-hidden="true"><span class="di"></span> Salle IV</div>
+
+  <!-- ============ SALLE IV — MATEVOS ============ -->
+  <section class="room" id="matevos" aria-labelledby="matevos-h">
+    <header class="room-head">
+      <div class="rh-mark reveal" aria-hidden="true">IV</div>
+      <div class="rh-body">
+        <p class="rh-kicker reveal" lang="hy">Մատևոս Սարգսյան</p>
+        <h2 id="matevos-h" class="reveal">Matevos Sargsyan, <span class="em">la grâce.</span></h2>
+        <p class="rh-meta reveal">Peinture contemporaine <span class="dot">◆</span> figure <span class="dot">◆</span> couteau à peindre</p>
+        <p class="rh-desc reveal d1">
+          Héritier de la figure arménienne, il étire ses femmes comme des
+          <em>icônes profanes</em>&nbsp;: cous allongés, visages lisses, regards
+          baissés. Au couteau, chaque silhouette est sertie dans une mosaïque de
+          verts, d'ocres et de bleus — une grâce <em>sculptée dans la matière</em>.
+        </p>
+      </div>
+    </header>
+
+    <div class="layout layout-B">
+      <figure class="plate reveal">
+        <button class="frame" type="button"
+          data-cap="<span class='lb-art'>Profil à la coiffe d'or</span><span class='lb-sep'>·</span>Matevos Sargsyan">
+          <img src="Images/peintres/matevos-profil-dore.jpg"
+               alt="Profil d'une femme au long cou, coiffe et drapé d'or au couteau, sur fond brun profond — Matevos Sargsyan"
+               loading="lazy" decoding="async" style="aspect-ratio:1456/2048;" />
+        </button>
+        <figcaption><span class="p-num">i.</span><span class="p-cap">Profil à la coiffe d'or</span></figcaption>
+      </figure>
+
+      <figure class="plate reveal d1">
+        <button class="frame" type="button"
+          data-cap="<span class='lb-art'>La couronne et l'oiseau</span><span class='lb-sep'>·</span>Matevos Sargsyan">
+          <img src="Images/peintres/matevos-couronne-oiseau.jpg"
+               alt="Femme stylisée au long visage et aux yeux bleus, couronne colorée et petit oiseau, sur fond vert — Matevos Sargsyan"
+               loading="lazy" decoding="async" style="aspect-ratio:1463/2048;" />
+        </button>
+        <figcaption><span class="p-num">ii.</span><span class="p-cap">La couronne et l'oiseau</span></figcaption>
+      </figure>
+
+      <figure class="plate reveal">
+        <button class="frame" type="button"
+          data-cap="<span class='lb-art'>La fleur dans les cheveux</span><span class='lb-sep'>·</span>Matevos Sargsyan">
+          <img src="Images/peintres/matevos-fleur-cheveux.jpg"
+               alt="Portrait d'une femme au visage allongé, fleur blanche dans les cheveux, fond ocre et vert en aplats — Matevos Sargsyan"
+               loading="lazy" decoding="async" style="aspect-ratio:1703/2048;" />
+        </button>
+        <figcaption><span class="p-num">iii.</span><span class="p-cap">La fleur dans les cheveux</span></figcaption>
+      </figure>
+
+      <figure class="plate reveal d1">
+        <button class="frame" type="button"
+          data-cap="<span class='lb-art'>Femme à la robe verte</span><span class='lb-sep'>·</span>Matevos Sargsyan">
+          <img src="Images/peintres/matevos-robe-verte.jpg"
+               alt="Femme assise en robe et chapeau verts, regard pensif, camaïeu de verts et de bleus — Matevos Sargsyan"
+               loading="lazy" decoding="async" style="aspect-ratio:1738/2048;" />
+        </button>
+        <figcaption><span class="p-num">iv.</span><span class="p-cap">Femme à la robe verte</span></figcaption>
+      </figure>
+
+      <figure class="plate reveal">
+        <button class="frame" type="button"
+          data-cap="<span class='lb-art'>La mère et l'enfant</span><span class='lb-sep'>·</span>Matevos Sargsyan">
+          <img src="Images/peintres/matevos-mere-enfant.jpg"
+               alt="Femme en robe turquoise assise, un enfant à ses côtés, mosaïque de verts au couteau — Matevos Sargsyan"
+               loading="lazy" decoding="async" style="aspect-ratio:1553/2048;" />
+        </button>
+        <figcaption><span class="p-num">v.</span><span class="p-cap">La mère et l'enfant</span></figcaption>
+      </figure>
+
+      <figure class="plate reveal d1">
+        <button class="frame" type="button"
+          data-cap="<span class='lb-art'>Figure dans les collines</span><span class='lb-sep'>·</span>Matevos Sargsyan">
+          <img src="Images/peintres/matevos-paysage-figure.jpg"
+               alt="Figure féminine debout devant des collines ocre et des cyprès, ciel vert-de-gris — Matevos Sargsyan"
+               loading="lazy" decoding="async" style="aspect-ratio:1570/2048;" />
+        </button>
+        <figcaption><span class="p-num">vi.</span><span class="p-cap">Figure dans les collines</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <div class="between reveal" aria-hidden="true"><span class="di"></span> Salle V</div>
+
+  <!-- ============ SALLE V — SHAHEN ============ -->
+  <section class="room" id="shahen" aria-labelledby="shahen-h">
+    <header class="room-head">
+      <div class="rh-mark reveal" aria-hidden="true">V</div>
+      <div class="rh-body">
+        <p class="rh-kicker reveal" lang="hy">Շահեն Օրդուբեկյան</p>
+        <h2 id="shahen-h" class="reveal">Shahen Ordubekyan, <span class="em">la floraison.</span></h2>
+        <p class="rh-meta reveal">Peinture contemporaine <span class="dot">◆</span> nature morte &amp; paysage <span class="dot">◆</span> couteau à peindre</p>
+        <p class="rh-desc reveal d1">
+          Ici la couleur explose. Au couteau, en empâtements généreux, il dresse
+          des bouquets et des jardins qui <em>débordent du cadre</em> — pivoines,
+          lilas, mimosas, pavots. La fleur n'est qu'un prétexte&nbsp;: ce qu'il
+          peint, c'est la <em>lumière qui s'y prend</em>, vive, presque sonore.
+        </p>
+      </div>
+    </header>
+
+    <div class="layout layout-C">
+      <figure class="plate reveal">
+        <button class="frame" type="button"
+          data-cap="<span class='lb-art'>Mimosa en lumière</span><span class='lb-sep'>·</span>Shahen Ordubekyan">
+          <img src="Images/peintres/shahen-mimosa.jpg"
+               alt="Bouquet de mimosa jaune éclatant dans un vase clair, fond bleu-violet sombre, empâtements au couteau — Shahen Ordubekyan"
+               loading="lazy" decoding="async" style="aspect-ratio:1650/2048;" />
+        </button>
+        <figcaption><span class="p-num">i.</span><span class="p-cap">Mimosa en lumière</span></figcaption>
+      </figure>
+
+      <figure class="plate reveal d1">
+        <button class="frame" type="button"
+          data-cap="<span class='lb-art'>Roses au vase bleu</span><span class='lb-sep'>·</span>Shahen Ordubekyan">
+          <img src="Images/peintres/shahen-roses-vase-bleu.jpg"
+               alt="Roses rouge et jaune dans un vase bleu éclaté, fond bleu, peinture au couteau — Shahen Ordubekyan"
+               loading="lazy" decoding="async" style="aspect-ratio:1638/2048;" />
+        </button>
+        <figcaption><span class="p-num">ii.</span><span class="p-cap">Roses au vase bleu</span></figcaption>
+      </figure>
+
+      <figure class="plate reveal d2">
+        <button class="frame" type="button"
+          data-cap="<span class='lb-art'>Lilas au pichet de terre</span><span class='lb-sep'>·</span>Shahen Ordubekyan">
+          <img src="Images/peintres/shahen-lilas.jpg"
+               alt="Gerbe de lilas violet dans un pichet de terre cuite, fond gris-bleu lumineux — Shahen Ordubekyan"
+               loading="lazy" decoding="async" style="aspect-ratio:1487/2048;" />
+        </button>
+        <figcaption><span class="p-num">iii.</span><span class="p-cap">Lilas au pichet de terre</span></figcaption>
+      </figure>
+
+      <figure class="plate reveal">
+        <button class="frame" type="button"
+          data-cap="<span class='lb-art'>Tulipes près de la clôture</span><span class='lb-sep'>·</span>Shahen Ordubekyan">
+          <img src="Images/peintres/shahen-tulipes-cloture.jpg"
+               alt="Tulipes rouges et fleurs des champs devant une clôture de bois, jardin multicolore au couteau — Shahen Ordubekyan"
+               loading="lazy" decoding="async" style="aspect-ratio:1727/2048;" />
+        </button>
+        <figcaption><span class="p-num">iv.</span><span class="p-cap">Tulipes près de la clôture</span></figcaption>
+      </figure>
+
+      <figure class="plate reveal d1">
+        <button class="frame" type="button"
+          data-cap="<span class='lb-art'>Pavots devant la montagne</span><span class='lb-sep'>·</span>Shahen Ordubekyan">
+          <img src="Images/peintres/shahen-pavots-montagne.jpg"
+               alt="Buisson de pavots rouges devant des montagnes mauves, prairie verte et jaune — Shahen Ordubekyan"
+               loading="lazy" decoding="async" style="aspect-ratio:1663/2048;" />
+        </button>
+        <figcaption><span class="p-num">v.</span><span class="p-cap">Pavots devant la montagne</span></figcaption>
+      </figure>
+
+      <figure class="plate reveal d2">
+        <button class="frame" type="button"
+          data-cap="<span class='lb-art'>Village en automne</span><span class='lb-sep'>·</span>Shahen Ordubekyan">
+          <img src="Images/peintres/shahen-village-automne.jpg"
+               alt="Maison de village aux toits rouges entourée d'arbres d'automne orangés, ciel doré au couteau — Shahen Ordubekyan"
+               loading="lazy" decoding="async" style="aspect-ratio:1677/2048;" />
+        </button>
+        <figcaption><span class="p-num">vi.</span><span class="p-cap">Village en automne</span></figcaption>
       </figure>
     </div>
   </section>
