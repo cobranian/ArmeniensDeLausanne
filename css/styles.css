@@ -1251,13 +1251,10 @@ em { font-style: italic; }
   margin: clamp(1.8rem, 4vw, 2.8rem) 0 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: clamp(1.1rem, 2vw, 1.7rem);
 }
-/* 6 cards tile evenly: 6 → 3 → 2 → 1 columns */
-@media (max-width: 1100px) {
-  .pgate-grid { grid-template-columns: repeat(3, 1fr); }
-}
+/* 9 cards tile evenly: 3 → 2 → 1 columns */
 @media (max-width: 720px) {
   .pgate-grid { grid-template-columns: repeat(2, 1fr); gap: clamp(1rem, 4vw, 1.6rem); }
 }
