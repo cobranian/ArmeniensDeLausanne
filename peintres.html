@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Ce que la couleur dit de nous — Trois peintres arméniens</title>
-<meta name="description" content="Galerie : trois peintres arméniens, trois tempéraments de la couleur. Le feu de Minas Avetisyan, le silence de Movses Poghosyan, la lumière d'Armen Harutyunyan « Lorenc »." />
+<title>Ce que la couleur dit de nous — Six peintres arméniens</title>
+<meta name="description" content="Galerie : six peintres arméniens, six tempéraments de la couleur — le soleil de Martiros Saryan, le feu de Minas Avetisyan, le silence de Movses Poghosyan, la lumière d'Armen Harutyunyan « Lorenc », la grâce de Matevos Sargsyan, la floraison de Shahen Ordubekyan." />
 <meta name="theme-color" content="#EFE7D6" />
 
 <link rel="icon" href="favicon.svg" type="image/svg+xml" />
@@ -111,6 +111,16 @@ section{ position:relative; z-index:2; }
 .masthead a{ color:inherit; text-decoration:none; transition:color .3s; }
 .masthead a:hover{ color:var(--pom); }
 .masthead .mh-mark{ color:var(--pom); }
+.masthead .mh-right{ display:flex; align-items:center; gap:clamp(.9rem,2.4vw,1.6rem); }
+.lang-switch{ display:inline-flex; gap:.1rem; }
+.lang-switch button{
+  background:none; border:0; cursor:pointer; padding:.2rem .45rem;
+  font-family:var(--f-body); font-size:.72rem; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--ink-dim); transition:color .3s;
+}
+.lang-switch button:hover{ color:var(--pom); }
+.lang-switch button[aria-current="true"]{ color:var(--pom); border-bottom:1px solid var(--pom); }
+.lang-switch button:focus-visible{ outline:2px solid var(--pom); outline-offset:3px; }
 
 /* ---- hero ---------------------------------------------------------------- */
 .hero{ padding:clamp(2.6rem,8vh,6rem) 0 clamp(1.6rem,4vh,3rem); }
@@ -329,18 +339,25 @@ footer a:hover{ border-color:var(--pom); }
 <div class="wrap">
 
   <header class="masthead reveal d1">
-    <span class="mh-mark">◇ Revue</span>
-    <a href="index.html#culture">Peinture — VIII</a>
+    <span class="mh-mark" data-i18n="mh.mark">◇ Revue</span>
+    <span class="mh-right">
+      <a href="index.html#culture" data-i18n="mh.section">Peinture — VIII</a>
+      <span class="lang-switch" role="group" data-i18n-aria="lang.group" aria-label="Langue">
+        <button type="button" data-lang="fr">FR</button>
+        <button type="button" data-lang="en">EN</button>
+        <button type="button" data-lang="hy">ՀՅ</button>
+      </span>
+    </span>
   </header>
 
   <!-- ============ HERO ============ -->
   <section class="hero">
     <p class="kicker reveal d1" lang="hy">Գույն — հայկական գեղանկար</p>
     <h1>
-      <span class="reveal d1">Ce que la couleur</span>
-      <span class="l2 reveal d2">dit de nous.</span>
+      <span class="reveal d1" data-i18n="hero.l1">Ce que la couleur</span>
+      <span class="l2 reveal d2" data-i18n="hero.l2">dit de nous.</span>
     </h1>
-    <p class="lead reveal d3">
+    <p class="lead reveal d3" data-i18n="hero.lead">
       Six peintres, six manières de dire l'Arménie&nbsp;: le <em>soleil</em> de
       Martiros Saryan, le <em>feu</em> qui embrase la toile, le <em>silence</em> des
       figures suspendues, la <em>lumière</em> crue des hauts plateaux, la
@@ -350,56 +367,56 @@ footer a:hover{ border-color:var(--pom); }
   </section>
 
   <!-- ============ INDEX ============ -->
-  <nav class="index reveal d1" aria-label="Les six peintres">
+  <nav class="index reveal d1" data-i18n-aria="index.aria" aria-label="Les six peintres">
     <div class="index-grid">
       <a class="idx" href="#saryan">
         <span class="ix-n">i.</span>
         <p class="ix-name">Martiros Saryan</p>
-        <p class="ix-meta">1880 — 1972 · le soleil</p>
-        <span class="ix-word">Le soleil</span>
+        <p class="ix-meta" data-i18n="idx.saryan.meta">1880 — 1972 · le soleil</p>
+        <span class="ix-word" data-i18n="idx.saryan.word">Le soleil</span>
       </a>
       <a class="idx" href="#minas">
         <span class="ix-n">ii.</span>
         <p class="ix-name">Minas Avetisyan</p>
-        <p class="ix-meta">1928 — 1975 · le feu</p>
-        <span class="ix-word">Le feu</span>
+        <p class="ix-meta" data-i18n="idx.minas.meta">1928 — 1975 · le feu</p>
+        <span class="ix-word" data-i18n="idx.minas.word">Le feu</span>
       </a>
       <a class="idx" href="#movses">
         <span class="ix-n">iii.</span>
         <p class="ix-name">Movses Poghosyan</p>
-        <p class="ix-meta">Peinture contemporaine · le silence</p>
-        <span class="ix-word">Le silence</span>
+        <p class="ix-meta" data-i18n="idx.movses.meta">Peinture contemporaine · le silence</p>
+        <span class="ix-word" data-i18n="idx.movses.word">Le silence</span>
       </a>
       <a class="idx" href="#lorenc">
         <span class="ix-n">iv.</span>
         <p class="ix-name">Armen Harutyunyan<br>« Lorenc »</p>
-        <p class="ix-meta">Peinture contemporaine · la lumière</p>
-        <span class="ix-word">La lumière</span>
+        <p class="ix-meta" data-i18n="idx.lorenc.meta">Peinture contemporaine · la lumière</p>
+        <span class="ix-word" data-i18n="idx.lorenc.word">La lumière</span>
       </a>
       <a class="idx" href="#matevos">
         <span class="ix-n">v.</span>
         <p class="ix-name">Matevos Sargsyan</p>
-        <p class="ix-meta">Peinture contemporaine · la grâce</p>
-        <span class="ix-word">La grâce</span>
+        <p class="ix-meta" data-i18n="idx.matevos.meta">Peinture contemporaine · la grâce</p>
+        <span class="ix-word" data-i18n="idx.matevos.word">La grâce</span>
       </a>
       <a class="idx" href="#shahen">
         <span class="ix-n">vi.</span>
         <p class="ix-name">Shahen Ordubekyan</p>
-        <p class="ix-meta">Peinture contemporaine · la floraison</p>
-        <span class="ix-word">La floraison</span>
+        <p class="ix-meta" data-i18n="idx.shahen.meta">Peinture contemporaine · la floraison</p>
+        <span class="ix-word" data-i18n="idx.shahen.word">La floraison</span>
       </a>
     </div>
   </nav>
 
   <!-- ============ SALLE I — SARYAN ============ -->
-  <section class="room" id="saryan" aria-labelledby="saryan-h">
+  <section class="room" id="saryan" aria-labelledby="saryan-h" data-artist="Martiros Saryan">
     <header class="room-head">
       <div class="rh-mark reveal" aria-hidden="true">I</div>
       <div class="rh-body">
         <p class="rh-kicker reveal" lang="hy">Մարտիրոս Սարյան</p>
-        <h2 id="saryan-h" class="reveal">Martiros Saryan, <span class="em">le soleil.</span></h2>
-        <p class="rh-meta reveal">1880 — 1972 <span class="dot">◆</span> Nor Nakhitchevan → Erevan <span class="dot">◆</span> fondateur de l'école arménienne</p>
-        <p class="rh-desc reveal d1">
+        <h2 id="saryan-h" class="reveal" data-i18n="room.saryan.h">Martiros Saryan, <span class="em">le soleil.</span></h2>
+        <p class="rh-meta reveal" data-i18n="room.saryan.meta">1880 — 1972 <span class="dot">◆</span> Nor Nakhitchevan → Erevan <span class="dot">◆</span> fondateur de l'école arménienne</p>
+        <p class="rh-desc reveal d1" data-i18n="room.saryan.desc">
           Le patriarche de la peinture arménienne moderne. De ses voyages en Orient —
           Égypte, Perse — il rapporte des <em>aplats francs</em> et une lumière brûlante,
           puis les tourne vers sa terre&nbsp;: l'Ararat, les villages dorés, les montagnes
@@ -410,108 +427,108 @@ footer a:hover{ border-color:var(--pom); }
 
     <div class="layout layout-A">
       <figure class="plate span-tall reveal">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Arménie</span><span class='lb-sep'>·</span>1923 — Martiros Saryan">
+        <button class="frame" type="button">
           <img src="Images/peintres/saryan-armenie-1923.jpg"
+               data-i18n-alt="a.saryan.1"
                alt="Paysage monumental d'Arménie : gorges dorées, cyprès, ronde de femmes et montagnes mauves — Martiros Saryan, 1923"
                loading="eager" decoding="async" style="aspect-ratio:744/1024;" />
         </button>
-        <figcaption><span class="p-num">i.</span><span class="p-cap"><em>« Arménie »</em> <span class="yr">· 1923</span></span></figcaption>
+        <figcaption><span class="p-num">i.</span><span class="p-cap" data-i18n="f.saryan.1"><em>« Arménie »</em> <span class="yr">· 1923</span></span></figcaption>
       </figure>
 
       <figure class="plate wide reveal">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Ararat</span><span class='lb-sep'>·</span>Martiros Saryan">
+        <button class="frame" type="button">
           <img src="Images/peintres/saryan-ararat.jpg"
+               data-i18n-alt="a.saryan.2"
                alt="Le mont Ararat bleu au-dessus de la plaine, tons pastel et touche libre — Martiros Saryan"
                loading="lazy" decoding="async" style="aspect-ratio:1450/1021;" />
         </button>
-        <figcaption><span class="p-num">ii.</span><span class="p-cap">Ararat</span></figcaption>
+        <figcaption><span class="p-num">ii.</span><span class="p-cap" data-i18n="f.saryan.2">Ararat</span></figcaption>
       </figure>
 
       <figure class="plate reveal d1">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Montagnes d'Arménie</span><span class='lb-sep'>·</span>Martiros Saryan">
+        <button class="frame" type="button">
           <img src="Images/peintres/saryan-montagnes-armenie.jpg"
+               data-i18n-alt="a.saryan.3"
                alt="Montagnes d'Arménie en damier de couleurs vives, attelage de bœufs au labour — Martiros Saryan"
                loading="lazy" decoding="async" style="aspect-ratio:1026/1020;" />
         </button>
-        <figcaption><span class="p-num">iii.</span><span class="p-cap">Montagnes d'Arménie</span></figcaption>
+        <figcaption><span class="p-num">iii.</span><span class="p-cap" data-i18n="f.saryan.3">Montagnes d'Arménie</span></figcaption>
       </figure>
 
       <figure class="plate reveal d2">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Portrait de Garéguine Lévonian</span><span class='lb-sep'>·</span>1912 — Martiros Saryan">
+        <button class="frame" type="button">
           <img src="Images/peintres/saryan-portrait-levonian-1912.jpg"
+               data-i18n-alt="a.saryan.4"
                alt="Portrait cubo-futuriste d'un homme moustachu, facettes bleues et ocres — Martiros Saryan, 1912"
                loading="lazy" decoding="async" style="aspect-ratio:682/898;" />
         </button>
-        <figcaption><span class="p-num">iv.</span><span class="p-cap">Portrait de Garéguine Lévonian <span class="yr">· 1912</span></span></figcaption>
+        <figcaption><span class="p-num">iv.</span><span class="p-cap" data-i18n="f.saryan.4">Portrait de Garéguine Lévonian <span class="yr">· 1912</span></span></figcaption>
       </figure>
 
       <figure class="plate reveal">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>L'église Karmravor (VIIᵉ siècle)</span><span class='lb-sep'>·</span>Martiros Saryan">
+        <button class="frame" type="button">
           <img src="Images/peintres/saryan-karmravor.jpg"
+               data-i18n-alt="a.saryan.5"
                alt="Petite église arménienne à coupole rouge dans un village doré, vaches au premier plan — Martiros Saryan"
                loading="lazy" decoding="async" style="aspect-ratio:1396/918;" />
         </button>
-        <figcaption><span class="p-num">v.</span><span class="p-cap">L'église Karmravor <span class="yr">· VIIᵉ s.</span></span></figcaption>
+        <figcaption><span class="p-num">v.</span><span class="p-cap" data-i18n="f.saryan.5">L'église Karmravor <span class="yr">· VIIᵉ s.</span></span></figcaption>
       </figure>
 
       <figure class="plate reveal d1">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Femme qui marche</span><span class='lb-sep'>·</span>1911 — Martiros Saryan">
+        <button class="frame" type="button">
           <img src="Images/peintres/saryan-femme-qui-marche-1911.jpg"
+               data-i18n-alt="a.saryan.6"
                alt="Femme drapée de bleu marchant devant un palmier, aplats jaunes éclatants — Martiros Saryan, 1911"
                loading="lazy" decoding="async" style="aspect-ratio:706/942;" />
         </button>
-        <figcaption><span class="p-num">vi.</span><span class="p-cap">Femme qui marche <span class="yr">· 1911</span></span></figcaption>
+        <figcaption><span class="p-num">vi.</span><span class="p-cap" data-i18n="f.saryan.6">Femme qui marche <span class="yr">· 1911</span></span></figcaption>
       </figure>
 
       <figure class="plate wide reveal">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Masques égyptiens</span><span class='lb-sep'>·</span>Martiros Saryan">
+        <button class="frame" type="button">
           <img src="Images/peintres/saryan-masques-egyptiens.jpg"
+               data-i18n-alt="a.saryan.7"
                alt="Masques égyptiens aux couleurs vives alignés sur fond gris — Martiros Saryan"
                loading="lazy" decoding="async" style="aspect-ratio:1563/1053;" />
         </button>
-        <figcaption><span class="p-num">vii.</span><span class="p-cap">Masques égyptiens</span></figcaption>
+        <figcaption><span class="p-num">vii.</span><span class="p-cap" data-i18n="f.saryan.7">Masques égyptiens</span></figcaption>
       </figure>
 
       <figure class="plate reveal d1">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Femme persane</span><span class='lb-sep'>·</span>Martiros Saryan">
+        <button class="frame" type="button">
           <img src="Images/peintres/saryan-femme-persane.jpg"
+               data-i18n-alt="a.saryan.8"
                alt="Visage d'une femme persane au voile blanc, traits cernés de noir sur fond ocre — Martiros Saryan"
                loading="lazy" decoding="async" style="aspect-ratio:685/778;" />
         </button>
-        <figcaption><span class="p-num">viii.</span><span class="p-cap">Femme persane</span></figcaption>
+        <figcaption><span class="p-num">viii.</span><span class="p-cap" data-i18n="f.saryan.8">Femme persane</span></figcaption>
       </figure>
 
       <figure class="plate wide reveal">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Mulets chargés de foin</span><span class='lb-sep'>·</span>Martiros Saryan">
+        <button class="frame" type="button">
           <img src="Images/peintres/saryan-mulets-foin.jpg"
+               data-i18n-alt="a.saryan.9"
                alt="Deux mulets chargés de foin vert sur une terre jaune, ombres bleues — Martiros Saryan"
                loading="lazy" decoding="async" style="aspect-ratio:1465/748;" />
         </button>
-        <figcaption><span class="p-num">ix.</span><span class="p-cap">Mulets chargés de foin</span></figcaption>
+        <figcaption><span class="p-num">ix.</span><span class="p-cap" data-i18n="f.saryan.9">Mulets chargés de foin</span></figcaption>
       </figure>
     </div>
   </section>
 
-  <div class="between reveal" aria-hidden="true"><span class="di"></span> Salle II</div>
+  <div class="between reveal" aria-hidden="true"><span class="di"></span> <span data-i18n="between.2">Salle II</span></div>
 
   <!-- ============ SALLE II — MINAS ============ -->
-  <section class="room" id="minas" aria-labelledby="minas-h">
+  <section class="room" id="minas" aria-labelledby="minas-h" data-artist="Minas Avetisyan">
     <header class="room-head">
       <div class="rh-mark reveal" aria-hidden="true">II</div>
       <div class="rh-body">
         <p class="rh-kicker reveal" lang="hy">Մինաս Ավետիսյան</p>
-        <h2 id="minas-h" class="reveal">Minas Avetisyan, <span class="em">le feu.</span></h2>
-        <p class="rh-meta reveal">1928 — 1975 <span class="dot">◆</span> Jajur, Arménie <span class="dot">◆</span> modernisme</p>
-        <p class="rh-desc reveal d1">
+        <h2 id="minas-h" class="reveal" data-i18n="room.minas.h">Minas Avetisyan, <span class="em">le feu.</span></h2>
+        <p class="rh-meta reveal" data-i18n="room.minas.meta">1928 — 1975 <span class="dot">◆</span> Jajur, Arménie <span class="dot">◆</span> modernisme</p>
+        <p class="rh-desc reveal d1" data-i18n="room.minas.desc">
           Maître du modernisme arménien, mort à quarante-sept ans. Il embrase la
           toile&nbsp;: rouges de braise, oranges, bleus francs posés en aplats. Sous
           son pinceau, un village aux maisons en coupole devient un <em>incendie tranquille</em>.
@@ -521,148 +538,148 @@ footer a:hover{ border-color:var(--pom); }
 
     <div class="layout layout-A">
       <figure class="plate span-tall reveal">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>« Conversation »</span><span class='lb-sep'>·</span>1971 — Minas Avetisyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/minas-conversation-1971.jpg"
+               data-i18n-alt="a.minas.1"
                alt="Village arménien aux maisons en coupole, rouges et oranges incandescents, deux figures sous un arbre — Minas Avetisyan, 1971"
                loading="eager" decoding="async" style="aspect-ratio:1584/1205;" />
         </button>
-        <figcaption><span class="p-num">i.</span><span class="p-cap"><em>« Conversation »</em> <span class="yr">· 1971</span></span></figcaption>
+        <figcaption><span class="p-num">i.</span><span class="p-cap" data-i18n="f.minas.1"><em>« Conversation »</em> <span class="yr">· 1971</span></span></figcaption>
       </figure>
 
       <figure class="plate reveal d1">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>« Nature morte »</span><span class='lb-sep'>·</span>1961 — gouache — Minas Avetisyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/minas-nature-morte-1961.jpg"
+               data-i18n-alt="a.minas.2"
                alt="Nature morte fauve : vase bleu et branches sur fond orange — Minas Avetisyan, gouache, 1961"
                loading="lazy" decoding="async" style="aspect-ratio:1056/1552;" />
         </button>
-        <figcaption><span class="p-num">ii.</span><span class="p-cap"><em>« Nature morte »</em> <span class="yr">· 1961</span></span></figcaption>
+        <figcaption><span class="p-num">ii.</span><span class="p-cap" data-i18n="f.minas.2"><em>« Nature morte »</em> <span class="yr">· 1961</span></span></figcaption>
       </figure>
 
       <figure class="plate reveal d2">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Portrait de femme</span><span class='lb-sep'>·</span>gouache — Minas Avetisyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/minas-femme-bleue.jpg"
+               data-i18n-alt="a.minas.3"
                alt="Portrait expressionniste d'une femme à la chevelure bleue sur fond orange et vert — Minas Avetisyan"
                loading="lazy" decoding="async" style="aspect-ratio:1385/1550;" />
         </button>
-        <figcaption><span class="p-num">iii.</span><span class="p-cap">Portrait de femme</span></figcaption>
+        <figcaption><span class="p-num">iii.</span><span class="p-cap" data-i18n="f.minas.3">Portrait de femme</span></figcaption>
       </figure>
 
       <figure class="plate wide reveal">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Le barattage du beurre</span><span class='lb-sep'>·</span>1972 — Minas Avetisyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/minas-baratte-1972.jpg"
+               data-i18n-alt="a.minas.4"
                alt="Trois femmes barattant le beurre devant une maison, tons chauds de terre et de rouge — Minas Avetisyan, 1972"
                loading="lazy" decoding="async" style="aspect-ratio:1600/797;" />
         </button>
-        <figcaption><span class="p-num">iv.</span><span class="p-cap">Le barattage du beurre <span class="yr">· 1972</span></span></figcaption>
+        <figcaption><span class="p-num">iv.</span><span class="p-cap" data-i18n="f.minas.4">Le barattage du beurre <span class="yr">· 1972</span></span></figcaption>
       </figure>
 
       <figure class="plate reveal d1">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Village arménien</span><span class='lb-sep'>·</span>Minas Avetisyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/minas-village.jpg"
+               data-i18n-alt="a.minas.5"
                alt="Village arménien aux maisons rondes, deux figures et un arbre, lumière orange — Minas Avetisyan"
                loading="lazy" decoding="async" style="aspect-ratio:1600/1201;" />
         </button>
-        <figcaption><span class="p-num">v.</span><span class="p-cap">Village arménien</span></figcaption>
+        <figcaption><span class="p-num">v.</span><span class="p-cap" data-i18n="f.minas.5">Village arménien</span></figcaption>
       </figure>
 
       <figure class="plate reveal d2">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>« Autoportrait »</span><span class='lb-sep'>·</span>1960 — Minas Avetisyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/minas-autoportrait-1960.jpg"
+               data-i18n-alt="a.minas.6"
                alt="Autoportrait de 1960 du peintre Minas Avetisyan, couleurs vives"
                loading="lazy" decoding="async" style="aspect-ratio:569/377;" />
         </button>
-        <figcaption><span class="p-num">vi.</span><span class="p-cap"><em>« Autoportrait »</em> <span class="yr">· 1960</span></span></figcaption>
+        <figcaption><span class="p-num">vi.</span><span class="p-cap" data-i18n="f.minas.6"><em>« Autoportrait »</em> <span class="yr">· 1960</span></span></figcaption>
       </figure>
 
       <figure class="plate wide reveal">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Ararat</span><span class='lb-sep'>·</span>1961 — Minas Avetisyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/minas-ararat-1961.jpg"
+               data-i18n-alt="a.minas.7"
                alt="Le mont Ararat à deux cimes sous un ciel mauve, contreforts roses et orange vif — Minas Avetisyan, 1961"
                loading="lazy" decoding="async" style="aspect-ratio:1059/600;" />
         </button>
-        <figcaption><span class="p-num">vii.</span><span class="p-cap">Ararat <span class="yr">· 1961</span></span></figcaption>
+        <figcaption><span class="p-num">vii.</span><span class="p-cap" data-i18n="f.minas.7">Ararat <span class="yr">· 1961</span></span></figcaption>
       </figure>
 
       <figure class="plate span-tall reveal d1">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Maisons du village</span><span class='lb-sep'>·</span>Minas Avetisyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/minas-maisons-village.jpg"
+               data-i18n-alt="a.minas.8"
                alt="Maisons arméniennes en coupole, rouges et oranges incandescents, deux figures près d'un arbre — Minas Avetisyan"
                loading="lazy" decoding="async" style="aspect-ratio:2861/3188;" />
         </button>
-        <figcaption><span class="p-num">viii.</span><span class="p-cap">Maisons du village</span></figcaption>
+        <figcaption><span class="p-num">viii.</span><span class="p-cap" data-i18n="f.minas.8">Maisons du village</span></figcaption>
       </figure>
 
       <figure class="plate reveal">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Jeune femme au châle bleu</span><span class='lb-sep'>·</span>Minas Avetisyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/minas-chale-bleu.jpg"
+               data-i18n-alt="a.minas.9"
                alt="Portrait fauve d'une jeune femme drapée de bleu, chevelure rousse, sur fond orange — Minas Avetisyan"
                loading="lazy" decoding="async" style="aspect-ratio:1024/1024;" />
         </button>
-        <figcaption><span class="p-num">ix.</span><span class="p-cap">Jeune femme au châle bleu</span></figcaption>
+        <figcaption><span class="p-num">ix.</span><span class="p-cap" data-i18n="f.minas.9">Jeune femme au châle bleu</span></figcaption>
       </figure>
 
       <figure class="plate reveal d1">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>À la fenêtre</span><span class='lb-sep'>·</span>Minas Avetisyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/minas-a-la-fenetre.jpg"
+               data-i18n-alt="a.minas.10"
                alt="Jeune femme à la chevelure bleue accoudée à une fenêtre, fond jaune et orange éclatant — Minas Avetisyan"
                loading="lazy" decoding="async" style="aspect-ratio:653/805;" />
         </button>
-        <figcaption><span class="p-num">x.</span><span class="p-cap">À la fenêtre</span></figcaption>
+        <figcaption><span class="p-num">x.</span><span class="p-cap" data-i18n="f.minas.10">À la fenêtre</span></figcaption>
       </figure>
 
       <figure class="plate reveal d2">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Portrait de jeune femme</span><span class='lb-sep'>·</span>1972 — Minas Avetisyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/minas-portrait-1972.jpg"
+               data-i18n-alt="a.minas.11"
                alt="Portrait d'une jeune femme brune en corsage jaune, collier rouge, fond gris et jaune — Minas Avetisyan, 1972"
                loading="lazy" decoding="async" style="aspect-ratio:620/800;" />
         </button>
-        <figcaption><span class="p-num">xi.</span><span class="p-cap">Portrait de jeune femme <span class="yr">· 1972</span></span></figcaption>
+        <figcaption><span class="p-num">xi.</span><span class="p-cap" data-i18n="f.minas.11">Portrait de jeune femme <span class="yr">· 1972</span></span></figcaption>
       </figure>
 
       <figure class="plate reveal">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Le vieil homme</span><span class='lb-sep'>·</span>Minas Avetisyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/minas-vieil-homme.jpg"
+               data-i18n-alt="a.minas.12"
                alt="Vieil homme barbu assis sur une chaise tressée, veste verte, fond clair et tenture rouge — Minas Avetisyan"
                loading="lazy" decoding="async" style="aspect-ratio:582/600;" />
         </button>
-        <figcaption><span class="p-num">xii.</span><span class="p-cap">Le vieil homme</span></figcaption>
+        <figcaption><span class="p-num">xii.</span><span class="p-cap" data-i18n="f.minas.12">Le vieil homme</span></figcaption>
       </figure>
 
       <figure class="plate wide reveal d1">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Nature morte fauve</span><span class='lb-sep'>·</span>Minas Avetisyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/minas-nature-morte-orange.jpg"
+               data-i18n-alt="a.minas.13"
                alt="Nature morte fauve : pot bleu, vases et bouquets en orange et bleu vifs sur fond flamboyant — Minas Avetisyan"
                loading="lazy" decoding="async" style="aspect-ratio:1800/1627;" />
         </button>
-        <figcaption><span class="p-num">xiii.</span><span class="p-cap">Nature morte fauve</span></figcaption>
+        <figcaption><span class="p-num">xiii.</span><span class="p-cap" data-i18n="f.minas.13">Nature morte fauve</span></figcaption>
       </figure>
     </div>
   </section>
 
-  <div class="between reveal" aria-hidden="true"><span class="di"></span> Salle III</div>
+  <div class="between reveal" aria-hidden="true"><span class="di"></span> <span data-i18n="between.3">Salle III</span></div>
 
   <!-- ============ SALLE III — MOVSES ============ -->
-  <section class="room" id="movses" aria-labelledby="movses-h">
+  <section class="room" id="movses" aria-labelledby="movses-h" data-artist="Movses Poghosyan">
     <header class="room-head">
       <div class="rh-mark reveal" aria-hidden="true">III</div>
       <div class="rh-body">
         <p class="rh-kicker reveal" lang="hy">Մովսես Պողոսյան</p>
-        <h2 id="movses-h" class="reveal">Movses Poghosyan, <span class="em">le silence.</span></h2>
-        <p class="rh-meta reveal">Peinture contemporaine <span class="dot">◆</span> figure <span class="dot">◆</span> tempera</p>
-        <p class="rh-desc reveal d1">
+        <h2 id="movses-h" class="reveal" data-i18n="room.movses.h">Movses Poghosyan, <span class="em">le silence.</span></h2>
+        <p class="rh-meta reveal" data-i18n="room.movses.meta">Peinture contemporaine <span class="dot">◆</span> figure <span class="dot">◆</span> tempera</p>
+        <p class="rh-desc reveal d1" data-i18n="room.movses.desc">
           À l'opposé du feu, un monde retenu. Des figures sculptées dans une
           <em>gamme sourde</em> — gris, ocre, ivoire — que vient trancher un seul
           rouge. Les visages, parfois <em>partagés</em> en deux, semblent suspendus
@@ -673,168 +690,168 @@ footer a:hover{ border-color:var(--pom); }
 
     <div class="layout layout-A">
       <figure class="plate span-tall reveal">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Mère et enfant</span><span class='lb-sep'>·</span>2021 — Movses Poghosyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/movses-mere-enfant-2021.jpg"
+               data-i18n-alt="a.movses.1"
                alt="Une mère enlace son enfant endormi, figures stylisées en tons sépia et ivoire — Movses Poghosyan, 2021"
                loading="lazy" decoding="async" style="aspect-ratio:1182/1600;" />
         </button>
-        <figcaption><span class="p-num">i.</span><span class="p-cap">Mère et enfant <span class="yr">· 2021</span></span></figcaption>
+        <figcaption><span class="p-num">i.</span><span class="p-cap" data-i18n="f.movses.1">Mère et enfant <span class="yr">· 2021</span></span></figcaption>
       </figure>
 
       <figure class="plate reveal d1">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Le drapé rouge</span><span class='lb-sep'>·</span>2022 — Movses Poghosyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/movses-robe-rouge-2022.jpg"
+               data-i18n-alt="a.movses.2"
                alt="Figure féminine au visage partagé tenant un long drapé rouge orné, sur fond clair — Movses Poghosyan, 2022"
                loading="lazy" decoding="async" style="aspect-ratio:1188/1600;" />
         </button>
-        <figcaption><span class="p-num">ii.</span><span class="p-cap">Le drapé rouge <span class="yr">· 2022</span></span></figcaption>
+        <figcaption><span class="p-num">ii.</span><span class="p-cap" data-i18n="f.movses.2">Le drapé rouge <span class="yr">· 2022</span></span></figcaption>
       </figure>
 
       <figure class="plate reveal d2">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Fratrie</span><span class='lb-sep'>·</span>2022 — Movses Poghosyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/movses-fratrie-2022.jpg"
+               data-i18n-alt="a.movses.3"
                alt="Trois figures enlacées, gris et rouge profond, visages clos et sereins — Movses Poghosyan, 2022"
                loading="lazy" decoding="async" style="aspect-ratio:1600/1599;" />
         </button>
-        <figcaption><span class="p-num">iii.</span><span class="p-cap">Fratrie <span class="yr">· 2022</span></span></figcaption>
+        <figcaption><span class="p-num">iii.</span><span class="p-cap" data-i18n="f.movses.3">Fratrie <span class="yr">· 2022</span></span></figcaption>
       </figure>
 
       <figure class="plate wide reveal">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Trois figures</span><span class='lb-sep'>·</span>Movses Poghosyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/movses-trois-femmes.jpg"
+               data-i18n-alt="a.movses.4"
                alt="Trois figures féminines en robes claires, une pomme au centre, accents rouges et noirs — Movses Poghosyan"
                loading="lazy" decoding="async" style="aspect-ratio:1600/1497;" />
         </button>
-        <figcaption><span class="p-num">iv.</span><span class="p-cap">Trois figures</span></figcaption>
+        <figcaption><span class="p-num">iv.</span><span class="p-cap" data-i18n="f.movses.4">Trois figures</span></figcaption>
       </figure>
 
       <figure class="plate span-tall reveal">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Silhouette</span><span class='lb-sep'>·</span>2023 — Movses Poghosyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/movses-silhouette-2023.jpg"
+               data-i18n-alt="a.movses.5"
                alt="Figure féminine nue très allongée, silhouette ivoire sur fond gris partagé, œuvre encadrée — Movses Poghosyan, 2023"
                loading="lazy" decoding="async" style="aspect-ratio:1291/2048;" />
         </button>
-        <figcaption><span class="p-num">v.</span><span class="p-cap">Silhouette <span class="yr">· 2023</span></span></figcaption>
+        <figcaption><span class="p-num">v.</span><span class="p-cap" data-i18n="f.movses.5">Silhouette <span class="yr">· 2023</span></span></figcaption>
       </figure>
 
       <figure class="plate reveal d1">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>La cavalière</span><span class='lb-sep'>·</span>2019 — Movses Poghosyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/movses-cavaliere-2019.jpg"
+               data-i18n-alt="a.movses.6"
                alt="Femme assise sur un cheval stylisé aux formes géométriques brunes, panneau rouge à droite — Movses Poghosyan, 2019"
                loading="lazy" decoding="async" style="aspect-ratio:2036/2048;" />
         </button>
-        <figcaption><span class="p-num">vi.</span><span class="p-cap">La cavalière <span class="yr">· 2019</span></span></figcaption>
+        <figcaption><span class="p-num">vi.</span><span class="p-cap" data-i18n="f.movses.6">La cavalière <span class="yr">· 2019</span></span></figcaption>
       </figure>
 
       <figure class="plate reveal d2">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>La robe grise</span><span class='lb-sep'>·</span>Movses Poghosyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/movses-robe-grise.jpg"
+               data-i18n-alt="a.movses.7"
                alt="Figure debout au visage en croissant, robe géométrique grise et jambes effilées, fond bicolore — Movses Poghosyan"
                loading="lazy" decoding="async" style="aspect-ratio:1298/2015;" />
         </button>
-        <figcaption><span class="p-num">vii.</span><span class="p-cap">La robe grise</span></figcaption>
+        <figcaption><span class="p-num">vii.</span><span class="p-cap" data-i18n="f.movses.7">La robe grise</span></figcaption>
       </figure>
 
       <figure class="plate wide reveal">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Pastorale</span><span class='lb-sep'>·</span>2017 — Movses Poghosyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/movses-repos-2017.jpg"
+               data-i18n-alt="a.movses.8"
                alt="Figures alanguies dans l'herbe, formes cubistes en ocre et olive sur fond clair — Movses Poghosyan, 2017"
                loading="lazy" decoding="async" style="aspect-ratio:1905/1500;" />
         </button>
-        <figcaption><span class="p-num">viii.</span><span class="p-cap">Pastorale <span class="yr">· 2017</span></span></figcaption>
+        <figcaption><span class="p-num">viii.</span><span class="p-cap" data-i18n="f.movses.8">Pastorale <span class="yr">· 2017</span></span></figcaption>
       </figure>
 
       <figure class="plate wide reveal d1">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Le repos</span><span class='lb-sep'>·</span>Movses Poghosyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/movses-nu-rouge.jpg"
+               data-i18n-alt="a.movses.9"
                alt="Femme nue à demi allongée, formes grises et rouge brique découpées sur fond clair — Movses Poghosyan"
                loading="lazy" decoding="async" style="aspect-ratio:2010/1716;" />
         </button>
-        <figcaption><span class="p-num">ix.</span><span class="p-cap">Le repos</span></figcaption>
+        <figcaption><span class="p-num">ix.</span><span class="p-cap" data-i18n="f.movses.9">Le repos</span></figcaption>
       </figure>
 
       <figure class="plate reveal">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Les yeux voilés</span><span class='lb-sep'>·</span>2018 — Movses Poghosyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/movses-mains-2018.jpg"
+               data-i18n-alt="a.movses.10"
                alt="Figure grise se couvrant les yeux des bras, lèvres rouges, fond clair texturé — Movses Poghosyan, 2018"
                loading="lazy" decoding="async" style="aspect-ratio:1826/1815;" />
         </button>
-        <figcaption><span class="p-num">x.</span><span class="p-cap">Les yeux voilés <span class="yr">· 2018</span></span></figcaption>
+        <figcaption><span class="p-num">x.</span><span class="p-cap" data-i18n="f.movses.10">Les yeux voilés <span class="yr">· 2018</span></span></figcaption>
       </figure>
 
       <figure class="plate reveal d1">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Sur fond rouge</span><span class='lb-sep'>·</span>Movses Poghosyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/movses-graces-rouge.jpg"
+               data-i18n-alt="a.movses.11"
                alt="Trois figures claires aux visages clos se détachant sur un fond rouge vif — Movses Poghosyan"
                loading="lazy" decoding="async" style="aspect-ratio:1854/1857;" />
         </button>
-        <figcaption><span class="p-num">xi.</span><span class="p-cap">Sur fond rouge</span></figcaption>
+        <figcaption><span class="p-num">xi.</span><span class="p-cap" data-i18n="f.movses.11">Sur fond rouge</span></figcaption>
       </figure>
 
       <figure class="plate reveal d2">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Maternité</span><span class='lb-sep'>·</span>Movses Poghosyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/movses-maternite-rouge.jpg"
+               data-i18n-alt="a.movses.12"
                alt="Mère en robe rouge tenant son enfant, formes arrondies et cercles sur fond ocre — Movses Poghosyan"
                loading="lazy" decoding="async" style="aspect-ratio:720/1026;" />
         </button>
-        <figcaption><span class="p-num">xii.</span><span class="p-cap">Maternité</span></figcaption>
+        <figcaption><span class="p-num">xii.</span><span class="p-cap" data-i18n="f.movses.12">Maternité</span></figcaption>
       </figure>
 
       <figure class="plate wide reveal">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>La famille</span><span class='lb-sep'>·</span>2019 — Movses Poghosyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/movses-famille-2019.jpg"
+               data-i18n-alt="a.movses.13"
                alt="Famille réunie autour d'un enfant, arches et petites maisons, camaïeu d'ocres et de gris — Movses Poghosyan, 2019"
                loading="lazy" decoding="async" style="aspect-ratio:2048/1599;" />
         </button>
-        <figcaption><span class="p-num">xiii.</span><span class="p-cap">La famille <span class="yr">· 2019</span></span></figcaption>
+        <figcaption><span class="p-num">xiii.</span><span class="p-cap" data-i18n="f.movses.13">La famille <span class="yr">· 2019</span></span></figcaption>
       </figure>
 
       <figure class="plate reveal d1">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Visages</span><span class='lb-sep'>·</span>2014 — Movses Poghosyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/movses-visages-2014.jpg"
+               data-i18n-alt="a.movses.14"
                alt="Trois visages aux grands yeux disposés sur un damier d'ocres et de rouges — Movses Poghosyan, 2014"
                loading="lazy" decoding="async" style="aspect-ratio:720/785;" />
         </button>
-        <figcaption><span class="p-num">xiv.</span><span class="p-cap">Visages <span class="yr">· 2014</span></span></figcaption>
+        <figcaption><span class="p-num">xiv.</span><span class="p-cap" data-i18n="f.movses.14">Visages <span class="yr">· 2014</span></span></figcaption>
       </figure>
 
       <figure class="plate reveal d2">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Confidences</span><span class='lb-sep'>·</span>Movses Poghosyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/movses-confidences.jpg"
+               data-i18n-alt="a.movses.15"
                alt="Deux jeunes filles en grisaille, l'une chuchotant à l'oreille de l'autre — Movses Poghosyan"
                loading="lazy" decoding="async" style="aspect-ratio:743/960;" />
         </button>
-        <figcaption><span class="p-num">xv.</span><span class="p-cap">Confidences</span></figcaption>
+        <figcaption><span class="p-num">xv.</span><span class="p-cap" data-i18n="f.movses.15">Confidences</span></figcaption>
       </figure>
     </div>
   </section>
 
-  <div class="between reveal" aria-hidden="true"><span class="di"></span> Salle IV</div>
+  <div class="between reveal" aria-hidden="true"><span class="di"></span> <span data-i18n="between.4">Salle IV</span></div>
 
   <!-- ============ SALLE IV — LORENC ============ -->
-  <section class="room" id="lorenc" aria-labelledby="lorenc-h">
+  <section class="room" id="lorenc" aria-labelledby="lorenc-h" data-artist="Armen Harutyunyan « Lorenc »">
     <header class="room-head">
       <div class="rh-mark reveal" aria-hidden="true">IV</div>
       <div class="rh-body">
         <p class="rh-kicker reveal" lang="hy">Արմեն Հարությունյան</p>
-        <h2 id="lorenc-h" class="reveal">Armen Harutyunyan <span class="em">« Lorenc », la lumière.</span></h2>
-        <p class="rh-meta reveal">Peinture contemporaine <span class="dot">◆</span> paysage <span class="dot">◆</span> couteau à peindre</p>
-        <p class="rh-desc reveal d1">
+        <h2 id="lorenc-h" class="reveal" data-i18n="room.lorenc.h">Armen Harutyunyan <span class="em">« Lorenc », la lumière.</span></h2>
+        <p class="rh-meta reveal" data-i18n="room.lorenc.meta">Peinture contemporaine <span class="dot">◆</span> paysage <span class="dot">◆</span> couteau à peindre</p>
+        <p class="rh-desc reveal d1" data-i18n="room.lorenc.desc">
           La couleur revient, mais c'est celle du plein air. Au <em>couteau</em>, en
           empâtements épais, Lorenc taille la lumière des hauts plateaux&nbsp;:
           aiguilles de roche, gorges, meules d'été, rivières. La matière accroche le
@@ -845,118 +862,118 @@ footer a:hover{ border-color:var(--pom); }
 
     <div class="layout layout-A">
       <figure class="plate span-tall reveal">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Vallée, percée de lumière</span><span class='lb-sep'>·</span>Armen Harutyunyan « Lorenc »">
+        <button class="frame" type="button">
           <img src="Images/peintres/lorenc-vallee-lumiere.jpg"
+               data-i18n-alt="a.lorenc.1"
                alt="Vallée de montagne traversée par des rayons de lumière, feuillages d'automne au couteau — Lorenc"
                loading="lazy" decoding="async" style="aspect-ratio:1600/1189;" />
         </button>
-        <figcaption><span class="p-num">i.</span><span class="p-cap">Vallée, percée de lumière</span></figcaption>
+        <figcaption><span class="p-num">i.</span><span class="p-cap" data-i18n="f.lorenc.1">Vallée, percée de lumière</span></figcaption>
       </figure>
 
       <figure class="plate reveal d1">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Aiguilles de roche</span><span class='lb-sep'>·</span>Armen Harutyunyan « Lorenc »">
+        <button class="frame" type="button">
           <img src="Images/peintres/lorenc-pinacles.jpg"
+               data-i18n-alt="a.lorenc.2"
                alt="Hautes aiguilles de roche dorées sous un ciel bleu, végétation verte au premier plan, empâtements au couteau — Lorenc"
                loading="lazy" decoding="async" style="aspect-ratio:1211/1600;" />
         </button>
-        <figcaption><span class="p-num">ii.</span><span class="p-cap">Aiguilles de roche</span></figcaption>
+        <figcaption><span class="p-num">ii.</span><span class="p-cap" data-i18n="f.lorenc.2">Aiguilles de roche</span></figcaption>
       </figure>
 
       <figure class="plate reveal d2">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>La rivière au pied du roc</span><span class='lb-sep'>·</span>Armen Harutyunyan « Lorenc »">
+        <button class="frame" type="button">
           <img src="Images/peintres/lorenc-riviere.jpg"
+               data-i18n-alt="a.lorenc.3"
                alt="Rivière serpentant au pied d'un grand rocher, collines vertes et ciel d'été, peinture au couteau — Lorenc"
                loading="lazy" decoding="async" style="aspect-ratio:688/960;" />
         </button>
-        <figcaption><span class="p-num">iii.</span><span class="p-cap">La rivière au pied du roc</span></figcaption>
+        <figcaption><span class="p-num">iii.</span><span class="p-cap" data-i18n="f.lorenc.3">La rivière au pied du roc</span></figcaption>
       </figure>
 
       <figure class="plate reveal d1">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Meule de foin, ferme d'été</span><span class='lb-sep'>·</span>Armen Harutyunyan « Lorenc »">
+        <button class="frame" type="button">
           <img src="Images/peintres/lorenc-meule.jpg"
+               data-i18n-alt="a.lorenc.4"
                alt="Meule de foin dorée près d'une maison de village, arbres verts et ciel nuageux — Lorenc"
                loading="lazy" decoding="async" style="aspect-ratio:960/704;" />
         </button>
-        <figcaption><span class="p-num">iv.</span><span class="p-cap">Meule de foin, ferme d'été</span></figcaption>
+        <figcaption><span class="p-num">iv.</span><span class="p-cap" data-i18n="f.lorenc.4">Meule de foin, ferme d'été</span></figcaption>
       </figure>
 
       <figure class="plate reveal d2">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Le faucheur, hauts plateaux</span><span class='lb-sep'>·</span>Armen Harutyunyan « Lorenc »">
+        <button class="frame" type="button">
           <img src="Images/peintres/lorenc-faucheur.jpg"
+               data-i18n-alt="a.lorenc.5"
                alt="Un faucheur dans une gorge de montagne, meule d'herbe sèche et sommets bleus au loin — Lorenc"
                loading="lazy" decoding="async" style="aspect-ratio:1170/772;" />
         </button>
-        <figcaption><span class="p-num">v.</span><span class="p-cap">Le faucheur, hauts plateaux</span></figcaption>
+        <figcaption><span class="p-num">v.</span><span class="p-cap" data-i18n="f.lorenc.5">Le faucheur, hauts plateaux</span></figcaption>
       </figure>
 
       <figure class="plate reveal d3">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Gorge en automne</span><span class='lb-sep'>·</span>Armen Harutyunyan « Lorenc »">
+        <button class="frame" type="button">
           <img src="Images/peintres/lorenc-canyon.jpg"
+               data-i18n-alt="a.lorenc.6"
                alt="Gorge rocheuse aux parois ocre et rouille, rivière et feuillage d'automne doré — Lorenc"
                loading="lazy" decoding="async" style="aspect-ratio:1170/962;" />
         </button>
-        <figcaption><span class="p-num">vi.</span><span class="p-cap">Gorge en automne</span></figcaption>
+        <figcaption><span class="p-num">vi.</span><span class="p-cap" data-i18n="f.lorenc.6">Gorge en automne</span></figcaption>
       </figure>
 
       <figure class="plate span-tall reveal">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>La crête déchiquetée</span><span class='lb-sep'>·</span>Armen Harutyunyan « Lorenc »">
+        <button class="frame" type="button">
           <img src="Images/peintres/lorenc-crete-violette.jpg"
+               data-i18n-alt="a.lorenc.7"
                alt="Pic montagneux aux arêtes violettes rehaussées d'or, versant herbeux ensoleillé, empâtements au couteau — Armen Harutyunyan « Lorenc »"
                loading="lazy" decoding="async" style="aspect-ratio:777/1101;" />
         </button>
-        <figcaption><span class="p-num">vii.</span><span class="p-cap">La crête déchiquetée</span></figcaption>
+        <figcaption><span class="p-num">vii.</span><span class="p-cap" data-i18n="f.lorenc.7">La crête déchiquetée</span></figcaption>
       </figure>
 
       <figure class="plate wide reveal d1">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Monastère sur la falaise</span><span class='lb-sep'>·</span>Armen Harutyunyan « Lorenc »">
+        <button class="frame" type="button">
           <img src="Images/peintres/lorenc-monastere.jpg"
+               data-i18n-alt="a.lorenc.8"
                alt="Petite église arménienne posée sur un éperon rocheux, ciel turquoise, touches vives au couteau — Armen Harutyunyan « Lorenc »"
                loading="lazy" decoding="async" style="aspect-ratio:1144/819;" />
         </button>
-        <figcaption><span class="p-num">viii.</span><span class="p-cap">Monastère sur la falaise</span></figcaption>
+        <figcaption><span class="p-num">viii.</span><span class="p-cap" data-i18n="f.lorenc.8">Monastère sur la falaise</span></figcaption>
       </figure>
 
       <figure class="plate reveal d2">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Lac aux arbres d'or</span><span class='lb-sep'>·</span>Armen Harutyunyan « Lorenc »">
+        <button class="frame" type="button">
           <img src="Images/peintres/lorenc-lac-dore.jpg"
+               data-i18n-alt="a.lorenc.9"
                alt="Lac de montagne bordé d'arbres aux feuillages dorés, cimes enneigées à l'arrière-plan — Armen Harutyunyan « Lorenc »"
                loading="lazy" decoding="async" style="aspect-ratio:1144/769;" />
         </button>
-        <figcaption><span class="p-num">ix.</span><span class="p-cap">Lac aux arbres d'or</span></figcaption>
+        <figcaption><span class="p-num">ix.</span><span class="p-cap" data-i18n="f.lorenc.9">Lac aux arbres d'or</span></figcaption>
       </figure>
 
       <figure class="plate wide reveal">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Vallée bleue, l'heure mauve</span><span class='lb-sep'>·</span>Armen Harutyunyan « Lorenc »">
+        <button class="frame" type="button">
           <img src="Images/peintres/lorenc-vallee-bleue.jpg"
+               data-i18n-alt="a.lorenc.10"
                alt="Large vallée bleutée au crépuscule, lac et prairies, montagnes mauves dentelées — Armen Harutyunyan « Lorenc »"
                loading="lazy" decoding="async" style="aspect-ratio:1530/1021;" />
         </button>
-        <figcaption><span class="p-num">x.</span><span class="p-cap">Vallée bleue, l'heure mauve</span></figcaption>
+        <figcaption><span class="p-num">x.</span><span class="p-cap" data-i18n="f.lorenc.10">Vallée bleue, l'heure mauve</span></figcaption>
       </figure>
     </div>
   </section>
 
-  <div class="between reveal" aria-hidden="true"><span class="di"></span> Salle V</div>
+  <div class="between reveal" aria-hidden="true"><span class="di"></span> <span data-i18n="between.5">Salle V</span></div>
 
   <!-- ============ SALLE V — MATEVOS ============ -->
-  <section class="room" id="matevos" aria-labelledby="matevos-h">
+  <section class="room" id="matevos" aria-labelledby="matevos-h" data-artist="Matevos Sargsyan">
     <header class="room-head">
       <div class="rh-mark reveal" aria-hidden="true">V</div>
       <div class="rh-body">
         <p class="rh-kicker reveal" lang="hy">Մատևոս Սարգսյան</p>
-        <h2 id="matevos-h" class="reveal">Matevos Sargsyan, <span class="em">la grâce.</span></h2>
-        <p class="rh-meta reveal">Peinture contemporaine <span class="dot">◆</span> figure <span class="dot">◆</span> couteau à peindre</p>
-        <p class="rh-desc reveal d1">
+        <h2 id="matevos-h" class="reveal" data-i18n="room.matevos.h">Matevos Sargsyan, <span class="em">la grâce.</span></h2>
+        <p class="rh-meta reveal" data-i18n="room.matevos.meta">Peinture contemporaine <span class="dot">◆</span> figure <span class="dot">◆</span> couteau à peindre</p>
+        <p class="rh-desc reveal d1" data-i18n="room.matevos.desc">
           Héritier de la figure arménienne, il étire ses femmes comme des
           <em>icônes profanes</em>&nbsp;: cous allongés, visages lisses, regards
           baissés. Au couteau, chaque silhouette est sertie dans une mosaïque de
@@ -967,158 +984,158 @@ footer a:hover{ border-color:var(--pom); }
 
     <div class="layout layout-B">
       <figure class="plate reveal">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Profil à la coiffe d'or</span><span class='lb-sep'>·</span>Matevos Sargsyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/matevos-profil-dore.jpg"
+               data-i18n-alt="a.matevos.1"
                alt="Profil d'une femme au long cou, coiffe et drapé d'or au couteau, sur fond brun profond — Matevos Sargsyan"
                loading="lazy" decoding="async" style="aspect-ratio:1456/2048;" />
         </button>
-        <figcaption><span class="p-num">i.</span><span class="p-cap">Profil à la coiffe d'or</span></figcaption>
+        <figcaption><span class="p-num">i.</span><span class="p-cap" data-i18n="f.matevos.1">Profil à la coiffe d'or</span></figcaption>
       </figure>
 
       <figure class="plate reveal d1">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>La couronne et l'oiseau</span><span class='lb-sep'>·</span>Matevos Sargsyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/matevos-couronne-oiseau.jpg"
+               data-i18n-alt="a.matevos.2"
                alt="Femme stylisée au long visage et aux yeux bleus, couronne colorée et petit oiseau, sur fond vert — Matevos Sargsyan"
                loading="lazy" decoding="async" style="aspect-ratio:1463/2048;" />
         </button>
-        <figcaption><span class="p-num">ii.</span><span class="p-cap">La couronne et l'oiseau</span></figcaption>
+        <figcaption><span class="p-num">ii.</span><span class="p-cap" data-i18n="f.matevos.2">La couronne et l'oiseau</span></figcaption>
       </figure>
 
       <figure class="plate reveal">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>La fleur dans les cheveux</span><span class='lb-sep'>·</span>Matevos Sargsyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/matevos-fleur-cheveux.jpg"
+               data-i18n-alt="a.matevos.3"
                alt="Portrait d'une femme au visage allongé, fleur blanche dans les cheveux, fond ocre et vert en aplats — Matevos Sargsyan"
                loading="lazy" decoding="async" style="aspect-ratio:1703/2048;" />
         </button>
-        <figcaption><span class="p-num">iii.</span><span class="p-cap">La fleur dans les cheveux</span></figcaption>
+        <figcaption><span class="p-num">iii.</span><span class="p-cap" data-i18n="f.matevos.3">La fleur dans les cheveux</span></figcaption>
       </figure>
 
       <figure class="plate reveal d1">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Femme à la robe verte</span><span class='lb-sep'>·</span>Matevos Sargsyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/matevos-robe-verte.jpg"
+               data-i18n-alt="a.matevos.4"
                alt="Femme assise en robe et chapeau verts, regard pensif, camaïeu de verts et de bleus — Matevos Sargsyan"
                loading="lazy" decoding="async" style="aspect-ratio:1738/2048;" />
         </button>
-        <figcaption><span class="p-num">iv.</span><span class="p-cap">Femme à la robe verte</span></figcaption>
+        <figcaption><span class="p-num">iv.</span><span class="p-cap" data-i18n="f.matevos.4">Femme à la robe verte</span></figcaption>
       </figure>
 
       <figure class="plate reveal">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>La mère et l'enfant</span><span class='lb-sep'>·</span>Matevos Sargsyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/matevos-mere-enfant.jpg"
+               data-i18n-alt="a.matevos.5"
                alt="Femme en robe turquoise assise, un enfant à ses côtés, mosaïque de verts au couteau — Matevos Sargsyan"
                loading="lazy" decoding="async" style="aspect-ratio:1553/2048;" />
         </button>
-        <figcaption><span class="p-num">v.</span><span class="p-cap">La mère et l'enfant</span></figcaption>
+        <figcaption><span class="p-num">v.</span><span class="p-cap" data-i18n="f.matevos.5">La mère et l'enfant</span></figcaption>
       </figure>
 
       <figure class="plate reveal d1">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Figure dans les collines</span><span class='lb-sep'>·</span>Matevos Sargsyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/matevos-paysage-figure.jpg"
+               data-i18n-alt="a.matevos.6"
                alt="Figure féminine debout devant des collines ocre et des cyprès, ciel vert-de-gris — Matevos Sargsyan"
                loading="lazy" decoding="async" style="aspect-ratio:1570/2048;" />
         </button>
-        <figcaption><span class="p-num">vi.</span><span class="p-cap">Figure dans les collines</span></figcaption>
+        <figcaption><span class="p-num">vi.</span><span class="p-cap" data-i18n="f.matevos.6">Figure dans les collines</span></figcaption>
       </figure>
 
       <figure class="plate reveal">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Le chant de l'ange</span><span class='lb-sep'>·</span>Matevos Sargsyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/matevos-chant-ange.jpg"
+               data-i18n-alt="a.matevos.7"
                alt="Ange aux ailes vertes et dorées, longue robe pâle, fond brun chaud — Matevos Sargsyan"
                loading="lazy" decoding="async" style="aspect-ratio:808/982;" />
         </button>
-        <figcaption><span class="p-num">vii.</span><span class="p-cap">Le chant de l'ange</span></figcaption>
+        <figcaption><span class="p-num">vii.</span><span class="p-cap" data-i18n="f.matevos.7">Le chant de l'ange</span></figcaption>
       </figure>
 
       <figure class="plate reveal d1">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>L'enfantement</span><span class='lb-sep'>·</span>Matevos Sargsyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/matevos-enfantement.jpg"
+               data-i18n-alt="a.matevos.8"
                alt="Trois figures féminines enlacées dans une lumière dorée, touches au couteau — Matevos Sargsyan"
                loading="lazy" decoding="async" style="aspect-ratio:706/985;" />
         </button>
-        <figcaption><span class="p-num">viii.</span><span class="p-cap">L'enfantement</span></figcaption>
+        <figcaption><span class="p-num">viii.</span><span class="p-cap" data-i18n="f.matevos.8">L'enfantement</span></figcaption>
       </figure>
 
       <figure class="plate reveal">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Beauté contemplative</span><span class='lb-sep'>·</span>Matevos Sargsyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/matevos-beaute-contemplative.jpg"
+               data-i18n-alt="a.matevos.9"
                alt="Jeune femme au chignon, épaules nues, fond abstrait bleu et orange — Matevos Sargsyan"
                loading="lazy" decoding="async" style="aspect-ratio:703/982;" />
         </button>
-        <figcaption><span class="p-num">ix.</span><span class="p-cap">Beauté contemplative</span></figcaption>
+        <figcaption><span class="p-num">ix.</span><span class="p-cap" data-i18n="f.matevos.9">Beauté contemplative</span></figcaption>
       </figure>
 
       <figure class="plate reveal d1">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Douce beauté</span><span class='lb-sep'>·</span>Matevos Sargsyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/matevos-douce-beaute.jpg"
+               data-i18n-alt="a.matevos.10"
                alt="Femme de profil au foulard tenant un petit miroir, robe orangée, fond brun — Matevos Sargsyan"
                loading="lazy" decoding="async" style="aspect-ratio:648/982;" />
         </button>
-        <figcaption><span class="p-num">x.</span><span class="p-cap">Douce beauté</span></figcaption>
+        <figcaption><span class="p-num">x.</span><span class="p-cap" data-i18n="f.matevos.10">Douce beauté</span></figcaption>
       </figure>
 
       <figure class="plate wide reveal">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Havre de sérénité</span><span class='lb-sep'>·</span>Matevos Sargsyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/matevos-havre-serenite.jpg"
+               data-i18n-alt="a.matevos.11"
                alt="Barques échouées sur une grève dorée devant une mer bleue et des montagnes — Matevos Sargsyan"
                loading="lazy" decoding="async" style="aspect-ratio:1203/979;" />
         </button>
-        <figcaption><span class="p-num">xi.</span><span class="p-cap">Havre de sérénité</span></figcaption>
+        <figcaption><span class="p-num">xi.</span><span class="p-cap" data-i18n="f.matevos.11">Havre de sérénité</span></figcaption>
       </figure>
 
       <figure class="plate reveal d1">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Souvenir en tons chauds</span><span class='lb-sep'>·</span>Matevos Sargsyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/matevos-souvenir-tons-chauds.jpg"
+               data-i18n-alt="a.matevos.12"
                alt="Trois femmes aux foulards dans des tons chauds, une figure dorée à droite — Matevos Sargsyan"
                loading="lazy" decoding="async" style="aspect-ratio:823/979;" />
         </button>
-        <figcaption><span class="p-num">xii.</span><span class="p-cap">Souvenir en tons chauds</span></figcaption>
+        <figcaption><span class="p-num">xii.</span><span class="p-cap" data-i18n="f.matevos.12">Souvenir en tons chauds</span></figcaption>
       </figure>
 
       <figure class="plate reveal">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Femme au chapeau</span><span class='lb-sep'>·</span>Matevos Sargsyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/matevos-femme-chapeau.jpg"
+               data-i18n-alt="a.matevos.13"
                alt="Femme au chapeau tenant un fruit rouge, fond cubiste en ocres et verts — Matevos Sargsyan"
                loading="lazy" decoding="async" style="aspect-ratio:1809/2048;" />
         </button>
-        <figcaption><span class="p-num">xiii.</span><span class="p-cap">Femme au chapeau</span></figcaption>
+        <figcaption><span class="p-num">xiii.</span><span class="p-cap" data-i18n="f.matevos.13">Femme au chapeau</span></figcaption>
       </figure>
 
       <figure class="plate reveal d1">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Rêverie</span><span class='lb-sep'>·</span>Matevos Sargsyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/matevos-reverie.jpg"
+               data-i18n-alt="a.matevos.14"
                alt="Femme assise aux épaules dénudées, plante en pot, intérieur vert lumineux — Matevos Sargsyan"
                loading="lazy" decoding="async" style="aspect-ratio:1703/2048;" />
         </button>
-        <figcaption><span class="p-num">xiv.</span><span class="p-cap">Rêverie</span></figcaption>
+        <figcaption><span class="p-num">xiv.</span><span class="p-cap" data-i18n="f.matevos.14">Rêverie</span></figcaption>
       </figure>
     </div>
   </section>
 
-  <div class="between reveal" aria-hidden="true"><span class="di"></span> Salle VI</div>
+  <div class="between reveal" aria-hidden="true"><span class="di"></span> <span data-i18n="between.6">Salle VI</span></div>
 
   <!-- ============ SALLE VI — SHAHEN ============ -->
-  <section class="room" id="shahen" aria-labelledby="shahen-h">
+  <section class="room" id="shahen" aria-labelledby="shahen-h" data-artist="Shahen Ordubekyan">
     <header class="room-head">
       <div class="rh-mark reveal" aria-hidden="true">VI</div>
       <div class="rh-body">
         <p class="rh-kicker reveal" lang="hy">Շահեն Օրդուբեկյան</p>
-        <h2 id="shahen-h" class="reveal">Shahen Ordubekyan, <span class="em">la floraison.</span></h2>
-        <p class="rh-meta reveal">Peinture contemporaine <span class="dot">◆</span> nature morte &amp; paysage <span class="dot">◆</span> couteau à peindre</p>
-        <p class="rh-desc reveal d1">
+        <h2 id="shahen-h" class="reveal" data-i18n="room.shahen.h">Shahen Ordubekyan, <span class="em">la floraison.</span></h2>
+        <p class="rh-meta reveal" data-i18n="room.shahen.meta">Peinture contemporaine <span class="dot">◆</span> nature morte &amp; paysage <span class="dot">◆</span> couteau à peindre</p>
+        <p class="rh-desc reveal d1" data-i18n="room.shahen.desc">
           Ici la couleur explose. Au couteau, en empâtements généreux, il dresse
           des bouquets et des jardins qui <em>débordent du cadre</em> — pivoines,
           lilas, mimosas, pavots. La fleur n'est qu'un prétexte&nbsp;: ce qu'il
@@ -1129,137 +1146,595 @@ footer a:hover{ border-color:var(--pom); }
 
     <div class="layout layout-C">
       <figure class="plate reveal">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Mimosa en lumière</span><span class='lb-sep'>·</span>Shahen Ordubekyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/shahen-mimosa.jpg"
+               data-i18n-alt="a.shahen.1"
                alt="Bouquet de mimosa jaune éclatant dans un vase clair, fond bleu-violet sombre, empâtements au couteau — Shahen Ordubekyan"
                loading="lazy" decoding="async" style="aspect-ratio:1650/2048;" />
         </button>
-        <figcaption><span class="p-num">i.</span><span class="p-cap">Mimosa en lumière</span></figcaption>
+        <figcaption><span class="p-num">i.</span><span class="p-cap" data-i18n="f.shahen.1">Mimosa en lumière</span></figcaption>
       </figure>
 
       <figure class="plate reveal d1">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Roses au vase bleu</span><span class='lb-sep'>·</span>Shahen Ordubekyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/shahen-roses-vase-bleu.jpg"
+               data-i18n-alt="a.shahen.2"
                alt="Roses rouge et jaune dans un vase bleu éclaté, fond bleu, peinture au couteau — Shahen Ordubekyan"
                loading="lazy" decoding="async" style="aspect-ratio:1638/2048;" />
         </button>
-        <figcaption><span class="p-num">ii.</span><span class="p-cap">Roses au vase bleu</span></figcaption>
+        <figcaption><span class="p-num">ii.</span><span class="p-cap" data-i18n="f.shahen.2">Roses au vase bleu</span></figcaption>
       </figure>
 
       <figure class="plate reveal d2">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Lilas au pichet de terre</span><span class='lb-sep'>·</span>Shahen Ordubekyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/shahen-lilas.jpg"
+               data-i18n-alt="a.shahen.3"
                alt="Gerbe de lilas violet dans un pichet de terre cuite, fond gris-bleu lumineux — Shahen Ordubekyan"
                loading="lazy" decoding="async" style="aspect-ratio:1487/2048;" />
         </button>
-        <figcaption><span class="p-num">iii.</span><span class="p-cap">Lilas au pichet de terre</span></figcaption>
+        <figcaption><span class="p-num">iii.</span><span class="p-cap" data-i18n="f.shahen.3">Lilas au pichet de terre</span></figcaption>
       </figure>
 
       <figure class="plate reveal">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Tulipes près de la clôture</span><span class='lb-sep'>·</span>Shahen Ordubekyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/shahen-tulipes-cloture.jpg"
+               data-i18n-alt="a.shahen.4"
                alt="Tulipes rouges et fleurs des champs devant une clôture de bois, jardin multicolore au couteau — Shahen Ordubekyan"
                loading="lazy" decoding="async" style="aspect-ratio:1727/2048;" />
         </button>
-        <figcaption><span class="p-num">iv.</span><span class="p-cap">Tulipes près de la clôture</span></figcaption>
+        <figcaption><span class="p-num">iv.</span><span class="p-cap" data-i18n="f.shahen.4">Tulipes près de la clôture</span></figcaption>
       </figure>
 
       <figure class="plate reveal d1">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Pavots devant la montagne</span><span class='lb-sep'>·</span>Shahen Ordubekyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/shahen-pavots-montagne.jpg"
+               data-i18n-alt="a.shahen.5"
                alt="Buisson de pavots rouges devant des montagnes mauves, prairie verte et jaune — Shahen Ordubekyan"
                loading="lazy" decoding="async" style="aspect-ratio:1663/2048;" />
         </button>
-        <figcaption><span class="p-num">v.</span><span class="p-cap">Pavots devant la montagne</span></figcaption>
+        <figcaption><span class="p-num">v.</span><span class="p-cap" data-i18n="f.shahen.5">Pavots devant la montagne</span></figcaption>
       </figure>
 
       <figure class="plate reveal d2">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Village en automne</span><span class='lb-sep'>·</span>Shahen Ordubekyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/shahen-village-automne.jpg"
+               data-i18n-alt="a.shahen.6"
                alt="Maison de village aux toits rouges entourée d'arbres d'automne orangés, ciel doré au couteau — Shahen Ordubekyan"
                loading="lazy" decoding="async" style="aspect-ratio:1677/2048;" />
         </button>
-        <figcaption><span class="p-num">vi.</span><span class="p-cap">Village en automne</span></figcaption>
+        <figcaption><span class="p-num">vi.</span><span class="p-cap" data-i18n="f.shahen.6">Village en automne</span></figcaption>
       </figure>
 
       <figure class="plate reveal">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Bouquet d'été</span><span class='lb-sep'>·</span>Shahen Ordubekyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/shahen-bouquet-vase-bleu.jpg"
+               data-i18n-alt="a.shahen.7"
                alt="Bouquet champêtre dans un haut vase bleu, roses et fleurs jaunes, fond vert, empâtements au couteau — Shahen Ordubekyan"
                loading="lazy" decoding="async" style="aspect-ratio:1702/2048;" />
         </button>
-        <figcaption><span class="p-num">vii.</span><span class="p-cap">Bouquet d'été</span></figcaption>
+        <figcaption><span class="p-num">vii.</span><span class="p-cap" data-i18n="f.shahen.7">Bouquet d'été</span></figcaption>
       </figure>
 
       <figure class="plate reveal d1">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Fleurs au pichet blanc</span><span class='lb-sep'>·</span>Shahen Ordubekyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/shahen-pichet-blanc.jpg"
+               data-i18n-alt="a.shahen.8"
                alt="Gerbe de fleurs violettes et bleues dans un pichet blanc, fond jaune et bleu lumineux — Shahen Ordubekyan"
                loading="lazy" decoding="async" style="aspect-ratio:789/1092;" />
         </button>
-        <figcaption><span class="p-num">viii.</span><span class="p-cap">Fleurs au pichet blanc</span></figcaption>
+        <figcaption><span class="p-num">viii.</span><span class="p-cap" data-i18n="f.shahen.8">Fleurs au pichet blanc</span></figcaption>
       </figure>
 
       <figure class="plate reveal d2">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Lilas et fruits</span><span class='lb-sep'>·</span>Shahen Ordubekyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/shahen-lilas-argent.jpg"
+               data-i18n-alt="a.shahen.9"
                alt="Lilas mauve dans un vase ouvragé, fruits posés sur la table, fond ocre doré — Shahen Ordubekyan"
                loading="lazy" decoding="async" style="aspect-ratio:714/1099;" />
         </button>
-        <figcaption><span class="p-num">ix.</span><span class="p-cap">Lilas et fruits</span></figcaption>
+        <figcaption><span class="p-num">ix.</span><span class="p-cap" data-i18n="f.shahen.9">Lilas et fruits</span></figcaption>
       </figure>
 
       <figure class="plate reveal">
-        <button class="frame" type="button"
-          data-cap="<span class='lb-art'>Nature morte bleue aux fruits</span><span class='lb-sep'>·</span>Shahen Ordubekyan">
+        <button class="frame" type="button">
           <img src="Images/peintres/shahen-vase-bleu-fruits.jpg"
+               data-i18n-alt="a.shahen.10"
                alt="Vase bleu fleuri et fruits — pommes et poire — dans une harmonie de bleus profonds — Shahen Ordubekyan"
                loading="lazy" decoding="async" style="aspect-ratio:912/1101;" />
         </button>
-        <figcaption><span class="p-num">x.</span><span class="p-cap">Nature morte bleue aux fruits</span></figcaption>
+        <figcaption><span class="p-num">x.</span><span class="p-cap" data-i18n="f.shahen.10">Nature morte bleue aux fruits</span></figcaption>
       </figure>
     </div>
   </section>
 
   <!-- ============ CODA ============ -->
   <section class="coda">
-    <blockquote class="reveal">Une terre,<br>traduite <span class="em">en couleur.</span></blockquote>
-    <p class="src reveal d1"><span class="hy" lang="hy">Գույն</span> — Arménie</p>
+    <blockquote class="reveal" data-i18n="coda.q">Une terre,<br>traduite <span class="em">en couleur.</span></blockquote>
+    <p class="src reveal d1" data-i18n="coda.src"><span class="hy" lang="hy">Գույն</span> — Arménie</p>
   </section>
 
   <footer>
-    <span>Arméniens de Lausanne — Revue communautaire</span>
-    <span><a href="index.html#culture">← Retour à la revue</a></span>
+    <span data-i18n="footer.brand">Arméniens de Lausanne — Revue communautaire</span>
+    <span><a href="index.html#culture" data-i18n="footer.back">← Retour à la revue</a></span>
   </footer>
 
 </div>
 
 <!-- ============ LIGHTBOX ============ -->
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Œuvre agrandie">
-  <button class="lb-close" id="lbClose" type="button" aria-label="Fermer">
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" data-i18n-aria="lb.dialog" aria-label="Œuvre agrandie">
+  <button class="lb-close" id="lbClose" type="button" data-i18n-aria="lb.close" aria-label="Fermer">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/></svg>
   </button>
   <div class="lb-stage">
     <img class="lb-img" id="lbImg" src="" alt="" />
     <p class="lb-cap" id="lbCap"></p>
   </div>
-  <button class="lb-btn lb-prev" id="lbPrev" type="button" aria-label="Œuvre précédente">
+  <button class="lb-btn lb-prev" id="lbPrev" type="button" data-i18n-aria="lb.prev" aria-label="Œuvre précédente">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M15 5l-7 7 7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </button>
-  <button class="lb-btn lb-next" id="lbNext" type="button" aria-label="Œuvre suivante">
+  <button class="lb-btn lb-next" id="lbNext" type="button" data-i18n-aria="lb.next" aria-label="Œuvre suivante">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </button>
   <p class="lb-count" id="lbCount"></p>
 </div>
+
+<!-- ============ I18N (FR / EN / HY) ============ -->
+<script>
+(function(){
+  "use strict";
+  var STORAGE_KEY = "alausanne.lang";
+
+  // FR is the markup baseline (captured below); only EN + HY are stored here.
+  var DICT = {
+    en: {
+      "meta.title": "What Color Says About Us — Six Armenian Painters",
+      "meta.desc": "Gallery: six Armenian painters, six temperaments of color — Saryan's sun, Minas Avetisyan's fire, Movses Poghosyan's silence, Lorenc's light, Matevos Sargsyan's grace, Shahen Ordubekyan's bloom.",
+      "lang.group": "Language",
+      "mh.mark": "◇ Review",
+      "mh.section": "Painting — VIII",
+      "hero.l1": "What color",
+      "hero.l2": "says about us.",
+      "hero.lead": "Six painters, six ways of saying Armenia&nbsp;: the <em>sun</em> of Martiros Saryan, the <em>fire</em> that sets the canvas ablaze, the <em>silence</em> of suspended figures, the raw <em>light</em> of the high plateaus, the <em>grace</em> of elongated figures, the overflowing <em>bloom</em> of bouquets. One same land, translated into color.",
+      "index.aria": "The six painters",
+      "idx.saryan.meta": "1880 — 1972 · the sun",
+      "idx.saryan.word": "The sun",
+      "idx.minas.meta": "1928 — 1975 · the fire",
+      "idx.minas.word": "The fire",
+      "idx.movses.meta": "Contemporary painting · the silence",
+      "idx.movses.word": "The silence",
+      "idx.lorenc.meta": "Contemporary painting · the light",
+      "idx.lorenc.word": "The light",
+      "idx.matevos.meta": "Contemporary painting · the grace",
+      "idx.matevos.word": "The grace",
+      "idx.shahen.meta": "Contemporary painting · the bloom",
+      "idx.shahen.word": "The bloom",
+      "room.saryan.h": "Martiros Saryan, <span class=\"em\">the sun.</span>",
+      "room.saryan.meta": "1880 — 1972 <span class=\"dot\">◆</span> Nor Nakhichevan → Yerevan <span class=\"dot\">◆</span> founder of the Armenian school",
+      "room.saryan.desc": "The patriarch of modern Armenian painting. From his travels in the East — Egypt, Persia — he brought back <em>bold flat colors</em> and a burning light, then turned them toward his own land&nbsp;: Ararat, the golden villages, the mosaic mountains. In his hands, Armenia becomes <em>sun</em>.",
+      "room.minas.h": "Minas Avetisyan, <span class=\"em\">the fire.</span>",
+      "room.minas.meta": "1928 — 1975 <span class=\"dot\">◆</span> Jajur, Armenia <span class=\"dot\">◆</span> modernism",
+      "room.minas.desc": "A master of Armenian modernism, dead at forty-seven. He sets the canvas ablaze&nbsp;: ember reds, oranges, bold blues laid in flat planes. Under his brush, a village of domed houses becomes a <em>quiet wildfire</em>.",
+      "room.movses.h": "Movses Poghosyan, <span class=\"em\">the silence.</span>",
+      "room.movses.meta": "Contemporary painting <span class=\"dot\">◆</span> figure <span class=\"dot\">◆</span> tempera",
+      "room.movses.desc": "The opposite of fire&nbsp;: a restrained world. Figures sculpted in a <em>muted palette</em> — gray, ochre, ivory — cut through by a single red. The faces, sometimes <em>split</em> in two, seem suspended outside time, between icon and dream.",
+      "room.lorenc.h": "Armen Harutyunyan <span class=\"em\">“Lorenc”, the light.</span>",
+      "room.lorenc.meta": "Contemporary painting <span class=\"dot\">◆</span> landscape <span class=\"dot\">◆</span> palette knife",
+      "room.lorenc.desc": "Color returns, but it is the color of open air. With the <em>knife</em>, in thick impasto, Lorenc carves the light of the high plateaus&nbsp;: rock spires, gorges, summer haystacks, rivers. The paint catches the sun and <em>vibrates</em> like a landscape seen through half-closed eyes.",
+      "room.matevos.h": "Matevos Sargsyan, <span class=\"em\">the grace.</span>",
+      "room.matevos.meta": "Contemporary painting <span class=\"dot\">◆</span> figure <span class=\"dot\">◆</span> palette knife",
+      "room.matevos.desc": "An heir to the Armenian figure, he stretches his women like <em>secular icons</em>&nbsp;: elongated necks, smooth faces, lowered gazes. With the knife, each silhouette is set into a mosaic of greens, ochres and blues — a grace <em>sculpted in the paint</em>.",
+      "room.shahen.h": "Shahen Ordubekyan, <span class=\"em\">the bloom.</span>",
+      "room.shahen.meta": "Contemporary painting <span class=\"dot\">◆</span> still life &amp; landscape <span class=\"dot\">◆</span> palette knife",
+      "room.shahen.desc": "Here color explodes. With the knife, in generous impasto, he raises bouquets and gardens that <em>spill beyond the frame</em> — peonies, lilacs, mimosas, poppies. The flower is only a pretext&nbsp;: what he paints is the <em>light caught within it</em>, vivid, almost sonorous.",
+      "between.2": "Room II", "between.3": "Room III", "between.4": "Room IV", "between.5": "Room V", "between.6": "Room VI",
+      "coda.q": "One land,<br>translated <span class=\"em\">into color.</span>",
+      "coda.src": "<span class=\"hy\" lang=\"hy\">Գույն</span> — Armenia",
+      "footer.brand": "Armenians of Lausanne — Community review",
+      "footer.back": "← Back to the review",
+      "lb.dialog": "Enlarged artwork", "lb.close": "Close", "lb.prev": "Previous artwork", "lb.next": "Next artwork",
+
+      "f.saryan.1": "<em>“Armenia”</em> <span class=\"yr\">· 1923</span>",
+      "a.saryan.1": "Monumental Armenian landscape: golden gorges, cypresses, a round of women and mauve mountains — Martiros Saryan, 1923",
+      "f.saryan.2": "Ararat",
+      "a.saryan.2": "Blue Mount Ararat above the plain, pastel tones and free brushwork — Martiros Saryan",
+      "f.saryan.3": "Mountains of Armenia",
+      "a.saryan.3": "Mountains of Armenia in a checkerboard of vivid colors, a yoke of oxen plowing — Martiros Saryan",
+      "f.saryan.4": "Portrait of Garegin Levonian <span class=\"yr\">· 1912</span>",
+      "a.saryan.4": "Cubo-futurist portrait of a mustachioed man, blue and ochre facets — Martiros Saryan, 1912",
+      "f.saryan.5": "The Karmravor Church <span class=\"yr\">· 7th c.</span>",
+      "a.saryan.5": "Small Armenian church with a red dome in a golden village, cows in the foreground — Martiros Saryan",
+      "f.saryan.6": "Walking Woman <span class=\"yr\">· 1911</span>",
+      "a.saryan.6": "Woman draped in blue walking before a palm tree, brilliant flat yellows — Martiros Saryan, 1911",
+      "f.saryan.7": "Egyptian Masks",
+      "a.saryan.7": "Brightly colored Egyptian masks aligned on a gray background — Martiros Saryan",
+      "f.saryan.8": "Persian Woman",
+      "a.saryan.8": "Face of a Persian woman in a white veil, features outlined in black on an ochre ground — Martiros Saryan",
+      "f.saryan.9": "Mules Laden with Hay",
+      "a.saryan.9": "Two mules laden with green hay on yellow earth, blue shadows — Martiros Saryan",
+
+      "f.minas.1": "<em>“Conversation”</em> <span class=\"yr\">· 1971</span>",
+      "a.minas.1": "Armenian village of domed houses, incandescent reds and oranges, two figures under a tree — Minas Avetisyan, 1971",
+      "f.minas.2": "<em>“Still Life”</em> <span class=\"yr\">· 1961</span>",
+      "a.minas.2": "Fauvist still life: blue vase and branches on an orange ground — Minas Avetisyan, gouache, 1961",
+      "f.minas.3": "Portrait of a Woman",
+      "a.minas.3": "Expressionist portrait of a woman with blue hair on an orange and green ground — Minas Avetisyan",
+      "f.minas.4": "Churning the Butter <span class=\"yr\">· 1972</span>",
+      "a.minas.4": "Three women churning butter before a house, warm tones of earth and red — Minas Avetisyan, 1972",
+      "f.minas.5": "Armenian Village",
+      "a.minas.5": "Armenian village of round houses, two figures and a tree, orange light — Minas Avetisyan",
+      "f.minas.6": "<em>“Self-Portrait”</em> <span class=\"yr\">· 1960</span>",
+      "a.minas.6": "1960 self-portrait of the painter Minas Avetisyan, vivid colors",
+      "f.minas.7": "Ararat <span class=\"yr\">· 1961</span>",
+      "a.minas.7": "Twin-peaked Mount Ararat under a mauve sky, pink and bright-orange foothills — Minas Avetisyan, 1961",
+      "f.minas.8": "Village Houses",
+      "a.minas.8": "Domed Armenian houses, incandescent reds and oranges, two figures by a tree — Minas Avetisyan",
+      "f.minas.9": "Young Woman in a Blue Shawl",
+      "a.minas.9": "Fauvist portrait of a young woman draped in blue, red hair, on an orange ground — Minas Avetisyan",
+      "f.minas.10": "At the Window",
+      "a.minas.10": "Young woman with blue hair leaning at a window, brilliant yellow and orange ground — Minas Avetisyan",
+      "f.minas.11": "Portrait of a Young Woman <span class=\"yr\">· 1972</span>",
+      "a.minas.11": "Portrait of a dark-haired young woman in a yellow bodice, red necklace, gray and yellow ground — Minas Avetisyan, 1972",
+      "f.minas.12": "The Old Man",
+      "a.minas.12": "Bearded old man seated on a woven chair, green jacket, light ground and red drape — Minas Avetisyan",
+      "f.minas.13": "Fauvist Still Life",
+      "a.minas.13": "Fauvist still life: blue pot, vases and bouquets in vivid orange and blue on a blazing ground — Minas Avetisyan",
+
+      "f.movses.1": "Mother and Child <span class=\"yr\">· 2021</span>",
+      "a.movses.1": "A mother embraces her sleeping child, stylized figures in sepia and ivory tones — Movses Poghosyan, 2021",
+      "f.movses.2": "The Red Drape <span class=\"yr\">· 2022</span>",
+      "a.movses.2": "Female figure with a split face holding a long ornate red drape, on a light ground — Movses Poghosyan, 2022",
+      "f.movses.3": "Siblings <span class=\"yr\">· 2022</span>",
+      "a.movses.3": "Three intertwined figures, gray and deep red, closed and serene faces — Movses Poghosyan, 2022",
+      "f.movses.4": "Three Figures",
+      "a.movses.4": "Three female figures in pale dresses, an apple at the center, red and black accents — Movses Poghosyan",
+      "f.movses.5": "Silhouette <span class=\"yr\">· 2023</span>",
+      "a.movses.5": "Greatly elongated nude female figure, ivory silhouette on a split gray ground, framed work — Movses Poghosyan, 2023",
+      "f.movses.6": "The Horsewoman <span class=\"yr\">· 2019</span>",
+      "a.movses.6": "Woman seated on a stylized horse of brown geometric forms, red panel at right — Movses Poghosyan, 2019",
+      "f.movses.7": "The Gray Dress",
+      "a.movses.7": "Standing figure with a crescent face, gray geometric dress and tapered legs, two-tone ground — Movses Poghosyan",
+      "f.movses.8": "Pastoral <span class=\"yr\">· 2017</span>",
+      "a.movses.8": "Languid figures in the grass, cubist forms in ochre and olive on a light ground — Movses Poghosyan, 2017",
+      "f.movses.9": "Repose",
+      "a.movses.9": "Half-reclining nude woman, gray and brick-red forms cut out on a light ground — Movses Poghosyan",
+      "f.movses.10": "The Veiled Eyes <span class=\"yr\">· 2018</span>",
+      "a.movses.10": "Gray figure covering its eyes with its arms, red lips, light textured ground — Movses Poghosyan, 2018",
+      "f.movses.11": "On a Red Ground",
+      "a.movses.11": "Three pale figures with closed faces standing out against a bright red ground — Movses Poghosyan",
+      "f.movses.12": "Motherhood",
+      "a.movses.12": "Mother in a red dress holding her child, rounded forms and circles on an ochre ground — Movses Poghosyan",
+      "f.movses.13": "The Family <span class=\"yr\">· 2019</span>",
+      "a.movses.13": "Family gathered around a child, arches and little houses, a monochrome of ochres and grays — Movses Poghosyan, 2019",
+      "f.movses.14": "Faces <span class=\"yr\">· 2014</span>",
+      "a.movses.14": "Three large-eyed faces set on a checkerboard of ochres and reds — Movses Poghosyan, 2014",
+      "f.movses.15": "Confidences",
+      "a.movses.15": "Two young girls in grisaille, one whispering in the other's ear — Movses Poghosyan",
+
+      "f.lorenc.1": "Valley, Pierced by Light",
+      "a.lorenc.1": "Mountain valley crossed by rays of light, autumn foliage worked with the knife — Lorenc",
+      "f.lorenc.2": "Rock Spires",
+      "a.lorenc.2": "Tall golden rock spires under a blue sky, green vegetation in the foreground, knife impasto — Lorenc",
+      "f.lorenc.3": "The River at the Foot of the Rock",
+      "a.lorenc.3": "River winding at the foot of a great rock, green hills and a summer sky, knife painting — Lorenc",
+      "f.lorenc.4": "Haystack, Summer Farm",
+      "a.lorenc.4": "Golden haystack near a village house, green trees and a cloudy sky — Lorenc",
+      "f.lorenc.5": "The Mower, High Plateaus",
+      "a.lorenc.5": "A mower in a mountain gorge, a stack of dry grass and blue summits in the distance — Lorenc",
+      "f.lorenc.6": "Gorge in Autumn",
+      "a.lorenc.6": "Rocky gorge with ochre and rust-colored walls, a river and golden autumn foliage — Lorenc",
+      "f.lorenc.7": "The Jagged Ridge",
+      "a.lorenc.7": "Mountain peak with violet ridges touched with gold, a sunlit grassy slope, knife impasto — Armen Harutyunyan “Lorenc”",
+      "f.lorenc.8": "Monastery on the Cliff",
+      "a.lorenc.8": "Small Armenian church set on a rocky spur, turquoise sky, lively knife strokes — Armen Harutyunyan “Lorenc”",
+      "f.lorenc.9": "Lake with Golden Trees",
+      "a.lorenc.9": "Mountain lake lined with golden-leaved trees, snowy peaks in the background — Armen Harutyunyan “Lorenc”",
+      "f.lorenc.10": "Blue Valley, the Mauve Hour",
+      "a.lorenc.10": "Broad bluish valley at dusk, a lake and meadows, jagged mauve mountains — Armen Harutyunyan “Lorenc”",
+
+      "f.matevos.1": "Profile with a Golden Headdress",
+      "a.matevos.1": "Profile of a long-necked woman, golden headdress and drape worked with the knife, on a deep brown ground — Matevos Sargsyan",
+      "f.matevos.2": "The Crown and the Bird",
+      "a.matevos.2": "Stylized woman with a long face and blue eyes, a colorful crown and a small bird, on a green ground — Matevos Sargsyan",
+      "f.matevos.3": "The Flower in Her Hair",
+      "a.matevos.3": "Portrait of a woman with an elongated face, a white flower in her hair, flat ochre and green ground — Matevos Sargsyan",
+      "f.matevos.4": "Woman in a Green Dress",
+      "a.matevos.4": "Seated woman in a green dress and hat, a pensive gaze, a monochrome of greens and blues — Matevos Sargsyan",
+      "f.matevos.5": "Mother and Child",
+      "a.matevos.5": "Woman in a turquoise dress seated, a child at her side, a mosaic of greens worked with the knife — Matevos Sargsyan",
+      "f.matevos.6": "Figure in the Hills",
+      "a.matevos.6": "Female figure standing before ochre hills and cypresses, a gray-green sky — Matevos Sargsyan",
+      "f.matevos.7": "The Angel's Song",
+      "a.matevos.7": "Angel with green and golden wings, a long pale robe, warm brown ground — Matevos Sargsyan",
+      "f.matevos.8": "The Birthing",
+      "a.matevos.8": "Three female figures intertwined in a golden light, knife strokes — Matevos Sargsyan",
+      "f.matevos.9": "Contemplative Beauty",
+      "a.matevos.9": "Young woman with a chignon, bare shoulders, abstract blue and orange ground — Matevos Sargsyan",
+      "f.matevos.10": "Gentle Beauty",
+      "a.matevos.10": "Woman in profile with a headscarf holding a small mirror, an orange dress, brown ground — Matevos Sargsyan",
+      "f.matevos.11": "Haven of Serenity",
+      "a.matevos.11": "Boats beached on a golden shore before a blue sea and mountains — Matevos Sargsyan",
+      "f.matevos.12": "Memory in Warm Tones",
+      "a.matevos.12": "Three women in headscarves in warm tones, a golden figure at right — Matevos Sargsyan",
+      "f.matevos.13": "Woman with a Hat",
+      "a.matevos.13": "Woman with a hat holding a red fruit, cubist ground in ochres and greens — Matevos Sargsyan",
+      "f.matevos.14": "Reverie",
+      "a.matevos.14": "Seated woman with bare shoulders, a potted plant, a luminous green interior — Matevos Sargsyan",
+
+      "f.shahen.1": "Mimosa in Light",
+      "a.shahen.1": "Bouquet of brilliant yellow mimosa in a pale vase, dark blue-violet ground, knife impasto — Shahen Ordubekyan",
+      "f.shahen.2": "Roses in a Blue Vase",
+      "a.shahen.2": "Red and yellow roses in a vivid blue vase, blue ground, knife painting — Shahen Ordubekyan",
+      "f.shahen.3": "Lilacs in an Earthenware Jug",
+      "a.shahen.3": "Spray of violet lilac in a terracotta jug, a luminous gray-blue ground — Shahen Ordubekyan",
+      "f.shahen.4": "Tulips by the Fence",
+      "a.shahen.4": "Red tulips and wildflowers before a wooden fence, a multicolored garden worked with the knife — Shahen Ordubekyan",
+      "f.shahen.5": "Poppies Before the Mountain",
+      "a.shahen.5": "Bush of red poppies before mauve mountains, a green and yellow meadow — Shahen Ordubekyan",
+      "f.shahen.6": "Village in Autumn",
+      "a.shahen.6": "Red-roofed village house surrounded by orange autumn trees, a golden sky worked with the knife — Shahen Ordubekyan",
+      "f.shahen.7": "Summer Bouquet",
+      "a.shahen.7": "Country bouquet in a tall blue vase, roses and yellow flowers, green ground, knife impasto — Shahen Ordubekyan",
+      "f.shahen.8": "Flowers in a White Jug",
+      "a.shahen.8": "Spray of violet and blue flowers in a white jug, a luminous yellow and blue ground — Shahen Ordubekyan",
+      "f.shahen.9": "Lilacs and Fruit",
+      "a.shahen.9": "Mauve lilac in an ornate vase, fruit set on the table, a golden ochre ground — Shahen Ordubekyan",
+      "f.shahen.10": "Blue Still Life with Fruit",
+      "a.shahen.10": "Blue flowered vase and fruit — apples and a pear — in a harmony of deep blues — Shahen Ordubekyan"
+    },
+    hy: {
+      "meta.title": "Ի՞նչ է գույնն ասում մեր մասին — Վեց հայ նկարիչ",
+      "meta.desc": "Պատկերասրահ՝ վեց հայ նկարիչ, գույնի վեց խառնվածք — Սարյանի արևը, Մինաս Ավետիսյանի կրակը, Մովսես Պողոսյանի լռությունը, Լորենցի լույսը, Մատևոս Սարգսյանի շնորհը, Շահեն Օրդուբեկյանի ծաղկումը։",
+      "lang.group": "Լեզու",
+      "mh.mark": "◇ Հանդես",
+      "mh.section": "Գեղանկար — VIII",
+      "hero.l1": "Ինչ է գույնը",
+      "hero.l2": "ասում մեր մասին։",
+      "hero.lead": "Վեց նկարիչ, Հայաստանն ասելու վեց եղանակ. Մարտիրոս Սարյանի <em>արևը</em>, կտավը բռնկող <em>կրակը</em>, կախված կերպարների <em>լռությունը</em>, բարձրավանդակների կոշտ <em>լույսը</em>, երկարաձիգ կերպարների <em>շնորհը</em>, ծաղկեփնջերի վխտացող <em>ծաղկումը</em>։ Միևնույն հողը՝ թարգմանված գույնի։",
+      "index.aria": "Վեց նկարիչները",
+      "idx.saryan.meta": "1880 — 1972 · արևը",
+      "idx.saryan.word": "Արևը",
+      "idx.minas.meta": "1928 — 1975 · կրակը",
+      "idx.minas.word": "Կրակը",
+      "idx.movses.meta": "Ժամանակակից գեղանկար · լռությունը",
+      "idx.movses.word": "Լռությունը",
+      "idx.lorenc.meta": "Ժամանակակից գեղանկար · լույսը",
+      "idx.lorenc.word": "Լույսը",
+      "idx.matevos.meta": "Ժամանակակից գեղանկար · շնորհը",
+      "idx.matevos.word": "Շնորհը",
+      "idx.shahen.meta": "Ժամանակակից գեղանկար · ծաղկումը",
+      "idx.shahen.word": "Ծաղկումը",
+      "room.saryan.h": "Մարտիրոս Սարյան, <span class=\"em\">արևը։</span>",
+      "room.saryan.meta": "1880 — 1972 <span class=\"dot\">◆</span> Նոր Նախիջևան → Երևան <span class=\"dot\">◆</span> հայկական դպրոցի հիմնադիր",
+      "room.saryan.desc": "Ժամանակակից հայ գեղանկարի նահապետը։ Արևելք կատարած ճամփորդություններից — Եգիպտոս, Պարսկաստան — նա բերեց <em>զուտ գունաբծեր</em> և այրող լույս, ապա դարձրեց դեպի իր հողը՝ Արարատը, ոսկեգույն գյուղերը, խճանկար լեռները։ Նրա մոտ Հայաստանը դառնում է <em>արև</em>։",
+      "room.minas.h": "Մինաս Ավետիսյան, <span class=\"em\">կրակը։</span>",
+      "room.minas.meta": "1928 — 1975 <span class=\"dot\">◆</span> Ջաջուռ, Հայաստան <span class=\"dot\">◆</span> մոդեռնիզմ",
+      "room.minas.desc": "Հայ մոդեռնիզմի վարպետ, մահացած քառասունյոթ տարեկանում։ Նա բռնկում է կտավը՝ կրակի կարմիրներ, նարնջագույններ, զուտ կապույտներ՝ դրված գունաբծերով։ Նրա վրձնի տակ գմբեթավոր տներով գյուղը դառնում է <em>հանդարտ հրդեհ</em>։",
+      "room.movses.h": "Մովսես Պողոսյան, <span class=\"em\">լռությունը։</span>",
+      "room.movses.meta": "Ժամանակակից գեղանկար <span class=\"dot\">◆</span> կերպար <span class=\"dot\">◆</span> տեմպերա",
+      "room.movses.desc": "Կրակի հակառակը՝ զուսպ աշխարհ։ Կերպարներ՝ քանդակված <em>խլացած գունապնակում</em> — մոխրագույն, օխրա, փղոսկր — որ կտրում է մեկ կարմիրը։ Դեմքերը, երբեմն <em>երկատված</em>, կարծես կախված են ժամանակից դուրս՝ սրբապատկերի և երազի միջև։",
+      "room.lorenc.h": "Արմեն Հարությունյան <span class=\"em\">«Լորենց»՝ լույսը։</span>",
+      "room.lorenc.meta": "Ժամանակակից գեղանկար <span class=\"dot\">◆</span> բնանկար <span class=\"dot\">◆</span> նկարչական դանակ",
+      "room.lorenc.desc": "Գույնը վերադառնում է, բայց դա բացօթյայի գույնն է։ <em>Դանակով</em>, հաստ վրձնահարվածներով, Լորենցը տաշում է բարձրավանդակների լույսը՝ ժայռե սյուներ, կիրճեր, ամառային խոտի դեզեր, գետեր։ Ներկը բռնում է արևը և <em>թրթռում է</em>՝ ինչպես կիսախուփ աչքերով տեսնված բնանկար։",
+      "room.matevos.h": "Մատևոս Սարգսյան, <span class=\"em\">շնորհը։</span>",
+      "room.matevos.meta": "Ժամանակակից գեղանկար <span class=\"dot\">◆</span> կերպար <span class=\"dot\">◆</span> նկարչական դանակ",
+      "room.matevos.desc": "Հայկական կերպարի ժառանգորդը, նա ձգում է իր կանանց՝ ինչպես <em>աշխարհիկ սրբապատկերներ</em>. երկար պարանոցներ, ողորկ դեմքեր, խոնարհված հայացքներ։ Դանակով՝ յուրաքանչյուր ուրվագիծ ագուցված է կանաչների, օխրաների ու կապույտների խճանկարում — շնորհ՝ <em>քանդակված նյութի մեջ</em>։",
+      "room.shahen.h": "Շահեն Օրդուբեկյան, <span class=\"em\">ծաղկումը։</span>",
+      "room.shahen.meta": "Ժամանակակից գեղանկար <span class=\"dot\">◆</span> նատյուրմորտ և բնանկար <span class=\"dot\">◆</span> նկարչական դանակ",
+      "room.shahen.desc": "Այստեղ գույնը պայթում է։ Դանակով, առատ վրձնահարվածներով, նա կանգնեցնում է ծաղկեփնջեր ու այգիներ, որ <em>վխտում են շրջանակից դուրս</em> — պիոններ, յասաման, միմոզա, կակաչ։ Ծաղիկը պարզապես պատրվակ է. այն, ինչ նկարում է, <em>նրա մեջ բռնված լույսն է</em>՝ վառ, համարյա հնչեղ։",
+      "between.2": "Սրահ II", "between.3": "Սրահ III", "between.4": "Սրահ IV", "between.5": "Սրահ V", "between.6": "Սրահ VI",
+      "coda.q": "Մի հող,<br>թարգմանված <span class=\"em\">գույնի։</span>",
+      "coda.src": "<span class=\"hy\" lang=\"hy\">Գույն</span> — Հայաստան",
+      "footer.brand": "Լոզանի հայերը — Համայնքային հանդես",
+      "footer.back": "← Վերադառնալ հանդես",
+      "lb.dialog": "Խոշորացված ստեղծագործություն", "lb.close": "Փակել", "lb.prev": "Նախորդ ստեղծագործությունը", "lb.next": "Հաջորդ ստեղծագործությունը",
+
+      "f.saryan.1": "<em>«Հայաստան»</em> <span class=\"yr\">· 1923</span>",
+      "a.saryan.1": "Հայաստանի վիթխարի բնանկար՝ ոսկեգույն կիրճեր, նոճիներ, կանանց պար և մանուշակագույն լեռներ — Մարտիրոս Սարյան, 1923",
+      "f.saryan.2": "Արարատ",
+      "a.saryan.2": "Կապույտ Արարատ լեռը հարթավայրի վերևում՝ պաստելային երանգներ և ազատ վրձնահարված — Մարտիրոս Սարյան",
+      "f.saryan.3": "Հայաստանի լեռները",
+      "a.saryan.3": "Հայաստանի լեռները՝ վառ գույների շախմատաձև դասավորությամբ, եզների լուծ՝ վարի ժամանակ — Մարտիրոս Սարյան",
+      "f.saryan.4": "Գարեգին Լևոնյանի դիմանկարը <span class=\"yr\">· 1912</span>",
+      "a.saryan.4": "Բեղավոր տղամարդու կուբո-ֆուտուրիստական դիմանկար՝ կապույտ և օխրա նիստերով — Մարտիրոս Սարյան, 1912",
+      "f.saryan.5": "Կարմրավոր եկեղեցին <span class=\"yr\">· VII դ.</span>",
+      "a.saryan.5": "Փոքրիկ հայկական եկեղեցի՝ կարմիր գմբեթով, ոսկեգույն գյուղում, կովեր՝ առաջին պլանում — Մարտիրոս Սարյան",
+      "f.saryan.6": "Քայլող կինը <span class=\"yr\">· 1911</span>",
+      "a.saryan.6": "Կապույտով պատված կին՝ քայլում է արմավենու դիմաց, շողշողուն դեղին գունաբծեր — Մարտիրոս Սարյան, 1911",
+      "f.saryan.7": "Եգիպտական դիմակներ",
+      "a.saryan.7": "Վառ գույներով եգիպտական դիմակներ՝ շարված մոխրագույն ֆոնի վրա — Մարտիրոս Սարյան",
+      "f.saryan.8": "Պարսիկ կին",
+      "a.saryan.8": "Սպիտակ քողով պարսիկ կնոջ դեմք՝ սև եզրագծով դիմագծեր, օխրա ֆոնի վրա — Մարտիրոս Սարյան",
+      "f.saryan.9": "Խոտով բարձված ջորիներ",
+      "a.saryan.9": "Կանաչ խոտով բարձված երկու ջորի՝ դեղին հողի վրա, կապույտ ստվերներ — Մարտիրոս Սարյան",
+
+      "f.minas.1": "<em>«Զրույց»</em> <span class=\"yr\">· 1971</span>",
+      "a.minas.1": "Գմբեթավոր տներով հայկական գյուղ՝ շիկացած կարմիրներ ու նարնջագույններ, ծառի տակ երկու կերպար — Մինաս Ավետիսյան, 1971",
+      "f.minas.2": "<em>«Նատյուրմորտ»</em> <span class=\"yr\">· 1961</span>",
+      "a.minas.2": "Ֆովիստական նատյուրմորտ՝ կապույտ սափոր և ճյուղեր նարնջագույն ֆոնի վրա — Մինաս Ավետիսյան, գուաշ, 1961",
+      "f.minas.3": "Կնոջ դիմանկար",
+      "a.minas.3": "Կապույտ մազերով կնոջ էքսպրեսիոնիստական դիմանկար՝ նարնջագույն և կանաչ ֆոնի վրա — Մինաս Ավետիսյան",
+      "f.minas.4": "Կարագ հարելը <span class=\"yr\">· 1972</span>",
+      "a.minas.4": "Տան դիմաց կարագ հարող երեք կին՝ հողի ու կարմիրի տաք երանգներ — Մինաս Ավետիսյան, 1972",
+      "f.minas.5": "Հայկական գյուղ",
+      "a.minas.5": "Կլոր տներով հայկական գյուղ՝ երկու կերպար և ծառ, նարնջագույն լույս — Մինաս Ավետիսյան",
+      "f.minas.6": "<em>«Ինքնանկար»</em> <span class=\"yr\">· 1960</span>",
+      "a.minas.6": "Նկարիչ Մինաս Ավետիսյանի 1960 թ. ինքնանկարը՝ վառ գույներով",
+      "f.minas.7": "Արարատ <span class=\"yr\">· 1961</span>",
+      "a.minas.7": "Երկգագաթ Արարատ լեռը մանուշակագույն երկնքի տակ՝ վարդագույն և վառ նարնջագույն ստորոտներ — Մինաս Ավետիսյան, 1961",
+      "f.minas.8": "Գյուղի տները",
+      "a.minas.8": "Գմբեթավոր հայկական տներ՝ շիկացած կարմիրներ ու նարնջագույններ, ծառի մոտ երկու կերպար — Մինաս Ավետիսյան",
+      "f.minas.9": "Կապույտ շալով երիտասարդ կին",
+      "a.minas.9": "Կապույտով պատված երիտասարդ կնոջ ֆովիստական դիմանկար՝ կարմրահեր, նարնջագույն ֆոնի վրա — Մինաս Ավետիսյան",
+      "f.minas.10": "Պատուհանի մոտ",
+      "a.minas.10": "Կապույտ մազերով երիտասարդ կին՝ հենված պատուհանին, շողշողուն դեղին և նարնջագույն ֆոն — Մինաս Ավետիսյան",
+      "f.minas.11": "Երիտասարդ կնոջ դիմանկար <span class=\"yr\">· 1972</span>",
+      "a.minas.11": "Մուգ մազերով երիտասարդ կնոջ դիմանկար՝ դեղին կորսաժով, կարմիր վզնոց, մոխրագույն և դեղին ֆոն — Մինաս Ավետիսյան, 1972",
+      "f.minas.12": "Ծերունին",
+      "a.minas.12": "Մորուքավոր ծերունի՝ նստած հյուսած աթոռին, կանաչ բաճկոն, բաց ֆոն և կարմիր վարագույր — Մինաս Ավետիսյան",
+      "f.minas.13": "Ֆովիստական նատյուրմորտ",
+      "a.minas.13": "Ֆովիստական նատյուրմորտ՝ կապույտ կճուճ, սափորներ ու ծաղկեփնջեր՝ վառ նարնջագույն և կապույտ, բոցավառ ֆոնի վրա — Մինաս Ավետիսյան",
+
+      "f.movses.1": "Մայր և մանուկ <span class=\"yr\">· 2021</span>",
+      "a.movses.1": "Մայրը գրկում է իր քնած մանկանը՝ ոճավորված կերպարներ սեպիա և փղոսկրյա երանգներով — Մովսես Պողոսյան, 2021",
+      "f.movses.2": "Կարմիր վարագույրը <span class=\"yr\">· 2022</span>",
+      "a.movses.2": "Երկատված դեմքով կանացի կերպար՝ բռնած երկար, զարդարուն կարմիր վարագույր, բաց ֆոնի վրա — Մովսես Պողոսյան, 2022",
+      "f.movses.3": "Քույր-եղբայր <span class=\"yr\">· 2022</span>",
+      "a.movses.3": "Երեք գրկախառնված կերպար՝ մոխրագույն և մուգ կարմիր, փակ ու հանդարտ դեմքեր — Մովսես Պողոսյան, 2022",
+      "f.movses.4": "Երեք կերպար",
+      "a.movses.4": "Երեք կանացի կերպար՝ բաց գույնի զգեստներով, կենտրոնում խնձոր, կարմիր և սև շեշտեր — Մովսես Պողոսյան",
+      "f.movses.5": "Ուրվագիծ <span class=\"yr\">· 2023</span>",
+      "a.movses.5": "Խիստ երկարաձիգ մերկ կանացի կերպար՝ փղոսկրյա ուրվագիծ, երկատված մոխրագույն ֆոնի վրա, շրջանակված գործ — Մովսես Պողոսյան, 2023",
+      "f.movses.6": "Հեծյալ կինը <span class=\"yr\">· 2019</span>",
+      "a.movses.6": "Կին՝ նստած ոճավորված ձիու վրա՝ շագանակագույն երկրաչափական ձևերով, աջից կարմիր վահանակ — Մովսես Պողոսյան, 2019",
+      "f.movses.7": "Մոխրագույն զգեստը",
+      "a.movses.7": "Կանգնած կերպար՝ մահիկաձև դեմքով, մոխրագույն երկրաչափական զգեստ և նրբացած ոտքեր, երկգույն ֆոն — Մովսես Պողոսյան",
+      "f.movses.8": "Հովվերգություն <span class=\"yr\">· 2017</span>",
+      "a.movses.8": "Խոտի մեջ դանդաղկոտ կերպարներ՝ կուբիստական ձևեր օխրա և ձիթապտղի գույնով, բաց ֆոնի վրա — Մովսես Պողոսյան, 2017",
+      "f.movses.9": "Հանգիստ",
+      "a.movses.9": "Կիսապառկած մերկ կին՝ մոխրագույն և աղյուսակարմիր ձևեր՝ կտրված բաց ֆոնի վրա — Մովսես Պողոսյան",
+      "f.movses.10": "Քողարկված աչքերը <span class=\"yr\">· 2018</span>",
+      "a.movses.10": "Մոխրագույն կերպար՝ ձեռքերով ծածկում է աչքերը, կարմիր շուրթեր, բաց հյուսվածքավոր ֆոն — Մովսես Պողոսյան, 2018",
+      "f.movses.11": "Կարմիր ֆոնի վրա",
+      "a.movses.11": "Երեք բաց գույնի կերպար՝ փակ դեմքերով, առանձնանում են վառ կարմիր ֆոնի վրա — Մովսես Պողոսյան",
+      "f.movses.12": "Մայրություն",
+      "a.movses.12": "Կարմիր զգեստով մայր՝ բռնած իր մանկանը, կլորացված ձևեր ու շրջաններ օխրա ֆոնի վրա — Մովսես Պողոսյան",
+      "f.movses.13": "Ընտանիքը <span class=\"yr\">· 2019</span>",
+      "a.movses.13": "Մանկան շուրջ հավաքված ընտանիք՝ կամարներ և փոքրիկ տներ, օխրաների ու մոխրագույների միաերանգ — Մովսես Պողոսյան, 2019",
+      "f.movses.14": "Դեմքեր <span class=\"yr\">· 2014</span>",
+      "a.movses.14": "Մեծ աչքերով երեք դեմք՝ դասավորված օխրաների ու կարմիրների շախմատի վրա — Մովսես Պողոսյան, 2014",
+      "f.movses.15": "Գաղտնիքներ",
+      "a.movses.15": "Երկու աղջիկ՝ մոխրագույն մենագույնով, մեկը շշնջում է մյուսի ականջին — Մովսես Պողոսյան",
+
+      "f.lorenc.1": "Հովիտ՝ լույսով ճեղքված",
+      "a.lorenc.1": "Լեռնային հովիտ՝ հատված լույսի ճառագայթներով, աշնանային սաղարթ՝ դանակով — Լորենց",
+      "f.lorenc.2": "Ժայռե սյուներ",
+      "a.lorenc.2": "Բարձր ոսկեգույն ժայռե սյուներ՝ կապույտ երկնքի տակ, կանաչ բուսականություն առաջին պլանում, դանակի վրձնահարված — Լորենց",
+      "f.lorenc.3": "Գետը ժայռի ստորոտում",
+      "a.lorenc.3": "Մեծ ժայռի ստորոտում օձապտույտ գետ՝ կանաչ բլուրներ և ամառային երկինք, դանակով նկար — Լորենց",
+      "f.lorenc.4": "Խոտի դեզ, ամառային ագարակ",
+      "a.lorenc.4": "Ոսկեգույն խոտի դեզ՝ գյուղական տան մոտ, կանաչ ծառեր և ամպամած երկինք — Լորենց",
+      "f.lorenc.5": "Հնձվորը, բարձրավանդակներ",
+      "a.lorenc.5": "Հնձվոր՝ լեռնային կիրճում, չոր խոտի դեզ և կապույտ գագաթներ հեռվում — Լորենց",
+      "f.lorenc.6": "Կիրճն աշնանը",
+      "a.lorenc.6": "Ժայռոտ կիրճ՝ օխրա և ժանգագույն պատերով, գետ և ոսկեգույն աշնանային սաղարթ — Լորենց",
+      "f.lorenc.7": "Ատամնավոր լեռնագագաթը",
+      "a.lorenc.7": "Լեռնագագաթ՝ ոսկով շեշտված մանուշակագույն լեռնապարներով, արևառ խոտածածկ լանջ, դանակի վրձնահարված — Արմեն Հարությունյան «Լորենց»",
+      "f.lorenc.8": "Վանք ժայռի վրա",
+      "a.lorenc.8": "Փոքրիկ հայկական եկեղեցի՝ դրված ժայռե ելուստին, փիրուզ երկինք, դանակի աշխույժ հարվածներ — Արմեն Հարությունյան «Լորենց»",
+      "f.lorenc.9": "Լիճ՝ ոսկե ծառերով",
+      "a.lorenc.9": "Լեռնային լիճ՝ եզերված ոսկեգույն սաղարթով ծառերով, ձյունապատ գագաթներ ֆոնին — Արմեն Հարությունյան «Լորենց»",
+      "f.lorenc.10": "Կապույտ հովիտ, մանուշակագույն ժամը",
+      "a.lorenc.10": "Լայն կապտավուն հովիտ մթնշաղին՝ լիճ և մարգագետիններ, ատամնավոր մանուշակագույն լեռներ — Արմեն Հարությունյան «Լորենց»",
+
+      "f.matevos.1": "Դիմապատկեր՝ ոսկե գլխանոցով",
+      "a.matevos.1": "Երկար պարանոցով կնոջ դիմապատկեր՝ ոսկե գլխանոց և վարագույր՝ դանակով, մուգ շագանակագույն ֆոնի վրա — Մատևոս Սարգսյան",
+      "f.matevos.2": "Թագն ու թռչունը",
+      "a.matevos.2": "Ոճավորված կին՝ երկար դեմքով և կապույտ աչքերով, գունավոր թագ և փոքրիկ թռչուն, կանաչ ֆոնի վրա — Մատևոս Սարգսյան",
+      "f.matevos.3": "Ծաղիկը մազերում",
+      "a.matevos.3": "Երկարաձիգ դեմքով կնոջ դիմանկար՝ սպիտակ ծաղիկ մազերում, օխրա և կանաչ գունաբծերով ֆոն — Մատևոս Սարգսյան",
+      "f.matevos.4": "Կին՝ կանաչ զգեստով",
+      "a.matevos.4": "Նստած կին՝ կանաչ զգեստով և գլխարկով, մտախոհ հայացք, կանաչների ու կապույտների միաերանգ — Մատևոս Սարգսյան",
+      "f.matevos.5": "Մայրն ու մանուկը",
+      "a.matevos.5": "Փիրուզ զգեստով նստած կին՝ մանուկը կողքին, կանաչների խճանկար՝ դանակով — Մատևոս Սարգսյան",
+      "f.matevos.6": "Կերպար բլուրներում",
+      "a.matevos.6": "Կանգնած կանացի կերպար՝ օխրա բլուրների և նոճիների դիմաց, մոխրականաչ երկինք — Մատևոս Սարգսյան",
+      "f.matevos.7": "Հրեշտակի երգը",
+      "a.matevos.7": "Հրեշտակ՝ կանաչ և ոսկեգույն թևերով, երկար բաց զգեստ, տաք շագանակագույն ֆոն — Մատևոս Սարգսյան",
+      "f.matevos.8": "Ծնունդը",
+      "a.matevos.8": "Երեք կանացի կերպար՝ գրկախառնված ոսկե լույսի մեջ, դանակի հարվածներ — Մատևոս Սարգսյան",
+      "f.matevos.9": "Խոհուն գեղեցկություն",
+      "a.matevos.9": "Երիտասարդ կին՝ հյուսված սանրվածքով, մերկ ուսերով, վերացական կապույտ և նարնջագույն ֆոն — Մատևոս Սարգսյան",
+      "f.matevos.10": "Քնքուշ գեղեցկություն",
+      "a.matevos.10": "Դիմապատկերով կին՝ գլխաշորով, բռնած փոքրիկ հայելի, նարնջագույն զգեստ, շագանակագույն ֆոն — Մատևոս Սարգսյան",
+      "f.matevos.11": "Անդորրի ապաստան",
+      "a.matevos.11": "Ոսկեգույն ափին նստած նավակներ՝ կապույտ ծովի և լեռների դիմաց — Մատևոս Սարգսյան",
+      "f.matevos.12": "Հուշ՝ տաք երանգներով",
+      "a.matevos.12": "Գլխաշորերով երեք կին՝ տաք երանգներով, աջից ոսկեգույն կերպար — Մատևոս Սարգսյան",
+      "f.matevos.13": "Կին՝ գլխարկով",
+      "a.matevos.13": "Գլխարկով կին՝ բռնած կարմիր պտուղ, կուբիստական ֆոն՝ օխրաներով և կանաչներով — Մատևոս Սարգսյան",
+      "f.matevos.14": "Երազանք",
+      "a.matevos.14": "Նստած կին՝ մերկ ուսերով, ծաղկաման բույս, լուսավոր կանաչ ինտերիեր — Մատևոս Սարգսյան",
+
+      "f.shahen.1": "Միմոզա լույսի մեջ",
+      "a.shahen.1": "Վառ դեղին միմոզայի ծաղկեփունջ՝ բաց սափորում, մուգ կապտամանուշակ ֆոն, դանակի վրձնահարված — Շահեն Օրդուբեկյան",
+      "f.shahen.2": "Վարդեր՝ կապույտ սափորում",
+      "a.shahen.2": "Կարմիր և դեղին վարդեր՝ վառ կապույտ սափորում, կապույտ ֆոն, դանակով նկար — Շահեն Օրդուբեկյան",
+      "f.shahen.3": "Յասաման՝ կավե սափորում",
+      "a.shahen.3": "Մանուշակագույն յասամանի փունջ՝ կավե սափորում, լուսավոր մոխրակապույտ ֆոն — Շահեն Օրդուբեկյան",
+      "f.shahen.4": "Կակաչներ ցանկապատի մոտ",
+      "a.shahen.4": "Կարմիր կակաչներ և դաշտային ծաղիկներ՝ փայտե ցանկապատի դիմաց, բազմագույն այգի՝ դանակով — Շահեն Օրդուբեկյան",
+      "f.shahen.5": "Կակաչներ լեռան դիմաց",
+      "a.shahen.5": "Կարմիր կակաչների թուփ՝ մանուշակագույն լեռների դիմաց, կանաչ ու դեղին մարգագետին — Շահեն Օրդուբեկյան",
+      "f.shahen.6": "Գյուղն աշնանը",
+      "a.shahen.6": "Կարմիր տանիքներով գյուղական տուն՝ շրջապատված նարնջագույն աշնանային ծառերով, ոսկեգույն երկինք՝ դանակով — Շահեն Օրդուբեկյան",
+      "f.shahen.7": "Ամառային ծաղկեփունջ",
+      "a.shahen.7": "Դաշտային ծաղկեփունջ՝ բարձր կապույտ սափորում, վարդեր և դեղին ծաղիկներ, կանաչ ֆոն, դանակի վրձնահարված — Շահեն Օրդուբեկյան",
+      "f.shahen.8": "Ծաղիկներ՝ սպիտակ սափորում",
+      "a.shahen.8": "Մանուշակագույն և կապույտ ծաղիկների փունջ՝ սպիտակ սափորում, լուսավոր դեղին և կապույտ ֆոն — Շահեն Օրդուբեկյան",
+      "f.shahen.9": "Յասաման և մրգեր",
+      "a.shahen.9": "Մանուշակագույն յասաման՝ գեղազարդ սափորում, սեղանին դրված մրգեր, ոսկեօխրա ֆոն — Շահեն Օրդուբեկյան",
+      "f.shahen.10": "Կապույտ նատյուրմորտ՝ մրգերով",
+      "a.shahen.10": "Կապույտ ծաղկավոր սափոր և մրգեր — խնձորներ ու տանձ — մուգ կապույտների ներդաշնակության մեջ — Շահեն Օրդուբեկյան"
+    }
+  };
+
+  // ---- capture the FR baseline straight from the markup -------------------
+  var FR_HTML = {}, FR_ALT = {}, FR_ARIA = {};
+  var metaDesc = document.querySelector('meta[name="description"]');
+  var FR_TITLE = document.title;
+  var FR_DESC = metaDesc ? metaDesc.getAttribute("content") : "";
+  document.querySelectorAll("[data-i18n]").forEach(function(el){ FR_HTML[el.getAttribute("data-i18n")] = el.innerHTML; });
+  document.querySelectorAll("[data-i18n-alt]").forEach(function(el){ FR_ALT[el.getAttribute("data-i18n-alt")] = el.getAttribute("alt"); });
+  document.querySelectorAll("[data-i18n-aria]").forEach(function(el){ FR_ARIA[el.getAttribute("data-i18n-aria")] = el.getAttribute("aria-label"); });
+
+  function pickLang(){
+    var q;
+    try { q = new URLSearchParams(location.search).get("lang"); } catch(e){}
+    var stored;
+    try { stored = localStorage.getItem(STORAGE_KEY); } catch(e){}
+    var l = (q || stored || "fr").toLowerCase();
+    return (l === "en" || l === "hy" || l === "fr") ? l : "fr";
+  }
+
+  function apply(lang){
+    var d = (lang === "fr") ? null : DICT[lang];
+    document.documentElement.lang = lang;
+    document.title = d ? (d["meta.title"] || FR_TITLE) : FR_TITLE;
+    if (metaDesc) metaDesc.setAttribute("content", d ? (d["meta.desc"] || FR_DESC) : FR_DESC);
+    document.querySelectorAll("[data-i18n]").forEach(function(el){
+      var k = el.getAttribute("data-i18n");
+      var v = d ? d[k] : FR_HTML[k];
+      if (v != null) el.innerHTML = v;
+    });
+    document.querySelectorAll("[data-i18n-alt]").forEach(function(el){
+      var k = el.getAttribute("data-i18n-alt");
+      var v = d ? d[k] : FR_ALT[k];
+      if (v != null) el.setAttribute("alt", v);
+    });
+    document.querySelectorAll("[data-i18n-aria]").forEach(function(el){
+      var k = el.getAttribute("data-i18n-aria");
+      var v = d ? d[k] : FR_ARIA[k];
+      if (v != null) el.setAttribute("aria-label", v);
+    });
+    document.querySelectorAll(".lang-switch [data-lang]").forEach(function(b){
+      b.setAttribute("aria-current", b.getAttribute("data-lang") === lang ? "true" : "false");
+    });
+  }
+
+  var switcher = document.querySelector(".lang-switch");
+  if (switcher){
+    switcher.addEventListener("click", function(e){
+      var b = e.target.closest && e.target.closest("[data-lang]");
+      if (!b) return;
+      var lang = b.getAttribute("data-lang");
+      try { localStorage.setItem(STORAGE_KEY, lang); } catch(err){}
+      apply(lang);
+    });
+  }
+
+  apply(pickLang());
+})();
+</script>
 
 <script>
 (function(){
@@ -1304,9 +1779,15 @@ footer a:hover{ border-color:var(--pom); }
     idx = (i + frames.length) % frames.length;
     var btn = frames[idx];
     var img = btn.querySelector("img");
+    var fig = btn.closest("figure");
+    var capEl = fig ? fig.querySelector(".p-cap") : null;
+    var room = btn.closest(".room");
+    var artist = room ? (room.getAttribute("data-artist") || "") : "";
     lbImg.src = img.getAttribute("src");
     lbImg.alt = img.getAttribute("alt") || "";
-    lbCap.innerHTML = btn.getAttribute("data-cap") || "";
+    // caption is derived from the (translated) figcaption + the room's artist
+    lbCap.innerHTML = (capEl ? "<span class=\"lb-art\">" + capEl.innerHTML + "</span>" : "")
+      + (artist ? "<span class=\"lb-sep\">·</span>" + artist : "");
     lbCount.textContent = (idx+1) + " / " + frames.length;
   }
   function open(i){

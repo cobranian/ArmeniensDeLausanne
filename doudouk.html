@@ -124,6 +124,16 @@ section{ position:relative; z-index:2; }
   text-transform:uppercase; color:var(--bone-dim);
 }
 .masthead .mh-mark{ color:var(--ember); }
+.masthead .mh-right{ display:flex; align-items:center; gap:clamp(.9rem,2.4vw,1.6rem); }
+.lang-switch{ display:inline-flex; gap:.1rem; }
+.lang-switch button{
+  background:none; border:0; cursor:pointer; padding:.2rem .45rem;
+  font-family:var(--f-body); font-size:.72rem; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--bone-dim); transition:color .3s;
+}
+.lang-switch button:hover{ color:var(--ember-br); }
+.lang-switch button[aria-current="true"]{ color:var(--ember); border-bottom:1px solid var(--ember); }
+.lang-switch button:focus-visible{ outline:2px solid var(--ember); outline-offset:3px; }
 
 /* ---- hero ---------------------------------------------------------------- */
 .hero{ padding:clamp(3rem,9vh,7rem) 0 clamp(2rem,5vh,4rem); }
@@ -317,18 +327,25 @@ footer a:hover{ border-color:var(--ember); }
 <div class="wrap">
 
   <header class="masthead reveal d1">
-    <span class="mh-mark">◇ Revue</span>
-    <span>Musique — VII</span>
+    <span class="mh-mark" data-i18n="mh.mark">◇ Revue</span>
+    <span class="mh-right">
+      <span data-i18n="mh.section">Musique — VII</span>
+      <span class="lang-switch" role="group" data-i18n-aria="lang.group" aria-label="Langue">
+        <button type="button" data-lang="fr">FR</button>
+        <button type="button" data-lang="en">EN</button>
+        <button type="button" data-lang="hy">ՀՅ</button>
+      </span>
+    </span>
   </header>
 
   <!-- ============ HERO ============ -->
   <section class="hero">
     <p class="kicker reveal d1" lang="hy">դուդուկ — ծիրանի փող</p>
     <h1>
-      <span class="reveal d1">Le souffle</span>
-      <span class="l2 reveal d2"><span class="of">du</span> bois d'abricotier</span>
+      <span class="reveal d1" data-i18n="hero.l1">Le souffle</span>
+      <span class="l2 reveal d2" data-i18n="hero.l2"><span class="of">du</span> bois d'abricotier</span>
     </h1>
-    <p class="lead reveal d3">
+    <p class="lead reveal d3" data-i18n="hero.lead">
       Aucun instrument ne s'approche autant de la <em>voix humaine</em>. Taillé
       dans l'abricotier, le doudouk ne joue pas une mélodie&nbsp;: il
       <em>respire</em> — un long lament tenu, posé sur un bourdon qui ne s'éteint jamais.
@@ -341,7 +358,7 @@ footer a:hover{ border-color:var(--ember); }
       <div class="player" id="player">
         <div class="halo"></div>
         <button class="play-btn" id="playBtn" type="button"
-                aria-pressed="false" aria-label="Écouter le lament (son synthétisé)">
+                aria-pressed="false" data-i18n-aria="play.aria" aria-label="Écouter le lament (son synthétisé)">
           <svg class="ic-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
           <svg class="ic-stop" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="1.5"/></svg>
         </button>
@@ -349,15 +366,15 @@ footer a:hover{ border-color:var(--ember); }
       </div>
 
       <div class="lament-text">
-        <p class="l-eyebrow">Le lament</p>
-        <h2 id="lament-h">Une longue note qui ne reprend jamais sa respiration.</h2>
-        <p>
+        <p class="l-eyebrow" data-i18n="lament.eyebrow">Le lament</p>
+        <h2 id="lament-h" data-i18n="lament.h">Une longue note qui ne reprend jamais sa respiration.</h2>
+        <p data-i18n="lament.p">
           Deux doudouks jouent ensemble&nbsp;: l'un porte la mélodie, l'autre tient
           le <em>dam</em> — un bourdon continu, soutenu par une respiration circulaire
           qui ne laisse aucun silence. Le son ci-dessous est entièrement synthétisé,
           une évocation du timbre d'anche et de son bourdon.
         </p>
-        <p class="hint">↓ La ligne respire au rythme du souffle.</p>
+        <p class="hint" data-i18n="lament.hint">↓ La ligne respire au rythme du souffle.</p>
       </div>
     </div>
 
@@ -371,32 +388,32 @@ footer a:hover{ border-color:var(--ember); }
 
   <!-- ============ ANATOMIE ============ -->
   <section aria-labelledby="anat-h">
-    <div class="rule reveal"><span class="di"></span> Anatomie d'un souffle</div>
+    <div class="rule reveal"><span class="di"></span> <span data-i18n="anat.rule">Anatomie d'un souffle</span></div>
     <div class="section-head reveal">
-      <h2 id="anat-h">Trois gestes, <em>une seule voix.</em></h2>
-      <p class="sub">Le bois, l'anche et le bourdon — rien de plus, et pourtant la plainte la plus humaine du Caucase.</p>
+      <h2 id="anat-h" data-i18n="anat.h">Trois gestes, <em>une seule voix.</em></h2>
+      <p class="sub" data-i18n="anat.sub">Le bois, l'anche et le bourdon — rien de plus, et pourtant la plainte la plus humaine du Caucase.</p>
     </div>
 
     <div class="triptych">
       <article class="facet reveal d1">
         <p class="f-num">i.</p>
         <span class="f-hy" lang="hy">ծիրանի փայտ</span>
-        <h3>Le bois d'abricotier</h3>
-        <p>Le corps est tourné dans l'abricotier — <em>tsiran</em> — dont la densité chaude donne ce timbre velouté, sombre et rond, inimitable sur tout autre bois.</p>
+        <h3 data-i18n="facet1.h">Le bois d'abricotier</h3>
+        <p data-i18n="facet1.p">Le corps est tourné dans l'abricotier — <em>tsiran</em> — dont la densité chaude donne ce timbre velouté, sombre et rond, inimitable sur tout autre bois.</p>
         <div class="f-line"></div>
       </article>
       <article class="facet reveal d2">
         <p class="f-num">ii.</p>
         <span class="f-hy" lang="hy">եղեգն</span>
-        <h3>La grande anche double</h3>
-        <p>Une large anche de roseau aplatie — le <em>ghamish</em> — vibre entre les lèvres. C'est elle qui rapproche le doudouk du grain de la voix parlée.</p>
+        <h3 data-i18n="facet2.h">La grande anche double</h3>
+        <p data-i18n="facet2.p">Une large anche de roseau aplatie — le <em>ghamish</em> — vibre entre les lèvres. C'est elle qui rapproche le doudouk du grain de la voix parlée.</p>
         <div class="f-line"></div>
       </article>
       <article class="facet reveal d3">
         <p class="f-num">iii.</p>
         <span class="f-hy" lang="hy">դամ</span>
-        <h3>Le bourdon tenu</h3>
-        <p>Un second joueur tient le <em>dam</em>, une note immuable, par respiration circulaire. La mélodie semble alors flotter sur un horizon sonore continu.</p>
+        <h3 data-i18n="facet3.h">Le bourdon tenu</h3>
+        <p data-i18n="facet3.p">Un second joueur tient le <em>dam</em>, une note immuable, par respiration circulaire. La mélodie semble alors flotter sur un horizon sonore continu.</p>
         <div class="f-line"></div>
       </article>
     </div>
@@ -404,16 +421,16 @@ footer a:hover{ border-color:var(--ember); }
 
   <!-- ============ LE DAM ============ -->
   <section aria-labelledby="dam-h">
-    <div class="rule reveal"><span class="di"></span> Le bourdon</div>
+    <div class="rule reveal"><span class="di"></span> <span data-i18n="dam.rule">Le bourdon</span></div>
     <div class="dam reveal">
       <div>
-        <h3 id="dam-h">Respirer sans jamais s'arrêter.</h3>
-        <p>
+        <h3 id="dam-h" data-i18n="dam.h">Respirer sans jamais s'arrêter.</h3>
+        <p data-i18n="dam.p1">
           La respiration circulaire — inspirer par le nez tout en expulsant l'air
           stocké dans les joues — permet de tenir le <em>dam</em> indéfiniment. Le
           bourdon devient un sol immobile sur lequel la mélodie pleure, hésite, revient.
         </p>
-        <p>
+        <p data-i18n="dam.p2">
           C'est ce contraste — une voix mouvante sur une note éternelle — qui donne
           au doudouk sa gravité de prière.
         </p>
@@ -424,38 +441,217 @@ footer a:hover{ border-color:var(--ember); }
 
   <!-- ============ LIGNÉE ============ -->
   <section aria-labelledby="lin-h">
-    <div class="rule reveal"><span class="di"></span> Une lignée de gardiens</div>
+    <div class="rule reveal"><span class="di"></span> <span data-i18n="lin.rule">Une lignée de gardiens</span></div>
     <div class="section-head reveal">
-      <h2 id="lin-h">De l'église <em>au monde.</em></h2>
+      <h2 id="lin-h" data-i18n="lin.h">De l'église <em>au monde.</em></h2>
     </div>
     <div class="lineage reveal">
       <div class="line-row">
         <span class="yr">1869<span aria-hidden="true">–</span>1935</span>
-        <div class="lr-b"><strong>Komitas</strong><span>Prêtre et musicologue, il recueille et sauve des centaines de mélodies populaires arméniennes de l'oubli — fondant l'école musicale nationale.</span></div>
+        <div class="lr-b"><strong>Komitas</strong><span data-i18n="lin.komitas.d">Prêtre et musicologue, il recueille et sauve des centaines de mélodies populaires arméniennes de l'oubli — fondant l'école musicale nationale.</span></div>
       </div>
       <div class="line-row">
         <span class="yr">1928<span aria-hidden="true">–</span>2021</span>
-        <div class="lr-b"><strong>Djivan Gasparyan</strong><span>Maître absolu de l'instrument, il porte le doudouk sur les scènes et les écrans du monde entier, jusqu'aux musiques de cinéma.</span></div>
+        <div class="lr-b"><strong>Djivan Gasparyan</strong><span data-i18n="lin.djivan.d">Maître absolu de l'instrument, il porte le doudouk sur les scènes et les écrans du monde entier, jusqu'aux musiques de cinéma.</span></div>
       </div>
       <div class="line-row">
         <span class="yr">2005</span>
-        <div class="lr-b"><strong>Patrimoine de l'humanité</strong><span>« Le doudouk et sa musique » est proclamé par l'UNESCO chef-d'œuvre du patrimoine culturel immatériel, inscrit sur la liste représentative en 2008.</span></div>
+        <div class="lr-b"><strong data-i18n="lin.unesco.name">Patrimoine de l'humanité</strong><span data-i18n="lin.unesco.d">« Le doudouk et sa musique » est proclamé par l'UNESCO chef-d'œuvre du patrimoine culturel immatériel, inscrit sur la liste représentative en 2008.</span></div>
       </div>
     </div>
   </section>
 
   <!-- ============ CODA ============ -->
   <section class="coda">
-    <blockquote class="reveal">Le doudouk pleure<br>ce que les mots <span class="em">taisent.</span></blockquote>
-    <p class="src reveal d1"><span class="hy" lang="hy">դուդուկ</span> — Arménie</p>
+    <blockquote class="reveal" data-i18n="coda.q">Le doudouk pleure<br>ce que les mots <span class="em">taisent.</span></blockquote>
+    <p class="src reveal d1" data-i18n="coda.src"><span class="hy" lang="hy">դուդուկ</span> — Arménie</p>
   </section>
 
   <footer>
-    <span>Arméniens de Lausanne — Revue communautaire</span>
-    <span><a href="index.html">← Retour à la revue</a></span>
+    <span data-i18n="footer.brand">Arméniens de Lausanne — Revue communautaire</span>
+    <span><a href="index.html" data-i18n="footer.back">← Retour à la revue</a></span>
   </footer>
 
 </div>
+
+<!-- ============ I18N (FR / EN / HY) ============ -->
+<script>
+(function(){
+  "use strict";
+  var STORAGE_KEY = "alausanne.lang";
+
+  var DICT = {
+    fr: {
+      "meta.title": "Le souffle du bois d'abricotier — Le doudouk",
+      "meta.desc": "Le doudouk arménien : la voix la plus proche du souffle humain. Une page sensorielle autour du bois d'abricotier, de l'anche, du bourdon et du lament.",
+      "lang.group": "Langue",
+      "mh.mark": "◇ Revue",
+      "mh.section": "Musique — VII",
+      "hero.l1": "Le souffle",
+      "hero.l2": "<span class=\"of\">du</span> bois d'abricotier",
+      "hero.lead": "Aucun instrument ne s'approche autant de la <em>voix humaine</em>. Taillé dans l'abricotier, le doudouk ne joue pas une mélodie&nbsp;: il <em>respire</em> — un long lament tenu, posé sur un bourdon qui ne s'éteint jamais.",
+      "lament.eyebrow": "Le lament",
+      "lament.h": "Une longue note qui ne reprend jamais sa respiration.",
+      "lament.p": "Deux doudouks jouent ensemble&nbsp;: l'un porte la mélodie, l'autre tient le <em>dam</em> — un bourdon continu, soutenu par une respiration circulaire qui ne laisse aucun silence. Le son ci-dessous est entièrement synthétisé, une évocation du timbre d'anche et de son bourdon.",
+      "lament.hint": "↓ La ligne respire au rythme du souffle.",
+      "play.idle": "Effleurer pour respirer",
+      "play.playing": "Le souffle est ouvert",
+      "play.aria": "Écouter le lament (son synthétisé)",
+      "anat.rule": "Anatomie d'un souffle",
+      "anat.h": "Trois gestes, <em>une seule voix.</em>",
+      "anat.sub": "Le bois, l'anche et le bourdon — rien de plus, et pourtant la plainte la plus humaine du Caucase.",
+      "facet1.h": "Le bois d'abricotier",
+      "facet1.p": "Le corps est tourné dans l'abricotier — <em>tsiran</em> — dont la densité chaude donne ce timbre velouté, sombre et rond, inimitable sur tout autre bois.",
+      "facet2.h": "La grande anche double",
+      "facet2.p": "Une large anche de roseau aplatie — le <em>ghamish</em> — vibre entre les lèvres. C'est elle qui rapproche le doudouk du grain de la voix parlée.",
+      "facet3.h": "Le bourdon tenu",
+      "facet3.p": "Un second joueur tient le <em>dam</em>, une note immuable, par respiration circulaire. La mélodie semble alors flotter sur un horizon sonore continu.",
+      "dam.rule": "Le bourdon",
+      "dam.h": "Respirer sans jamais s'arrêter.",
+      "dam.p1": "La respiration circulaire — inspirer par le nez tout en expulsant l'air stocké dans les joues — permet de tenir le <em>dam</em> indéfiniment. Le bourdon devient un sol immobile sur lequel la mélodie pleure, hésite, revient.",
+      "dam.p2": "C'est ce contraste — une voix mouvante sur une note éternelle — qui donne au doudouk sa gravité de prière.",
+      "lin.rule": "Une lignée de gardiens",
+      "lin.h": "De l'église <em>au monde.</em>",
+      "lin.komitas.d": "Prêtre et musicologue, il recueille et sauve des centaines de mélodies populaires arméniennes de l'oubli — fondant l'école musicale nationale.",
+      "lin.djivan.d": "Maître absolu de l'instrument, il porte le doudouk sur les scènes et les écrans du monde entier, jusqu'aux musiques de cinéma.",
+      "lin.unesco.name": "Patrimoine de l'humanité",
+      "lin.unesco.d": "« Le doudouk et sa musique » est proclamé par l'UNESCO chef-d'œuvre du patrimoine culturel immatériel, inscrit sur la liste représentative en 2008.",
+      "coda.q": "Le doudouk pleure<br>ce que les mots <span class=\"em\">taisent.</span>",
+      "coda.src": "<span class=\"hy\" lang=\"hy\">դուդուկ</span> — Arménie",
+      "footer.brand": "Arméniens de Lausanne — Revue communautaire",
+      "footer.back": "← Retour à la revue"
+    },
+    en: {
+      "meta.title": "The Breath of Apricot Wood — The Duduk",
+      "meta.desc": "The Armenian duduk: the voice closest to human breath. A sensory page on apricot wood, the reed, the drone and the lament.",
+      "lang.group": "Language",
+      "mh.mark": "◇ Review",
+      "mh.section": "Music — VII",
+      "hero.l1": "The breath",
+      "hero.l2": "<span class=\"of\">of</span> apricot wood",
+      "hero.lead": "No instrument comes closer to the <em>human voice</em>. Carved from apricot wood, the duduk doesn't play a melody&nbsp;: it <em>breathes</em> — one long, sustained lament resting on a drone that never fades.",
+      "lament.eyebrow": "The lament",
+      "lament.h": "One long note that never pauses to breathe.",
+      "lament.p": "Two duduks play together&nbsp;: one carries the melody, the other holds the <em>dam</em> — a continuous drone, sustained by circular breathing that leaves no silence. The sound below is entirely synthesized, an evocation of the reed's timbre and its drone.",
+      "lament.hint": "↓ The line breathes to the rhythm of the breath.",
+      "play.idle": "Touch to breathe",
+      "play.playing": "The breath is open",
+      "play.aria": "Play the lament (synthesized sound)",
+      "anat.rule": "Anatomy of a breath",
+      "anat.h": "Three gestures, <em>a single voice.</em>",
+      "anat.sub": "Wood, reed and drone — nothing more, and yet the most human lament of the Caucasus.",
+      "facet1.h": "The apricot wood",
+      "facet1.p": "The body is turned from apricot wood — <em>tsiran</em> — whose warm density gives that velvety, dark, rounded timbre, impossible to match on any other wood.",
+      "facet2.h": "The large double reed",
+      "facet2.p": "A wide, flattened cane reed — the <em>ghamish</em> — vibrates between the lips. It is what brings the duduk close to the grain of the speaking voice.",
+      "facet3.h": "The sustained drone",
+      "facet3.p": "A second player holds the <em>dam</em>, an unchanging note, through circular breathing. The melody then seems to float over a continuous horizon of sound.",
+      "dam.rule": "The drone",
+      "dam.h": "Breathing without ever stopping.",
+      "dam.p1": "Circular breathing — inhaling through the nose while pushing out the air stored in the cheeks — makes it possible to hold the <em>dam</em> indefinitely. The drone becomes a still ground on which the melody weeps, hesitates, returns.",
+      "dam.p2": "It is this contrast — a moving voice over an eternal note — that gives the duduk its prayer-like gravity.",
+      "lin.rule": "A lineage of keepers",
+      "lin.h": "From the church <em>to the world.</em>",
+      "lin.komitas.d": "Priest and musicologist, he gathered and saved hundreds of Armenian folk melodies from oblivion — founding the national school of music.",
+      "lin.djivan.d": "The instrument's absolute master, he carried the duduk to stages and screens around the world, all the way to film scores.",
+      "lin.unesco.name": "Heritage of humanity",
+      "lin.unesco.d": "“The duduk and its music” was proclaimed by UNESCO a masterpiece of the intangible cultural heritage, inscribed on the representative list in 2008.",
+      "coda.q": "The duduk weeps<br>what words <span class=\"em\">leave unsaid.</span>",
+      "coda.src": "<span class=\"hy\" lang=\"hy\">դուդուկ</span> — Armenia",
+      "footer.brand": "Armenians of Lausanne — Community review",
+      "footer.back": "← Back to the review"
+    },
+    hy: {
+      "meta.title": "Ծիրանի փայտի շունչը — Դուդուկ",
+      "meta.desc": "Հայկական դուդուկը՝ մարդու շնչին ամենամոտ ձայնը։ Զգայական էջ՝ ծիրանի փայտի, եղեգի, դամի և ողբի մասին։",
+      "lang.group": "Լեզու",
+      "mh.mark": "◇ Հանդես",
+      "mh.section": "Երաժշտություն — VII",
+      "hero.l1": "Ծիրանի փայտի",
+      "hero.l2": "շունչը",
+      "hero.lead": "Ոչ մի գործիք այնքան չի մոտենում <em>մարդկային ձայնին</em>։ Ծիրանի փայտից տաշված՝ դուդուկը մեղեդի չի նվագում. այն <em>շնչում է</em> — երկար, ձգված ողբ՝ հենված դամի վրա, որը երբեք չի մարում։",
+      "lament.eyebrow": "Ողբը",
+      "lament.h": "Երկար նոտա, որ երբեք շունչ չի առնում։",
+      "lament.p": "Երկու դուդուկ նվագում են միասին. մեկը տանում է մեղեդին, մյուսը պահում է <em>դամը</em> — անընդհատ բուրդոն, որ պահվում է շրջանաձև շնչառությամբ՝ առանց որևէ լռության։ Ստորև հնչյունը լիովին սինթեզված է՝ եղեգի տեմբրի և նրա դամի արձագանք։",
+      "lament.hint": "↓ Գիծը շնչում է շնչառության ռիթմով։",
+      "play.idle": "Հպվիր՝ շնչելու համար",
+      "play.playing": "Շունչը բացված է",
+      "play.aria": "Լսել ողբը (սինթեզված ձայն)",
+      "anat.rule": "Շնչի անատոմիան",
+      "anat.h": "Երեք շարժում, <em>մեկ ձայն։</em>",
+      "anat.sub": "Փայտը, եղեգը և դամը — ոչ ավելին, և այնուամենայնիվ՝ Կովկասի ամենամարդկային ողբը։",
+      "facet1.h": "Ծիրանի փայտը",
+      "facet1.p": "Իրանը խառատվում է ծիրանի փայտից — <em>ծիրան</em> — որի տաք խտությունը տալիս է այդ թավշյա, մուգ ու կլոր տեմբրը՝ անկրկնելի ցանկացած այլ փայտի վրա։",
+      "facet2.h": "Մեծ կրկնակի եղեգը",
+      "facet2.p": "Լայն, տափակ եղեգնյա լեզվակը — <em>ղամիշը</em> — թրթռում է շուրթերի միջև։ Հենց այն է դուդուկը մոտեցնում խոսող ձայնի հյուսվածքին։",
+      "facet3.h": "Ձգված դամը",
+      "facet3.p": "Երկրորդ նվագողը պահում է <em>դամը</em>՝ անփոփոխ նոտա, շրջանաձև շնչառությամբ։ Մեղեդին այդժամ կարծես լողում է ձայնի անընդհատ հորիզոնի վրա։",
+      "dam.rule": "Դամը",
+      "dam.h": "Շնչել՝ առանց երբևէ կանգ առնելու։",
+      "dam.p1": "Շրջանաձև շնչառությունը — քթով ներշնչել՝ միաժամանակ դուրս մղելով այտերում պահվող օդը — թույլ է տալիս <em>դամը</em> պահել անվերջ։ Բուրդոնը դառնում է անշարժ հող, որի վրա մեղեդին լաց է լինում, տատանվում, վերադառնում։",
+      "dam.p2": "Հենց այս հակադրությունն է — շարժվող ձայն հավերժական նոտայի վրա — որ դուդուկին տալիս է աղոթքի խորությունը։",
+      "lin.rule": "Պահապանների տոհմ",
+      "lin.h": "Եկեղեցուց <em>դեպի աշխարհ։</em>",
+      "lin.komitas.d": "Քահանա և երաժշտագետ, նա հավաքեց ու մոռացությունից փրկեց հարյուրավոր հայկական ժողովրդական մեղեդիներ՝ հիմնելով ազգային երաժշտական դպրոցը։",
+      "lin.djivan.d": "Գործիքի բացարձակ վարպետը, նա դուդուկը տարավ ամբողջ աշխարհի բեմեր ու էկրաններ՝ ընդհուպ մինչև կինոյի երաժշտություն։",
+      "lin.unesco.name": "Մարդկության ժառանգություն",
+      "lin.unesco.d": "«Դուդուկը և նրա երաժշտությունը» ՅՈՒՆԵՍԿՕ-ի կողմից հռչակվել է ոչ նյութական մշակութային ժառանգության գլուխգործոց՝ 2008 թ. ընդգրկվելով ներկայացուցչական ցանկում։",
+      "coda.q": "Դուդուկը լալիս է այն,<br>ինչ բառերը <span class=\"em\">լռում են։</span>",
+      "coda.src": "<span class=\"hy\" lang=\"hy\">դուդուկ</span> — Հայաստան",
+      "footer.brand": "Լոզանի հայերը — Համայնքային հանդես",
+      "footer.back": "← Վերադառնալ հանդես"
+    }
+  };
+
+  var current = "fr";
+
+  function pickLang(){
+    var q;
+    try { q = new URLSearchParams(location.search).get("lang"); } catch(e){}
+    var stored;
+    try { stored = localStorage.getItem(STORAGE_KEY); } catch(e){}
+    var l = (q || stored || "fr").toLowerCase();
+    return DICT[l] ? l : "fr";
+  }
+
+  function apply(lang){
+    var d = DICT[lang] || DICT.fr;
+    current = lang;
+    document.documentElement.lang = lang;
+    if (d["meta.title"]) document.title = d["meta.title"];
+    var md = document.querySelector('meta[name="description"]');
+    if (md && d["meta.desc"]) md.setAttribute("content", d["meta.desc"]);
+    document.querySelectorAll("[data-i18n]").forEach(function(el){
+      var k = el.getAttribute("data-i18n");
+      if (d[k] != null) el.innerHTML = d[k];
+    });
+    document.querySelectorAll("[data-i18n-aria]").forEach(function(el){
+      var k = el.getAttribute("data-i18n-aria");
+      if (d[k] != null) el.setAttribute("aria-label", d[k]);
+    });
+    document.querySelectorAll(".lang-switch [data-lang]").forEach(function(b){
+      b.setAttribute("aria-current", b.getAttribute("data-lang") === lang ? "true" : "false");
+    });
+    document.dispatchEvent(new CustomEvent("pagelang", { detail: { lang: lang } }));
+  }
+
+  window.PageT = function(k){ return (DICT[current] || DICT.fr)[k]; };
+
+  var switcher = document.querySelector(".lang-switch");
+  if (switcher){
+    switcher.addEventListener("click", function(e){
+      var b = e.target.closest && e.target.closest("[data-lang]");
+      if (!b) return;
+      var lang = b.getAttribute("data-lang");
+      if (!DICT[lang]) return;
+      try { localStorage.setItem(STORAGE_KEY, lang); } catch(err){}
+      apply(lang);
+    });
+  }
+
+  apply(pickLang());
+})();
+</script>
 
 <script>
 (function(){
@@ -569,6 +765,11 @@ footer a:hover{ border-color:var(--ember); }
   var btn = document.getElementById("playBtn");
   var cap = document.getElementById("playCap");
 
+  // caption follows the active language (set by the i18n layer below)
+  function refreshCap(){ if (window.PageT) cap.textContent = PageT(playing ? "play.playing" : "play.idle"); }
+  document.addEventListener("pagelang", refreshCap);
+  refreshCap();
+
   // mode phrygien dominant (couleur « orientale »), en Ré
   var SCALE = [146.83, 155.56, 196.00, 220.00, 233.08, 277.18, 293.66]; // D Eb G A Bb C# D
   var PHRASE = [3,4,3,2,3,1,0,1,2,3]; // index dans SCALE — lament redescendant
@@ -638,7 +839,7 @@ footer a:hover{ border-color:var(--ember); }
     playing = true;
     player.classList.add("is-playing");
     btn.setAttribute("aria-pressed","true");
-    cap.textContent = "Le souffle est ouvert";
+    cap.textContent = window.PageT ? PageT("play.playing") : "Le souffle est ouvert";
     var t = ctx.currentTime;
     nodes.master.gain.cancelScheduledValues(t);
     nodes.master.gain.setValueAtTime(Math.max(nodes.master.gain.value,0.0001), t);
@@ -650,7 +851,7 @@ footer a:hover{ border-color:var(--ember); }
     playing = false;
     player.classList.remove("is-playing");
     btn.setAttribute("aria-pressed","false");
-    cap.textContent = "Effleurer pour respirer";
+    cap.textContent = window.PageT ? PageT("play.idle") : "Effleurer pour respirer";
     if (seqTimer) clearTimeout(seqTimer);
     if (!ctx) return;
     var t = ctx.currentTime;
