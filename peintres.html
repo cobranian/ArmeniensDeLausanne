@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Ce que la couleur dit de nous — Six peintres arméniens</title>
-<meta name="description" content="Galerie : six peintres arméniens, six tempéraments de la couleur — le soleil de Martiros Saryan, le feu de Minas Avetisyan, le silence de Movses Poghosyan, la lumière d'Armen Harutyunyan « Lorenc », la grâce de Matevos Sargsyan, la floraison de Shahen Ordubekyan." />
+<title>Ce que la couleur dit de nous — Neuf peintres arméniens</title>
+<meta name="description" content="Galerie : neuf peintres arméniens, neuf tempéraments de la couleur — le soleil de Martiros Saryan, le feu de Minas Avetisyan, le silence de Movses Poghosyan, la lumière d'Armen Harutyunyan « Lorenc », la grâce de Matevos Sargsyan, la floraison de Shahen Ordubekyan, le fragment d'Artsrun Asatryan, l'or de Hayk Miqayelyan, le conte de Mher Chatinyan." />
 <meta name="theme-color" content="#EFE7D6" />
 
 <link rel="icon" href="favicon.svg" type="image/svg+xml" />
@@ -151,16 +151,16 @@ section{ position:relative; z-index:2; }
 }
 .index-grid{ display:grid; grid-template-columns:1fr; }
 @media (min-width:680px){ .index-grid{ grid-template-columns:repeat(3,1fr); } }
-@media (min-width:1080px){ .index-grid{ grid-template-columns:repeat(6,1fr); } }
 .idx{
   padding:clamp(1.6rem,3vw,2.4rem) clamp(1.2rem,2vw,1.8rem);
   border-bottom:1px solid var(--ink-faint);
   display:block; text-decoration:none; color:inherit;
   position:relative; transition:background .4s var(--ease);
 }
-@media (min-width:1080px){
-  .idx{ border-bottom:none; border-right:1px solid var(--ink-faint); }
-  .idx:last-child{ border-right:none; }
+@media (min-width:680px){
+  .idx{ border-right:1px solid var(--ink-faint); }
+  .idx:nth-child(3n){ border-right:none; }
+  .idx:nth-child(n+7){ border-bottom:none; }
 }
 .idx:hover{ background:rgba(174,53,38,.05); }
 .idx .ix-n{ font-family:var(--f-display); font-style:italic; font-size:1.4rem; color:var(--pom); }
@@ -358,16 +358,17 @@ footer a:hover{ border-color:var(--pom); }
       <span class="l2 reveal d2" data-i18n="hero.l2">dit de nous.</span>
     </h1>
     <p class="lead reveal d3" data-i18n="hero.lead">
-      Six peintres, six manières de dire l'Arménie&nbsp;: le <em>soleil</em> de
+      Neuf peintres, neuf manières de dire l'Arménie&nbsp;: le <em>soleil</em> de
       Martiros Saryan, le <em>feu</em> qui embrase la toile, le <em>silence</em> des
       figures suspendues, la <em>lumière</em> crue des hauts plateaux, la
       <em>grâce</em> des figures allongées, la <em>floraison</em> débordante des
-      bouquets. Une même terre, traduite en couleur.
+      bouquets, le <em>fragment</em> des visages recomposés, l'<em>or</em> du
+      patrimoine et le <em>conte</em> des villages. Une même terre, traduite en couleur.
     </p>
   </section>
 
   <!-- ============ INDEX ============ -->
-  <nav class="index reveal d1" data-i18n-aria="index.aria" aria-label="Les six peintres">
+  <nav class="index reveal d1" data-i18n-aria="index.aria" aria-label="Les neuf peintres">
     <div class="index-grid">
       <a class="idx" href="#saryan">
         <span class="ix-n">i.</span>
@@ -404,6 +405,24 @@ footer a:hover{ border-color:var(--pom); }
         <p class="ix-name">Shahen Ordubekyan</p>
         <p class="ix-meta" data-i18n="idx.shahen.meta">Peinture contemporaine · la floraison</p>
         <span class="ix-word" data-i18n="idx.shahen.word">La floraison</span>
+      </a>
+      <a class="idx" href="#artsrun">
+        <span class="ix-n">vii.</span>
+        <p class="ix-name">Artsrun Asatryan</p>
+        <p class="ix-meta" data-i18n="idx.artsrun.meta">Peinture contemporaine · le fragment</p>
+        <span class="ix-word" data-i18n="idx.artsrun.word">Le fragment</span>
+      </a>
+      <a class="idx" href="#hayk">
+        <span class="ix-n">viii.</span>
+        <p class="ix-name">Hayk Miqayelyan</p>
+        <p class="ix-meta" data-i18n="idx.hayk.meta">Peinture contemporaine · l'or</p>
+        <span class="ix-word" data-i18n="idx.hayk.word">L'or</span>
+      </a>
+      <a class="idx" href="#mher">
+        <span class="ix-n">ix.</span>
+        <p class="ix-name">Mher Chatinyan</p>
+        <p class="ix-meta" data-i18n="idx.mher.meta">Peinture contemporaine · le conte</p>
+        <span class="ix-word" data-i18n="idx.mher.word">Le conte</span>
       </a>
     </div>
   </nav>
@@ -1247,6 +1266,444 @@ footer a:hover{ border-color:var(--pom); }
     </div>
   </section>
 
+  <div class="between reveal" aria-hidden="true"><span class="di"></span> <span data-i18n="between.7">Salle VII</span></div>
+
+  <!-- ============ SALLE VII — ARTSRUN ============ -->
+  <section class="room" id="artsrun" aria-labelledby="artsrun-h" data-artist="Artsrun Asatryan">
+    <header class="room-head">
+      <div class="rh-mark reveal" aria-hidden="true">VII</div>
+      <div class="rh-body">
+        <p class="rh-kicker reveal" lang="hy">Արծրուն Ասատրյան</p>
+        <h2 id="artsrun-h" class="reveal" data-i18n="room.artsrun.h">Artsrun Asatryan, <span class="em">le fragment.</span></h2>
+        <p class="rh-meta reveal" data-i18n="room.artsrun.meta">Peinture contemporaine <span class="dot">◆</span> figure <span class="dot">◆</span> cubo-futurisme</p>
+        <p class="rh-desc reveal d1" data-i18n="room.artsrun.desc">
+          Héritier du cubo-futurisme, Artsrun Asatryan brise le visage en
+          <em>éclats de couleur</em> — triangles, biseaux, vitraux. De ces fragments
+          resurgit toujours une figure&nbsp;: un œil, des lèvres rouges, un profil qui se
+          recompose. L'identité n'y est jamais donnée d'un bloc, mais <em>reconstruite</em>
+          sous le regard.
+        </p>
+      </div>
+    </header>
+
+    <div class="layout layout-C">
+      <figure class="plate reveal">
+        <button class="frame" type="button">
+          <img src="Images/peintres/artsrun-fragments-identite.jpg"
+               data-i18n-alt="a.artsrun.1"
+               alt="Visage fragmenté en facettes cubistes rouge, jaune, turquoise et vert, deux profils fondus, œil rouge — Artsrun Asatryan"
+               loading="lazy" decoding="async" style="aspect-ratio:891/1099;" />
+        </button>
+        <figcaption><span class="p-num">i.</span><span class="p-cap" data-i18n="f.artsrun.1">Fragments d'identité</span></figcaption>
+      </figure>
+
+      <figure class="plate reveal d1">
+        <button class="frame" type="button">
+          <img src="Images/peintres/artsrun-masque-emotions.jpg"
+               data-i18n-alt="a.artsrun.2"
+               alt="Visage à facettes vives bleu, jaune et vert, un œil cerné de rouge, lèvres rouges, sur fond vert sombre — Artsrun Asatryan"
+               loading="lazy" decoding="async" style="aspect-ratio:1090/1093;" />
+        </button>
+        <figcaption><span class="p-num">ii.</span><span class="p-cap" data-i18n="f.artsrun.2">Le masque des émotions</span></figcaption>
+      </figure>
+
+      <figure class="plate reveal d2">
+        <button class="frame" type="button">
+          <img src="Images/peintres/artsrun-nuit-emeraude.jpg"
+               data-i18n-alt="a.artsrun.3"
+               alt="Visage de profil aux yeux clos, éclats d'émeraude et de bleu, une touche de rouge aux lèvres — Artsrun Asatryan"
+               loading="lazy" decoding="async" style="aspect-ratio:886/1099;" />
+        </button>
+        <figcaption><span class="p-num">iii.</span><span class="p-cap" data-i18n="f.artsrun.3">Nuit d'émeraude</span></figcaption>
+      </figure>
+
+      <figure class="plate reveal">
+        <button class="frame" type="button">
+          <img src="Images/peintres/artsrun-identite-construite.jpg"
+               data-i18n-alt="a.artsrun.4"
+               alt="Visage géométrique au nez jaune triangulaire percé d'un disque noir, plans bleu, magenta et turquoise, lèvres rouges — Artsrun Asatryan"
+               loading="lazy" decoding="async" style="aspect-ratio:1104/1093;" />
+        </button>
+        <figcaption><span class="p-num">iv.</span><span class="p-cap" data-i18n="f.artsrun.4">Identité construite</span></figcaption>
+      </figure>
+
+      <figure class="plate reveal d1">
+        <button class="frame" type="button">
+          <img src="Images/peintres/artsrun-fragments-intimite.jpg"
+               data-i18n-alt="a.artsrun.5"
+               alt="Deux visages enlacés en facettes bleu, blanc et rouge, un couple sur fond sombre — Artsrun Asatryan"
+               loading="lazy" decoding="async" style="aspect-ratio:907/1096;" />
+        </button>
+        <figcaption><span class="p-num">v.</span><span class="p-cap" data-i18n="f.artsrun.5">Fragments d'intimité</span></figcaption>
+      </figure>
+
+      <figure class="plate reveal d2">
+        <button class="frame" type="button">
+          <img src="Images/peintres/artsrun-melodie-amour.jpg"
+               data-i18n-alt="a.artsrun.6"
+               alt="Un homme au chapeau jouant du violon et une femme aux yeux clos, une rose rouge, facettes bleues, vertes et rouges — Artsrun Asatryan"
+               loading="lazy" decoding="async" style="aspect-ratio:1018/1093;" />
+        </button>
+        <figcaption><span class="p-num">vi.</span><span class="p-cap" data-i18n="f.artsrun.6">Mélodie d'amour</span></figcaption>
+      </figure>
+
+      <figure class="plate reveal">
+        <button class="frame" type="button">
+          <img src="Images/peintres/artsrun-fragments-lumiere.jpg"
+               data-i18n-alt="a.artsrun.7"
+               alt="Paysage cubo-futuriste : ciel d'ocre et de rouge en éclats, vallée verte facettée, faisceaux de lumière — Artsrun Asatryan"
+               loading="lazy" decoding="async" style="aspect-ratio:988/1093;" />
+        </button>
+        <figcaption><span class="p-num">vii.</span><span class="p-cap" data-i18n="f.artsrun.7">Fragments de lumière</span></figcaption>
+      </figure>
+
+      <figure class="plate reveal d1">
+        <button class="frame" type="button">
+          <img src="Images/peintres/artsrun-fragments-beaute.jpg"
+               data-i18n-alt="a.artsrun.8"
+               alt="Visage de femme aux yeux clos en facettes bleu et turquoise, éclats orange et rouges en dessous — Artsrun Asatryan"
+               loading="lazy" decoding="async" style="aspect-ratio:913/1090;" />
+        </button>
+        <figcaption><span class="p-num">viii.</span><span class="p-cap" data-i18n="f.artsrun.8">Fragments de beauté</span></figcaption>
+      </figure>
+
+      <figure class="plate reveal d2">
+        <button class="frame" type="button">
+          <img src="Images/peintres/artsrun-elegance-lunaire.jpg"
+               data-i18n-alt="a.artsrun.9"
+               alt="Un couple sous une lune jaune, homme au chapeau et femme, facettes bleues, rouges et orange dans la nuit — Artsrun Asatryan"
+               loading="lazy" decoding="async" style="aspect-ratio:1048/1096;" />
+        </button>
+        <figcaption><span class="p-num">ix.</span><span class="p-cap" data-i18n="f.artsrun.9">Élégance au clair de lune</span></figcaption>
+      </figure>
+
+      <figure class="plate reveal">
+        <button class="frame" type="button">
+          <img src="Images/peintres/artsrun-ciels-fractures.jpg"
+               data-i18n-alt="a.artsrun.10"
+               alt="Paysage aux ciels fracturés de bleu et de blanc, collines vertes et un pic brun, rais de lumière — Artsrun Asatryan"
+               loading="lazy" decoding="async" style="aspect-ratio:949/1093;" />
+        </button>
+        <figcaption><span class="p-num">x.</span><span class="p-cap" data-i18n="f.artsrun.10">Ciels fracturés</span></figcaption>
+      </figure>
+
+      <figure class="plate reveal d1">
+        <button class="frame" type="button">
+          <img src="Images/peintres/artsrun-lui-et-moi.jpg"
+               data-i18n-alt="a.artsrun.11"
+               alt="Un homme au chapeau et une femme en robe rouge, facettes chaudes, une petite église au loin — Artsrun Asatryan"
+               loading="lazy" decoding="async" style="aspect-ratio:1249/1090;" />
+        </button>
+        <figcaption><span class="p-num">xi.</span><span class="p-cap" data-i18n="f.artsrun.11">Lui et moi</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <div class="between reveal" aria-hidden="true"><span class="di"></span> <span data-i18n="between.8">Salle VIII</span></div>
+
+  <!-- ============ SALLE VIII — HAYK ============ -->
+  <section class="room" id="hayk" aria-labelledby="hayk-h" data-artist="Hayk Miqayelyan">
+    <header class="room-head">
+      <div class="rh-mark reveal" aria-hidden="true">VIII</div>
+      <div class="rh-body">
+        <p class="rh-kicker reveal" lang="hy">Հայկ Միքայելյան</p>
+        <h2 id="hayk-h" class="reveal" data-i18n="room.hayk.h">Hayk Miqayelyan, <span class="em">l'or.</span></h2>
+        <p class="rh-meta reveal" data-i18n="room.hayk.meta">Peinture contemporaine <span class="dot">◆</span> figure &amp; nature morte <span class="dot">◆</span> couteau à peindre</p>
+        <p class="rh-desc reveal d1" data-i18n="room.hayk.desc">
+          Au couteau, en empâtements épais comme de l'<em>orfèvrerie</em>, Hayk
+          Miqayelyan dresse des femmes en coiffe traditionnelle, des bouquets et des
+          grenades. Tout y baigne dans une lumière d'<em>or</em>&nbsp;: le fond, les
+          broderies, le crépuscule sur l'Ararat. La couleur devient parure, et le
+          patrimoine, <em>trésor</em>.
+        </p>
+      </div>
+    </header>
+
+    <div class="layout layout-A">
+      <figure class="plate span-tall reveal">
+        <button class="frame" type="button">
+          <img src="Images/peintres/hayk-mariee.jpg"
+               data-i18n-alt="a.hayk.1"
+               alt="Mariée de profil aux yeux clos, couronne de fleurs, robe blanche et bouquet, arche dorée au couteau — Hayk Miqayelyan"
+               loading="lazy" decoding="async" style="aspect-ratio:721/1096;" />
+        </button>
+        <figcaption><span class="p-num">i.</span><span class="p-cap" data-i18n="f.hayk.1">La mariée</span></figcaption>
+      </figure>
+
+      <figure class="plate reveal d1">
+        <button class="frame" type="button">
+          <img src="Images/peintres/hayk-gratitude.jpg"
+               data-i18n-alt="a.hayk.2"
+               alt="Femme à la couronne fleurie en robe bleue, tenant un bouquet et un violon, halo doré, empâtements au couteau — Hayk Miqayelyan"
+               loading="lazy" decoding="async" style="aspect-ratio:778/1096;" />
+        </button>
+        <figcaption><span class="p-num">ii.</span><span class="p-cap" data-i18n="f.hayk.2">Gratitude</span></figcaption>
+      </figure>
+
+      <figure class="plate reveal d2">
+        <button class="frame" type="button">
+          <img src="Images/peintres/hayk-eclat-dore.jpg"
+               data-i18n-alt="a.hayk.3"
+               alt="Tournesols jaunes aux cœurs sombres peints au couteau, sur fond gris-bleu — Hayk Miqayelyan"
+               loading="lazy" decoding="async" style="aspect-ratio:972/1093;" />
+        </button>
+        <figcaption><span class="p-num">iii.</span><span class="p-cap" data-i18n="f.hayk.3">Éclat doré</span></figcaption>
+      </figure>
+
+      <figure class="plate wide reveal">
+        <button class="frame" type="button">
+          <img src="Images/peintres/hayk-essence-armenienne.jpg"
+               data-i18n-alt="a.hayk.4"
+               alt="Femme en coiffe traditionnelle arménienne tenant une grenade, motifs de tapis autour, tons chauds et or — Hayk Miqayelyan"
+               loading="lazy" decoding="async" style="aspect-ratio:1561/1090;" />
+        </button>
+        <figcaption><span class="p-num">iv.</span><span class="p-cap" data-i18n="f.hayk.4">Essence arménienne</span></figcaption>
+      </figure>
+
+      <figure class="plate reveal d1">
+        <button class="frame" type="button">
+          <img src="Images/peintres/hayk-tournesols.jpg"
+               data-i18n-alt="a.hayk.5"
+               alt="Tournesols et fleurs roses dans un vase bleu, fond vert, empâtements au couteau — Hayk Miqayelyan"
+               loading="lazy" decoding="async" style="aspect-ratio:774/1090;" />
+        </button>
+        <figcaption><span class="p-num">v.</span><span class="p-cap" data-i18n="f.hayk.5">Tournesols</span></figcaption>
+      </figure>
+
+      <figure class="plate reveal d2">
+        <button class="frame" type="button">
+          <img src="Images/peintres/hayk-bouquet-soleil.jpg"
+               data-i18n-alt="a.hayk.6"
+               alt="Coquelicots rouges et marguerites dans un vase sombre, fond jaune lumineux au couteau — Hayk Miqayelyan"
+               loading="lazy" decoding="async" style="aspect-ratio:945/1092;" />
+        </button>
+        <figcaption><span class="p-num">vi.</span><span class="p-cap" data-i18n="f.hayk.6">Bouquet de soleil</span></figcaption>
+      </figure>
+
+      <figure class="plate wide reveal">
+        <button class="frame" type="button">
+          <img src="Images/peintres/hayk-fruit-de-vie.jpg"
+               data-i18n-alt="a.hayk.7"
+               alt="Nature morte de grenades, deux entières et une ouverte révélant ses grains, sur fond bleu — Hayk Miqayelyan"
+               loading="lazy" decoding="async" style="aspect-ratio:2158/1018;" />
+        </button>
+        <figcaption><span class="p-num">vii.</span><span class="p-cap" data-i18n="f.hayk.7">Le fruit de vie</span></figcaption>
+      </figure>
+
+      <figure class="plate span-tall reveal d1">
+        <button class="frame" type="button">
+          <img src="Images/peintres/hayk-portrait.jpg"
+               data-i18n-alt="a.hayk.8"
+               alt="Visage de femme aux yeux clos enveloppé d'une cascade de touches multicolores au couteau, fond gris — Hayk Miqayelyan"
+               loading="lazy" decoding="async" style="aspect-ratio:502/1098;" />
+        </button>
+        <figcaption><span class="p-num">viii.</span><span class="p-cap" data-i18n="f.hayk.8">Portrait</span></figcaption>
+      </figure>
+
+      <figure class="plate reveal">
+        <button class="frame" type="button">
+          <img src="Images/peintres/hayk-crepuscule-dore.jpg"
+               data-i18n-alt="a.hayk.9"
+               alt="Village à l'église sous le mont Ararat, ciel corail, arbres d'automne, empâtements au couteau — Hayk Miqayelyan"
+               loading="lazy" decoding="async" style="aspect-ratio:913/1095;" />
+        </button>
+        <figcaption><span class="p-num">ix.</span><span class="p-cap" data-i18n="f.hayk.9">Crépuscule doré sur l'Arménie</span></figcaption>
+      </figure>
+
+      <figure class="plate reveal d1">
+        <button class="frame" type="button">
+          <img src="Images/peintres/hayk-racines-armenie.jpg"
+               data-i18n-alt="a.hayk.10"
+               alt="Deux figures superposées, une femme à la coiffe traditionnelle et un aïeul, une maison et un soleil, fond jaune — Hayk Miqayelyan"
+               loading="lazy" decoding="async" style="aspect-ratio:622/1095;" />
+        </button>
+        <figcaption><span class="p-num">x.</span><span class="p-cap" data-i18n="f.hayk.10">Racines d'Arménie</span></figcaption>
+      </figure>
+
+      <figure class="plate wide reveal">
+        <button class="frame" type="button">
+          <img src="Images/peintres/hayk-abstraction.jpg"
+               data-i18n-alt="a.hayk.11"
+               alt="Abstraction au couteau, éclats rouges, jaunes et bleus sur fond orange — Hayk Miqayelyan"
+               loading="lazy" decoding="async" style="aspect-ratio:1464/1092;" />
+        </button>
+        <figcaption><span class="p-num">xi.</span><span class="p-cap" data-i18n="f.hayk.11">Abstraction</span></figcaption>
+      </figure>
+
+      <figure class="plate reveal d1">
+        <button class="frame" type="button">
+          <img src="Images/peintres/hayk-bouquet-printemps.jpg"
+               data-i18n-alt="a.hayk.12"
+               alt="Bouquet foisonnant de marguerites et de fleurs colorées dans un vase bleu, fond gris-bleu au couteau — Hayk Miqayelyan"
+               loading="lazy" decoding="async" style="aspect-ratio:1230/1095;" />
+        </button>
+        <figcaption><span class="p-num">xii.</span><span class="p-cap" data-i18n="f.hayk.12">Bouquet de printemps</span></figcaption>
+      </figure>
+
+      <figure class="plate reveal d2">
+        <button class="frame" type="button">
+          <img src="Images/peintres/hayk-eclat-abstrait.jpg"
+               data-i18n-alt="a.hayk.13"
+               alt="Éclat abstrait de touches multicolores au couteau sur un fond bleu profond — Hayk Miqayelyan"
+               loading="lazy" decoding="async" style="aspect-ratio:1102/1092;" />
+        </button>
+        <figcaption><span class="p-num">xiii.</span><span class="p-cap" data-i18n="f.hayk.13">Éclat abstrait</span></figcaption>
+      </figure>
+
+      <figure class="plate wide reveal">
+        <button class="frame" type="button">
+          <img src="Images/peintres/hayk-heritage.jpg"
+               data-i18n-alt="a.hayk.14"
+               alt="Femme à la coiffe d'argent aux yeux clos, villages et montagnes alentour en rouges et or — Hayk Miqayelyan"
+               loading="lazy" decoding="async" style="aspect-ratio:1281/1096;" />
+        </button>
+        <figcaption><span class="p-num">xiv.</span><span class="p-cap" data-i18n="f.hayk.14">Tradition et héritage</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <div class="between reveal" aria-hidden="true"><span class="di"></span> <span data-i18n="between.9">Salle IX</span></div>
+
+  <!-- ============ SALLE IX — MHER ============ -->
+  <section class="room" id="mher" aria-labelledby="mher-h" data-artist="Mher Chatinyan">
+    <header class="room-head">
+      <div class="rh-mark reveal" aria-hidden="true">IX</div>
+      <div class="rh-body">
+        <p class="rh-kicker reveal" lang="hy">Մհեր Չատինյան</p>
+        <h2 id="mher-h" class="reveal" data-i18n="room.mher.h">Mher Chatinyan, <span class="em">le conte.</span></h2>
+        <p class="rh-meta reveal" data-i18n="room.mher.meta">Peinture contemporaine <span class="dot">◆</span> scène &amp; portrait <span class="dot">◆</span> huile</p>
+        <p class="rh-desc reveal d1" data-i18n="room.mher.desc">
+          Mher Chatinyan peint comme on raconte. Ruelles ensoleillées aux balcons de
+          bois, fille à l'âne et au coq, vieux violoniste, mère et enfant en icône&nbsp;:
+          chaque toile est un <em>conte</em>. Le trait est libre, la couleur franche, et
+          le quotidien arménien y prend des airs de <em>légende</em>.
+        </p>
+      </div>
+    </header>
+
+    <div class="layout layout-B">
+      <figure class="plate reveal">
+        <button class="frame" type="button">
+          <img src="Images/peintres/mher-fillette-ane-coq.jpg"
+               data-i18n-alt="a.mher.1"
+               alt="Femme à la coiffe rouge fleurie tenant un coq multicolore, un âne bleu à ses côtés, fond bleu profond — Mher Chatinyan"
+               loading="lazy" decoding="async" style="aspect-ratio:979/1099;" />
+        </button>
+        <figcaption><span class="p-num">i.</span><span class="p-cap" data-i18n="f.mher.1">La fille à l'âne et au coq</span></figcaption>
+      </figure>
+
+      <figure class="plate reveal d1">
+        <button class="frame" type="button">
+          <img src="Images/peintres/mher-portrait-femme.jpg"
+               data-i18n-alt="a.mher.2"
+               alt="Visage de femme aux ornements rouges et or, grands yeux, sur fond bleu, touche expressive — Mher Chatinyan"
+               loading="lazy" decoding="async" style="aspect-ratio:868/1096;" />
+        </button>
+        <figcaption><span class="p-num">ii.</span><span class="p-cap" data-i18n="f.mher.2">Portrait de femme</span></figcaption>
+      </figure>
+
+      <figure class="plate reveal">
+        <button class="frame" type="button">
+          <img src="Images/peintres/mher-vieille-ville.jpg"
+               data-i18n-alt="a.mher.3"
+               alt="Cour ensoleillée d'une vieille ville, balcons de bois, linge étendu, pavés et passants — Mher Chatinyan"
+               loading="lazy" decoding="async" style="aspect-ratio:958/1093;" />
+        </button>
+        <figcaption><span class="p-num">iii.</span><span class="p-cap" data-i18n="f.mher.3">La vieille ville</span></figcaption>
+      </figure>
+
+      <figure class="plate reveal d1">
+        <button class="frame" type="button">
+          <img src="Images/peintres/mher-amoureux.jpg"
+               data-i18n-alt="a.mher.4"
+               alt="Ruelle pavée entre de hautes maisons à balcons, un couple qui se rencontre, linge au vent, tons chauds — Mher Chatinyan"
+               loading="lazy" decoding="async" style="aspect-ratio:817/1098;" />
+        </button>
+        <figcaption><span class="p-num">iv.</span><span class="p-cap" data-i18n="f.mher.4">Les amoureux</span></figcaption>
+      </figure>
+
+      <figure class="plate reveal">
+        <button class="frame" type="button">
+          <img src="Images/peintres/mher-vieux-violoniste.jpg"
+               data-i18n-alt="a.mher.5"
+               alt="Portrait d'un vieil homme à la barbe blanche tenant un violon rouge, sur fond rouge et noir — Mher Chatinyan"
+               loading="lazy" decoding="async" style="aspect-ratio:739/1096;" />
+        </button>
+        <figcaption><span class="p-num">v.</span><span class="p-cap" data-i18n="f.mher.5">Le vieux violoniste</span></figcaption>
+      </figure>
+
+      <figure class="plate reveal d1">
+        <button class="frame" type="button">
+          <img src="Images/peintres/mher-fille-chapeau.jpg"
+               data-i18n-alt="a.mher.6"
+               alt="Jeune fille au chapeau bleu, longs cheveux noirs, visage expressif, sur fond rouge sombre — Mher Chatinyan"
+               loading="lazy" decoding="async" style="aspect-ratio:781/1093;" />
+        </button>
+        <figcaption><span class="p-num">vi.</span><span class="p-cap" data-i18n="f.mher.6">Jeune fille au chapeau</span></figcaption>
+      </figure>
+
+      <figure class="plate reveal">
+        <button class="frame" type="button">
+          <img src="Images/peintres/mher-mere-enfant.jpg"
+               data-i18n-alt="a.mher.7"
+               alt="Mère et enfant aux visages d'icône, fond bleu semé de fleurs blanches — Mher Chatinyan"
+               loading="lazy" decoding="async" style="aspect-ratio:904/1092;" />
+        </button>
+        <figcaption><span class="p-num">vii.</span><span class="p-cap" data-i18n="f.mher.7">Mère et enfant</span></figcaption>
+      </figure>
+
+      <figure class="plate reveal d1">
+        <button class="frame" type="button">
+          <img src="Images/peintres/mher-fleurs-sur-vert.jpg"
+               data-i18n-alt="a.mher.8"
+               alt="Bouquet de roses rouges, coquelicots, tournesol et marguerites sur fond vert profond — Mher Chatinyan"
+               loading="lazy" decoding="async" style="aspect-ratio:805/1096;" />
+        </button>
+        <figcaption><span class="p-num">viii.</span><span class="p-cap" data-i18n="f.mher.8">Fleurs sur fond vert</span></figcaption>
+      </figure>
+
+      <figure class="plate reveal">
+        <button class="frame" type="button">
+          <img src="Images/peintres/mher-heure-calme.jpg"
+               data-i18n-alt="a.mher.9"
+               alt="Église arménienne à coupole rouge dans un champ d'or, ciel bleu, un mouton qui broute — Mher Chatinyan"
+               loading="lazy" decoding="async" style="aspect-ratio:612/1099;" />
+        </button>
+        <figcaption><span class="p-num">ix.</span><span class="p-cap" data-i18n="f.mher.9">L'heure calme</span></figcaption>
+      </figure>
+
+      <figure class="plate reveal d1">
+        <button class="frame" type="button">
+          <img src="Images/peintres/mher-printemps.jpg"
+               data-i18n-alt="a.mher.10"
+               alt="Arbre en fleurs blanches et roses devant une maison au toit rouge, herbe verte — Mher Chatinyan"
+               loading="lazy" decoding="async" style="aspect-ratio:892/1090;" />
+        </button>
+        <figcaption><span class="p-num">x.</span><span class="p-cap" data-i18n="f.mher.10">Printemps</span></figcaption>
+      </figure>
+
+      <figure class="plate reveal">
+        <button class="frame" type="button">
+          <img src="Images/peintres/mher-coquelicots.jpg"
+               data-i18n-alt="a.mher.11"
+               alt="Coquelicots rouges aux cœurs noirs, touche libre sur fond gris-bleu — Mher Chatinyan"
+               loading="lazy" decoding="async" style="aspect-ratio:771/1098;" />
+        </button>
+        <figcaption><span class="p-num">xi.</span><span class="p-cap" data-i18n="f.mher.11">Coquelicots</span></figcaption>
+      </figure>
+
+      <figure class="plate reveal d1">
+        <button class="frame" type="button">
+          <img src="Images/peintres/mher-temple.jpg"
+               data-i18n-alt="a.mher.12"
+               alt="Clocher d'église au toit rouge surgissant d'un fouillis de matière noire, blanche et dorée, ciel gris — Mher Chatinyan"
+               loading="lazy" decoding="async" style="aspect-ratio:612/1099;" />
+        </button>
+        <figcaption><span class="p-num">xii.</span><span class="p-cap" data-i18n="f.mher.12">Le clocher</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
   <!-- ============ CODA ============ -->
   <section class="coda">
     <blockquote class="reveal" data-i18n="coda.q">Une terre,<br>traduite <span class="em">en couleur.</span></blockquote>
@@ -1287,15 +1744,15 @@ footer a:hover{ border-color:var(--pom); }
   // FR is the markup baseline (captured below); only EN + HY are stored here.
   var DICT = {
     en: {
-      "meta.title": "What Color Says About Us — Six Armenian Painters",
-      "meta.desc": "Gallery: six Armenian painters, six temperaments of color — Saryan's sun, Minas Avetisyan's fire, Movses Poghosyan's silence, Lorenc's light, Matevos Sargsyan's grace, Shahen Ordubekyan's bloom.",
+      "meta.title": "What Color Says About Us — Nine Armenian Painters",
+      "meta.desc": "Gallery: nine Armenian painters, nine temperaments of color — Saryan's sun, Minas Avetisyan's fire, Movses Poghosyan's silence, Lorenc's light, Matevos Sargsyan's grace, Shahen Ordubekyan's bloom, Artsrun Asatryan's fragment, Hayk Miqayelyan's gold, Mher Chatinyan's tale.",
       "lang.group": "Language",
       "mh.mark": "◇ Review",
       "mh.section": "Painting — VIII",
       "hero.l1": "What color",
       "hero.l2": "says about us.",
-      "hero.lead": "Six painters, six ways of saying Armenia&nbsp;: the <em>sun</em> of Martiros Saryan, the <em>fire</em> that sets the canvas ablaze, the <em>silence</em> of suspended figures, the raw <em>light</em> of the high plateaus, the <em>grace</em> of elongated figures, the overflowing <em>bloom</em> of bouquets. One same land, translated into color.",
-      "index.aria": "The six painters",
+      "hero.lead": "Nine painters, nine ways of saying Armenia&nbsp;: the <em>sun</em> of Martiros Saryan, the <em>fire</em> that sets the canvas ablaze, the <em>silence</em> of suspended figures, the raw <em>light</em> of the high plateaus, the <em>grace</em> of elongated figures, the overflowing <em>bloom</em> of bouquets, the <em>fragment</em> of recomposed faces, the <em>gold</em> of heritage and the <em>tale</em> of the villages. One same land, translated into color.",
+      "index.aria": "The nine painters",
       "idx.saryan.meta": "1880 — 1972 · the sun",
       "idx.saryan.word": "The sun",
       "idx.minas.meta": "1928 — 1975 · the fire",
@@ -1308,6 +1765,12 @@ footer a:hover{ border-color:var(--pom); }
       "idx.matevos.word": "The grace",
       "idx.shahen.meta": "Contemporary painting · the bloom",
       "idx.shahen.word": "The bloom",
+      "idx.artsrun.meta": "Contemporary painting · the fragment",
+      "idx.artsrun.word": "The fragment",
+      "idx.hayk.meta": "Contemporary painting · the gold",
+      "idx.hayk.word": "The gold",
+      "idx.mher.meta": "Contemporary painting · the tale",
+      "idx.mher.word": "The tale",
       "room.saryan.h": "Martiros Saryan, <span class=\"em\">the sun.</span>",
       "room.saryan.meta": "1880 — 1972 <span class=\"dot\">◆</span> Nor Nakhichevan → Yerevan <span class=\"dot\">◆</span> founder of the Armenian school",
       "room.saryan.desc": "The patriarch of modern Armenian painting. From his travels in the East — Egypt, Persia — he brought back <em>bold flat colors</em> and a burning light, then turned them toward his own land&nbsp;: Ararat, the golden villages, the mosaic mountains. In his hands, Armenia becomes <em>sun</em>.",
@@ -1326,7 +1789,16 @@ footer a:hover{ border-color:var(--pom); }
       "room.shahen.h": "Shahen Ordubekyan, <span class=\"em\">the bloom.</span>",
       "room.shahen.meta": "Contemporary painting <span class=\"dot\">◆</span> still life &amp; landscape <span class=\"dot\">◆</span> palette knife",
       "room.shahen.desc": "Here color explodes. With the knife, in generous impasto, he raises bouquets and gardens that <em>spill beyond the frame</em> — peonies, lilacs, mimosas, poppies. The flower is only a pretext&nbsp;: what he paints is the <em>light caught within it</em>, vivid, almost sonorous.",
-      "between.2": "Room II", "between.3": "Room III", "between.4": "Room IV", "between.5": "Room V", "between.6": "Room VI",
+      "room.artsrun.h": "Artsrun Asatryan, <span class=\"em\">the fragment.</span>",
+      "room.artsrun.meta": "Contemporary painting <span class=\"dot\">◆</span> figure <span class=\"dot\">◆</span> cubo-futurism",
+      "room.artsrun.desc": "An heir to cubo-futurism, Artsrun Asatryan shatters the face into <em>shards of color</em> — triangles, bevels, stained glass. From these fragments a figure always re-emerges&nbsp;: an eye, red lips, a profile recomposing itself. Identity is never given whole, but <em>rebuilt</em> beneath the gaze.",
+      "room.hayk.h": "Hayk Miqayelyan, <span class=\"em\">the gold.</span>",
+      "room.hayk.meta": "Contemporary painting <span class=\"dot\">◆</span> figure &amp; still life <span class=\"dot\">◆</span> palette knife",
+      "room.hayk.desc": "With the knife, in impasto thick as <em>goldsmith's work</em>, Hayk Miqayelyan raises women in traditional headdress, bouquets and pomegranates. Everything bathes in a light of <em>gold</em>&nbsp;: the ground, the embroidery, the dusk over Ararat. Color becomes adornment, and heritage, <em>treasure</em>.",
+      "room.mher.h": "Mher Chatinyan, <span class=\"em\">the tale.</span>",
+      "room.mher.meta": "Contemporary painting <span class=\"dot\">◆</span> scene &amp; portrait <span class=\"dot\">◆</span> oil",
+      "room.mher.desc": "Mher Chatinyan paints the way one tells a story. Sunlit alleys with wooden balconies, the girl with the donkey and the rooster, an old violinist, an icon-like mother and child&nbsp;: each canvas is a <em>tale</em>. The line is free, the color frank, and everyday Armenia takes on the air of <em>legend</em>.",
+      "between.2": "Room II", "between.3": "Room III", "between.4": "Room IV", "between.5": "Room V", "between.6": "Room VI", "between.7": "Room VII", "between.8": "Room VIII", "between.9": "Room IX",
       "coda.q": "One land,<br>translated <span class=\"em\">into color.</span>",
       "coda.src": "<span class=\"hy\" lang=\"hy\">Գույն</span> — Armenia",
       "footer.brand": "Armenians of Lausanne — Community review",
@@ -1479,18 +1951,95 @@ footer a:hover{ border-color:var(--pom); }
       "f.shahen.9": "Lilacs and Fruit",
       "a.shahen.9": "Mauve lilac in an ornate vase, fruit set on the table, a golden ochre ground — Shahen Ordubekyan",
       "f.shahen.10": "Blue Still Life with Fruit",
-      "a.shahen.10": "Blue flowered vase and fruit — apples and a pear — in a harmony of deep blues — Shahen Ordubekyan"
+      "a.shahen.10": "Blue flowered vase and fruit — apples and a pear — in a harmony of deep blues — Shahen Ordubekyan",
+
+      "f.artsrun.1": "Fragments of Identity",
+      "a.artsrun.1": "Face fragmented into cubist facets of red, yellow, turquoise and green, two profiles merged, a red eye — Artsrun Asatryan",
+      "f.artsrun.2": "The Mask of Emotions",
+      "a.artsrun.2": "Face in vivid facets of blue, yellow and green, one eye rimmed in red, red lips, on a dark green ground — Artsrun Asatryan",
+      "f.artsrun.3": "Emerald Night",
+      "a.artsrun.3": "Profile face with closed eyes, shards of emerald and blue, a touch of red on the lips — Artsrun Asatryan",
+      "f.artsrun.4": "Constructed Identity",
+      "a.artsrun.4": "Geometric face with a triangular yellow nose pierced by a black disc, planes of blue, magenta and turquoise, red lips — Artsrun Asatryan",
+      "f.artsrun.5": "Fragments of Intimacy",
+      "a.artsrun.5": "Two faces entwined in facets of blue, white and red, a couple on a dark ground — Artsrun Asatryan",
+      "f.artsrun.6": "Love Melody",
+      "a.artsrun.6": "A man in a hat playing the violin and a woman with closed eyes, a red rose, facets of blue, green and red — Artsrun Asatryan",
+      "f.artsrun.7": "Fragments of Light",
+      "a.artsrun.7": "Cubo-futurist landscape: a sky of ochre and red in shards, a faceted green valley, beams of light — Artsrun Asatryan",
+      "f.artsrun.8": "Fragments of Beauty",
+      "a.artsrun.8": "Woman's face with closed eyes in facets of blue and turquoise, orange and red shards below — Artsrun Asatryan",
+      "f.artsrun.9": "Moonlit Elegance",
+      "a.artsrun.9": "A couple beneath a yellow moon, a man in a hat and a woman, facets of blue, red and orange in the night — Artsrun Asatryan",
+      "f.artsrun.10": "Fractured Skies",
+      "a.artsrun.10": "Landscape of fractured skies in blue and white, green hills and a brown peak, shafts of light — Artsrun Asatryan",
+      "f.artsrun.11": "Me and Him",
+      "a.artsrun.11": "A man in a hat and a woman in a red dress, warm facets, a small church in the distance — Artsrun Asatryan",
+
+      "f.hayk.1": "The Bride",
+      "a.hayk.1": "Bride in profile with closed eyes, a crown of flowers, white dress and bouquet, a golden arch worked with the knife — Hayk Miqayelyan",
+      "f.hayk.2": "Gratitude",
+      "a.hayk.2": "Woman with a flower crown in a blue dress, holding a bouquet and a violin, a golden halo, knife impasto — Hayk Miqayelyan",
+      "f.hayk.3": "Golden Radiance",
+      "a.hayk.3": "Yellow sunflowers with dark centers painted with the knife, on a gray-blue ground — Hayk Miqayelyan",
+      "f.hayk.4": "Armenian Essence",
+      "a.hayk.4": "Woman in traditional Armenian headdress holding a pomegranate, carpet motifs around her, warm tones and gold — Hayk Miqayelyan",
+      "f.hayk.5": "Sunflowers",
+      "a.hayk.5": "Sunflowers and pink flowers in a blue vase, green ground, knife impasto — Hayk Miqayelyan",
+      "f.hayk.6": "Sunlight Bouquet",
+      "a.hayk.6": "Red poppies and daisies in a dark vase, a luminous yellow ground worked with the knife — Hayk Miqayelyan",
+      "f.hayk.7": "The Fruit of Life",
+      "a.hayk.7": "Still life of pomegranates, two whole and one opened to reveal its seeds, on a blue ground — Hayk Miqayelyan",
+      "f.hayk.8": "Portrait",
+      "a.hayk.8": "Woman's face with closed eyes wrapped in a cascade of multicolored knife strokes, gray ground — Hayk Miqayelyan",
+      "f.hayk.9": "Golden Twilight Over Armenia",
+      "a.hayk.9": "Village with a church beneath Mount Ararat, a coral sky, autumn trees, knife impasto — Hayk Miqayelyan",
+      "f.hayk.10": "Roots of Armenia",
+      "a.hayk.10": "Two stacked figures, a woman in traditional headdress and an elder, a house and a sun, yellow ground — Hayk Miqayelyan",
+      "f.hayk.11": "Abstraction",
+      "a.hayk.11": "Knife abstraction, shards of red, yellow and blue on an orange ground — Hayk Miqayelyan",
+      "f.hayk.12": "Spring Bouquet",
+      "a.hayk.12": "Abundant bouquet of daisies and colorful flowers in a blue vase, gray-blue ground worked with the knife — Hayk Miqayelyan",
+      "f.hayk.13": "Abstract Burst",
+      "a.hayk.13": "Abstract burst of multicolored knife strokes on a deep blue ground — Hayk Miqayelyan",
+      "f.hayk.14": "Tradition & Heritage",
+      "a.hayk.14": "Woman in a silver headdress with closed eyes, villages and mountains around her in reds and gold — Hayk Miqayelyan",
+
+      "f.mher.1": "The Girl with the Donkey and the Rooster",
+      "a.mher.1": "Woman in a red flowered headdress holding a multicolored rooster, a blue donkey at her side, deep blue ground — Mher Chatinyan",
+      "f.mher.2": "Portrait of a Woman",
+      "a.mher.2": "Woman's face with red and gold ornaments, large eyes, on a blue ground, expressive brushwork — Mher Chatinyan",
+      "f.mher.3": "The Old Town",
+      "a.mher.3": "Sunlit old-town courtyard, wooden balconies, hanging laundry, cobblestones and passers-by — Mher Chatinyan",
+      "f.mher.4": "Lovers",
+      "a.mher.4": "Cobbled alley between tall balconied houses, a couple meeting, laundry in the wind, warm tones — Mher Chatinyan",
+      "f.mher.5": "The Old Violinist",
+      "a.mher.5": "Portrait of a white-bearded old man holding a red violin, on a red and black ground — Mher Chatinyan",
+      "f.mher.6": "Girl with a Hat",
+      "a.mher.6": "Young girl in a blue hat, long black hair, an expressive face, on a dark red ground — Mher Chatinyan",
+      "f.mher.7": "Mother and Child",
+      "a.mher.7": "Mother and child with icon-like faces, a blue ground strewn with white blossoms — Mher Chatinyan",
+      "f.mher.8": "Flowers on Green",
+      "a.mher.8": "Bouquet of red roses, poppies, a sunflower and daisies on a deep green ground — Mher Chatinyan",
+      "f.mher.9": "The Quiet Hour",
+      "a.mher.9": "Armenian church with a red dome in a golden field, blue sky, a grazing sheep — Mher Chatinyan",
+      "f.mher.10": "Spring",
+      "a.mher.10": "Tree in white and pink blossom before a red-roofed house, green grass — Mher Chatinyan",
+      "f.mher.11": "Poppies",
+      "a.mher.11": "Red poppies with black hearts, free brushwork on a gray-blue ground — Mher Chatinyan",
+      "f.mher.12": "The Bell Tower",
+      "a.mher.12": "Church bell tower with a red roof rising from a tangle of black, white and golden matter, gray sky — Mher Chatinyan"
     },
     hy: {
-      "meta.title": "Ի՞նչ է գույնն ասում մեր մասին — Վեց հայ նկարիչ",
-      "meta.desc": "Պատկերասրահ՝ վեց հայ նկարիչ, գույնի վեց խառնվածք — Սարյանի արևը, Մինաս Ավետիսյանի կրակը, Մովսես Պողոսյանի լռությունը, Լորենցի լույսը, Մատևոս Սարգսյանի շնորհը, Շահեն Օրդուբեկյանի ծաղկումը։",
+      "meta.title": "Ի՞նչ է գույնն ասում մեր մասին — Ինը հայ նկարիչ",
+      "meta.desc": "Պատկերասրահ՝ ինը հայ նկարիչ, գույնի ինը խառնվածք — Սարյանի արևը, Մինաս Ավետիսյանի կրակը, Մովսես Պողոսյանի լռությունը, Լորենցի լույսը, Մատևոս Սարգսյանի շնորհը, Շահեն Օրդուբեկյանի ծաղկումը, Արծրուն Ասատրյանի բեկորը, Հայկ Միքայելյանի ոսկին, Մհեր Չատինյանի հեքիաթը։",
       "lang.group": "Լեզու",
       "mh.mark": "◇ Հանդես",
       "mh.section": "Գեղանկար — VIII",
       "hero.l1": "Ինչ է գույնը",
       "hero.l2": "ասում մեր մասին։",
-      "hero.lead": "Վեց նկարիչ, Հայաստանն ասելու վեց եղանակ. Մարտիրոս Սարյանի <em>արևը</em>, կտավը բռնկող <em>կրակը</em>, կախված կերպարների <em>լռությունը</em>, բարձրավանդակների կոշտ <em>լույսը</em>, երկարաձիգ կերպարների <em>շնորհը</em>, ծաղկեփնջերի վխտացող <em>ծաղկումը</em>։ Միևնույն հողը՝ թարգմանված գույնի։",
-      "index.aria": "Վեց նկարիչները",
+      "hero.lead": "Ինը նկարիչ, Հայաստանն ասելու ինը եղանակ. Մարտիրոս Սարյանի <em>արևը</em>, կտավը բռնկող <em>կրակը</em>, կախված կերպարների <em>լռությունը</em>, բարձրավանդակների կոշտ <em>լույսը</em>, երկարաձիգ կերպարների <em>շնորհը</em>, ծաղկեփնջերի վխտացող <em>ծաղկումը</em>, վերակառուցվող դեմքերի <em>բեկորը</em>, ժառանգության <em>ոսկին</em> և գյուղերի <em>հեքիաթը</em>։ Միևնույն հողը՝ թարգմանված գույնի։",
+      "index.aria": "Ինը նկարիչները",
       "idx.saryan.meta": "1880 — 1972 · արևը",
       "idx.saryan.word": "Արևը",
       "idx.minas.meta": "1928 — 1975 · կրակը",
@@ -1503,6 +2052,12 @@ footer a:hover{ border-color:var(--pom); }
       "idx.matevos.word": "Շնորհը",
       "idx.shahen.meta": "Ժամանակակից գեղանկար · ծաղկումը",
       "idx.shahen.word": "Ծաղկումը",
+      "idx.artsrun.meta": "Ժամանակակից գեղանկար · բեկորը",
+      "idx.artsrun.word": "Բեկորը",
+      "idx.hayk.meta": "Ժամանակակից գեղանկար · ոսկին",
+      "idx.hayk.word": "Ոսկին",
+      "idx.mher.meta": "Ժամանակակից գեղանկար · հեքիաթը",
+      "idx.mher.word": "Հեքիաթը",
       "room.saryan.h": "Մարտիրոս Սարյան, <span class=\"em\">արևը։</span>",
       "room.saryan.meta": "1880 — 1972 <span class=\"dot\">◆</span> Նոր Նախիջևան → Երևան <span class=\"dot\">◆</span> հայկական դպրոցի հիմնադիր",
       "room.saryan.desc": "Ժամանակակից հայ գեղանկարի նահապետը։ Արևելք կատարած ճամփորդություններից — Եգիպտոս, Պարսկաստան — նա բերեց <em>զուտ գունաբծեր</em> և այրող լույս, ապա դարձրեց դեպի իր հողը՝ Արարատը, ոսկեգույն գյուղերը, խճանկար լեռները։ Նրա մոտ Հայաստանը դառնում է <em>արև</em>։",
@@ -1521,7 +2076,16 @@ footer a:hover{ border-color:var(--pom); }
       "room.shahen.h": "Շահեն Օրդուբեկյան, <span class=\"em\">ծաղկումը։</span>",
       "room.shahen.meta": "Ժամանակակից գեղանկար <span class=\"dot\">◆</span> նատյուրմորտ և բնանկար <span class=\"dot\">◆</span> նկարչական դանակ",
       "room.shahen.desc": "Այստեղ գույնը պայթում է։ Դանակով, առատ վրձնահարվածներով, նա կանգնեցնում է ծաղկեփնջեր ու այգիներ, որ <em>վխտում են շրջանակից դուրս</em> — պիոններ, յասաման, միմոզա, կակաչ։ Ծաղիկը պարզապես պատրվակ է. այն, ինչ նկարում է, <em>նրա մեջ բռնված լույսն է</em>՝ վառ, համարյա հնչեղ։",
-      "between.2": "Սրահ II", "between.3": "Սրահ III", "between.4": "Սրահ IV", "between.5": "Սրահ V", "between.6": "Սրահ VI",
+      "room.artsrun.h": "Արծրուն Ասատրյան, <span class=\"em\">բեկորը։</span>",
+      "room.artsrun.meta": "Ժամանակակից գեղանկար <span class=\"dot\">◆</span> կերպար <span class=\"dot\">◆</span> կուբո-ֆուտուրիզմ",
+      "room.artsrun.desc": "Կուբո-ֆուտուրիզմի ժառանգորդը՝ Արծրուն Ասատրյանը ջարդում է դեմքը <em>գույնի բեկորների</em> — եռանկյուններ, նիստեր, վիտրաժներ։ Այդ բեկորներից միշտ վերածնվում է կերպար. աչք, կարմիր շուրթեր, պրոֆիլ, որ նորից հավաքվում է։ Ինքնությունն այստեղ երբեք ամբողջական չի տրվում, այլ <em>վերակառուցվում</em> է հայացքի տակ։",
+      "room.hayk.h": "Հայկ Միքայելյան, <span class=\"em\">ոսկին։</span>",
+      "room.hayk.meta": "Ժամանակակից գեղանկար <span class=\"dot\">◆</span> կերպար և նատյուրմորտ <span class=\"dot\">◆</span> նկարչական դանակ",
+      "room.hayk.desc": "Դանակով, <em>ոսկերչության</em> պես հաստ վրձնահարվածներով, Հայկ Միքայելյանը կանգնեցնում է ավանդական գլխազարդով կանանց, ծաղկեփնջեր ու նռներ։ Ամեն ինչ ողողված է <em>ոսկու</em> լույսով՝ ֆոնը, ասեղնագործությունը, Արարատի վրա իջնող մթնշաղը։ Գույնը դառնում է զարդ, իսկ ժառանգությունը՝ <em>գանձ</em>։",
+      "room.mher.h": "Մհեր Չատինյան, <span class=\"em\">հեքիաթը։</span>",
+      "room.mher.meta": "Ժամանակակից գեղանկար <span class=\"dot\">◆</span> տեսարան և դիմանկար <span class=\"dot\">◆</span> յուղաներկ",
+      "room.mher.desc": "Մհեր Չատինյանը նկարում է այնպես, ինչպես պատմում են։ Արևկող նրբանցքներ՝ փայտե պատշգամբներով, աղջիկը՝ էշով ու աքլորով, ծեր ջութակահարը, մայր ու զավակ՝ սրբապատկերի պես. ամեն կտավ մի <em>հեքիաթ</em> է։ Գիծն ազատ է, գույնը՝ անկեղծ, և հայկական առօրյան ստանում է <em>լեգենդի</em> տեսք։",
+      "between.2": "Սրահ II", "between.3": "Սրահ III", "between.4": "Սրահ IV", "between.5": "Սրահ V", "between.6": "Սրահ VI", "between.7": "Սրահ VII", "between.8": "Սրահ VIII", "between.9": "Սրահ IX",
       "coda.q": "Մի հող,<br>թարգմանված <span class=\"em\">գույնի։</span>",
       "coda.src": "<span class=\"hy\" lang=\"hy\">Գույն</span> — Հայաստան",
       "footer.brand": "Լոզանի հայերը — Համայնքային հանդես",
@@ -1674,7 +2238,84 @@ footer a:hover{ border-color:var(--pom); }
       "f.shahen.9": "Յասաման և մրգեր",
       "a.shahen.9": "Մանուշակագույն յասաման՝ գեղազարդ սափորում, սեղանին դրված մրգեր, ոսկեօխրա ֆոն — Շահեն Օրդուբեկյան",
       "f.shahen.10": "Կապույտ նատյուրմորտ՝ մրգերով",
-      "a.shahen.10": "Կապույտ ծաղկավոր սափոր և մրգեր — խնձորներ ու տանձ — մուգ կապույտների ներդաշնակության մեջ — Շահեն Օրդուբեկյան"
+      "a.shahen.10": "Կապույտ ծաղկավոր սափոր և մրգեր — խնձորներ ու տանձ — մուգ կապույտների ներդաշնակության մեջ — Շահեն Օրդուբեկյան",
+
+      "f.artsrun.1": "Ինքնության բեկորներ",
+      "a.artsrun.1": "Կուբիստական նիստերի բաժանված դեմք՝ կարմիր, դեղին, փիրուզ և կանաչ, երկու ձուլված պրոֆիլ, կարմիր աչք — Արծրուն Ասատրյան",
+      "f.artsrun.2": "Զգացմունքների դիմակը",
+      "a.artsrun.2": "Վառ նիստերով դեմք՝ կապույտ, դեղին և կանաչ, կարմիրով եզերված մի աչք, կարմիր շուրթեր, մուգ կանաչ ֆոնի վրա — Արծրուն Ասատրյան",
+      "f.artsrun.3": "Զմրուխտե գիշեր",
+      "a.artsrun.3": "Պրոֆիլով դեմք՝ փակ աչքերով, զմրուխտի և կապույտի բեկորներ, շուրթերին՝ կարմիրի հպում — Արծրուն Ասատրյան",
+      "f.artsrun.4": "Կառուցված ինքնություն",
+      "a.artsrun.4": "Երկրաչափական դեմք՝ եռանկյուն դեղին քթով, որ ծակված է սև սկավառակով, կապույտ, մորու և փիրուզ հարթություններ, կարմիր շուրթեր — Արծրուն Ասատրյան",
+      "f.artsrun.5": "Մտերմության բեկորներ",
+      "a.artsrun.5": "Երկու միահյուսված դեմք՝ կապույտ, սպիտակ և կարմիր նիստերով, զույգ՝ մուգ ֆոնի վրա — Արծրուն Ասատրյան",
+      "f.artsrun.6": "Սիրո մեղեդի",
+      "a.artsrun.6": "Գլխարկով տղամարդ՝ ջութակ նվագող, և փակ աչքերով կին, կարմիր վարդ, կապույտ, կանաչ ու կարմիր նիստեր — Արծրուն Ասատրյան",
+      "f.artsrun.7": "Լույսի բեկորներ",
+      "a.artsrun.7": "Կուբո-ֆուտուրիստական բնանկար՝ օխրա և կարմիր բեկորների երկինք, նիստավորված կանաչ հովիտ, լույսի շողեր — Արծրուն Ասատրյան",
+      "f.artsrun.8": "Գեղեցկության բեկորներ",
+      "a.artsrun.8": "Կնոջ դեմք՝ փակ աչքերով, կապույտ և փիրուզ նիստերով, ներքևում՝ նարնջի և կարմիրի բեկորներ — Արծրուն Ասատրյան",
+      "f.artsrun.9": "Նրբություն լուսնի տակ",
+      "a.artsrun.9": "Զույգ՝ դեղին լուսնի տակ, գլխարկով տղամարդ և կին, գիշերվա մեջ՝ կապույտ, կարմիր ու նարնջագույն նիստեր — Արծրուն Ասատրյան",
+      "f.artsrun.10": "Ճեղքված երկինքներ",
+      "a.artsrun.10": "Բնանկար՝ կապույտ և սպիտակ ճեղքված երկինքներով, կանաչ բլուրներ և շագանակագույն գագաթ, լույսի շողեր — Արծրուն Ասատրյան",
+      "f.artsrun.11": "Նա և ես",
+      "a.artsrun.11": "Գլխարկով տղամարդ և կարմիր զգեստով կին, տաք նիստեր, հեռվում՝ փոքրիկ եկեղեցի — Արծրուն Ասատրյան",
+
+      "f.hayk.1": "Հարսը",
+      "a.hayk.1": "Հարս՝ պրոֆիլով, փակ աչքերով, ծաղկեպսակ, սպիտակ զգեստ ու ծաղկեփունջ, ոսկեգույն կամար՝ դանակով — Հայկ Միքայելյան",
+      "f.hayk.2": "Երախտագիտություն",
+      "a.hayk.2": "Ծաղկեպսակով կին՝ կապույտ զգեստով, ձեռքին ծաղկեփունջ և ջութակ, ոսկեգույն լուսապսակ, դանակի վրձնահարված — Հայկ Միքայելյան",
+      "f.hayk.3": "Ոսկե շող",
+      "a.hayk.3": "Դեղին արևածաղիկներ՝ մուգ սրտերով, դանակով նկարված, մոխրակապույտ ֆոնի վրա — Հայկ Միքայելյան",
+      "f.hayk.4": "Հայկական էություն",
+      "a.hayk.4": "Ավանդական հայկական գլխազարդով կին՝ նուռ բռնած, շուրջը՝ գորգի նախշեր, տաք երանգներ և ոսկի — Հայկ Միքայելյան",
+      "f.hayk.5": "Արևածաղիկներ",
+      "a.hayk.5": "Արևածաղիկներ և վարդագույն ծաղիկներ՝ կապույտ ծաղկամանում, կանաչ ֆոն, դանակի վրձնահարված — Հայկ Միքայելյան",
+      "f.hayk.6": "Արևի ծաղկեփունջ",
+      "a.hayk.6": "Կարմիր կակաչներ և երիցուկներ՝ մուգ ծաղկամանում, լուսավոր դեղին ֆոն՝ դանակով — Հայկ Միքայելյան",
+      "f.hayk.7": "Կյանքի պտուղը",
+      "a.hayk.7": "Նռների նատյուրմորտ՝ երկու ամբողջ և մեկ բացված՝ հատիկները ցույց տվող, կապույտ ֆոնի վրա — Հայկ Միքայելյան",
+      "f.hayk.8": "Դիմանկար",
+      "a.hayk.8": "Կնոջ դեմք՝ փակ աչքերով, փաթաթված դանակի բազմագույն հարվածների կասկադով, մոխրագույն ֆոն — Հայկ Միքայելյան",
+      "f.hayk.9": "Ոսկե մթնշաղ Հայաստանի վրա",
+      "a.hayk.9": "Եկեղեցով գյուղ՝ Արարատ լեռան ստորոտին, մարջանագույն երկինք, աշնան ծառեր, դանակի վրձնահարված — Հայկ Միքայելյան",
+      "f.hayk.10": "Հայաստանի արմատներ",
+      "a.hayk.10": "Երկու դասավորված կերպար՝ ավանդական գլխազարդով կին և ծերունի, տուն ու արև, դեղին ֆոն — Հայկ Միքայելյան",
+      "f.hayk.11": "Աբստրակցիա",
+      "a.hayk.11": "Դանակով աբստրակցիա՝ կարմիր, դեղին և կապույտ բեկորներ նարնջագույն ֆոնի վրա — Հայկ Միքայելյան",
+      "f.hayk.12": "Գարնանային ծաղկեփունջ",
+      "a.hayk.12": "Երիցուկների և գունավոր ծաղիկների առատ փունջ՝ կապույտ ծաղկամանում, մոխրակապույտ ֆոն՝ դանակով — Հայկ Միքայելյան",
+      "f.hayk.13": "Աբստրակտ պոռթկում",
+      "a.hayk.13": "Բազմագույն դանակի հարվածների աբստրակտ պոռթկում՝ մուգ կապույտ ֆոնի վրա — Հայկ Միքայելյան",
+      "f.hayk.14": "Ավանդույթ և ժառանգություն",
+      "a.hayk.14": "Արծաթե գլխազարդով կին՝ փակ աչքերով, շուրջը՝ գյուղեր ու լեռներ՝ կարմիրով ու ոսկով — Հայկ Միքայելյան",
+
+      "f.mher.1": "Աղջիկը՝ էշով ու աքլորով",
+      "a.mher.1": "Կարմիր ծաղկավոր գլխազարդով կին՝ բազմագույն աքլոր բռնած, կողքին՝ կապույտ էշ, մուգ կապույտ ֆոն — Մհեր Չատինյան",
+      "f.mher.2": "Կնոջ դիմանկար",
+      "a.mher.2": "Կնոջ դեմք՝ կարմիր և ոսկե զարդերով, մեծ աչքեր, կապույտ ֆոնի վրա, արտահայտիչ վրձնահարված — Մհեր Չատինյան",
+      "f.mher.3": "Հին քաղաքը",
+      "a.mher.3": "Հին քաղաքի արևկող բակ՝ փայտե պատշգամբներ, փռած լվացք, սալարկ և անցորդներ — Մհեր Չատինյան",
+      "f.mher.4": "Սիրահարները",
+      "a.mher.4": "Սալարկած նրբանցք՝ բարձր պատշգամբավոր տների միջև, հանդիպող զույգ, քամուն տրված լվացք, տաք երանգներ — Մհեր Չատինյան",
+      "f.mher.5": "Ծեր ջութակահարը",
+      "a.mher.5": "Սպիտակ մորուքով ծերունու դիմանկար՝ կարմիր ջութակ բռնած, կարմիր ու սև ֆոնի վրա — Մհեր Չատինյան",
+      "f.mher.6": "Գլխարկով աղջիկը",
+      "a.mher.6": "Կապույտ գլխարկով աղջիկ՝ երկար սև մազերով, արտահայտիչ դեմք, մուգ կարմիր ֆոնի վրա — Մհեր Չատինյան",
+      "f.mher.7": "Մայր և զավակ",
+      "a.mher.7": "Մայր և զավակ՝ սրբապատկերային դեմքերով, սպիտակ ծաղիկներով սփռված կապույտ ֆոն — Մհեր Չատինյան",
+      "f.mher.8": "Ծաղիկներ կանաչի վրա",
+      "a.mher.8": "Կարմիր վարդերի, կակաչների, արևածաղկի և երիցուկների փունջ՝ մուգ կանաչ ֆոնի վրա — Մհեր Չատինյան",
+      "f.mher.9": "Հանդարտ ժամը",
+      "a.mher.9": "Կարմիր գմբեթով հայկական եկեղեցի՝ ոսկեգույն դաշտում, կապույտ երկինք, արածող ոչխար — Մհեր Չատինյան",
+      "f.mher.10": "Գարուն",
+      "a.mher.10": "Սպիտակ ու վարդագույն ծաղկած ծառ՝ կարմիր տանիքով տան դիմաց, կանաչ խոտ — Մհեր Չատինյան",
+      "f.mher.11": "Կակաչներ",
+      "a.mher.11": "Կարմիր կակաչներ՝ սև սրտերով, ազատ վրձնահարված մոխրակապույտ ֆոնի վրա — Մհեր Չատինյան",
+      "f.mher.12": "Զանգակատունը",
+      "a.mher.12": "Կարմիր տանիքով եկեղեցու զանգակատուն՝ բարձրացող սև, սպիտակ ու ոսկեգույն նյութի խառնուրդից, մոխրագույն երկինք — Մհեր Չատինյան"
     }
   };
 
