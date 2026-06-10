@@ -1,5 +1,5 @@
 {
-  "_comment": "Curation layer for build-network.mjs. Keys are the slug of each row's company name in ArmenianSwissNetwork.ods (lowercase, accents stripped, '&' dropped, non-alphanumerics -> '-'). Any field here overrides what the spreadsheet yields. 'fr' is the visible baseline description; 'en'/'hy' feed the i18n dictionary (missing -> falls back to fr). 'cat' must be one of: asso, food, craft. 'email'/'website'/'phone' override parsed contacts; 'social' (array of URLs) overrides parsed social links. New spreadsheet rows render automatically with raw data until you add curation here.",
+  "_comment": "Curation layer for build-network.mjs. Keys are the slug of each row's company name in ArmenianSwissNetwork.ods (lowercase, accents stripped, '&' dropped, non-alphanumerics -> '-'). Any field here overrides what the spreadsheet yields. 'fr' is the visible baseline description; 'en'/'hy' feed the i18n dictionary (missing -> falls back to fr). 'cat' must be one of: asso, food, craft. 'email'/'website'/'phone' override parsed contacts; 'social' (array of URLs) overrides parsed social links. The card medallion shows a 2-letter monogram derived from the name; set 'monogram' to override it, or set 'logo' to a relative image path (e.g. 'logos/mayrig.webp') to show a real logo instead. New spreadsheet rows render automatically with raw data until you add curation here.",
 
   "sourp-sarkis-church": {
     "name": "Sourp Sarkis",
@@ -9,6 +9,7 @@
   },
   "agbu-young-professional-geneva": {
     "name": "AGBU Young Professionals",
+    "monogram": "AG",
     "fr": "Antenne genevoise de l'UGAB, l'Union générale arménienne de bienfaisance : un réseau de 20 à 40 ans qui cultive et transmet l'identité arménienne.",
     "en": "Geneva chapter of the AGBU, the Armenian General Benevolent Union: a network of 20-to-40-year-olds who nurture and pass on Armenian identity.",
     "hy": "ՀԲԸՄ-ի (Հայկական բարեգործական ընդհանուր միություն) Ժնևի մասնաճյուղը՝ 20–40 տարեկանների ցանց, որ սնուցում և փոխանցում է հայկական ինքնությունը։"
@@ -78,6 +79,7 @@
   },
   "kasa": {
     "name": "KASA",
+    "monogram": "KA",
     "fr": "Fondation humanitaire KASA — Komitas Action Suisse-Arménie : des programmes sociaux et éducatifs au service de l'Arménie.",
     "en": "The KASA humanitarian foundation — Komitas Action Suisse-Arménie: social and educational programmes in the service of Armenia.",
     "hy": "KASA մարդասիրական հիմնադրամ՝ Komitas Action Suisse-Arménie. սոցիալական և կրթական ծրագրեր՝ ի սպաս Հայաստանի։"
@@ -92,6 +94,7 @@
 
   "armenian-association-of-zurich": {
     "name": "Armenian Association of Zurich",
+    "monogram": "AZ",
     "fr": "L'association arménienne de Zurich — foyer et point de ralliement de la communauté locale.",
     "en": "The Armenian Association of Zurich — home and gathering point of the local community.",
     "hy": "Ցյուրիխի հայ միությունը՝ տեղի համայնքի օջախն ու հավաքատեղին։"

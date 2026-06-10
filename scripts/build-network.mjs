@@ -71,6 +71,17 @@ function toRoman(n) {
   return out;
 }
 
+// Two-letter monogram for the card medallion (used when no real logo is set).
+const MONO_STOP = new Set(["de", "du", "des", "la", "le", "les", "of", "the", "et", "and", "a", "à", "au", "aux", "en"]);
+function monogram(name) {
+  const words = String(name).replace(/[·.,&()/]/g, " ").split(/\s+/).filter((w) => w && !MONO_STOP.has(w.toLowerCase()));
+  let m;
+  if (words.length === 0)      m = String(name).slice(0, 2);
+  else if (words.length === 1) m = words[0].slice(0, 2);
+  else                         m = words[0][0] + words[1][0];
+  return m.toUpperCase();
+}
+
 function slugify(s) {
   return String(s)
     .normalize("NFD").replace(/[̀-ͯ]/g, "")
@@ -252,14 +263,24 @@ function linkLi(kind, href, label) {
 
 function buildLinks(e) {
   const out = [];
-  if (e.email) out.push(linkLi("mail", "mailto:" + e.email, e.email));
+  const urls = [];
+  // A real email goes to mailto; a URL misfiled in the mail column joins the links.
+  if (e.email && e.email.includes("@") && !e.email.includes("://")) out.push(linkLi("mail", "mailto:" + e.email, e.email));
+  else if (e.email) urls.push(normalizeUrl(e.email));
   if (e.phone) { const t = telParts(e.phone); out.push(linkLi("tel", t.href, t.display)); }
-  if (e.website) out.push(linkLi("web", e.website, displayUrl(e.website)));
-  for (const s of e.social) {
-    const kind = socialKind(s);
-    if (kind === "instagram") out.push(linkLi("instagram", s, igHandle(s)));
-    else if (kind === "facebook") out.push(linkLi("facebook", s, fbLabel(s)));
-    else out.push(linkLi("web", s, displayUrl(s)));
+  if (e.website) urls.push(e.website);
+  for (const s of e.social) urls.push(s);
+
+  // Render each URL by its host, so an Instagram/Facebook link gets the right
+  // icon + label no matter which spreadsheet column it landed in.
+  const seen = new Set();
+  for (const u of urls) {
+    if (!u || seen.has(u)) continue;
+    seen.add(u);
+    const kind = socialKind(u);
+    if (kind === "instagram") out.push(linkLi("instagram", u, igHandle(u)));
+    else if (kind === "facebook") out.push(linkLi("facebook", u, fbLabel(u)));
+    else out.push(linkLi("web", u, displayUrl(u)));
   }
   return out;
 }
@@ -267,11 +288,17 @@ function buildLinks(e) {
 /* ----------------------------------------------------------- card / canton */
 function cardHtml(e) {
   const links = buildLinks(e).map((l) => "            " + l).join("\n");
+  const logo = e.logo
+    ? `<img src="${escAttr(e.logo)}" alt="" loading="lazy" />`
+    : escHtml(e.monogram);
   return [
     `        <article class="entry reveal" data-cat="${e.cat}">`,
     `          <div class="entry__head">`,
-    `            <h3 class="entry__name">${escHtml(e.name)}</h3>`,
-    `            <span class="tag tag--${e.cat}" data-i18n="tag.${e.cat}">${TAG_FR[e.cat]}</span>`,
+    `            <span class="entry__logo" aria-hidden="true">${logo}</span>`,
+    `            <div class="entry__id">`,
+    `              <span class="tag tag--${e.cat}" data-i18n="tag.${e.cat}">${TAG_FR[e.cat]}</span>`,
+    `              <h3 class="entry__name">${escHtml(e.name)}</h3>`,
+    `            </div>`,
     `          </div>`,
     `          <p class="entry__desc" data-i18n="d.${e.slug}">${escHtml(e.fr)}</p>`,
     `          <ul class="links">`,
@@ -358,9 +385,12 @@ function main() {
 
       const social = ov.social ? [].concat(ov.social) : (parsedSoc ? [parsedSoc] : []);
 
+      const displayName = ov.name || rawName;
       entries.push({
         slug,
-        name:    ov.name || rawName,
+        name:    displayName,
+        monogram: ov.monogram || monogram(displayName),
+        logo:    ov.logo || null,
         cat:     ov.cat || mapCategory(pick(cells, "type") ? pick(cells, "type").text : ""),
         fr:      ov.fr || (pick(cells, "desc") ? pick(cells, "desc").text : "") || "",
         en:      ov.en || null,
