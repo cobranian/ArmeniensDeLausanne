@@ -265,6 +265,9 @@ section{ position:relative; z-index:2; }
 .entry[data-cat="asso"]  .entry__logo{ background:rgba(47,92,158,.12); color:var(--blue-dp); box-shadow:inset 0 0 0 1px rgba(47,92,158,.24); }
 .entry[data-cat="food"]  .entry__logo{ background:rgba(166,50,42,.10); color:var(--pom-dp);  box-shadow:inset 0 0 0 1px rgba(166,50,42,.22); }
 .entry[data-cat="craft"] .entry__logo{ background:rgba(176,121,43,.13); color:var(--apr-dp); box-shadow:inset 0 0 0 1px rgba(176,121,43,.26); }
+/* real-logo tiles: clean light ground + contained mark, regardless of vocation */
+.entry[data-cat] .entry__logo--img{ background:#FBFAF6; box-shadow:inset 0 0 0 1px var(--ink-hair); }
+.entry__logo--img img{ object-fit:contain; padding:7px; }
 .entry:hover .entry__logo{ transform:scale(1.04); }
 .entry__id{ min-width:0; display:flex; flex-direction:column; gap:.34rem; }
 .entry__name{
@@ -454,7 +457,7 @@ html.js .reveal.in{ opacity:1; transform:none; transition:opacity .7s var(--ease
     
             <article class="entry reveal" data-cat="food">
               <div class="entry__head">
-                <span class="entry__logo" aria-hidden="true">MA</span>
+                <span class="entry__logo entry__logo--img" aria-hidden="true"><img src="logos/mayrig.png" alt="" loading="lazy" /></span>
                 <div class="entry__id">
                   <span class="tag tag--food" data-i18n="tag.food">Saveurs</span>
                   <h3 class="entry__name">Mayrig</h3>
@@ -606,7 +609,7 @@ html.js .reveal.in{ opacity:1; transform:none; transition:opacity .7s var(--ease
     
             <article class="entry reveal" data-cat="asso">
               <div class="entry__head">
-                <span class="entry__logo" aria-hidden="true">KA</span>
+                <span class="entry__logo entry__logo--img" aria-hidden="true"><img src="logos/kasa.png" alt="" loading="lazy" /></span>
                 <div class="entry__id">
                   <span class="tag tag--asso" data-i18n="tag.asso">Association</span>
                   <h3 class="entry__name">KASA</h3>

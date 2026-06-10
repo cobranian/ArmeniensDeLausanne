@@ -291,10 +291,11 @@ function cardHtml(e) {
   const logo = e.logo
     ? `<img src="${escAttr(e.logo)}" alt="" loading="lazy" />`
     : escHtml(e.monogram);
+  const logoClass = e.logo ? "entry__logo entry__logo--img" : "entry__logo";
   return [
     `        <article class="entry reveal" data-cat="${e.cat}">`,
     `          <div class="entry__head">`,
-    `            <span class="entry__logo" aria-hidden="true">${logo}</span>`,
+    `            <span class="${logoClass}" aria-hidden="true">${logo}</span>`,
     `            <div class="entry__id">`,
     `              <span class="tag tag--${e.cat}" data-i18n="tag.${e.cat}">${TAG_FR[e.cat]}</span>`,
     `              <h3 class="entry__name">${escHtml(e.name)}</h3>`,

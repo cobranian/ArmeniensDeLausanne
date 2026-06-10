@@ -22,6 +22,7 @@
   },
   "mayrig": {
     "name": "Mayrig",
+    "logo": "logos/mayrig.png",
     "email": "info@mayrigbeirut.com",
     "fr": "« Mayrig », maman en arménien. La cuisine d'un foyer arméno-libanais, née à Beyrouth et dressée à Genève.",
     "en": "“Mayrig” means mother in Armenian. The cooking of an Armenian-Lebanese home, born in Beirut and set down in Geneva.",
@@ -80,6 +81,7 @@
   "kasa": {
     "name": "KASA",
     "monogram": "KA",
+    "logo": "logos/kasa.png",
     "fr": "Fondation humanitaire KASA — Komitas Action Suisse-Arménie : des programmes sociaux et éducatifs au service de l'Arménie.",
     "en": "The KASA humanitarian foundation — Komitas Action Suisse-Arménie: social and educational programmes in the service of Armenia.",
     "hy": "KASA մարդասիրական հիմնադրամ՝ Komitas Action Suisse-Arménie. սոցիալական և կրթական ծրագրեր՝ ի սպաս Հայաստանի։"
