@@ -12,6 +12,7 @@
       "scripts/**",
       "**/*.ods",
       "ArmenianSwissNetwork/network.overrides.json",
+      "ArmenianSwissNetwork/logos/**",
       "Images/Minas Avetisyan/**",
       "Images/Movses Poghosyan/**",
       "Images/Armen Harutyunyan Lorenc/**",

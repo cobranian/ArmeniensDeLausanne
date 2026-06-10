@@ -37,6 +37,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ODS       = resolve(__dirname, "..", "ArmenianSwissNetwork", "ArmenianSwissNetwork.ods");
 const OVERRIDES = resolve(__dirname, "..", "ArmenianSwissNetwork", "network.overrides.json");
 const PAGE      = resolve(__dirname, "..", "ArmenianSwissNetwork", "index.html");
+const PAGE_DIR  = dirname(PAGE);
 
 const MIN_ENTRIES = 8;
 
@@ -80,6 +81,15 @@ function monogram(name) {
   else if (words.length === 1) m = words[0].slice(0, 2);
   else                         m = words[0][0] + words[1][0];
   return m.toUpperCase();
+}
+
+// Inline a logo file (relative to the page) as a base64 data URI, so it never
+// depends on how the host resolves the directory URL (trailing slash, etc.).
+const MIME = { png: "image/png", webp: "image/webp", jpg: "image/jpeg", jpeg: "image/jpeg", svg: "image/svg+xml", gif: "image/gif" };
+function logoDataUri(rel) {
+  const ext = rel.split(".").pop().toLowerCase();
+  const data = readFileSync(resolve(PAGE_DIR, rel)).toString("base64");
+  return `data:${MIME[ext] || "image/png"};base64,${data}`;
 }
 
 function slugify(s) {
@@ -288,10 +298,12 @@ function buildLinks(e) {
 /* ----------------------------------------------------------- card / canton */
 function cardHtml(e) {
   const links = buildLinks(e).map((l) => "            " + l).join("\n");
-  const logo = e.logo
-    ? `<img src="${escAttr(e.logo)}" alt="" loading="lazy" />`
-    : escHtml(e.monogram);
-  const logoClass = e.logo ? "entry__logo entry__logo--img" : "entry__logo";
+  let logo = escHtml(e.monogram), hasLogo = false;
+  if (e.logo) {
+    try { logo = `<img src="${logoDataUri(e.logo)}" alt="" loading="lazy" />`; hasLogo = true; }
+    catch { console.warn(`  ⚠ logo file missing for ${e.slug} (${e.logo}) — using monogram`); }
+  }
+  const logoClass = hasLogo ? "entry__logo entry__logo--img" : "entry__logo";
   return [
     `        <article class="entry reveal" data-cat="${e.cat}">`,
     `          <div class="entry__head">`,
