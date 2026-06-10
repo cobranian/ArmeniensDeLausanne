@@ -1,0 +1,105 @@
+{
+  "_comment": "Curation layer for build-network.mjs. Keys are the slug of each row's company name in ArmenianSwissNetwork.ods (lowercase, accents stripped, '&' dropped, non-alphanumerics -> '-'). Any field here overrides what the spreadsheet yields. 'fr' is the visible baseline description; 'en'/'hy' feed the i18n dictionary (missing -> falls back to fr). 'cat' must be one of: asso, food, craft. 'email'/'website'/'phone' override parsed contacts; 'social' (array of URLs) overrides parsed social links. New spreadsheet rows render automatically with raw data until you add curation here.",
+
+  "sourp-sarkis-church": {
+    "name": "Sourp Sarkis",
+    "fr": "Église apostolique arménienne Saint-Sarkis — le cœur spirituel du Centre arménien de Genève, à Troinex.",
+    "en": "Saint Sarkis Armenian Apostolic Church — the spiritual heart of the Armenian Centre of Geneva, in Troinex.",
+    "hy": "Սուրբ Սարգիս հայ առաքելական եկեղեցին՝ Ժնևի հայ կենտրոնի հոգևոր սիրտը, Թրուանեքսում։"
+  },
+  "agbu-young-professional-geneva": {
+    "name": "AGBU Young Professionals",
+    "fr": "Antenne genevoise de l'UGAB, l'Union générale arménienne de bienfaisance : un réseau de 20 à 40 ans qui cultive et transmet l'identité arménienne.",
+    "en": "Geneva chapter of the AGBU, the Armenian General Benevolent Union: a network of 20-to-40-year-olds who nurture and pass on Armenian identity.",
+    "hy": "ՀԲԸՄ-ի (Հայկական բարեգործական ընդհանուր միություն) Ժնևի մասնաճյուղը՝ 20–40 տարեկանների ցանց, որ սնուցում և փոխանցում է հայկական ինքնությունը։"
+  },
+  "artazank-echo-journal": {
+    "name": "Artzakank · Echo",
+    "fr": "Journal bilingue franco-arménien paraissant à Genève depuis 1986 — une voix bimestrielle de la diaspora.",
+    "en": "A bilingual French-Armenian newspaper published in Geneva since 1986 — a bimonthly voice of the diaspora.",
+    "hy": "Ֆրանսահայ երկլեզու թերթ, որ Ժնևում լույս է տեսնում 1986 թվականից՝ սփյուռքի երկամսյա ձայնը։"
+  },
+  "mayrig": {
+    "name": "Mayrig",
+    "email": "info@mayrigbeirut.com",
+    "fr": "« Mayrig », maman en arménien. La cuisine d'un foyer arméno-libanais, née à Beyrouth et dressée à Genève.",
+    "en": "“Mayrig” means mother in Armenian. The cooking of an Armenian-Lebanese home, born in Beirut and set down in Geneva.",
+    "hy": "«Մայրիկ»՝ հայերեն։ Բեյրութում ծնված և Ժնևում մատուցվող հայ-լիբանանյան տան խոհանոցը։"
+  },
+  "culture-saveur": {
+    "name": "Culture & Saveurs",
+    "fr": "Librairie-café arménienne : des livres, des douceurs et des conversations autour d'un même comptoir.",
+    "en": "An Armenian bookshop-café: books, sweets and conversation around the same counter.",
+    "hy": "Հայկական գրախանութ-սրճարան՝ գրքեր, քաղցրավենիք և զրույց՝ նույն վաճառասեղանի շուրջ։"
+  },
+  "sanahin": {
+    "name": "Sanahin",
+    "fr": "Troupe de danse du Centre arménien de Troinex — enfants, adolescents et jeunes adultes réunis par le goût du geste. Cours le mercredi.",
+    "en": "Dance troupe of the Troinex Armenian Centre — children, teenagers and young adults bound by a love of movement. Classes on Wednesdays.",
+    "hy": "Թրուանեքսի հայ կենտրոնի պարախումբը՝ երեխաներ, պատանիներ և երիտասարդներ՝ շարժման սիրով միավորված։ Դասերը՝ չորեքշաբթի։"
+  },
+  "cadmus": {
+    "name": "Cadmus",
+    "fr": "Table libanaise aux inspirations arméniennes, au centre de Genève.",
+    "en": "A Lebanese table with Armenian inspirations, in central Geneva.",
+    "hy": "Լիբանանյան սեղան՝ հայկական ոգով, Ժնևի կենտրոնում։"
+  },
+  "gamar": {
+    "name": "Gamar",
+    "fr": "Ensemble de danse folklorique arménienne, porté par l'Union arménienne de Suisse.",
+    "en": "An Armenian folk-dance ensemble, carried by the Armenian Union of Switzerland.",
+    "hy": "Հայկական ժողովրդական պարի համույթ՝ Շվեյցարիայի հայ միության հովանու ներքո։"
+  },
+
+  "ecole-armenienne-a-lausanne": {
+    "name": "École arménienne de Lausanne",
+    "fr": "L'école du dimanche : la langue, l'alphabet et les chants transmis aux enfants et aux adolescents.",
+    "en": "The Sunday school: language, alphabet and song passed on to children and teenagers.",
+    "hy": "Կիրակնօրյա դպրոց՝ լեզուն, այբուբենը և երգերը փոխանցվում են երեխաներին ու պատանիներին։"
+  },
+  "margarit-armenian-dance": {
+    "name": "Margarit",
+    "fr": "Groupe de danse féminine arménien basé à Lausanne. Cours le dimanche matin, tous niveaux.",
+    "en": "An Armenian women's dance group based in Lausanne. Classes on Sunday mornings, all levels.",
+    "hy": "Լոզանում հիմնված հայկական կանացի պարախումբ։ Դասերը՝ կիրակի առավոտյան, բոլոր մակարդակների համար։"
+  },
+  "maison-du-pain-akopian": {
+    "name": "Maison du pain Akopian",
+    "fr": "Lavash cuit sur pierre, bastourma et soudjouk — fabrication artisanale, livrée à domicile.",
+    "en": "Stone-baked lavash, basturma and sujuk — handmade and delivered to your door.",
+    "hy": "Քարի վրա թխված լավաշ, բաստուրմա և սուջուխ՝ ձեռագործ, առաքումով։"
+  },
+  "kocharian-photography": {
+    "name": "Kocharian Photography",
+    "cat": "craft",
+    "fr": "Photographe : mariages, studio, couples, mode, événements, maternité et portraits CV & LinkedIn.",
+    "en": "Photographer: weddings, studio, couples, fashion, events, maternity and CV & LinkedIn portraits.",
+    "hy": "Լուսանկարիչ՝ հարսանիքներ, ստուդիա, զույգեր, նորաձևություն, միջոցառումներ, մայրություն և CV ու LinkedIn-ի դիմանկարներ։"
+  },
+  "kasa": {
+    "name": "KASA",
+    "fr": "Fondation humanitaire KASA — Komitas Action Suisse-Arménie : des programmes sociaux et éducatifs au service de l'Arménie.",
+    "en": "The KASA humanitarian foundation — Komitas Action Suisse-Arménie: social and educational programmes in the service of Armenia.",
+    "hy": "KASA մարդասիրական հիմնադրամ՝ Komitas Action Suisse-Arménie. սոցիալական և կրթական ծրագրեր՝ ի սպաս Հայաստանի։"
+  },
+
+  "nairi-armenian-choir": {
+    "name": "Nairi · Chœur arménien",
+    "fr": "Chœur d'une trentaine de voix, fondé par Araxi et Talita Karnusian et Karineh Zangocyan.",
+    "en": "A choir of some thirty voices, founded by Araxi and Talita Karnusian and Karineh Zangocyan.",
+    "hy": "Շուրջ երեսուն ձայնից բաղկացած երգչախումբ՝ հիմնված Արաքսի և Թալիտա Կառնուսյանների ու Կարինե Զանգոցյանի կողմից։"
+  },
+
+  "armenian-association-of-zurich": {
+    "name": "Armenian Association of Zurich",
+    "fr": "L'association arménienne de Zurich — foyer et point de ralliement de la communauté locale.",
+    "en": "The Armenian Association of Zurich — home and gathering point of the local community.",
+    "hy": "Ցյուրիխի հայ միությունը՝ տեղի համայնքի օջախն ու հավաքատեղին։"
+  },
+  "aliq-movement-zurich": {
+    "name": "Aliq Movement",
+    "fr": "Collectif de danse arménienne à Zurich. Cours chaque mercredi soir, de 19h30 à 21h, tous niveaux.",
+    "en": "An Armenian dance collective in Zurich. Classes every Wednesday evening, 7.30 to 9 pm, all levels.",
+    "hy": "Հայկական պարի խումբ Ցյուրիխում։ Դասերը՝ ամեն չորեքշաբթի երեկո, 19:30–21:00, բոլոր մակարդակների համար։"
+  }
+}

@@ -77,6 +77,25 @@ Single-page site; everything is in **`index.html`** as anchored `<section>`s
   literal anchors the scraper greps for — `instantané du …<date>.`,
   `snapshot dated …<date>.`, and `<year> թ. <month> <day>-ի դրությամբ` —
   or update the regexes in `updateSnapshotLabels` to match.
+- **The "Réseau" page (`ArmenianSwissNetwork/index.html`) is auto-generated**
+  from the spreadsheet `ArmenianSwissNetwork/ArmenianSwissNetwork.ods`
+  (one sheet per canton) by `scripts/build-network.mjs` — a zero-dependency
+  Node script (`node scripts/build-network.mjs`; it unzips the .ods with
+  built-in `node:zlib`, no libraries). It rewrites, **in place** between
+  sentinel markers, the canton cards (`ASN:CANTONS`), the EN/HY description
+  dictionary lines (`ASN:EN` / `ASN:HY`), and the hero counts
+  (`data-asn="total"`/`"cantons"`). **Never hand-edit those marked regions** —
+  they're overwritten on every build. The spreadsheet is the source of truth
+  for *which* entries exist and their contacts (email/website/phone/socials);
+  the curated display name + FR/EN/HY copy live in
+  `ArmenianSwissNetwork/network.overrides.json`, keyed by a slug of the row's
+  name, so raw labels/typos never reach the page (a new row with no override
+  still renders, in FR, from raw data). To change the layout/styling, edit the
+  markup/CSS *outside* the markers. This page is linked from the main nav
+  (`nav.network` in `index.html` + `js/i18n.js`) and, like `doudouk.html` /
+  `peintres.html`, carries its **own inline FR/EN/HY i18n + switcher**
+  (separate from `js/i18n.js`; FR baseline from the markup, EN/HY in its
+  in-page `DICT`).
 - Contact details (`#contact`) are placeholder/example content; unknown
   real-world facts are marked `[à compléter]` (and `[to complete]` /
   `[լրացնելու]` in the other languages). Do not invent specific facts

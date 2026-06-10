@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Là où nous sommes — Le réseau arménien de Suisse</title>
+<meta name="description" content="Un répertoire vivant de la présence arménienne en Suisse : associations, tables et métiers, de Genève à Zurich — adresses, sites et réseaux." />
+<meta name="theme-color" content="#F3F1EA" />
+
+<link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Spline+Sans:wght@300;400;500;600&family=Noto+Serif+Armenian:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+<script>document.documentElement.classList.add('js');</script>
+
+<style>
+/* =========================================================================
+   « Là où nous sommes » — page autonome (réseau arménien de Suisse)
+   Un registre clair, sur albâtre froid : ni le nocturne du doudouk, ni la
+   galerie chaude des peintres. Fraunces (serif à caractère) pose les noms ;
+   Spline Sans tient l'annuaire. Les trois couleurs du drapeau ont un rôle :
+   bleu = les associations, grenat = les tables, abricot = les métiers.
+   Aucune dépendance hors Google Fonts. Filtre & i18n en vanilla.
+   ========================================================================= */
+:root{
+  --paper:      #F3F1EA;
+  --paper-2:    #ECE8DD;
+  --paper-3:    #E4DECF;
+  --ink:        #20262B;
+  --ink-2:      #39434B;
+  --ink-soft:   rgba(32,38,43,.66);
+  --ink-dim:    rgba(32,38,43,.46);
+  --ink-faint:  rgba(32,38,43,.14);
+  --ink-hair:   rgba(32,38,43,.10);
+
+  --blue:       #2F5C9E;   /* associations  */
+  --blue-dp:    #234777;
+  --pom:        #A6322A;   /* tables         */
+  --pom-dp:     #7C231D;
+  --apr:        #B0792B;   /* métiers        */
+  --apr-dp:     #875C1E;
+
+  --f-display:  "Fraunces", "Noto Serif Armenian", Georgia, serif;
+  --f-body:     "Spline Sans", "Noto Serif Armenian", system-ui, sans-serif;
+  --f-hy:       "Noto Serif Armenian", "Fraunces", serif;
+
+  --maxw: 1240px;
+  --pad-x: clamp(1.15rem, 5vw, 5rem);
+  --ease: cubic-bezier(.22,.61,.36,1);
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+
+html{ -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
+@media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--f-body);
+  font-weight:300;
+  font-size:clamp(1rem,.55vw + .9rem,1.08rem);
+  line-height:1.66;
+  letter-spacing:.004em;
+  overflow-x:hidden;
+  position:relative;
+}
+:lang(hy){ font-family:var(--f-hy); }
+
+::selection{ background:rgba(166,50,42,.16); }
+
+/* ---- atmosphère : papier, grain, relief ---------------------------------- */
+.atmos{ position:fixed; inset:0; z-index:0; pointer-events:none; }
+.atmos .wash{
+  position:absolute; inset:0;
+  background:
+    radial-gradient(120% 80% at 82% -8%, rgba(47,92,158,.07), transparent 56%),
+    radial-gradient(90% 70% at 6% 8%, rgba(176,121,43,.06), transparent 52%),
+    radial-gradient(120% 120% at 50% 120%, rgba(166,50,42,.05), transparent 60%);
+}
+.atmos .grain{
+  position:absolute; inset:-150%;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>");
+  opacity:.035; mix-blend-mode:multiply;
+}
+.atmos .ridge{
+  position:absolute; right:-6vw; bottom:0; width:min(70vw,900px);
+  color:var(--ink); opacity:.05;
+}
+@media (max-width:720px){ .atmos .ridge{ width:120vw; right:-20vw; opacity:.06; } }
+
+/* ---- structure ----------------------------------------------------------- */
+.wrap{ position:relative; z-index:2; max-width:var(--maxw); margin:0 auto; padding:0 var(--pad-x); }
+section{ position:relative; z-index:2; }
+
+/* progress hairline */
+#progress{
+  position:fixed; top:0; left:0; height:2px; width:0;
+  background:linear-gradient(90deg,var(--blue),var(--pom) 55%,var(--apr));
+  z-index:60;
+}
+
+/* ---- en-tête ------------------------------------------------------------- */
+.top{
+  position:sticky; top:0; z-index:50;
+  display:flex; align-items:center; justify-content:space-between; gap:1rem;
+  padding:.7rem var(--pad-x);
+  background:color-mix(in srgb, var(--paper) 78%, transparent);
+  backdrop-filter:saturate(1.1) blur(9px);
+  border-bottom:1px solid var(--ink-hair);
+}
+.back{
+  display:inline-flex; align-items:center; gap:.5rem;
+  text-decoration:none; color:var(--ink-soft);
+  font-size:.82rem; letter-spacing:.02em;
+  transition:color .25s var(--ease);
+}
+.back:hover{ color:var(--pom); }
+.back .arr{ transition:transform .3s var(--ease); }
+.back:hover .arr{ transform:translateX(-3px); }
+.top .mark{
+  font-family:var(--f-display); font-style:italic; font-weight:400;
+  font-size:.96rem; letter-spacing:.01em; color:var(--ink);
+}
+@media (max-width:560px){ .top .mark{ display:none; } }
+
+.lang-switch{ display:inline-flex; gap:.15rem; }
+.lang-switch button{
+  appearance:none; background:none; border:0; cursor:pointer;
+  font-family:var(--f-body); font-size:.78rem; font-weight:400;
+  letter-spacing:.06em; color:var(--ink-dim);
+  padding:.2rem .15rem; border-bottom:1px solid transparent;
+  transition:color .2s var(--ease), border-color .2s var(--ease);
+}
+.lang-switch button:hover{ color:var(--ink); }
+.lang-switch button[aria-current="true"]{ color:var(--pom); border-bottom-color:var(--pom); }
+.lang-switch button:focus-visible{ outline:2px solid var(--blue); outline-offset:3px; border-radius:2px; }
+
+/* ---- héro ---------------------------------------------------------------- */
+.hero{ padding:clamp(3.4rem,11vh,7rem) 0 clamp(2rem,5vh,3.4rem); }
+.eyebrow{
+  display:inline-flex; align-items:center; gap:.7rem;
+  font-size:.74rem; font-weight:500; letter-spacing:.28em; text-transform:uppercase;
+  color:var(--blue-dp);
+}
+.eyebrow::before{ content:""; width:2.2rem; height:1px; background:currentColor; opacity:.5; }
+.hero h1{
+  font-family:var(--f-display); font-weight:300;
+  font-size:clamp(2.9rem,9vw,6.4rem); line-height:.96;
+  letter-spacing:-.02em; margin:.5em 0 .42em;
+  font-optical-sizing:auto;
+}
+.hero h1 .em{ font-style:italic; color:var(--pom); }
+.hero .lead{
+  max-width:46ch; font-size:clamp(1.05rem,.6vw + .95rem,1.22rem);
+  color:var(--ink-2); font-weight:300; line-height:1.62;
+}
+:lang(hy) .hero .lead{ line-height:1.85; }
+
+.stats{
+  display:flex; flex-wrap:wrap; gap:clamp(1.4rem,4vw,3rem);
+  margin-top:clamp(2rem,5vh,3rem);
+  padding-top:1.6rem; border-top:1px solid var(--ink-faint);
+}
+.stat .n{
+  font-family:var(--f-display); font-weight:400; font-style:italic;
+  font-size:clamp(1.9rem,4vw,2.7rem); line-height:1; color:var(--ink);
+}
+.stat .l{
+  display:block; margin-top:.35rem;
+  font-size:.72rem; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-dim);
+}
+
+/* ---- barre de parcours (filtre + ancres) --------------------------------- */
+.browse{
+  position:sticky; top:54px; z-index:40;
+  display:flex; flex-wrap:wrap; align-items:center; gap:.55rem;
+  margin:clamp(1.5rem,4vh,2.6rem) 0 0;
+  padding:.7rem 0;
+  background:color-mix(in srgb, var(--paper) 86%, transparent);
+  backdrop-filter:blur(6px);
+  border-top:1px solid var(--ink-hair);
+  border-bottom:1px solid var(--ink-hair);
+}
+.browse .blab{
+  font-size:.72rem; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--ink-dim); margin-right:.4rem;
+}
+.chip{
+  appearance:none; cursor:pointer;
+  font-family:var(--f-body); font-size:.85rem; font-weight:400; letter-spacing:.01em;
+  color:var(--ink-2);
+  background:var(--paper-2); border:1px solid var(--ink-hair);
+  padding:.4rem .9rem; border-radius:100px;
+  transition:all .22s var(--ease);
+}
+.chip:hover{ border-color:var(--ink-dim); color:var(--ink); }
+.chip:focus-visible{ outline:2px solid var(--blue); outline-offset:2px; }
+.chip[aria-pressed="true"]{ background:var(--ink); color:var(--paper); border-color:var(--ink); }
+.chip .dot{ display:inline-block; width:.5rem; height:.5rem; border-radius:50%; margin-right:.4rem; vertical-align:.04em; }
+.chip[data-filter="asso"] .dot{ background:var(--blue); }
+.chip[data-filter="food"] .dot{ background:var(--pom); }
+.chip[data-filter="craft"] .dot{ background:var(--apr); }
+
+/* ---- cantons & fiches ---------------------------------------------------- */
+.cantons{ padding:clamp(1rem,3vh,2rem) 0 0; }
+.canton{ padding:clamp(2.4rem,6vh,4.2rem) 0 clamp(1rem,2vh,1.6rem); }
+.canton__head{
+  display:flex; align-items:baseline; gap:1rem; flex-wrap:wrap;
+  margin-bottom:clamp(1.4rem,3vh,2.2rem);
+  padding-bottom:.9rem; border-bottom:1px solid var(--ink-faint);
+}
+.canton__num{
+  font-family:var(--f-display); font-style:italic; font-weight:300;
+  font-size:1.1rem; color:var(--blue-dp); letter-spacing:.04em;
+}
+.canton__name{
+  font-family:var(--f-display); font-weight:300;
+  font-size:clamp(2rem,5.5vw,3.5rem); line-height:1; letter-spacing:-.015em;
+  margin:0; color:var(--ink);
+}
+.canton__count{
+  margin-left:auto; align-self:end;
+  font-size:.74rem; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-dim);
+}
+.canton__count b{ font-family:var(--f-display); font-style:italic; font-weight:400; color:var(--ink); letter-spacing:0; }
+
+.entries{
+  display:grid; gap:clamp(.9rem,1.6vw,1.3rem);
+  grid-template-columns:repeat(auto-fill, minmax(min(100%,21.5rem),1fr));
+}
+
+/* la carte / fiche */
+.entry{
+  position:relative; display:flex; flex-direction:column;
+  padding:1.3rem 1.4rem 1.15rem;
+  background:var(--paper-2);
+  border:1px solid var(--ink-hair);
+  border-left:3px solid var(--ink-faint);
+  border-radius:3px;
+  transition:transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s var(--ease), background .3s var(--ease);
+}
+.entry[data-cat="asso"]{ border-left-color:var(--blue); }
+.entry[data-cat="food"]{ border-left-color:var(--pom); }
+.entry[data-cat="craft"]{ border-left-color:var(--apr); }
+.entry:hover{
+  transform:translateY(-3px);
+  background:#F6F4EE;
+  box-shadow:0 14px 32px -22px rgba(32,38,43,.5);
+  border-color:var(--ink-faint);
+}
+.entry__head{ display:flex; align-items:flex-start; justify-content:space-between; gap:.8rem; }
+.entry__name{
+  font-family:var(--f-display); font-weight:400;
+  font-size:1.3rem; line-height:1.12; letter-spacing:-.01em; margin:0;
+  color:var(--ink);
+}
+.tag{
+  flex:none; margin-top:.2rem;
+  font-size:.64rem; font-weight:500; letter-spacing:.13em; text-transform:uppercase;
+  padding:.26rem .56rem; border-radius:100px; white-space:nowrap;
+}
+.tag--asso{ color:var(--blue-dp); background:rgba(47,92,158,.1); }
+.tag--food{ color:var(--pom-dp);  background:rgba(166,50,42,.1); }
+.tag--craft{ color:var(--apr-dp); background:rgba(176,121,43,.13); }
+
+.entry__desc{
+  margin:.7rem 0 1rem; font-size:.94rem; color:var(--ink-soft); font-weight:300;
+}
+:lang(hy) .entry__desc{ line-height:1.8; }
+
+.links{ list-style:none; margin:auto 0 0; padding:.85rem 0 0; border-top:1px solid var(--ink-hair); display:flex; flex-direction:column; gap:.42rem; }
+.links a{
+  display:inline-flex; align-items:center; gap:.55rem;
+  text-decoration:none; color:var(--ink-soft);
+  font-size:.82rem; letter-spacing:.005em;
+  transition:color .2s var(--ease);
+  max-width:100%;
+}
+.links a span{ overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.links a:hover{ color:var(--pom); }
+.links a:focus-visible{ outline:2px solid var(--blue); outline-offset:2px; border-radius:2px; }
+.links svg{ flex:none; width:15px; height:15px; opacity:.7; }
+.links a:hover svg{ opacity:1; }
+
+/* état filtré */
+.entry.is-hide{ display:none; }
+.canton.is-empty{ display:none; }
+
+/* ---- pied ---------------------------------------------------------------- */
+.foot{
+  margin-top:clamp(3rem,8vh,6rem);
+  border-top:1px solid var(--ink-faint);
+  padding:clamp(2.6rem,7vh,4.6rem) 0 clamp(2rem,5vh,3rem);
+}
+.foot .fk{ font-size:.74rem; letter-spacing:.24em; text-transform:uppercase; color:var(--apr-dp); }
+.foot h2{
+  font-family:var(--f-display); font-weight:300; font-style:italic;
+  font-size:clamp(1.6rem,4vw,2.4rem); line-height:1.18; letter-spacing:-.01em;
+  margin:.6rem 0 1.4rem; max-width:24ch; color:var(--ink);
+}
+.foot__actions{ display:flex; flex-wrap:wrap; gap:.8rem 1.2rem; align-items:center; }
+.btn{
+  display:inline-flex; align-items:center; gap:.55rem;
+  text-decoration:none; font-size:.92rem; letter-spacing:.01em;
+  padding:.7rem 1.3rem; border-radius:100px;
+  background:var(--ink); color:var(--paper);
+  border:1px solid var(--ink);
+  transition:transform .25s var(--ease), background .25s var(--ease);
+}
+.btn:hover{ transform:translateY(-2px); background:var(--pom-dp); border-color:var(--pom-dp); }
+.btn.ghost{ background:transparent; color:var(--ink-soft); border-color:var(--ink-hair); }
+.btn.ghost:hover{ background:transparent; color:var(--pom); border-color:var(--pom); transform:translateY(-2px); }
+.foot .disc{ margin-top:1.6rem; font-size:.78rem; color:var(--ink-dim); max-width:60ch; }
+.foot .disc code{ font-family:var(--f-body); font-style:normal; color:var(--apr-dp); background:rgba(176,121,43,.1); padding:.05em .35em; border-radius:3px; }
+
+/* ---- révélation ---------------------------------------------------------- */
+html.js .reveal{ opacity:0; transform:translateY(16px); }
+html.js .reveal.in{ opacity:1; transform:none; transition:opacity .7s var(--ease), transform .7s var(--ease); }
+@media (prefers-reduced-motion: reduce){
+  html.js .reveal{ opacity:1 !important; transform:none !important; }
+}
+</style>
+</head>
+
+<body>
+<div id="progress" aria-hidden="true"></div>
+
+<div class="atmos" aria-hidden="true">
+  <div class="wash"></div>
+  <svg class="ridge" viewBox="0 0 600 220" fill="none" preserveAspectRatio="xMidYMax meet">
+    <polyline points="0,205 95,150 150,172 215,72 252,108 300,120 360,168 410,138 470,196 540,160 600,200" stroke="currentColor" stroke-width="1.4" opacity="0.9"/>
+    <polyline points="0,215 120,168 200,118 240,140 300,150 380,110 440,150 520,128 600,178" stroke="currentColor" stroke-width="1.1" opacity="0.6"/>
+    <polyline points="200,72 224,96 252,108" stroke="currentColor" stroke-width="1.4" opacity="0.9"/>
+  </svg>
+  <div class="grain"></div>
+</div>
+
+<!-- ====================== en-tête ====================== -->
+<header class="top">
+  <a class="back" href="../index.html">
+    <span class="arr" aria-hidden="true">←</span>
+    <span data-i18n="nav.back">Arméniens de Lausanne</span>
+  </a>
+  <span class="mark" data-i18n="mark">Le réseau</span>
+  <span class="lang-switch" role="group" data-i18n-aria="lang.group" aria-label="Langue">
+    <button type="button" data-lang="fr">FR</button>
+    <button type="button" data-lang="en">EN</button>
+    <button type="button" data-lang="hy">ՀՅ</button>
+  </span>
+</header>
+
+<main class="wrap">
+
+  <!-- ====================== héro ====================== -->
+  <section class="hero">
+    <p class="eyebrow" data-i18n="hero.eyebrow">Réseau arménien de Suisse</p>
+    <h1>
+      <span data-i18n="hero.l1">Là où</span>
+      <span class="em" data-i18n="hero.l2">nous sommes.</span>
+    </h1>
+    <p class="lead" data-i18n="hero.lead">D'un canton à l'autre — des associations qui transmettent, des tables qui rassemblent, des métiers qui font vivre une présence. Voici, réunis en un même registre, les foyers arméniens de Suisse.</p>
+
+    <div class="stats">
+      <div class="stat"><span class="n" data-asn="total">16</span><span class="l" data-i18n="stat.lieux">lieux</span></div>
+      <div class="stat"><span class="n" data-asn="cantons">04</span><span class="l" data-i18n="stat.cantons">cantons</span></div>
+      <div class="stat"><span class="n">03</span><span class="l" data-i18n="stat.vocations">vocations</span></div>
+    </div>
+  </section>
+
+  <!-- ====================== parcours ====================== -->
+  <nav class="browse" aria-label="Filtrer par vocation">
+    <span class="blab" data-i18n="flt.label">Parcourir</span>
+    <button class="chip" type="button" data-filter="all"   aria-pressed="true"><span data-i18n="flt.all">Tout</span></button>
+    <button class="chip" type="button" data-filter="asso"  aria-pressed="false"><span class="dot"></span><span data-i18n="flt.asso">Associations</span></button>
+    <button class="chip" type="button" data-filter="food"  aria-pressed="false"><span class="dot"></span><span data-i18n="flt.food">Saveurs</span></button>
+    <button class="chip" type="button" data-filter="craft" aria-pressed="false"><span class="dot"></span><span data-i18n="flt.craft">Métiers</span></button>
+  </nav>
+
+  <!-- ====================== cantons ====================== -->
+  <div class="cantons">
+    <!-- ASN:CANTONS:START — generated by ../scripts/build-network.mjs · do not hand-edit -->
+    
+        <!-- ---------- GENÈVE ---------- -->
+        <section class="canton" id="geneve">
+          <div class="canton__head reveal">
+            <span class="canton__num">I</span>
+            <h2 class="canton__name" data-i18n="c.ge">Genève</h2>
+            <span class="canton__count"><b>08</b> <span data-i18n="stat.lieux">lieux</span></span>
+          </div>
+          <div class="entries">
+    
+            <article class="entry reveal" data-cat="asso">
+              <div class="entry__head">
+                <h3 class="entry__name">Sourp Sarkis</h3>
+                <span class="tag tag--asso" data-i18n="tag.asso">Association</span>
+              </div>
+              <p class="entry__desc" data-i18n="d.sourp-sarkis-church">Église apostolique arménienne Saint-Sarkis — le cœur spirituel du Centre arménien de Genève, à Troinex.</p>
+              <ul class="links">
+                <li><a href="mailto:info@centre-armenien-geneve.ch" data-i18n-title="a.mail" title="Écrire un courriel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span>info@centre-armenien-geneve.ch</span></a></li>
+                <li><a href="https://www.centre-armenien-geneve.ch/" target="_blank" rel="noopener" data-i18n-title="a.web" title="Visiter le site"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg><span>centre-armenien-geneve.ch</span></a></li>
+              </ul>
+            </article>
+    
+            <article class="entry reveal" data-cat="asso">
+              <div class="entry__head">
+                <h3 class="entry__name">AGBU Young Professionals</h3>
+                <span class="tag tag--asso" data-i18n="tag.asso">Association</span>
+              </div>
+              <p class="entry__desc" data-i18n="d.agbu-young-professional-geneva">Antenne genevoise de l'UGAB, l'Union générale arménienne de bienfaisance : un réseau de 20 à 40 ans qui cultive et transmet l'identité arménienne.</p>
+              <ul class="links">
+                <li><a href="mailto:geneva@agbuyp.org" data-i18n-title="a.mail" title="Écrire un courriel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span>geneva@agbuyp.org</span></a></li>
+                <li><a href="https://www.facebook.com/agbuypgeneva/" target="_blank" rel="noopener" title="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-1.7 0-3 1.3-3 3v2H9v3h2v6h3v-6h2.5l.5-3H14V9.5c0-.3.2-.5.5-.5Z"/></svg><span>facebook.com/agbuypgeneva</span></a></li>
+              </ul>
+            </article>
+    
+            <article class="entry reveal" data-cat="asso">
+              <div class="entry__head">
+                <h3 class="entry__name">Artzakank · Echo</h3>
+                <span class="tag tag--asso" data-i18n="tag.asso">Association</span>
+              </div>
+              <p class="entry__desc" data-i18n="d.artazank-echo-journal">Journal bilingue franco-arménien paraissant à Genève depuis 1986 — une voix bimestrielle de la diaspora.</p>
+              <ul class="links">
+                <li><a href="mailto:info@artzakank-echo.ch" data-i18n-title="a.mail" title="Écrire un courriel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span>info@artzakank-echo.ch</span></a></li>
+                <li><a href="https://artzakank-echo.ch/" target="_blank" rel="noopener" data-i18n-title="a.web" title="Visiter le site"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg><span>artzakank-echo.ch</span></a></li>
+              </ul>
+            </article>
+    
+            <article class="entry reveal" data-cat="food">
+              <div class="entry__head">
+                <h3 class="entry__name">Mayrig</h3>
+                <span class="tag tag--food" data-i18n="tag.food">Saveurs</span>
+              </div>
+              <p class="entry__desc" data-i18n="d.mayrig">« Mayrig », maman en arménien. La cuisine d'un foyer arméno-libanais, née à Beyrouth et dressée à Genève.</p>
+              <ul class="links">
+                <li><a href="mailto:info@mayrigbeirut.com" data-i18n-title="a.mail" title="Écrire un courriel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span>info@mayrigbeirut.com</span></a></li>
+                <li><a href="https://www.mayrigrestaurant.com/" target="_blank" rel="noopener" data-i18n-title="a.web" title="Visiter le site"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg><span>mayrigrestaurant.com</span></a></li>
+                <li><a href="https://www.instagram.com/mayrigbistrot/" target="_blank" rel="noopener" title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg><span>@mayrigbistrot</span></a></li>
+              </ul>
+            </article>
+    
+            <article class="entry reveal" data-cat="food">
+              <div class="entry__head">
+                <h3 class="entry__name">Culture &amp; Saveurs</h3>
+                <span class="tag tag--food" data-i18n="tag.food">Saveurs</span>
+              </div>
+              <p class="entry__desc" data-i18n="d.culture-saveur">Librairie-café arménienne : des livres, des douceurs et des conversations autour d'un même comptoir.</p>
+              <ul class="links">
+                <li><a href="mailto:info@armenie-culture-saveurs.ch" data-i18n-title="a.mail" title="Écrire un courriel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span>info@armenie-culture-saveurs.ch</span></a></li>
+                <li><a href="https://www.armenie-culture-saveurs.ch/" target="_blank" rel="noopener" data-i18n-title="a.web" title="Visiter le site"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg><span>armenie-culture-saveurs.ch</span></a></li>
+                <li><a href="https://www.instagram.com/armenie.culture_et_saveurs/" target="_blank" rel="noopener" title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg><span>@armenie.culture_et_saveurs</span></a></li>
+              </ul>
+            </article>
+    
+            <article class="entry reveal" data-cat="asso">
+              <div class="entry__head">
+                <h3 class="entry__name">Sanahin</h3>
+                <span class="tag tag--asso" data-i18n="tag.asso">Association</span>
+              </div>
+              <p class="entry__desc" data-i18n="d.sanahin">Troupe de danse du Centre arménien de Troinex — enfants, adolescents et jeunes adultes réunis par le goût du geste. Cours le mercredi.</p>
+              <ul class="links">
+                <li><a href="mailto:christinesedef@hotmail.com" data-i18n-title="a.mail" title="Écrire un courriel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span>christinesedef@hotmail.com</span></a></li>
+                <li><a href="https://u-a-s.ch/activites/sanahin/" target="_blank" rel="noopener" data-i18n-title="a.web" title="Visiter le site"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg><span>u-a-s.ch/activites/sanahin</span></a></li>
+                <li><a href="https://www.instagram.com/troupe_sanahin/" target="_blank" rel="noopener" title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg><span>@troupe_sanahin</span></a></li>
+              </ul>
+            </article>
+    
+            <article class="entry reveal" data-cat="food">
+              <div class="entry__head">
+                <h3 class="entry__name">Cadmus</h3>
+                <span class="tag tag--food" data-i18n="tag.food">Saveurs</span>
+              </div>
+              <p class="entry__desc" data-i18n="d.cadmus">Table libanaise aux inspirations arméniennes, au centre de Genève.</p>
+              <ul class="links">
+                <li><a href="mailto:Cadmus.gva@gmail.com" data-i18n-title="a.mail" title="Écrire un courriel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span>Cadmus.gva@gmail.com</span></a></li>
+                <li><a href="https://cadmusrestaurant.com/" target="_blank" rel="noopener" data-i18n-title="a.web" title="Visiter le site"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg><span>cadmusrestaurant.com</span></a></li>
+                <li><a href="https://www.instagram.com/cadmusrestaurant/" target="_blank" rel="noopener" title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg><span>@cadmusrestaurant</span></a></li>
+              </ul>
+            </article>
+    
+            <article class="entry reveal" data-cat="asso">
+              <div class="entry__head">
+                <h3 class="entry__name">Gamar</h3>
+                <span class="tag tag--asso" data-i18n="tag.asso">Association</span>
+              </div>
+              <p class="entry__desc" data-i18n="d.gamar">Ensemble de danse folklorique arménienne, porté par l'Union arménienne de Suisse.</p>
+              <ul class="links">
+                <li><a href="mailto:info@u-a-s.ch" data-i18n-title="a.mail" title="Écrire un courriel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span>info@u-a-s.ch</span></a></li>
+                <li><a href="https://u-a-s.ch/gamar/" target="_blank" rel="noopener" data-i18n-title="a.web" title="Visiter le site"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg><span>u-a-s.ch/gamar</span></a></li>
+                <li><a href="https://www.instagram.com/gamar.folk.gva/" target="_blank" rel="noopener" title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg><span>@gamar.folk.gva</span></a></li>
+              </ul>
+            </article>
+    
+          </div>
+        </section>
+    
+        <!-- ---------- VAUD ---------- -->
+        <section class="canton" id="vaud">
+          <div class="canton__head reveal">
+            <span class="canton__num">II</span>
+            <h2 class="canton__name" data-i18n="c.vd">Vaud</h2>
+            <span class="canton__count"><b>05</b> <span data-i18n="stat.lieux">lieux</span></span>
+          </div>
+          <div class="entries">
+    
+            <article class="entry reveal" data-cat="asso">
+              <div class="entry__head">
+                <h3 class="entry__name">École arménienne de Lausanne</h3>
+                <span class="tag tag--asso" data-i18n="tag.asso">Association</span>
+              </div>
+              <p class="entry__desc" data-i18n="d.ecole-armenienne-a-lausanne">L'école du dimanche : la langue, l'alphabet et les chants transmis aux enfants et aux adolescents.</p>
+              <ul class="links">
+                <li><a href="mailto:armenien.lausanne@yahoo.com" data-i18n-title="a.mail" title="Écrire un courriel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span>armenien.lausanne@yahoo.com</span></a></li>
+                <li><a href="https://www.facebook.com/profile.php?id=100087566591111" target="_blank" rel="noopener" title="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-1.7 0-3 1.3-3 3v2H9v3h2v6h3v-6h2.5l.5-3H14V9.5c0-.3.2-.5.5-.5Z"/></svg><span>facebook.com</span></a></li>
+              </ul>
+            </article>
+    
+            <article class="entry reveal" data-cat="asso">
+              <div class="entry__head">
+                <h3 class="entry__name">Margarit</h3>
+                <span class="tag tag--asso" data-i18n="tag.asso">Association</span>
+              </div>
+              <p class="entry__desc" data-i18n="d.margarit-armenian-dance">Groupe de danse féminine arménien basé à Lausanne. Cours le dimanche matin, tous niveaux.</p>
+              <ul class="links">
+                <li><a href="mailto:margarit.armeniandance@gmail.com" data-i18n-title="a.mail" title="Écrire un courriel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span>margarit.armeniandance@gmail.com</span></a></li>
+                <li><a href="https://www.instagram.com/margarit.armeniandance/" target="_blank" rel="noopener" title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg><span>@margarit.armeniandance</span></a></li>
+              </ul>
+            </article>
+    
+            <article class="entry reveal" data-cat="food">
+              <div class="entry__head">
+                <h3 class="entry__name">Maison du pain Akopian</h3>
+                <span class="tag tag--food" data-i18n="tag.food">Saveurs</span>
+              </div>
+              <p class="entry__desc" data-i18n="d.maison-du-pain-akopian">Lavash cuit sur pierre, bastourma et soudjouk — fabrication artisanale, livrée à domicile.</p>
+              <ul class="links">
+                <li><a href="https://www.instagram.com/lavash_1010/" target="_blank" rel="noopener" data-i18n-title="a.web" title="Visiter le site"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg><span>instagram.com/lavash_1010</span></a></li>
+              </ul>
+            </article>
+    
+            <article class="entry reveal" data-cat="craft">
+              <div class="entry__head">
+                <h3 class="entry__name">Kocharian Photography</h3>
+                <span class="tag tag--craft" data-i18n="tag.craft">Métier</span>
+              </div>
+              <p class="entry__desc" data-i18n="d.kocharian-photography">Photographe : mariages, studio, couples, mode, événements, maternité et portraits CV &amp; LinkedIn.</p>
+              <ul class="links">
+                <li><a href="tel:+41764687760" data-i18n-title="a.tel" title="Téléphoner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 4h3l1.5 4.5L7.5 10a12 12 0 0 0 6 6l1.5-2 4.5 1.5V19a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg><span>+41 76 468 77 60</span></a></li>
+                <li><a href="https://www.kocharianphotography.com" target="_blank" rel="noopener" data-i18n-title="a.web" title="Visiter le site"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg><span>kocharianphotography.com</span></a></li>
+                <li><a href="https://www.instagram.com/kocharian.photography?igsh=ZW5iNGt5MG56ajBr" target="_blank" rel="noopener" title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg><span>@kocharian.photography</span></a></li>
+              </ul>
+            </article>
+    
+            <article class="entry reveal" data-cat="asso">
+              <div class="entry__head">
+                <h3 class="entry__name">KASA</h3>
+                <span class="tag tag--asso" data-i18n="tag.asso">Association</span>
+              </div>
+              <p class="entry__desc" data-i18n="d.kasa">Fondation humanitaire KASA — Komitas Action Suisse-Arménie : des programmes sociaux et éducatifs au service de l'Arménie.</p>
+              <ul class="links">
+                <li><a href="tel:+41217285078" data-i18n-title="a.tel" title="Téléphoner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 4h3l1.5 4.5L7.5 10a12 12 0 0 0 6 6l1.5-2 4.5 1.5V19a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg><span>+41 21 728 50 78</span></a></li>
+                <li><a href="https://kasa.am/" target="_blank" rel="noopener" data-i18n-title="a.web" title="Visiter le site"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg><span>kasa.am</span></a></li>
+                <li><a href="https://www.facebook.com/KASAFondationHumanitaireSuisse" target="_blank" rel="noopener" title="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-1.7 0-3 1.3-3 3v2H9v3h2v6h3v-6h2.5l.5-3H14V9.5c0-.3.2-.5.5-.5Z"/></svg><span>facebook.com/KASAFondationHumanitaireSuisse</span></a></li>
+              </ul>
+            </article>
+    
+          </div>
+        </section>
+    
+        <!-- ---------- BERNE ---------- -->
+        <section class="canton" id="berne">
+          <div class="canton__head reveal">
+            <span class="canton__num">III</span>
+            <h2 class="canton__name" data-i18n="c.be">Berne</h2>
+            <span class="canton__count"><b>01</b> <span data-i18n="stat.lieux">lieux</span></span>
+          </div>
+          <div class="entries">
+    
+            <article class="entry reveal" data-cat="asso">
+              <div class="entry__head">
+                <h3 class="entry__name">Nairi · Chœur arménien</h3>
+                <span class="tag tag--asso" data-i18n="tag.asso">Association</span>
+              </div>
+              <p class="entry__desc" data-i18n="d.nairi-armenian-choir">Chœur d'une trentaine de voix, fondé par Araxi et Talita Karnusian et Karineh Zangocyan.</p>
+              <ul class="links">
+                <li><a href="mailto:info@nairi.ch" data-i18n-title="a.mail" title="Écrire un courriel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span>info@nairi.ch</span></a></li>
+                <li><a href="https://nairi.ch/" target="_blank" rel="noopener" data-i18n-title="a.web" title="Visiter le site"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg><span>nairi.ch</span></a></li>
+              </ul>
+            </article>
+    
+          </div>
+        </section>
+    
+        <!-- ---------- ZURICH ---------- -->
+        <section class="canton" id="zurich">
+          <div class="canton__head reveal">
+            <span class="canton__num">IV</span>
+            <h2 class="canton__name" data-i18n="c.zh">Zurich</h2>
+            <span class="canton__count"><b>02</b> <span data-i18n="stat.lieux">lieux</span></span>
+          </div>
+          <div class="entries">
+    
+            <article class="entry reveal" data-cat="asso">
+              <div class="entry__head">
+                <h3 class="entry__name">Armenian Association of Zurich</h3>
+                <span class="tag tag--asso" data-i18n="tag.asso">Association</span>
+              </div>
+              <p class="entry__desc" data-i18n="d.armenian-association-of-zurich">L'association arménienne de Zurich — foyer et point de ralliement de la communauté locale.</p>
+              <ul class="links">
+                <li><a href="https://hayastan.ch/index-en.html" target="_blank" rel="noopener" data-i18n-title="a.web" title="Visiter le site"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg><span>hayastan.ch/index-en.html</span></a></li>
+              </ul>
+            </article>
+    
+            <article class="entry reveal" data-cat="asso">
+              <div class="entry__head">
+                <h3 class="entry__name">Aliq Movement</h3>
+                <span class="tag tag--asso" data-i18n="tag.asso">Association</span>
+              </div>
+              <p class="entry__desc" data-i18n="d.aliq-movement-zurich">Collectif de danse arménienne à Zurich. Cours chaque mercredi soir, de 19h30 à 21h, tous niveaux.</p>
+              <ul class="links">
+                <li><a href="https://www.instagram.com/aliqmovement/" target="_blank" rel="noopener" title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg><span>@aliqmovement</span></a></li>
+              </ul>
+            </article>
+    
+          </div>
+        </section>
+    
+    <!-- ASN:CANTONS:END -->
+  </div>
+
+  <!-- ====================== pied ====================== -->
+  <footer class="foot reveal">
+    <p class="fk" data-i18n="foot.kicker">Un registre vivant</p>
+    <h2 data-i18n="foot.note">Ce répertoire grandit avec la communauté. Une association, une table, un métier à ajouter ou à corriger&nbsp;?</h2>
+    <div class="foot__actions">
+      <a class="btn" href="../index.html#contact" data-i18n="foot.add">Proposer un lieu</a>
+      <a class="btn ghost" href="../index.html" data-i18n="foot.back">Retour au site</a>
+    </div>
+    <p class="disc" data-i18n="foot.disc">Coordonnées communiquées par les intéressés ; certaines restent <code>[à compléter]</code>.</p>
+  </footer>
+
+</main>
+
+<script>
+/* ====================== i18n (FR baseline + EN / HY) ====================== */
+(function(){
+  "use strict";
+  var STORAGE_KEY = "alausanne.lang";
+
+  // FR is the markup baseline (captured below); only EN + HY are stored here.
+  var DICT = {
+    en: {
+      "meta.title": "Where We Are — The Armenian Network of Switzerland",
+      "meta.desc": "A living directory of the Armenian presence in Switzerland: associations, tables and crafts, from Geneva to Zurich — contacts, sites and socials.",
+      "lang.group": "Language",
+      "nav.back": "Armenians of Lausanne",
+      "mark": "The network",
+      "hero.eyebrow": "Armenian Network of Switzerland",
+      "hero.l1": "Where",
+      "hero.l2": "we are.",
+      "hero.lead": "From one canton to the next — associations that pass things on, tables that bring people together, crafts that keep a presence alive. Here, gathered into a single register, are the Armenian homes of Switzerland.",
+      "stat.lieux": "places",
+      "stat.cantons": "cantons",
+      "stat.vocations": "vocations",
+      "flt.label": "Browse",
+      "flt.all": "All",
+      "flt.asso": "Associations",
+      "flt.food": "Flavours",
+      "flt.craft": "Crafts",
+      "tag.asso": "Association",
+      "tag.food": "Flavours",
+      "tag.craft": "Craft",
+      "c.ge": "Geneva",
+      "c.vd": "Vaud",
+      "c.be": "Bern",
+      "c.zh": "Zurich",
+      "a.mail": "Send an email",
+      "a.web": "Visit the website",
+      "a.tel": "Call",
+      /* ASN:EN:START — generated · do not hand-edit (curate in network.overrides.json) */
+      "d.sourp-sarkis-church": "Saint Sarkis Armenian Apostolic Church — the spiritual heart of the Armenian Centre of Geneva, in Troinex.",
+      "d.agbu-young-professional-geneva": "Geneva chapter of the AGBU, the Armenian General Benevolent Union: a network of 20-to-40-year-olds who nurture and pass on Armenian identity.",
+      "d.artazank-echo-journal": "A bilingual French-Armenian newspaper published in Geneva since 1986 — a bimonthly voice of the diaspora.",
+      "d.mayrig": "“Mayrig” means mother in Armenian. The cooking of an Armenian-Lebanese home, born in Beirut and set down in Geneva.",
+      "d.culture-saveur": "An Armenian bookshop-café: books, sweets and conversation around the same counter.",
+      "d.sanahin": "Dance troupe of the Troinex Armenian Centre — children, teenagers and young adults bound by a love of movement. Classes on Wednesdays.",
+      "d.cadmus": "A Lebanese table with Armenian inspirations, in central Geneva.",
+      "d.gamar": "An Armenian folk-dance ensemble, carried by the Armenian Union of Switzerland.",
+      "d.ecole-armenienne-a-lausanne": "The Sunday school: language, alphabet and song passed on to children and teenagers.",
+      "d.margarit-armenian-dance": "An Armenian women's dance group based in Lausanne. Classes on Sunday mornings, all levels.",
+      "d.maison-du-pain-akopian": "Stone-baked lavash, basturma and sujuk — handmade and delivered to your door.",
+      "d.kocharian-photography": "Photographer: weddings, studio, couples, fashion, events, maternity and CV &amp; LinkedIn portraits.",
+      "d.kasa": "The KASA humanitarian foundation — Komitas Action Suisse-Arménie: social and educational programmes in the service of Armenia.",
+      "d.nairi-armenian-choir": "A choir of some thirty voices, founded by Araxi and Talita Karnusian and Karineh Zangocyan.",
+      "d.armenian-association-of-zurich": "The Armenian Association of Zurich — home and gathering point of the local community.",
+      "d.aliq-movement-zurich": "An Armenian dance collective in Zurich. Classes every Wednesday evening, 7.30 to 9 pm, all levels.",
+      /* ASN:EN:END */
+      "foot.kicker": "A living register",
+      "foot.note": "This directory grows with the community. An association, a table, a craft to add or correct?",
+      "foot.add": "Suggest an entry",
+      "foot.back": "Back to the site",
+      "foot.disc": "Details provided by the listings themselves; some remain <code>[to complete]</code>."
+    },
+    hy: {
+      "meta.title": "Այնտեղ, ուր մենք ենք — Շվեյցարիայի հայկական ցանցը",
+      "meta.desc": "Շվեյցարիայում հայկական ներկայության կենդանի մատյան՝ միություններ, սեղաններ և արհեստներ՝ Ժնևից մինչև Ցյուրիխ։",
+      "lang.group": "Լեզու",
+      "nav.back": "Լոզանի հայերը",
+      "mark": "Ցանցը",
+      "hero.eyebrow": "Շվեյցարիայի հայկական ցանց",
+      "hero.l1": "Այնտեղ, ուր",
+      "hero.l2": "մենք ենք։",
+      "hero.lead": "Կանտոնից կանտոն՝ միություններ, որ փոխանցում են, սեղաններ, որ համախմբում են, արհեստներ, որ կենդանի են պահում ներկայությունը։ Ահա, մեկ մատյանում հավաքված, Շվեյցարիայի հայկական օջախները։",
+      "stat.lieux": "վայր",
+      "stat.cantons": "կանտոն",
+      "stat.vocations": "կոչում",
+      "flt.label": "Դիտել",
+      "flt.all": "Բոլորը",
+      "flt.asso": "Միություններ",
+      "flt.food": "Համ ու հոտ",
+      "flt.craft": "Արհեստներ",
+      "tag.asso": "Միություն",
+      "tag.food": "Համ ու հոտ",
+      "tag.craft": "Արհեստ",
+      "c.ge": "Ժնև",
+      "c.vd": "Վո",
+      "c.be": "Բեռն",
+      "c.zh": "Ցյուրիխ",
+      "a.mail": "Գրել նամակ",
+      "a.web": "Այցելել կայք",
+      "a.tel": "Զանգահարել",
+      /* ASN:HY:START — generated · do not hand-edit (curate in network.overrides.json) */
+      "d.sourp-sarkis-church": "Սուրբ Սարգիս հայ առաքելական եկեղեցին՝ Ժնևի հայ կենտրոնի հոգևոր սիրտը, Թրուանեքսում։",
+      "d.agbu-young-professional-geneva": "ՀԲԸՄ-ի (Հայկական բարեգործական ընդհանուր միություն) Ժնևի մասնաճյուղը՝ 20–40 տարեկանների ցանց, որ սնուցում և փոխանցում է հայկական ինքնությունը։",
+      "d.artazank-echo-journal": "Ֆրանսահայ երկլեզու թերթ, որ Ժնևում լույս է տեսնում 1986 թվականից՝ սփյուռքի երկամսյա ձայնը։",
+      "d.mayrig": "«Մայրիկ»՝ հայերեն։ Բեյրութում ծնված և Ժնևում մատուցվող հայ-լիբանանյան տան խոհանոցը։",
+      "d.culture-saveur": "Հայկական գրախանութ-սրճարան՝ գրքեր, քաղցրավենիք և զրույց՝ նույն վաճառասեղանի շուրջ։",
+      "d.sanahin": "Թրուանեքսի հայ կենտրոնի պարախումբը՝ երեխաներ, պատանիներ և երիտասարդներ՝ շարժման սիրով միավորված։ Դասերը՝ չորեքշաբթի։",
+      "d.cadmus": "Լիբանանյան սեղան՝ հայկական ոգով, Ժնևի կենտրոնում։",
+      "d.gamar": "Հայկական ժողովրդական պարի համույթ՝ Շվեյցարիայի հայ միության հովանու ներքո։",
+      "d.ecole-armenienne-a-lausanne": "Կիրակնօրյա դպրոց՝ լեզուն, այբուբենը և երգերը փոխանցվում են երեխաներին ու պատանիներին։",
+      "d.margarit-armenian-dance": "Լոզանում հիմնված հայկական կանացի պարախումբ։ Դասերը՝ կիրակի առավոտյան, բոլոր մակարդակների համար։",
+      "d.maison-du-pain-akopian": "Քարի վրա թխված լավաշ, բաստուրմա և սուջուխ՝ ձեռագործ, առաքումով։",
+      "d.kocharian-photography": "Լուսանկարիչ՝ հարսանիքներ, ստուդիա, զույգեր, նորաձևություն, միջոցառումներ, մայրություն և CV ու LinkedIn-ի դիմանկարներ։",
+      "d.kasa": "KASA մարդասիրական հիմնադրամ՝ Komitas Action Suisse-Arménie. սոցիալական և կրթական ծրագրեր՝ ի սպաս Հայաստանի։",
+      "d.nairi-armenian-choir": "Շուրջ երեսուն ձայնից բաղկացած երգչախումբ՝ հիմնված Արաքսի և Թալիտա Կառնուսյանների ու Կարինե Զանգոցյանի կողմից։",
+      "d.armenian-association-of-zurich": "Ցյուրիխի հայ միությունը՝ տեղի համայնքի օջախն ու հավաքատեղին։",
+      "d.aliq-movement-zurich": "Հայկական պարի խումբ Ցյուրիխում։ Դասերը՝ ամեն չորեքշաբթի երեկո, 19:30–21:00, բոլոր մակարդակների համար։",
+      /* ASN:HY:END */
+      "foot.kicker": "Կենդանի մատյան",
+      "foot.note": "Այս մատյանը մեծանում է համայնքի հետ։ Ավելացնելու կամ ուղղելու միություն, սեղան կամ արհե՞ստ կա։",
+      "foot.add": "Առաջարկել",
+      "foot.back": "Վերադառնալ կայք",
+      "foot.disc": "Տվյալները տրամադրված են շահագրգիռների կողմից. մի մասը մնում է <code>[լրացնելու]</code>։"
+    }
+  };
+
+  var FR_HTML = {}, FR_TTL = {}, FR_ARIA = {};
+  var metaDesc = document.querySelector('meta[name="description"]');
+  var FR_TITLE = document.title;
+  var FR_DESC = metaDesc ? metaDesc.getAttribute("content") : "";
+  document.querySelectorAll("[data-i18n]").forEach(function(el){ FR_HTML[el.getAttribute("data-i18n")] = el.innerHTML; });
+  document.querySelectorAll("[data-i18n-title]").forEach(function(el){ FR_TTL[el.getAttribute("data-i18n-title")] = el.getAttribute("title"); });
+  document.querySelectorAll("[data-i18n-aria]").forEach(function(el){ FR_ARIA[el.getAttribute("data-i18n-aria")] = el.getAttribute("aria-label"); });
+
+  function pickLang(){
+    var q, stored;
+    try { q = new URLSearchParams(location.search).get("lang"); } catch(e){}
+    try { stored = localStorage.getItem(STORAGE_KEY); } catch(e){}
+    var l = (q || stored || "fr").toLowerCase();
+    return (l === "en" || l === "hy" || l === "fr") ? l : "fr";
+  }
+
+  function apply(lang){
+    var d = (lang === "fr") ? null : DICT[lang];
+    document.documentElement.lang = lang;
+    document.title = d ? (d["meta.title"] || FR_TITLE) : FR_TITLE;
+    if (metaDesc) metaDesc.setAttribute("content", d ? (d["meta.desc"] || FR_DESC) : FR_DESC);
+    document.querySelectorAll("[data-i18n]").forEach(function(el){
+      var k = el.getAttribute("data-i18n"); var v = d ? d[k] : FR_HTML[k];
+      if (v != null) el.innerHTML = v;
+    });
+    document.querySelectorAll("[data-i18n-title]").forEach(function(el){
+      var k = el.getAttribute("data-i18n-title"); var v = d ? d[k] : FR_TTL[k];
+      if (v != null) el.setAttribute("title", v);
+    });
+    document.querySelectorAll("[data-i18n-aria]").forEach(function(el){
+      var k = el.getAttribute("data-i18n-aria"); var v = d ? d[k] : FR_ARIA[k];
+      if (v != null) el.setAttribute("aria-label", v);
+    });
+    document.querySelectorAll(".lang-switch [data-lang]").forEach(function(b){
+      b.setAttribute("aria-current", b.getAttribute("data-lang") === lang ? "true" : "false");
+    });
+  }
+
+  var switcher = document.querySelector(".lang-switch");
+  if (switcher){
+    switcher.addEventListener("click", function(e){
+      var b = e.target.closest && e.target.closest("[data-lang]");
+      if (!b) return;
+      var lang = b.getAttribute("data-lang");
+      try { localStorage.setItem(STORAGE_KEY, lang); } catch(err){}
+      apply(lang);
+    });
+  }
+  apply(pickLang());
+})();
+
+/* ====================== interactions ====================== */
+(function(){
+  "use strict";
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* progress hairline */
+  var prog = document.getElementById("progress");
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    prog.style.width = (max > 0 ? (h.scrollTop/max*100) : 0).toFixed(2) + "%";
+  }
+  window.addEventListener("scroll", onScroll, { passive:true });
+  onScroll();
+
+  /* reveal on scroll */
+  (function(){
+    var els = document.querySelectorAll(".reveal");
+    if (!("IntersectionObserver" in window) || reduce){
+      els.forEach(function(e){ e.classList.add("in"); }); return;
+    }
+    var io = new IntersectionObserver(function(ents){
+      ents.forEach(function(en){
+        if (en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); }
+      });
+    }, { threshold:.12, rootMargin:"0px 0px -8% 0px" });
+    els.forEach(function(e){ io.observe(e); });
+  })();
+
+  /* category filter */
+  var chips = Array.prototype.slice.call(document.querySelectorAll(".chip"));
+  var entries = Array.prototype.slice.call(document.querySelectorAll(".entry"));
+  var cantons = Array.prototype.slice.call(document.querySelectorAll(".canton"));
+  function filter(cat){
+    entries.forEach(function(el){
+      el.classList.toggle("is-hide", cat !== "all" && el.getAttribute("data-cat") !== cat);
+    });
+    cantons.forEach(function(sec){
+      var any = sec.querySelector(".entry:not(.is-hide)");
+      sec.classList.toggle("is-empty", !any);
+    });
+  }
+  chips.forEach(function(chip){
+    chip.addEventListener("click", function(){
+      chips.forEach(function(c){ c.setAttribute("aria-pressed", c === chip ? "true" : "false"); });
+      filter(chip.getAttribute("data-filter"));
+    });
+  });
+})();
+</script>
+</body>
+</html>
