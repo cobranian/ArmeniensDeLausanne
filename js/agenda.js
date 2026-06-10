@@ -32,6 +32,7 @@
     "Brazil":         { fr: "Brésil",            en: "Brazil",           hy: "Բրազիլիա" },
     "Bulgaria":       { fr: "Bulgarie",          en: "Bulgaria",         hy: "Բուլղարիա" },
     "Canada":         { fr: "Canada",            en: "Canada",           hy: "Կանադա" },
+    "Chile":          { fr: "Chili",             en: "Chile",            hy: "Չիլի" },
     "Cyprus":         { fr: "Chypre",            en: "Cyprus",           hy: "Կիպրոս" },
     "Czechia":        { fr: "Tchéquie",          en: "Czechia",          hy: "Չեխիա" },
     "France":         { fr: "France",            en: "France",           hy: "Ֆրանսիա" },
@@ -44,8 +45,10 @@
     "Romania":        { fr: "Roumanie",          en: "Romania",          hy: "Ռումինիա" },
     "Russia":         { fr: "Russie",            en: "Russia",           hy: "Ռուսաստան" },
     "Singapore":      { fr: "Singapour",         en: "Singapore",        hy: "Սինգապուր" },
+    "Spain":          { fr: "Espagne",           en: "Spain",            hy: "Իսպանիա" },
     "Switzerland":    { fr: "Suisse",            en: "Switzerland",      hy: "Շվեյցարիա" },
     "Türkiye":        { fr: "Türkiye",           en: "Türkiye",          hy: "Թուրքիա" },
+    "United Arab Emirates": { fr: "Émirats arabes unis", en: "United Arab Emirates", hy: "Արաբական Միացյալ Էմիրություններ" },
     "United Kingdom": { fr: "Royaume-Uni",       en: "United Kingdom",   hy: "Միացյալ Թագավորություն" },
     "United States":  { fr: "États-Unis",        en: "United States",    hy: "Միացյալ Նահանգներ" },
     "Venezuela":      { fr: "Venezuela",         en: "Venezuela",        hy: "Վենեսուելա" }
@@ -62,6 +65,15 @@
 
   /* Open these countries by default — host country first. */
   var OPEN_BY_DEFAULT = { "Switzerland": true };
+
+  /* Country sort priority — host country pinned to the top, others alphabetical. */
+  var COUNTRY_PRIORITY = { "Switzerland": 0 };
+
+  function countryRank(name) {
+    return Object.prototype.hasOwnProperty.call(COUNTRY_PRIORITY, name)
+      ? COUNTRY_PRIORITY[name]
+      : 1; // everything else sorts after the pinned countries, then alphabetically
+  }
 
   function lookupLang() {
     var l = (document.documentElement.getAttribute("lang") || "").toLowerCase();
@@ -97,7 +109,8 @@
 
   function groupEvents(events) {
     var sorted = events.slice().sort(function (a, b) {
-      return (a.c || "").localeCompare(b.c || "")
+      return (countryRank(a.c) - countryRank(b.c))
+          || (a.c || "").localeCompare(b.c || "")
           || (a.r || "").localeCompare(b.r || "")
           || (a.ct || "").localeCompare(b.ct || "")
           || (a.d || "").localeCompare(b.d || "")
