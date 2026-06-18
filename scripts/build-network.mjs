@@ -304,12 +304,16 @@ function cardHtml(e) {
     catch { console.warn(`  ⚠ logo file missing for ${e.slug} (${e.logo}) — using monogram`); }
   }
   const logoClass = hasLogo ? "entry__logo entry__logo--img" : "entry__logo";
+  // A custom per-entry tag (override `tag.fr`) shows the actual profession in
+  // the chip, keyed under tag.<slug>; otherwise the generic category label.
+  const tagKey = e.tag ? `tag.${e.slug}` : `tag.${e.cat}`;
+  const tagFr  = e.tag ? e.tag.fr : TAG_FR[e.cat];
   return [
     `        <article class="entry reveal" data-cat="${e.cat}">`,
     `          <div class="entry__head">`,
     `            <span class="${logoClass}" aria-hidden="true">${logo}</span>`,
     `            <div class="entry__id">`,
-    `              <span class="tag tag--${e.cat}" data-i18n="tag.${e.cat}">${TAG_FR[e.cat]}</span>`,
+    `              <span class="tag tag--${e.cat}" data-i18n="${tagKey}">${escHtml(tagFr)}</span>`,
     `              <h3 class="entry__name">${escHtml(e.name)}</h3>`,
     `            </div>`,
     `          </div>`,
@@ -411,6 +415,7 @@ function main() {
         email:   (ov.email !== undefined ? ov.email : parsedEmail) || "",
         website: (ov.website !== undefined ? normalizeUrl(ov.website) : parsedWeb) || null,
         phone:   (ov.phone !== undefined ? ov.phone : parsedPhone) || "",
+        tag:     ov.tag || null,
         social
       });
     }
@@ -428,8 +433,15 @@ function main() {
   const cantonsInner = (cantonBlocks.join("\n") + "\n").split("\n");
 
   const flat = byCanton.flatMap((c) => c.entries);
-  const enLines = flat.filter((e) => e.en).map((e) => `"d.${e.slug}": ${JSON.stringify(escHtml(e.en))},`);
-  const hyLines = flat.filter((e) => e.hy).map((e) => `"d.${e.slug}": ${JSON.stringify(escHtml(e.hy))},`);
+  // Description lines, plus a tag line for any entry with a custom profession label.
+  const enLines = [
+    ...flat.filter((e) => e.en).map((e) => `"d.${e.slug}": ${JSON.stringify(escHtml(e.en))},`),
+    ...flat.filter((e) => e.tag && e.tag.en).map((e) => `"tag.${e.slug}": ${JSON.stringify(escHtml(e.tag.en))},`)
+  ];
+  const hyLines = [
+    ...flat.filter((e) => e.hy).map((e) => `"d.${e.slug}": ${JSON.stringify(escHtml(e.hy))},`),
+    ...flat.filter((e) => e.tag && e.tag.hy).map((e) => `"tag.${e.slug}": ${JSON.stringify(escHtml(e.tag.hy))},`)
+  ];
 
   // Splice everything into the page.
   let html = readFileSync(PAGE, "utf8");

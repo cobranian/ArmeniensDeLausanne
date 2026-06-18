@@ -65,6 +65,14 @@
     "en": "An Armenian women's dance group based in Lausanne. Classes on Sunday mornings, all levels.",
     "hy": "Լոզանում հիմնված հայկական կանացի պարախումբ։ Դասերը՝ կիրակի առավոտյան, բոլոր մակարդակների համար։"
   },
+  "gayane-matthey": {
+    "name": "Gayané Matthey",
+    "cat": "craft",
+    "tag": { "fr": "Sexothérapeute", "en": "Sex therapist", "hy": "Սեքսաթերապևտ" },
+    "fr": "Sexothérapeute à Lausanne — un accompagnement bienveillant de la vie intime et relationnelle, en séances individuelles, en couple ou pour les adolescent·e·s, dans une approche inclusive.",
+    "en": "A sex therapist in Lausanne — caring support for intimate and relational life, in individual, couples or adolescent sessions, with an inclusive approach.",
+    "hy": "Սեքսաթերապևտ Լոզանում՝ ինտիմ և հարաբերական կյանքի հոգատար ուղեկցում՝ անհատական, զույգով կամ պատանիների համար, ներառական մոտեցմամբ։"
+  },
   "maison-du-pain-akopian": {
     "name": "Maison du pain Akopian",
     "fr": "Lavash cuit sur pierre, bastourma et soudjouk — fabrication artisanale, livrée à domicile.",
