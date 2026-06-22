@@ -73,6 +73,16 @@
     "en": "A sex therapist in Lausanne — caring support for intimate and relational life, in individual, couples or adolescent sessions, with an inclusive approach.",
     "hy": "Սեքսաթերապևտ Լոզանում՝ ինտիմ և հարաբերական կյանքի հոգատար ուղեկցում՝ անհատական, զույգով կամ պատանիների համար, ներառական մոտեցմամբ։"
   },
+  "miassine": {
+    "name": "Miassine",
+    "cat": "asso",
+    "email": "info@miassine.com",
+    "website": "https://miassine.com/",
+    "social": ["https://www.instagram.com/miassine_foundation/", "https://www.facebook.com/Miassine"],
+    "fr": "Fondation suisse-arménienne au service de l'Arménie : formation professionnelle, projets communautaires et solidarité pour les jeunes, les femmes et les personnes vulnérables, de Gyumri à Erevan.",
+    "en": "A Swiss-Armenian foundation in the service of Armenia: vocational training, community projects and solidarity for young people, women and vulnerable individuals, from Gyumri to Yerevan.",
+    "hy": "Շվեյցարահայ հիմնադրամ՝ ի սպաս Հայաստանի. մասնագիտական ուսուցում, համայնքային ծրագրեր և համերաշխություն երիտասարդների, կանանց ու խոցելի մարդկանց համար՝ Գյումրիից մինչև Երևան։"
+  },
   "maison-du-pain-akopian": {
     "name": "Maison du pain Akopian",
     "fr": "Lavash cuit sur pierre, bastourma et soudjouk — fabrication artisanale, livrée à domicile.",
