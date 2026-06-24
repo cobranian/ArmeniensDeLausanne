@@ -44,6 +44,7 @@
       "nav.network": "Réseau",
       "nav.cuisine": "Cuisine",
       "nav.agenda": "Agenda",
+      "nav.don": "Soutenir",
       "nav.cta": "Nous rejoindre",
 
       /* hero */
@@ -234,6 +235,7 @@
       "nav.network": "Network",
       "nav.cuisine": "Cuisine",
       "nav.agenda": "Agenda",
+      "nav.don": "Support",
       "nav.cta": "Join us",
 
       "hero.title.line1": "Armenians",
@@ -416,6 +418,7 @@
       "nav.network": "Ցանց",
       "nav.cuisine": "Խոհանոց",
       "nav.agenda": "Օրակարգ",
+      "nav.don": "Աջակցել",
       "nav.cta": "Միանալ մեզ",
 
       "hero.title.line1": "Լոզանի",
