@@ -2060,6 +2060,9 @@ html.js .hero-media { animation-delay: .25s; animation-duration: 1.3s; }
   /* Masthead — show wordmark + small meta only */
   .masthead-top { display: grid; grid-template-columns: auto 1fr auto; }
   .masthead-meta { font-size: .65rem; letter-spacing: .18em; }
+  /* Hide the right-side location as soon as the burger appears, so it can't
+     sit under the absolutely-positioned .nav-toggle (481–980px overlap). */
+  .masthead-meta.meta-right { display: none; }
   .masthead-bottom { display: none; }
   .masthead-rule { display: none; }
   .masthead { padding-block: .9rem .65rem; }
@@ -2121,7 +2124,6 @@ html.js .hero-media { animation-delay: .25s; animation-duration: 1.3s; }
   .pillars li { grid-template-columns: 2.25rem 1fr; gap: .85rem; }
   .pillars .p-num { font-size: 1.35rem; }
   .hero-toc { grid-template-columns: 1fr; }
-  .masthead-meta.meta-right { display: none; }
   .masthead-wordmark { font-size: 1.4rem; gap: .5rem; }
   .masthead-wordmark .wm-orn svg { width: 18px; height: 18px; }
   .section-rule { gap: .65rem; }
