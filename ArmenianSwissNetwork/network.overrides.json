@@ -56,9 +56,10 @@
   "ecole-armenienne-a-lausanne": {
     "name": "École arménienne de Lausanne",
     "website": "https://www.ecolearmeniennedelausanne.ch/",
-    "fr": "L'école du dimanche : la langue, l'alphabet et les chants transmis aux enfants et aux adolescents.",
-    "en": "The Sunday school: language, alphabet and song passed on to children and teenagers.",
-    "hy": "Կիրակնօրյա դպրոց՝ լեզուն, այբուբենը և երգերը փոխանցվում են երեխաներին ու պատանիներին։"
+    "phone": "0041 76 415 77 29",
+    "fr": "École du dimanche « Ararat » : depuis 2017, la langue arménienne orientale, les chants, la danse et la culture transmis aux enfants et adolescents (3 à 16 ans), à la Maison de quartier des Faverges.",
+    "en": "The “Ararat” Sunday school: since 2017, the Eastern Armenian language, songs, dance and culture passed on to children and teenagers (ages 3 to 16), at the Faverges community centre.",
+    "hy": "«Արարատ» կիրակնօրյա դպրոց՝ 2017 թվականից արևելահայերենը, երգերը, պարն ու մշակույթը փոխանցվում են երեխաներին ու պատանիներին (3–16 տարեկան)՝ Ֆավերժի թաղային տանը։"
   },
   "margarit-armenian-dance": {
     "name": "Margarit",
