@@ -172,7 +172,7 @@
       "events.eyebrow": "Prochains rendez-vous",
       "events.title": "L'agenda <em>de la saison.</em>",
       "events.sub": "Rendez-vous arméniens à travers la diaspora et l'Arménie — classés par pays, région et ville.",
-      "events.source": "Source&nbsp;: <a href=\"https://armenopole.com/ArmenianEvents\" target=\"_blank\" rel=\"noopener noreferrer\">armenopole.com</a>&nbsp;— instantané du 4&nbsp;juillet 2026.",
+      "events.source": "Source&nbsp;: <a href=\"https://armenopole.com/ArmenianEvents\" target=\"_blank\" rel=\"noopener noreferrer\">armenopole.com</a>&nbsp;— instantané du 5&nbsp;juillet 2026.",
 
       /* contact */
       "contact.label": "Correspondance",
@@ -357,7 +357,7 @@
       "events.eyebrow": "Upcoming events",
       "events.title": "The season's <em>agenda.</em>",
       "events.sub": "Armenian gatherings across the diaspora and Armenia — ordered by country, region and city.",
-      "events.source": "Source:&nbsp;<a href=\"https://armenopole.com/ArmenianEvents\" target=\"_blank\" rel=\"noopener noreferrer\">armenopole.com</a>&nbsp;— snapshot dated 4&nbsp;July 2026.",
+      "events.source": "Source:&nbsp;<a href=\"https://armenopole.com/ArmenianEvents\" target=\"_blank\" rel=\"noopener noreferrer\">armenopole.com</a>&nbsp;— snapshot dated 5&nbsp;July 2026.",
 
       "contact.label": "Correspondence",
       "contact.eyebrow": "Join us",
@@ -540,7 +540,7 @@
       "events.eyebrow": "Առաջիկա միջոցառումներ",
       "events.title": "Եղանակի <em>օրակարգը։</em>",
       "events.sub": "Հայկական միջոցառումներ սփյուռքում և Հայաստանում՝ դասավորված ըստ երկրի, շրջանի և քաղաքի։",
-      "events.source": "Աղբյուր՝&nbsp;<a href=\"https://armenopole.com/ArmenianEvents\" target=\"_blank\" rel=\"noopener noreferrer\">armenopole.com</a>&nbsp;— 2026 թ. հուլիսի 4-ի դրությամբ։",
+      "events.source": "Աղբյուր՝&nbsp;<a href=\"https://armenopole.com/ArmenianEvents\" target=\"_blank\" rel=\"noopener noreferrer\">armenopole.com</a>&nbsp;— 2026 թ. հուլիսի 5-ի դրությամբ։",
 
       "contact.label": "Նամակագրություն",
       "contact.eyebrow": "Միանալ մեզ",
