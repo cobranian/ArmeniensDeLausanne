@@ -7,6 +7,66 @@
   <meta name="description" content="La communauté arménienne de Lausanne : histoire, culture, cuisine, mémoire et vie associative — une revue continue, depuis la Suisse romande." />
   <meta name="theme-color" content="#1A1410" />
 
+  <!-- ============ Référencement (SEO) ============ -->
+  <link rel="canonical" href="https://armeniensdelausanne.ch/" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Pas de hreflang : l'i18n est côté client (js/i18n.js) et les trois
+       variantes ?lang= servent le même HTML sous le même canonical. -->
+
+  <!-- Open Graph (aperçu au partage : Facebook, WhatsApp, LinkedIn…) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Arméniens de Lausanne" />
+  <meta property="og:title" content="Arméniens de Lausanne — Revue communautaire" />
+  <meta property="og:description" content="La communauté arménienne de Lausanne : histoire, culture, cuisine, mémoire et vie associative — une revue continue, depuis la Suisse romande." />
+  <meta property="og:url" content="https://armeniensdelausanne.ch/" />
+  <meta property="og:image" content="https://armeniensdelausanne.ch/Images/Armenan-Dancers.webp" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Danseurs arméniens en costume traditionnel" />
+  <meta property="og:locale" content="fr_CH" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:locale:alternate" content="hy_AM" />
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Arméniens de Lausanne — Revue communautaire" />
+  <meta name="twitter:description" content="La communauté arménienne de Lausanne : histoire, culture, cuisine, mémoire et vie associative — une revue continue, depuis la Suisse romande." />
+  <meta name="twitter:image" content="https://armeniensdelausanne.ch/Images/Armenan-Dancers.webp" />
+
+  <!-- Données structurées : organisation communautaire locale -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://armeniensdelausanne.ch/#website",
+        "url": "https://armeniensdelausanne.ch/",
+        "name": "Arméniens de Lausanne",
+        "description": "Revue continue de la communauté arménienne de Lausanne : histoire, culture, cuisine et vie associative.",
+        "inLanguage": ["fr", "en", "hy"],
+        "publisher": { "@id": "https://armeniensdelausanne.ch/#organization" }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://armeniensdelausanne.ch/#organization",
+        "name": "Arméniens de Lausanne",
+        "alternateName": "Communauté arménienne de Lausanne",
+        "url": "https://armeniensdelausanne.ch/",
+        "logo": "https://armeniensdelausanne.ch/favicon.svg",
+        "image": "https://armeniensdelausanne.ch/Images/Armenan-Dancers.webp",
+        "description": "Communauté arménienne de Lausanne et de Suisse romande : histoire, culture, cuisine, mémoire et vie associative.",
+        "knowsLanguage": ["hy", "fr", "en"],
+        "areaServed": [
+          { "@type": "City", "name": "Lausanne" },
+          { "@type": "Place", "name": "Suisse romande" }
+        ]
+      }
+    ]
+  }
+  </script>
+
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -76,12 +136,12 @@
         <li><a href="#communaute"><span class="n">II</span><span class="t" data-i18n="nav.community">Communauté</span></a></li>
         <li><a href="#histoire"><span class="n">III</span><span class="t" data-i18n="nav.history">Histoire</span></a></li>
         <li><a href="#culture"><span class="n">IV</span><span class="t" data-i18n="nav.culture">Culture</span></a></li>
-        <li><a class="nav-feature" href="doudouk.html"><span class="n" aria-hidden="true">♪</span><span class="t" data-i18n="nav.doudouk">Doudouk</span></a></li>
-        <li><a class="nav-feature" href="peintres.html"><span class="n" aria-hidden="true">❖</span><span class="t" data-i18n="nav.peintres">Peintres</span></a></li>
-        <li><a class="nav-feature" href="ArmenianSwissNetwork/index.html"><span class="n" aria-hidden="true">✦</span><span class="t" data-i18n="nav.network">Réseau</span></a></li>
+        <li><a class="nav-feature" href="/doudouk"><span class="n" aria-hidden="true">♪</span><span class="t" data-i18n="nav.doudouk">Doudouk</span></a></li>
+        <li><a class="nav-feature" href="/peintres"><span class="n" aria-hidden="true">❖</span><span class="t" data-i18n="nav.peintres">Peintres</span></a></li>
+        <li><a class="nav-feature" href="/ArmenianSwissNetwork"><span class="n" aria-hidden="true">✦</span><span class="t" data-i18n="nav.network">Réseau</span></a></li>
         <li><a href="#cuisine"><span class="n">V</span><span class="t" data-i18n="nav.cuisine">Cuisine</span></a></li>
         <li><a href="#evenements"><span class="n">VI</span><span class="t" data-i18n="nav.agenda">Agenda</span></a></li>
-        <li><a class="nav-feature" href="don.html"><span class="n" aria-hidden="true">♥</span><span class="t" data-i18n="nav.don">Soutenir</span></a></li>
+        <li><a class="nav-feature" href="/don"><span class="n" aria-hidden="true">♥</span><span class="t" data-i18n="nav.don">Soutenir</span></a></li>
         <li><a class="nav-cta" href="#contact"><span class="t" data-i18n="nav.cta">Nous rejoindre</span><span class="arr" aria-hidden="true">→</span></a></li>
       </ul>
     </nav>
@@ -350,7 +410,7 @@
               <em>Le doudouk pleure ce que les mots taisent.</em>
             </p>
             <p class="ft-more">
-              <a class="link-arrow" href="doudouk.html">
+              <a class="link-arrow" href="/doudouk">
                 <span data-i18n="culture.doudouk.link">Le souffle du bois d'abricotier</span>
                 <span class="arr" aria-hidden="true">→</span>
               </a>
@@ -606,7 +666,7 @@
           </ul>
 
           <p class="pgate-cta">
-            <a class="link-arrow" href="peintres.html">
+            <a class="link-arrow" href="/peintres">
               <span data-i18n="culture.painters.link">Entrer dans la galerie</span>
               <span class="arr" aria-hidden="true">→</span>
             </a>
@@ -838,6 +898,24 @@
           </p>
           <p class="cm-legal">© <span id="year">2026</span> · <span data-i18n="footer.colophon.region">Suisse romande</span></p>
         </div>
+
+        <nav class="footer-links" aria-label="Ressources arméniennes" data-i18n-aria-label="footer.links.aria">
+          <p class="fn-label" data-i18n="footer.links.label">Ressources</p>
+          <ul>
+            <li>
+              <a href="https://armenieinfo.ch/" target="_blank" rel="noopener">
+                <span class="fl-name">Arménie Info</span>
+                <span class="fl-desc" data-i18n="footer.links.armenieinfo">Actualité arménienne</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.ecolearmeniennedelausanne.ch/" target="_blank" rel="noopener">
+                <span class="fl-name">École arménienne de Lausanne</span>
+                <span class="fl-desc" data-i18n="footer.links.ecole">École du dimanche « Ararat »</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
 
       </div>
 
