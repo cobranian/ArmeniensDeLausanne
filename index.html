@@ -55,7 +55,7 @@
         "name": "Arméniens de Lausanne",
         "alternateName": "Communauté arménienne de Lausanne",
         "url": "https://armeniensdelausanne.ch/",
-        "logo": "https://armeniensdelausanne.ch/favicon.svg",
+        "logo": "https://armeniensdelausanne.ch/favicon-192.png",
         "image": "https://armeniensdelausanne.ch/Images/Armenan-Dancers.webp",
         "description": "Communauté arménienne de Lausanne et de Suisse romande : histoire, culture, cuisine, mémoire et vie associative.",
         "knowsLanguage": ["hy", "fr", "en"],
@@ -68,7 +68,14 @@
   }
   </script>
 
-  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <!-- Favicon. Le SVG sert les navigateurs modernes ; les versions raster sont
+       là pour Google, qui indexe l'icône du site séparément de la page et
+       privilégie un carré multiple de 48 px. Toutes sont générées depuis
+       favicon.svg, qui reste la source de vérité du dessin. -->
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon-96.png" type="image/png" sizes="96x96" />
+  <link rel="icon" href="/favicon.ico" sizes="48x48 32x32 16x16" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
