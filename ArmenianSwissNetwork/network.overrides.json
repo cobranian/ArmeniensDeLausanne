@@ -1,24 +1,27 @@
 {
-  "_comment": "Curation layer for build-network.mjs. Keys are the slug of each row's company name in ArmenianSwissNetwork.ods (lowercase, accents stripped, '&' dropped, non-alphanumerics -> '-'). Any field here overrides what the spreadsheet yields. 'fr' is the visible baseline description; 'en'/'hy' feed the i18n dictionary (missing -> falls back to fr). 'cat' must be one of: asso, food, craft. 'email'/'website'/'phone' override parsed contacts; 'social' (array of URLs) overrides parsed social links. The card medallion shows a 2-letter monogram derived from the name; set 'monogram' to override it, or set 'logo' to a relative image path (e.g. 'logos/mayrig.webp') to show a real logo instead. New spreadsheet rows render automatically with raw data until you add curation here.",
+  "_comment": "Curation layer for build-network.mjs. Keys are the slug of each row's company name in ArmenianSwissNetwork.ods (lowercase, accents stripped, '&' dropped, non-alphanumerics -> '-'). Any field here overrides what the spreadsheet yields. 'fr' is the visible baseline description; 'en'/'hy'/'ru' feed the i18n dictionary (missing -> falls back to fr). 'cat' must be one of: asso, food, craft. 'email'/'website'/'phone' override parsed contacts; 'social' (array of URLs) overrides parsed social links. The card medallion shows a 2-letter monogram derived from the name; set 'monogram' to override it, or set 'logo' to a relative image path (e.g. 'logos/mayrig.webp') to show a real logo instead. New spreadsheet rows render automatically with raw data until you add curation here.",
 
   "sourp-sarkis-church": {
     "name": "Sourp Sarkis",
     "fr": "Église apostolique arménienne Saint-Sarkis — le cœur spirituel du Centre arménien de Genève, à Troinex.",
     "en": "Saint Sarkis Armenian Apostolic Church — the spiritual heart of the Armenian Centre of Geneva, in Troinex.",
-    "hy": "Սուրբ Սարգիս հայ առաքելական եկեղեցին՝ Ժնևի հայ կենտրոնի հոգևոր սիրտը, Թրուանեքսում։"
+    "hy": "Սուրբ Սարգիս հայ առաքելական եկեղեցին՝ Ժնևի հայ կենտրոնի հոգևոր սիրտը, Թրուանեքսում։",
+    "ru": "Армянская апостольская церковь Сурб Саркис — духовное сердце Армянского центра Женевы в Труане."
   },
   "agbu-young-professional-geneva": {
     "name": "AGBU Young Professionals",
     "monogram": "AG",
     "fr": "Antenne genevoise de l'UGAB, l'Union générale arménienne de bienfaisance : un réseau de 20 à 40 ans qui cultive et transmet l'identité arménienne.",
     "en": "Geneva chapter of the AGBU, the Armenian General Benevolent Union: a network of 20-to-40-year-olds who nurture and pass on Armenian identity.",
-    "hy": "ՀԲԸՄ-ի (Հայկական բարեգործական ընդհանուր միություն) Ժնևի մասնաճյուղը՝ 20–40 տարեկանների ցանց, որ սնուցում և փոխանցում է հայկական ինքնությունը։"
+    "hy": "ՀԲԸՄ-ի (Հայկական բարեգործական ընդհանուր միություն) Ժնևի մասնաճյուղը՝ 20–40 տարեկանների ցանց, որ սնուցում և փոխանցում է հայկական ինքնությունը։",
+    "ru": "Женевское отделение AGBU, Армянского всеобщего благотворительного союза: сеть людей от 20 до 40 лет, которые хранят и передают армянскую идентичность."
   },
   "artazank-echo-journal": {
     "name": "Artzakank · Echo",
     "fr": "Journal bilingue franco-arménien paraissant à Genève depuis 1986 — une voix bimestrielle de la diaspora.",
     "en": "A bilingual French-Armenian newspaper published in Geneva since 1986 — a bimonthly voice of the diaspora.",
-    "hy": "Ֆրանսահայ երկլեզու թերթ, որ Ժնևում լույս է տեսնում 1986 թվականից՝ սփյուռքի երկամսյա ձայնը։"
+    "hy": "Ֆրանսահայ երկլեզու թերթ, որ Ժնևում լույս է տեսնում 1986 թվականից՝ սփյուռքի երկամսյա ձայնը։",
+    "ru": "Двуязычная франко-армянская газета, выходящая в Женеве с 1986 года, — голос диаспоры раз в два месяца."
   },
   "mayrig": {
     "name": "Mayrig",
@@ -26,77 +29,95 @@
     "email": "info@mayrigbeirut.com",
     "fr": "« Mayrig », maman en arménien. La cuisine d'un foyer arméno-libanais, née à Beyrouth et dressée à Genève.",
     "en": "“Mayrig” means mother in Armenian. The cooking of an Armenian-Lebanese home, born in Beirut and set down in Geneva.",
-    "hy": "«Մայրիկ»՝ հայերեն։ Բեյրութում ծնված և Ժնևում մատուցվող հայ-լիբանանյան տան խոհանոցը։"
+    "hy": "«Մայրիկ»՝ հայերեն։ Բեյրութում ծնված և Ժնևում մատուցվող հայ-լիբանանյան տան խոհանոցը։",
+    "ru": "«Майриг» по-армянски — мама. Кухня армяно-ливанского дома, рождённая в Бейруте и накрытая в Женеве."
   },
   "culture-saveur": {
     "name": "Culture & Saveurs",
     "fr": "Librairie-café arménienne : des livres, des douceurs et des conversations autour d'un même comptoir.",
     "en": "An Armenian bookshop-café: books, sweets and conversation around the same counter.",
-    "hy": "Հայկական գրախանութ-սրճարան՝ գրքեր, քաղցրավենիք և զրույց՝ նույն վաճառասեղանի շուրջ։"
+    "hy": "Հայկական գրախանութ-սրճարան՝ գրքեր, քաղցրավենիք և զրույց՝ նույն վաճառասեղանի շուրջ։",
+    "ru": "Армянская книжная лавка-кафе: книги, сладости и разговоры за одной стойкой."
   },
   "sanahin": {
     "name": "Sanahin",
     "fr": "Troupe de danse du Centre arménien de Troinex — enfants, adolescents et jeunes adultes réunis par le goût du geste. Cours le mercredi.",
     "en": "Dance troupe of the Troinex Armenian Centre — children, teenagers and young adults bound by a love of movement. Classes on Wednesdays.",
-    "hy": "Թրուանեքսի հայ կենտրոնի պարախումբը՝ երեխաներ, պատանիներ և երիտասարդներ՝ շարժման սիրով միավորված։ Դասերը՝ չորեքշաբթի։"
+    "hy": "Թրուանեքսի հայ կենտրոնի պարախումբը՝ երեխաներ, պատանիներ և երիտասարդներ՝ շարժման սիրով միավորված։ Դասերը՝ չորեքշաբթի։",
+    "ru": "Танцевальная труппа Армянского центра в Труане — дети, подростки и молодёжь, объединённые любовью к движению. Занятия по средам."
   },
   "cadmus": {
     "name": "Cadmus",
     "fr": "Table libanaise aux inspirations arméniennes, au centre de Genève.",
     "en": "A Lebanese table with Armenian inspirations, in central Geneva.",
-    "hy": "Լիբանանյան սեղան՝ հայկական ոգով, Ժնևի կենտրոնում։"
+    "hy": "Լիբանանյան սեղան՝ հայկական ոգով, Ժնևի կենտրոնում։",
+    "ru": "Ливанский стол с армянскими нотами в центре Женевы."
   },
   "gamar": {
     "name": "Gamar",
     "fr": "Ensemble de danse folklorique arménienne, porté par l'Union arménienne de Suisse.",
     "en": "An Armenian folk-dance ensemble, carried by the Armenian Union of Switzerland.",
-    "hy": "Հայկական ժողովրդական պարի համույթ՝ Շվեյցարիայի հայ միության հովանու ներքո։"
+    "hy": "Հայկական ժողովրդական պարի համույթ՝ Շվեյցարիայի հայ միության հովանու ներքո։",
+    "ru": "Ансамбль армянского народного танца при Армянском союзе Швейцарии."
   },
-
   "ecole-armenienne-a-lausanne": {
     "name": "École arménienne de Lausanne",
     "website": "https://www.ecolearmeniennedelausanne.ch/",
     "phone": "0041 76 415 77 29",
     "fr": "École du dimanche « Ararat » : depuis 2017, la langue arménienne orientale, les chants, la danse et la culture transmis aux enfants et adolescents (3 à 16 ans), à la Maison de quartier des Faverges.",
     "en": "The “Ararat” Sunday school: since 2017, the Eastern Armenian language, songs, dance and culture passed on to children and teenagers (ages 3 to 16), at the Faverges community centre.",
-    "hy": "«Արարատ» կիրակնօրյա դպրոց՝ 2017 թվականից արևելահայերենը, երգերը, պարն ու մշակույթը փոխանցվում են երեխաներին ու պատանիներին (3–16 տարեկան)՝ Ֆավերժի թաղային տանը։"
+    "hy": "«Արարատ» կիրակնօրյա դպրոց՝ 2017 թվականից արևելահայերենը, երգերը, պարն ու մշակույթը փոխանցվում են երեխաներին ու պատանիներին (3–16 տարեկան)՝ Ֆավերժի թաղային տանը։",
+    "ru": "Воскресная школа «Арарат»: с 2017 года восточноармянский язык, песни, танец и культура для детей и подростков от 3 до 16 лет — в квартальном центре Faverges."
   },
   "margarit-armenian-dance": {
     "name": "Margarit",
     "fr": "Groupe de danse féminine arménien basé à Lausanne. Cours le dimanche matin, tous niveaux.",
     "en": "An Armenian women's dance group based in Lausanne. Classes on Sunday mornings, all levels.",
-    "hy": "Լոզանում հիմնված հայկական կանացի պարախումբ։ Դասերը՝ կիրակի առավոտյան, բոլոր մակարդակների համար։"
+    "hy": "Լոզանում հիմնված հայկական կանացի պարախումբ։ Դասերը՝ կիրակի առավոտյան, բոլոր մակարդակների համար։",
+    "ru": "Женская армянская танцевальная группа в Лозанне. Занятия по воскресеньям утром, все уровни."
   },
   "gayane-matthey": {
     "name": "Gayané Matthey",
     "cat": "craft",
-    "tag": { "fr": "Sexothérapeute", "en": "Sex therapist", "hy": "Սեքսաթերապևտ" },
+    "tag": {
+      "fr": "Sexothérapeute",
+      "en": "Sex therapist",
+      "hy": "Սեքսաթերապևտ",
+      "ru": "Сексотерапевт"
+    },
     "fr": "Sexothérapeute à Lausanne — un accompagnement bienveillant de la vie intime et relationnelle, en séances individuelles, en couple ou pour les adolescent·e·s, dans une approche inclusive.",
     "en": "A sex therapist in Lausanne — caring support for intimate and relational life, in individual, couples or adolescent sessions, with an inclusive approach.",
-    "hy": "Սեքսաթերապևտ Լոզանում՝ ինտիմ և հարաբերական կյանքի հոգատար ուղեկցում՝ անհատական, զույգով կամ պատանիների համար, ներառական մոտեցմամբ։"
+    "hy": "Սեքսաթերապևտ Լոզանում՝ ինտիմ և հարաբերական կյանքի հոգատար ուղեկցում՝ անհատական, զույգով կամ պատանիների համար, ներառական մոտեցմամբ։",
+    "ru": "Сексотерапевт в Лозанне — бережное сопровождение интимной и партнёрской жизни: индивидуально, для пар и для подростков, в инклюзивном подходе."
   },
   "miassine": {
     "name": "Miassine",
     "cat": "asso",
     "email": "info@miassine.com",
     "website": "https://miassine.com/",
-    "social": ["https://www.instagram.com/miassine_foundation/", "https://www.facebook.com/Miassine"],
+    "social": [
+      "https://www.instagram.com/miassine_foundation/",
+      "https://www.facebook.com/Miassine"
+    ],
     "fr": "Fondation suisse-arménienne au service de l'Arménie : formation professionnelle, projets communautaires et solidarité pour les jeunes, les femmes et les personnes vulnérables, de Gyumri à Erevan.",
     "en": "A Swiss-Armenian foundation in the service of Armenia: vocational training, community projects and solidarity for young people, women and vulnerable individuals, from Gyumri to Yerevan.",
-    "hy": "Շվեյցարահայ հիմնադրամ՝ ի սպաս Հայաստանի. մասնագիտական ուսուցում, համայնքային ծրագրեր և համերաշխություն երիտասարդների, կանանց ու խոցելի մարդկանց համար՝ Գյումրիից մինչև Երևան։"
+    "hy": "Շվեյցարահայ հիմնադրամ՝ ի սպաս Հայաստանի. մասնագիտական ուսուցում, համայնքային ծրագրեր և համերաշխություն երիտասարդների, կանանց ու խոցելի մարդկանց համար՝ Գյումրիից մինչև Երևան։",
+    "ru": "Швейцарско-армянский фонд на службе Армении: профессиональное обучение, общественные проекты и помощь молодёжи, женщинам и людям в уязвимом положении — от Гюмри до Еревана."
   },
   "maison-du-pain-akopian": {
     "name": "Maison du pain Akopian",
     "fr": "Lavash cuit sur pierre, bastourma et soudjouk — fabrication artisanale, livrée à domicile.",
     "en": "Stone-baked lavash, basturma and sujuk — handmade and delivered to your door.",
-    "hy": "Քարի վրա թխված լավաշ, բաստուրմա և սուջուխ՝ ձեռագործ, առաքումով։"
+    "hy": "Քարի վրա թխված լավաշ, բաստուրմա և սուջուխ՝ ձեռագործ, առաքումով։",
+    "ru": "Лаваш на камне, бастурма и суджук — ручное производство с доставкой на дом."
   },
   "kocharian-photography": {
     "name": "Kocharian Photography",
     "cat": "craft",
     "fr": "Photographe : mariages, studio, couples, mode, événements, maternité et portraits CV & LinkedIn.",
     "en": "Photographer: weddings, studio, couples, fashion, events, maternity and CV & LinkedIn portraits.",
-    "hy": "Լուսանկարիչ՝ հարսանիքներ, ստուդիա, զույգեր, նորաձևություն, միջոցառումներ, մայրություն և CV ու LinkedIn-ի դիմանկարներ։"
+    "hy": "Լուսանկարիչ՝ հարսանիքներ, ստուդիա, զույգեր, նորաձևություն, միջոցառումներ, մայրություն և CV ու LinkedIn-ի դիմանկարներ։",
+    "ru": "Фотограф: свадьбы, студия, пары, мода, мероприятия, беременность и портреты для CV и LinkedIn."
   },
   "kasa": {
     "name": "KASA",
@@ -104,27 +125,29 @@
     "logo": "logos/kasa.png",
     "fr": "Fondation humanitaire KASA — Komitas Action Suisse-Arménie : des programmes sociaux et éducatifs au service de l'Arménie.",
     "en": "The KASA humanitarian foundation — Komitas Action Suisse-Arménie: social and educational programmes in the service of Armenia.",
-    "hy": "KASA մարդասիրական հիմնադրամ՝ Komitas Action Suisse-Arménie. սոցիալական և կրթական ծրագրեր՝ ի սպաս Հայաստանի։"
+    "hy": "KASA մարդասիրական հիմնադրամ՝ Komitas Action Suisse-Arménie. սոցիալական և կրթական ծրագրեր՝ ի սպաս Հայաստանի։",
+    "ru": "Гуманитарный фонд KASA — Komitas Action Suisse-Arménie: социальные и образовательные программы на службе Армении."
   },
-
   "nairi-armenian-choir": {
     "name": "Nairi · Chœur arménien",
     "fr": "Chœur d'une trentaine de voix, fondé par Araxi et Talita Karnusian et Karineh Zangocyan.",
     "en": "A choir of some thirty voices, founded by Araxi and Talita Karnusian and Karineh Zangocyan.",
-    "hy": "Շուրջ երեսուն ձայնից բաղկացած երգչախումբ՝ հիմնված Արաքսի և Թալիտա Կառնուսյանների ու Կարինե Զանգոցյանի կողմից։"
+    "hy": "Շուրջ երեսուն ձայնից բաղկացած երգչախումբ՝ հիմնված Արաքսի և Թալիտա Կառնուսյանների ու Կարինե Զանգոցյանի կողմից։",
+    "ru": "Хор примерно из тридцати голосов, основанный Аракси и Талитой Карнусян и Каринэ Зангоцян."
   },
-
   "armenian-association-of-zurich": {
     "name": "Armenian Association of Zurich",
     "monogram": "AZ",
     "fr": "L'association arménienne de Zurich — foyer et point de ralliement de la communauté locale.",
     "en": "The Armenian Association of Zurich — home and gathering point of the local community.",
-    "hy": "Ցյուրիխի հայ միությունը՝ տեղի համայնքի օջախն ու հավաքատեղին։"
+    "hy": "Ցյուրիխի հայ միությունը՝ տեղի համայնքի օջախն ու հավաքատեղին։",
+    "ru": "Армянская ассоциация Цюриха — дом и точка сбора местной общины."
   },
   "aliq-movement-zurich": {
     "name": "Aliq Movement",
     "fr": "Collectif de danse arménienne à Zurich. Cours chaque mercredi soir, de 19h30 à 21h, tous niveaux.",
     "en": "An Armenian dance collective in Zurich. Classes every Wednesday evening, 7.30 to 9 pm, all levels.",
-    "hy": "Հայկական պարի խումբ Ցյուրիխում։ Դասերը՝ ամեն չորեքշաբթի երեկո, 19:30–21:00, բոլոր մակարդակների համար։"
+    "hy": "Հայկական պարի խումբ Ցյուրիխում։ Դասերը՝ ամեն չորեքշաբթի երեկո, 19:30–21:00, բոլոր մակարդակների համար։",
+    "ru": "Коллектив армянского танца в Цюрихе. Занятия каждую среду вечером, с 19:30 до 21:00, все уровни."
   }
 }

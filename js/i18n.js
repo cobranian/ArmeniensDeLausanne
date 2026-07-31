@@ -1,6 +1,6 @@
 /* =========================================================================
    Arméniens de Lausanne — i18n
-   Dictionnaires FR / EN / HY + commutateur de langue.
+   Dictionnaires FR / EN / HY / RU + commutateur de langue.
    Vanille, sans dépendance. Le défaut est FR ; ?lang=… ou localStorage
    peuvent override. La langue choisie est persistée.
    ========================================================================= */
@@ -9,7 +9,7 @@
 
   var STORAGE_KEY = "alausanne.lang";
   var DEFAULT_LANG = "fr";
-  var SUPPORTED = ["fr", "en", "hy"];
+  var SUPPORTED = ["fr", "en", "hy", "ru"];
 
   /* -------------------------------------------------------------------------
      Dictionnaires
@@ -206,6 +206,7 @@
       "footer.links.aria": "Ressources arméniennes",
       "footer.links.label": "Ressources",
       "footer.links.armenieinfo": "Actualité arménienne",
+      "footer.links.armenianews": "Actualité arménienne en quatre langues",
       "footer.links.ecole": "École du dimanche « Ararat »",
       "footer.colophon.label": "Colophon",
       "footer.colophon.body": "Composé en <em>Fraunces</em> et <em>Spectral</em>.<br />Palette&nbsp;: grenade, abricot, cobalt, parchemin.<br />Site statique, sans suivi.",
@@ -393,6 +394,7 @@
       "footer.links.aria": "Armenian resources",
       "footer.links.label": "Resources",
       "footer.links.armenieinfo": "Armenian news",
+      "footer.links.armenianews": "Armenian news in four languages",
       "footer.links.ecole": "The “Ararat” Sunday school",
       "footer.colophon.label": "Colophon",
       "footer.colophon.body": "Typeset in <em>Fraunces</em> and <em>Spectral</em>.<br />Palette:&nbsp;pomegranate, apricot, cobalt, parchment.<br />Static site, no tracking.",
@@ -580,12 +582,213 @@
       "footer.links.aria": "Հայկական աղբյուրներ",
       "footer.links.label": "Աղբյուրներ",
       "footer.links.armenieinfo": "Հայկական լուրեր",
+      "footer.links.armenianews": "Հայկական լուրեր չորս լեզվով",
       "footer.links.ecole": "«Արարատ» կիրակնօրյա դպրոց",
       "footer.colophon.label": "Կոլոֆոն",
       "footer.colophon.body": "Շարադրված է <em>Fraunces</em> և <em>Spectral</em> տառատեսակներով։<br />Գունապնակ՝&nbsp;նուռ, ծիրան, կոբալտ, մագաղաթ։<br />Ստատիկ կայք՝ առանց հետևումի։",
       "footer.colophon.region": "Ֆրանսախոս Շվեյցարիա",
       "footer.totop.aria": "Վերև",
       "footer.totop.text": "Վերև"
+    },
+
+    ru: {
+      /* document */
+      "doc.title": "Армяне Лозанны — общинный журнал",
+      "doc.description": "Армянская община Лозанны: история, культура, кухня, память и жизнь ассоциации — непрерывный журнал из французской Швейцарии.",
+
+      /* skip + masthead */
+      "nav.skip": "Перейти к основному содержанию",
+      "masthead.wordmark.word1": "Армяне",
+      "masthead.wordmark.word2": "Лозанны",
+      "masthead.wordmark.aria": "Армяне Лозанны, главная",
+      "masthead.location": "Романдия",
+      "masthead.tagline.fr": "<em>Непрерывный журнал армянской общины Лозанны</em>",
+
+      /* lang switcher */
+      "lang.switcher.label": "Язык",
+
+      /* nav */
+      "nav.aria.primary": "Основная навигация",
+      "nav.open": "Открыть меню",
+      "nav.close": "Закрыть меню",
+      "nav.home": "Главная",
+      "nav.community": "Община",
+      "nav.history": "История",
+      "nav.culture": "Культура",
+      "nav.doudouk": "Дудук",
+      "nav.peintres": "Художники",
+      "nav.network": "Сеть",
+      "nav.cuisine": "Кухня",
+      "nav.agenda": "Афиша",
+      "nav.don": "Поддержать",
+      "nav.cta": "Присоединиться",
+
+      /* hero */
+      "hero.title.line1": "Армяне",
+      "hero.title.line2": "<em>из</em>&nbsp;Лозанны",
+      "hero.lead": "Хранить корни, передавать культуру и жить памятью — <em>вместе, в сердце французской Швейцарии.</em>",
+      "hero.cta1": "Читать журнал",
+      "hero.cta2": "Присоединиться к общине",
+      "hero.toc.label": "Содержание",
+      "hero.toc.community": "Община",
+      "hero.toc.history": "История&nbsp;&amp;&nbsp;наследие",
+      "hero.toc.culture": "Культура&nbsp;&amp;&nbsp;искусство",
+      "hero.toc.cuisine": "За&nbsp;столом",
+      "hero.toc.agenda": "Афиша",
+      "hero.image.alt": "Руины Звартноцского собора на фоне заснеженного Арарата, пейзаж Армении.",
+      "hero.frontispiece.label": "Фронтиспис",
+      "hero.frontispiece.body": "<em>Руины Звартноца перед Араратом</em> — символ памяти, которая остаётся.",
+
+      /* community */
+      "community.label": "Община",
+      "community.eyebrow": "Кто мы",
+      "community.title": "Живая&nbsp;община <em>в&nbsp;кантоне Во.</em>",
+      "community.lead": "Армянская община Лозанны объединяет семьи и людей, связанных с тысячелетней историей и с культурой, которую они поддерживают живой из поколения в поколение, вдали от родной земли. Выросшая из долгой истории переселений и стойкости, армянская диаспора французской Швейцарии сегодня полностью вписана в местную жизнь и при этом хранит своё своеобразие.",
+      "community.p2": "Задача нашей ассоциации — собирать вместе, передавать язык и традиции младшим, беречь память и укреплять связи солидарности: между армянами и со всеми, кто хочет открыть для себя эту культуру.",
+      "community.pillars.label": "Четыре наших обязательства",
+      "community.pillar1.title": "Передавать",
+      "community.pillar1.desc": "Язык, музыка, танец и ремёсла, доверенные новым поколениям.",
+      "community.pillar2.title": "Собирать",
+      "community.pillar2.desc": "Регулярные встречи, праздники и время, проведённое вместе.",
+      "community.pillar3.title": "Помнить",
+      "community.pillar3.desc": "Чтить память и рассказывать об армянской истории.",
+      "community.pillar4.title": "Принимать",
+      "community.pillar4.desc": "Открытая дверь для каждого, кому интересна Армения.",
+
+      /* history */
+      "history.label": "История",
+      "history.eyebrow": "История &amp; наследие",
+      "history.title": "У истоков одной из древнейших <em>цивилизаций.</em>",
+      "history.sub": "От горы Арарат до каменных монастырей — наследие более чем трёх тысяч лет.",
+      "history.feature.alt": "«Сошествие Ноя с горы Арарат», картина Ивана Айвазовского",
+      "history.feature.caption": "Иван Айвазовский — <em>Сошествие Ноя с горы Арарат</em>",
+      "history.feature.title": "Колыбель Арарата",
+      "history.feature.body": "Гора Арарат, где предание помещает Ноев ковчег, царит в армянском воображении. Первая страна, принявшая христианство государственной религией в 301 году, Армения выковала самосознание, неотделимое от веры, от церквей и от хачкаров — резных каменных крестов.",
+      "history.feature.pull": "<em>«Мы — наши горы.»</em>",
+      "history.timeline.label": "Хронология",
+      "history.timeline.301": "Армения принимает христианство как государственную религию — впервые в мире.",
+      "history.timeline.405": "Месроп Маштоц создаёт армянский алфавит, опору письменной культуры.",
+      "history.timeline.1915": "Геноцид армян; изгнание формирует всемирную диаспору, дошедшую и до Швейцарии.",
+      "history.timeline.1991": "Армения вновь обретает независимость.",
+      "history.gallery.alt1": "Эллинистический храм Гарни над ущельем в Армении",
+      "history.gallery.cap1": "Храм Гарни, <em>эллинистическое наследие</em>",
+      "history.gallery.alt2": "Эчмиадзинский собор, колыбель Армянской апостольской церкви",
+      "history.gallery.cap2": "Армянская сакральная архитектура",
+      "history.gallery.alt3": "Монумент «Мы — наши горы», монументальная скульптура из туфа",
+      "history.gallery.cap3": "<em>«Мы — наши горы»</em> — символ самосознания",
+
+      /* culture */
+      "culture.label": "Культура &amp; искусство",
+      "culture.eyebrow": "Культура &amp; искусство",
+      "culture.title": "Культура, <em>которая поёт,</em> танцует <em>и</em> пишет красками.",
+      "culture.sub": "Язык, музыка дудука, танец и пламенная живопись.",
+      "culture.feature.alt": "Армянские танцоры в традиционных костюмах на празднике",
+      "culture.feature.caption": "Традиционный танец, <em>передаваемый из поколения в поколение</em>",
+      "culture.feature.title": "Жест и песня",
+      "culture.feature.body": "Круговые танцы, вышитые костюмы и ностальгический голос дудука — флейты из абрикосового дерева, внесённой в списки ЮНЕСКО, — сопровождают каждое большое событие. Армянский язык с его неповторимым алфавитом остаётся связующей нитью этой передачи.",
+      "culture.feature.pull": "<em>Дудук оплакивает то, о чём молчат слова.</em>",
+      "culture.doudouk.link": "Дыхание абрикосового дерева",
+      "culture.dance.kicker": "Заниматься танцем",
+      "culture.dance.title": "Уроки армянского танца",
+      "culture.dance.org": "Ассоциация Армянской школы Лозанны <strong>ARARAT</strong> &amp; танцевальная группа <strong>MARGARIT</strong>",
+      "culture.dance.lead": "Единственный в своём роде проект в Лозанне, открытый для всех, вокруг многотысячелетнего культурного наследия.",
+      "culture.dance.where": "Где нас найти?",
+      "culture.dance.slot1.day": "Воскресенье · 9:00 – 10:00",
+      "culture.dance.slot1.place": "Studio 2 — Rue du Valentin 35, 1004 Lausanne",
+      "culture.dance.slot2.day": "Вторник · 18:00 – 19:00",
+      "culture.dance.slot2.place": "Maison de quartier des Faverges — ch. de Bonne-Espérance 30, 1006 Lausanne",
+      "culture.dance.frieze": "В движении",
+      "culture.dance.cap1": "Порыв хоровода",
+      "culture.dance.cap2": "Шаг, переданный дальше",
+      "culture.dance.cap3": "Соединённые руки",
+      "culture.dance.cap4": "Общая радость",
+      "culture.dance.alt1": "Армянский круговой танец, общее движение",
+      "culture.dance.alt2": "Шаг традиционного армянского танца",
+      "culture.dance.alt3": "Танцоры, взявшись за руки, образуют хоровод",
+      "culture.dance.alt4": "Праздничный момент вокруг армянского танца",
+      "culture.painters.kicker": "Галерея живописи",
+      "culture.painters.title": "Девять художников, <em>девять взглядов</em>",
+      "culture.painters.lead": "Солнце Мартироса Сарьяна, огонь Минаса Аветисяна, тишина Мовсеса Погосяна, свет Армена Арутюняна «Lorenc», грация Матевоса Саргсяна, цветение Шагена Ордубекяна, осколок Арцруна Асатряна, золото Айка Микаеляна и сказка Мгера Чатиняна — одна земля, переведённая в цвет.",
+      "culture.painters.saryan.word": "Солнце",
+      "culture.painters.saryan.alt": "Монументальный пейзаж Армении: золотые ущелья, кипарисы и хоровод женщин — Мартирос Сарьян, 1923",
+      "culture.painters.minas.word": "Огонь",
+      "culture.painters.minas.alt": "Армянская деревня с купольными домами, раскалённые красные и оранжевые тона — Минас Аветисян, 1971",
+      "culture.painters.movses.word": "Тишина",
+      "culture.painters.movses.alt": "Мать обнимает уснувшего ребёнка, стилизованные фигуры в тонах сепии — Мовсес Погосян, 2021",
+      "culture.painters.lorenc.word": "Свет",
+      "culture.painters.lorenc.alt": "Горная долина, пронизанная лучами света, живопись мастихином — Армен Арутюнян «Lorenc»",
+      "culture.painters.matevos.word": "Грация",
+      "culture.painters.matevos.alt": "Стилизованная женщина с вытянутым лицом и синими глазами, цветной венец и птичка — Матевос Саргсян",
+      "culture.painters.shahen.word": "Цветение",
+      "culture.painters.shahen.alt": "Красные тюльпаны и полевые цветы у деревянной изгороди, разноцветный сад — Шаген Ордубекян",
+      "culture.painters.artsrun.word": "Осколок",
+      "culture.painters.artsrun.alt": "Лицо из ярких граней, один глаз обведён красным, красные губы, кубофутуризм — Арцрун Асатрян",
+      "culture.painters.hayk.word": "Золото",
+      "culture.painters.hayk.alt": "Женщина в традиционном армянском головном уборе с гранатом в руках, тёплые тона и золото — Айк Микаелян",
+      "culture.painters.mher.word": "Сказка",
+      "culture.painters.mher.alt": "Женщина в красном цветочном уборе держит петуха, рядом синий осёл — Мгер Чатинян",
+      "culture.painters.link": "Войти в галерею",
+
+      /* cuisine */
+      "cuisine.label": "За&nbsp;столом",
+      "cuisine.eyebrow": "Кухня",
+      "cuisine.title": "Армянский стол, <em>щедрый и общий.</em>",
+      "cuisine.sub": "Кухня передачи, где каждое блюдо рассказывает о семье.",
+      "cuisine.dish1.alt": "Армянские манты: маленькие пельмени под чесночным йогуртом",
+      "cuisine.dish1.n": "№&nbsp;01",
+      "cuisine.dish1.name": "Манты",
+      "cuisine.dish1.desc": "Крошечные мясные пельмени под чесночным йогуртом.",
+      "cuisine.dish2.alt": "Долма: фаршированные капустные листья, традиционное армянское блюдо",
+      "cuisine.dish2.n": "№&nbsp;02",
+      "cuisine.dish2.name": "Долма",
+      "cuisine.dish2.desc": "Фаршированные листья капусты или винограда, томлённые с заботой.",
+
+      /* events */
+      "events.label": "Афиша",
+      "events.eyebrow": "Ближайшие встречи",
+      "events.title": "Афиша <em>сезона.</em>",
+      "events.sub": "Армянские события в диаспоре и в Армении — по странам, регионам и городам.",
+      "events.source": "Источник:&nbsp;<a href=\"https://armenopole.com/ArmenianEvents\" target=\"_blank\" rel=\"noopener noreferrer\">armenopole.com</a>&nbsp;— срез от 16&nbsp;июля 2026&nbsp;года.",
+
+      /* contact */
+      "contact.label": "Переписка",
+      "contact.eyebrow": "Присоединиться",
+      "contact.title": "Выйдем <em>на связь.</em>",
+      "contact.sub": "Есть вопрос, желание вступить или участвовать в жизни общины? Напишите нам.",
+      "contact.form.kicker": "Переписка",
+      "contact.form.lead": "Самый простой способ связаться с нами&nbsp;— <em>электронное письмо.</em> Представьтесь в нескольких словах, и мы ответим.",
+      "contact.form.cta": "Написать на contact@armeniensdelausanne.ch",
+      "contact.form.hint": "Ссылка откроет ваше почтовое приложение. Адрес можно и просто скопировать:&nbsp;<code>contact@armeniensdelausanne.ch</code>",
+      "contact.info.kicker": "Контакты",
+      "contact.info.title": "Редакция",
+      "contact.info.email.label": "E-mail",
+      "contact.info.address.label": "Адрес",
+      "contact.info.address.value": "Лозанна, Швейцария<br /><em>[заполнить]</em>",
+      "contact.info.social.label": "Соцсети",
+      "contact.info.social.value": "Facebook · Instagram<br /><em>[ссылки заполнить]</em>",
+      "contact.info.note": "Контактные данные выше — поля, которые ассоциации ещё предстоит заполнить.",
+
+      /* footer */
+      "footer.brand.name": "Армяне Лозанны",
+      "footer.brand.sub": "<em>Общинный журнал — том&nbsp;I, издание продолжается.</em>",
+      "footer.nav.aria": "Ссылки в подвале",
+      "footer.nav.label": "Содержание",
+      "footer.nav.community": "Община",
+      "footer.nav.history": "История",
+      "footer.nav.culture": "Культура",
+      "footer.nav.cuisine": "Кухня",
+      "footer.nav.agenda": "Афиша",
+      "footer.nav.contact": "Контакты",
+      "footer.links.aria": "Армянские ресурсы",
+      "footer.links.label": "Ресурсы",
+      "footer.links.armenieinfo": "Армянские новости",
+      "footer.links.armenianews": "Армянские новости на четырёх языках",
+      "footer.links.ecole": "Воскресная школа «Арарат»",
+      "footer.colophon.label": "Колофон",
+      "footer.colophon.body": "Набрано шрифтами <em>Fraunces</em>, <em>Spectral</em> и <em>Literata</em> (кириллица).<br />Палитра:&nbsp;гранат, абрикос, кобальт, пергамент.<br />Статический сайт, без слежения.",
+      "footer.colophon.region": "Романдия",
+      "footer.totop.aria": "Наверх",
+      "footer.totop.text": "Наверх"
     }
   };
 

@@ -28,7 +28,7 @@
 <link rel="icon" href="/favicon.ico" sizes="48x48 32x32 16x16" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Spline+Sans:wght@300;400;500;600&family=Noto+Serif+Armenian:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Literata:ital,opsz,wght@0,7..72,300..600;1,7..72,300..500&family=Spline+Sans:wght@300;400;500;600&family=Noto+Serif+Armenian:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
 <script>document.documentElement.classList.add('js');</script>
 
@@ -59,7 +59,9 @@
   --apr:        #B0792B;   /* métiers        */
   --apr-dp:     #875C1E;
 
-  --f-display:  "Fraunces", "Noto Serif Armenian", Georgia, serif;
+  /* Fraunces s'arrête au latin : Literata prend le cyrillique des titres.
+     Le texte courant, lui, retombe déjà sur system-ui, qui le couvre. */
+  --f-display:  "Fraunces", "Noto Serif Armenian", "Literata", Georgia, serif;
   --f-body:     "Spline Sans", "Noto Serif Armenian", system-ui, sans-serif;
   --f-hy:       "Noto Serif Armenian", "Fraunces", serif;
 
@@ -385,6 +387,7 @@ html.js .reveal.in{ opacity:1; transform:none; transition:opacity .7s var(--ease
     <button type="button" data-lang="fr">FR</button>
     <button type="button" data-lang="en">EN</button>
     <button type="button" data-lang="hy">ՀՅ</button>
+    <button type="button" data-lang="ru">РУС</button>
   </span>
 </header>
 
@@ -764,12 +767,12 @@ html.js .reveal.in{ opacity:1; transform:none; transition:opacity .7s var(--ease
 </main>
 
 <script>
-/* ====================== i18n (FR baseline + EN / HY) ====================== */
+/* ==================== i18n (FR baseline + EN / HY / RU) ==================== */
 (function(){
   "use strict";
   var STORAGE_KEY = "alausanne.lang";
 
-  // FR is the markup baseline (captured below); only EN + HY are stored here.
+  // FR is the markup baseline (captured below); EN, HY and RU are stored here.
   var DICT = {
     en: {
       "meta.title": "Where We Are — The Armenian Network of Switzerland | Armenians of Lausanne",
@@ -880,6 +883,61 @@ html.js .reveal.in{ opacity:1; transform:none; transition:opacity .7s var(--ease
       "foot.add": "Առաջարկել",
       "foot.back": "Վերադառնալ կայք",
       "foot.disc": "Տվյալները տրամադրված են շահագրգիռների կողմից. մի մասը մնում է <code>[լրացնելու]</code>։"
+    },
+    ru: {
+      "meta.title": "Где мы есть — Армянская сеть Швейцарии | Армяне Лозанны",
+      "meta.desc": "Живой справочник армянского присутствия в Швейцарии: объединения, столы и ремёсла — от Женевы до Цюриха, с контактами, сайтами и соцсетями.",
+      "lang.group": "Язык",
+      "nav.back": "Армяне Лозанны",
+      "mark": "Сеть",
+      "hero.eyebrow": "Армянская сеть Швейцарии",
+      "hero.l1": "Где",
+      "hero.l2": "мы есть.",
+      "hero.lead": "От кантона к кантону — объединения, которые передают, столы, которые собирают, ремёсла, которые удерживают присутствие. Здесь, в одном реестре, армянские очаги Швейцарии.",
+      "stat.lieux": "мест",
+      "stat.cantons": "кантонов",
+      "stat.vocations": "занятий",
+      "flt.label": "Смотреть",
+      "flt.all": "Все",
+      "flt.asso": "Объединения",
+      "flt.food": "Вкусы",
+      "flt.craft": "Ремёсла",
+      "tag.asso": "Объединение",
+      "tag.food": "Вкусы",
+      "tag.craft": "Ремесло",
+      "c.ge": "Женева",
+      "c.vd": "Во",
+      "c.be": "Берн",
+      "c.zh": "Цюрих",
+      "a.mail": "Написать письмо",
+      "a.web": "Открыть сайт",
+      "a.tel": "Позвонить",
+      /* ASN:RU:START — generated · do not hand-edit (curate in network.overrides.json) */
+      "d.sourp-sarkis-church": "Армянская апостольская церковь Сурб Саркис — духовное сердце Армянского центра Женевы в Труане.",
+      "d.agbu-young-professional-geneva": "Женевское отделение AGBU, Армянского всеобщего благотворительного союза: сеть людей от 20 до 40 лет, которые хранят и передают армянскую идентичность.",
+      "d.artazank-echo-journal": "Двуязычная франко-армянская газета, выходящая в Женеве с 1986 года, — голос диаспоры раз в два месяца.",
+      "d.mayrig": "«Майриг» по-армянски — мама. Кухня армяно-ливанского дома, рождённая в Бейруте и накрытая в Женеве.",
+      "d.culture-saveur": "Армянская книжная лавка-кафе: книги, сладости и разговоры за одной стойкой.",
+      "d.sanahin": "Танцевальная труппа Армянского центра в Труане — дети, подростки и молодёжь, объединённые любовью к движению. Занятия по средам.",
+      "d.cadmus": "Ливанский стол с армянскими нотами в центре Женевы.",
+      "d.gamar": "Ансамбль армянского народного танца при Армянском союзе Швейцарии.",
+      "d.ecole-armenienne-a-lausanne": "Воскресная школа «Арарат»: с 2017 года восточноармянский язык, песни, танец и культура для детей и подростков от 3 до 16 лет — в квартальном центре Faverges.",
+      "d.margarit-armenian-dance": "Женская армянская танцевальная группа в Лозанне. Занятия по воскресеньям утром, все уровни.",
+      "d.maison-du-pain-akopian": "Лаваш на камне, бастурма и суджук — ручное производство с доставкой на дом.",
+      "d.kocharian-photography": "Фотограф: свадьбы, студия, пары, мода, мероприятия, беременность и портреты для CV и LinkedIn.",
+      "d.kasa": "Гуманитарный фонд KASA — Komitas Action Suisse-Arménie: социальные и образовательные программы на службе Армении.",
+      "d.gayane-matthey": "Сексотерапевт в Лозанне — бережное сопровождение интимной и партнёрской жизни: индивидуально, для пар и для подростков, в инклюзивном подходе.",
+      "d.miassine": "Швейцарско-армянский фонд на службе Армении: профессиональное обучение, общественные проекты и помощь молодёжи, женщинам и людям в уязвимом положении — от Гюмри до Еревана.",
+      "d.nairi-armenian-choir": "Хор примерно из тридцати голосов, основанный Аракси и Талитой Карнусян и Каринэ Зангоцян.",
+      "d.armenian-association-of-zurich": "Армянская ассоциация Цюриха — дом и точка сбора местной общины.",
+      "d.aliq-movement-zurich": "Коллектив армянского танца в Цюрихе. Занятия каждую среду вечером, с 19:30 до 21:00, все уровни.",
+      "tag.gayane-matthey": "Сексотерапевт",
+      /* ASN:RU:END */
+      "foot.kicker": "Живой реестр",
+      "foot.note": "Этот справочник растёт вместе с общиной. Есть объединение, стол или ремесло, которое стоит добавить или поправить?",
+      "foot.add": "Предложить запись",
+      "foot.back": "Вернуться на сайт",
+      "foot.disc": "Сведения предоставлены самими участниками; часть остаётся <code>[заполнить]</code>."
     }
   };
 
@@ -896,7 +954,7 @@ html.js .reveal.in{ opacity:1; transform:none; transition:opacity .7s var(--ease
     try { q = new URLSearchParams(location.search).get("lang"); } catch(e){}
     try { stored = localStorage.getItem(STORAGE_KEY); } catch(e){}
     var l = (q || stored || "fr").toLowerCase();
-    return (l === "en" || l === "hy" || l === "fr") ? l : "fr";
+    return (l === "fr" || DICT[l]) ? l : "fr";
   }
 
   function apply(lang){

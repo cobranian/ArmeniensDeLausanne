@@ -10,7 +10,7 @@ prestataire. Tout est conçu pour qu'il n'y ait **qu'une seule ligne à coller**
 - ✅ `don.html` — page-maquette autonome (style parchemin de la revue), avec
   montants suggérés 20 / 50 / 100 CHF + montant libre, bandeau de réassurance,
   section « Votre don en action », alternative virement bancaire.
-- ✅ i18n FR / EN / HY inline + sélecteur de langue (comme `doudouk.html`,
+- ✅ i18n FR / EN / HY / RU inline + sélecteur de langue (comme `doudouk.html`,
   `peintres.html`, `ArmenianSwissNetwork/`).
 - ✅ Lien **« Soutenir »** (♥) dans la navigation principale (`index.html` +
   clé `nav.don` dans `js/i18n.js`).
@@ -70,16 +70,16 @@ window.DON_CONFIG = {
 > à ce qu'attend le prestataire ; sinon `AMOUNT_PARAM: ""`.
 
 ### 4. Compléter le virement bancaire (section « alternative »)
-Les libellés FR/EN/HY sont dans le `DICT` inline de `don.html`. Remplacer :
+Les libellés FR/EN/HY/RU sont dans le `DICT` inline de `don.html`. Remplacer :
 - [ ] `alt.holder.v` : `[à compléter]` → nom exact du titulaire du compte.
 - [ ] `alt.iban.v` : `[IBAN à compléter]` → IBAN réel.
-- (à faire dans les **trois langues** : `fr`, `en`, `hy` du `DICT`.)
+- (à faire dans les **quatre langues** : `fr`, `en`, `hy`, `ru` du `DICT`.)
 
 ### 5. Vérifier puis publier
 - [ ] Tester en local : `python -m http.server 5500` → `http://localhost:5500/don.html`
   - Cliquer un montant, saisir un montant libre, vérifier le libellé du bouton.
   - Cliquer « Faire un don » → doit ouvrir le prestataire avec le bon montant.
-  - Tester les 3 langues (FR/EN/HY).
+  - Tester les 4 langues (FR/EN/HY/RU).
 - [ ] Faire un **don test réel** (petit montant) via le prestataire, vérifier la
       réception sur le compte et le reçu.
 - [ ] Commit + push sur `main`, puis déployer : `firebase deploy --only hosting`.

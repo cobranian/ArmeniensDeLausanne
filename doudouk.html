@@ -29,7 +29,9 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;1,300;1,400&family=Noto+Serif+Armenian:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<!-- Cormorant Garamond couvre déjà le cyrillique pour les titres ; Literata
+     s'en charge dans le texte courant, où Spectral s'arrête au latin. -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Literata:ital,opsz,wght@0,7..72,300..600;1,7..72,300..500&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;1,300;1,400&family=Noto+Serif+Armenian:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
 <style>
 /* =========================================================================
@@ -53,7 +55,7 @@
   --reed:       #9C7A44;
 
   --f-display:  "Cormorant Garamond", "Noto Serif Armenian", Georgia, serif;
-  --f-body:     "Spectral", "Noto Serif Armenian", Georgia, serif;
+  --f-body:     "Spectral", "Noto Serif Armenian", "Literata", Georgia, serif;
   --f-hy:       "Noto Serif Armenian", "Cormorant Garamond", serif;
 
   --maxw: 1180px;
@@ -354,6 +356,7 @@ footer a:hover{ border-color:var(--ember); }
         <button type="button" data-lang="fr">FR</button>
         <button type="button" data-lang="en">EN</button>
         <button type="button" data-lang="hy">ՀՅ</button>
+        <button type="button" data-lang="ru">РУС</button>
       </span>
     </span>
   </header>
@@ -494,7 +497,7 @@ footer a:hover{ border-color:var(--ember); }
 
 </div>
 
-<!-- ============ I18N (FR / EN / HY) ============ -->
+<!-- ============ I18N (FR / EN / HY / RU) ============ -->
 <script>
 (function(){
   "use strict";
@@ -620,6 +623,46 @@ footer a:hover{ border-color:var(--ember); }
       "coda.src": "<span class=\"hy\" lang=\"hy\">դուդուկ</span> — Հայաստան",
       "footer.brand": "Լոզանի հայերը — Համայնքային հանդես",
       "footer.back": "← Վերադառնալ հանդես"
+    },
+    ru: {
+      "meta.title": "Дыхание абрикосового дерева — Дудук | Армяне Лозанны",
+      "meta.desc": "Армянский дудук: голос, ближе всего стоящий к человеческому дыханию. Страница о абрикосовом дереве, трости, дам-бурдоне и плаче.",
+      "lang.group": "Язык",
+      "mh.mark": "◇ Журнал",
+      "mh.section": "Музыка — VII",
+      "hero.l1": "Дыхание",
+      "hero.l2": "<span class=\"of\">абрикосового</span> дерева",
+      "hero.lead": "Ни один инструмент не подходит так близко к <em>человеческому голосу</em>. Выточенный из абрикосового дерева, дудук не играет мелодию&nbsp;— он <em>дышит</em>: долгий протяжный плач, лежащий на бурдоне, который никогда не гаснет.",
+      "lament.eyebrow": "Плач",
+      "lament.h": "Долгая нота, которая ни разу не переводит дыхание.",
+      "lament.p": "Два дудука играют вместе: один ведёт мелодию, другой держит <em>дам</em> — непрерывный бурдон на круговом дыхании, не оставляющий ни секунды тишины. Звук ниже полностью синтезирован — это отголосок тембра трости и её бурдона.",
+      "lament.hint": "↓ Линия дышит в ритме дыхания.",
+      "play.idle": "Коснитесь, чтобы вдохнуть",
+      "play.playing": "Дыхание открыто",
+      "play.aria": "Послушать плач (синтезированный звук)",
+      "anat.rule": "Анатомия дыхания",
+      "anat.h": "Три жеста, <em>один голос.</em>",
+      "anat.sub": "Дерево, трость и бурдон — и ничего больше, а звучит самый человеческий плач Кавказа.",
+      "facet1.h": "Абрикосовое дерево",
+      "facet1.p": "Корпус вытачивают из абрикоса — <em>циран</em>, — тёплая плотность которого даёт тот бархатный, тёмный и круглый тембр, недостижимый на любой другой древесине.",
+      "facet2.h": "Большая двойная трость",
+      "facet2.p": "Широкая приплюснутая тростниковая трость — <em>гамиш</em> — вибрирует между губами. Именно она приближает дудук к фактуре говорящего голоса.",
+      "facet3.h": "Протянутый бурдон",
+      "facet3.p": "Второй музыкант держит <em>дам</em> — неизменную ноту — на круговом дыхании. Мелодия словно плывёт над непрерывным звуковым горизонтом.",
+      "dam.rule": "Бурдон",
+      "dam.h": "Дышать, ни разу не остановившись.",
+      "dam.p1": "Круговое дыхание — вдох носом одновременно с выталкиванием воздуха, запасённого в щеках, — позволяет держать <em>дам</em> бесконечно. Бурдон становится неподвижной почвой, на которой мелодия плачет, медлит, возвращается.",
+      "dam.p2": "Именно этот контраст — движущийся голос над вечной нотой — придаёт дудуку глубину молитвы.",
+      "lin.rule": "Род хранителей",
+      "lin.h": "Из церкви <em>в мир.</em>",
+      "lin.komitas.d": "Священник и музыковед, он собрал и спас от забвения сотни армянских народных мелодий, заложив основу национальной музыкальной школы.",
+      "lin.djivan.d": "Абсолютный мастер инструмента, он вынес дудук на сцены и экраны всего мира — вплоть до киномузыки.",
+      "lin.unesco.name": "Наследие человечества",
+      "lin.unesco.d": "«Дудук и его музыка» провозглашены ЮНЕСКО шедевром нематериального культурного наследия и внесены в репрезентативный список в 2008 году.",
+      "coda.q": "Дудук оплакивает то,<br>о чём слова <span class=\"em\">молчат.</span>",
+      "coda.src": "<span class=\"hy\" lang=\"hy\">դուդուկ</span> — Армения",
+      "footer.brand": "Армяне Лозанны — общинный журнал",
+      "footer.back": "← Назад к журналу"
     }
   };
 

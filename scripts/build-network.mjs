@@ -12,11 +12,12 @@
      • the canton sections + entry cards   (ASN:CANTONS markers)
      • the EN description dictionary lines  (ASN:EN markers)
      • the HY description dictionary lines  (ASN:HY markers)
+     • the RU description dictionary lines  (ASN:RU markers)
      • the hero counts                      (data-asn="total" / "cantons")
 
    The spreadsheet is the source of truth for *which* entries exist and for
    their contacts (email / website / phone / socials). The overrides file is
-   the source of truth for the curated display name and the FR/EN/HY copy —
+   the source of truth for the curated display name and the FR/EN/HY/RU copy —
    so a typo or a raw label in the .ods never clobbers the polished page.
    A new row with no override still renders, using its raw spreadsheet data.
 
@@ -412,6 +413,7 @@ function main() {
         fr:      ov.fr || (pick(cells, "desc") ? pick(cells, "desc").text : "") || "",
         en:      ov.en || null,
         hy:      ov.hy || null,
+        ru:      ov.ru || null,
         email:   (ov.email !== undefined ? ov.email : parsedEmail) || "",
         website: (ov.website !== undefined ? normalizeUrl(ov.website) : parsedWeb) || null,
         phone:   (ov.phone !== undefined ? ov.phone : parsedPhone) || "",
@@ -442,6 +444,10 @@ function main() {
     ...flat.filter((e) => e.hy).map((e) => `"d.${e.slug}": ${JSON.stringify(escHtml(e.hy))},`),
     ...flat.filter((e) => e.tag && e.tag.hy).map((e) => `"tag.${e.slug}": ${JSON.stringify(escHtml(e.tag.hy))},`)
   ];
+  const ruLines = [
+    ...flat.filter((e) => e.ru).map((e) => `"d.${e.slug}": ${JSON.stringify(escHtml(e.ru))},`),
+    ...flat.filter((e) => e.tag && e.tag.ru).map((e) => `"tag.${e.slug}": ${JSON.stringify(escHtml(e.tag.ru))},`)
+  ];
 
   // Splice everything into the page.
   let html = readFileSync(PAGE, "utf8");
@@ -454,6 +460,9 @@ function main() {
   html = replaceRegion(html,
     "/* ASN:HY:START — generated · do not hand-edit (curate in network.overrides.json) */",
     "/* ASN:HY:END */", hyLines);
+  html = replaceRegion(html,
+    "/* ASN:RU:START — generated · do not hand-edit (curate in network.overrides.json) */",
+    "/* ASN:RU:END */", ruLines);
   html = html.replace(/(data-asn="total">)\d+(<)/,   `$1${total}$2`);
   html = html.replace(/(data-asn="cantons">)\d+(<)/, `$1${pad2(byCanton.length)}$2`);
 
@@ -461,8 +470,8 @@ function main() {
 
   console.log(`✓ Réseau rebuilt — ${total} entries across ${byCanton.length} cantons`);
   for (const c of byCanton) console.log(`    ${c.meta.fr.padEnd(8)} ${pad2(c.entries.length)}  ${c.entries.map((e) => e.name).join(", ")}`);
-  const missing = flat.filter((e) => !e.en || !e.hy).map((e) => e.slug);
-  if (missing.length) console.log(`  ⚠ no EN/HY override (falls back to FR): ${missing.join(", ")}`);
+  const missing = flat.filter((e) => !e.en || !e.hy || !e.ru).map((e) => e.slug);
+  if (missing.length) console.log(`  ⚠ no EN/HY/RU override (falls back to FR): ${missing.join(", ")}`);
 }
 
 main();

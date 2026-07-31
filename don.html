@@ -28,7 +28,9 @@
 <link rel="icon" href="/favicon.ico" sizes="48x48 32x32 16x16" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Noto+Serif+Armenian:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<!-- Literata assure le cyrillique (ni Fraunces ni Spectral ne le couvrent) ;
+     son sous-ensemble n'est téléchargé que par les visiteurs russophones. -->
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Literata:ital,opsz,wght@0,7..72,300..600;1,7..72,300..500&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Noto+Serif+Armenian:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
 <script>document.documentElement.classList.add('js');</script>
 
@@ -59,8 +61,8 @@
   --rule-soft:  #D9CFB3;
   --hair:       rgba(26,20,16,.12);
 
-  --f-display:  "Fraunces", "Noto Serif Armenian", Georgia, serif;
-  --f-body:     "Spectral", "Noto Serif Armenian", Georgia, serif;
+  --f-display:  "Fraunces", "Noto Serif Armenian", "Literata", Georgia, serif;
+  --f-body:     "Spectral", "Noto Serif Armenian", "Literata", Georgia, serif;
   --f-hy:       "Noto Serif Armenian", "Fraunces", serif;
 
   --maxw: 1080px;
@@ -287,6 +289,7 @@ html.js .reveal.in{ opacity:1; transform:none; }
       <button type="button" data-lang="fr">FR</button>
       <button type="button" data-lang="en">EN</button>
       <button type="button" data-lang="hy">ՀՅ</button>
+      <button type="button" data-lang="ru">РУС</button>
     </span>
   </header>
 
@@ -422,7 +425,7 @@ html.js .reveal.in{ opacity:1; transform:none; }
   };
 </script>
 
-<!-- ============ I18N (FR / EN / HY) ============ -->
+<!-- ============ I18N (FR / EN / HY / RU) ============ -->
 <script>
 (function(){
   "use strict";
@@ -548,6 +551,46 @@ html.js .reveal.in{ opacity:1; transform:none; }
       "alt.ref.v": "Նվիրատվություն — Լոզանի հայերը",
       "footer.brand": "Լոզանի հայերը — Համայնքային հանդես",
       "footer.back": "← Վերադառնալ հանդես"
+    },
+    ru: {
+      "meta.title": "Поддержать общину — Армяне Лозанны",
+      "meta.desc": "Пожертвование армянской общине Лозанны: банковская карта и Twint, свободная или предложенная сумма, квитанция по запросу. Безопасная оплата.",
+      "lang.group": "Язык",
+      "brand.back": "— назад к журналу",
+      "hero.h": "Поддержать <em>общину</em>",
+      "hero.lead": "Ваше пожертвование помогает армянской общине Лозанны передавать культуру, язык и память — и поддерживать встречи в сердце французской Швейцарии.",
+      "give.h": "Сделать пожертвование",
+      "give.sub": "Банковская карта или Twint — безопасная оплата.",
+      "give.amounts.aria": "Выберите сумму",
+      "give.custom.label": "Другая сумма",
+      "give.custom.ph": "…",
+      "give.btn": "Пожертвовать {cur} {amt}",
+      "give.btn.empty": "Пожертвовать",
+      "give.note.soon": "Онлайн-оплата скоро заработает. Спасибо за терпение.",
+      "give.note.ready": "Вы перейдёте на страницу нашего платёжного провайдера.",
+      "give.note.invalid": "Введите корректную сумму.",
+      "trust.secure.h": "Безопасная оплата",
+      "trust.secure.p": "Visa/Mastercard и Twint через сертифицированного швейцарского провайдера. Данные карты не проходят через этот сайт.",
+      "trust.receipt.h": "Квитанция о пожертвовании",
+      "trust.receipt.p": "Квитанция высылается по запросу. Налоговый вычет зависит от статуса ассоциации.",
+      "trust.assoc.h": "Ассоциация",
+      "trust.assoc.p": "Пожертвования поступают на счёт ассоциации и напрямую служат жизни общины.",
+      "impact.rule": "Ваше пожертвование в деле",
+      "impact.h": "Что делает возможным <em>ваша поддержка</em>",
+      "impact.culture.h": "Культура и передача",
+      "impact.culture.p": "Уроки языка, мастерские, концерты и встречи, которые хранят армянское наследие живым в Лозанне.",
+      "impact.memory.h": "Память",
+      "impact.memory.p": "Памятные дни, выставки и работа с памятью, чтобы передать нашу историю следующим поколениям.",
+      "impact.solidarity.h": "Солидарность",
+      "impact.solidarity.p": "Приём, взаимопомощь и поддержка членов общины и проектов, которые нас связывают.",
+      "alt.h": "Предпочитаете банковский перевод?",
+      "alt.holder": "Владелец счёта",
+      "alt.holder.v": "[заполнить]",
+      "alt.iban.v": "[IBAN заполнить]",
+      "alt.ref": "Назначение платежа",
+      "alt.ref.v": "Пожертвование — Армяне Лозанны",
+      "footer.brand": "Армяне Лозанны — общинный журнал",
+      "footer.back": "← Назад к журналу"
     }
   };
 

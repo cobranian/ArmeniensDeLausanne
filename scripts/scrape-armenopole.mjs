@@ -28,7 +28,7 @@ const SOURCE_URL = "https://armenopole.com/ArmenianEvents";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUTPUT = resolve(__dirname, "..", "js", "agenda-data.js");
 // The visible "snapshot date" label lives in these two files (FR in the HTML,
-// FR/EN/HY in the i18n dictionaries). They're rewritten in lockstep with
+// FR/EN/HY/RU in the i18n dictionaries). They're rewritten in lockstep with
 // OUTPUT so the label always reflects the date of the latest data change.
 const INDEX_HTML = resolve(__dirname, "..", "index.html");
 const I18N_JS = resolve(__dirname, "..", "js", "i18n.js");
@@ -164,8 +164,8 @@ function buildFile(events) {
 }
 
 /* ---- Snapshot-date label -------------------------------------------------
-   The "instantané du …" / "snapshot dated …" / "… դրությամբ" line is shown
-   under the agenda. We rewrite it here so it can't drift from the data.
+   The "instantané du …" / "snapshot dated …" / "… դրությամբ" / "срез от …"
+   line is shown under the agenda. We rewrite it here so it can't drift.
    Day/month/year are formatted per locale; `&nbsp;` is kept between day and
    month to match the existing markup (and prevent an awkward line break). */
 const FR_MONTHS = ["janvier", "février", "mars", "avril", "mai", "juin",
@@ -175,6 +175,9 @@ const EN_MONTHS = ["January", "February", "March", "April", "May", "June",
 // Genitive forms ("of June"), as the Armenian phrase requires.
 const HY_MONTHS = ["հունվարի", "փետրվարի", "մարտի", "ապրիլի", "մայիսի", "հունիսի",
   "հուլիսի", "օգոստոսի", "սեպտեմբերի", "հոկտեմբերի", "նոյեմբերի", "դեկտեմբերի"];
+// Russian dates are genitive too ("16 июля"), and end with "года".
+const RU_MONTHS = ["января", "февраля", "марта", "апреля", "мая", "июня",
+  "июля", "августа", "сентября", "октября", "ноября", "декабря"];
 
 function formatSnapshotDates(date) {
   const d = date.getDate();
@@ -184,7 +187,8 @@ function formatSnapshotDates(date) {
     // French uses the ordinal "1er" for the first of the month only.
     fr: `${d === 1 ? "1er" : d}&nbsp;${FR_MONTHS[m]} ${y}`,
     en: `${d}&nbsp;${EN_MONTHS[m]} ${y}`,
-    hy: `${y} թ. ${HY_MONTHS[m]} ${d}-ի դրությամբ`
+    hy: `${y} թ. ${HY_MONTHS[m]} ${d}-ի դրությամբ`,
+    ru: `${d}&nbsp;${RU_MONTHS[m]} ${y}&nbsp;года`
   };
 }
 
@@ -216,6 +220,7 @@ function updateSnapshotLabels(date) {
   const enRe = /snapshot dated [^.<]*\./;
   // Armenian phrase ends with "։" (U+0589), not an ASCII period.
   const hyRe = /\d{4} թ\. \S+ \d{1,2}-ի դրությամբ/;
+  const ruRe = /срез от [^.<]*\./;
 
   const html = rewriteFile(INDEX_HTML, "index.html", [
     { re: frRe, value: `instantané du ${s.fr}.` }
@@ -223,7 +228,8 @@ function updateSnapshotLabels(date) {
   const i18n = rewriteFile(I18N_JS, "i18n.js", [
     { re: frRe, value: `instantané du ${s.fr}.` },
     { re: enRe, value: `snapshot dated ${s.en}.` },
-    { re: hyRe, value: s.hy }
+    { re: hyRe, value: s.hy },
+    { re: ruRe, value: `срез от ${s.ru}.` }
   ]);
   if (html || i18n) console.log(`[scrape] snapshot label → ${s.en}`);
 }

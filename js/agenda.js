@@ -9,7 +9,7 @@
    Translation strategy:
      - Country names are translated here (small inline dictionary).
      - Region / city / event titles are kept as in source (mixing FR, EN,
-       DE, NL, Armenian, etc.) — translating ~200 events into three
+       DE, NL, Armenian, etc.) — translating ~200 events into four
        languages would be impractical and the source phrasing is part of
        the event's identity.
      - The renderer listens for `i18n:applied` (dispatched by js/i18n.js)
@@ -19,49 +19,52 @@
 (function () {
   "use strict";
 
-  var SUPPORTED = ["fr", "en", "hy"];
+  var SUPPORTED = ["fr", "en", "hy", "ru"];
   var DEFAULT_LANG = "fr";
 
   /* Country labels — keep keys in canonical English form used by the data file. */
   var COUNTRY_LABELS = {
-    "Argentina":      { fr: "Argentine",         en: "Argentina",        hy: "Արգենտինա" },
-    "Armenia":        { fr: "Arménie",           en: "Armenia",          hy: "Հայաստան" },
-    "Australia":      { fr: "Australie",         en: "Australia",        hy: "Ավստրալիա" },
-    "Austria":        { fr: "Autriche",          en: "Austria",          hy: "Ավստրիա" },
-    "Belgium":        { fr: "Belgique",          en: "Belgium",          hy: "Բելգիա" },
-    "Brazil":         { fr: "Brésil",            en: "Brazil",           hy: "Բրազիլիա" },
-    "Bulgaria":       { fr: "Bulgarie",          en: "Bulgaria",         hy: "Բուլղարիա" },
-    "Canada":         { fr: "Canada",            en: "Canada",           hy: "Կանադա" },
-    "Chile":          { fr: "Chili",             en: "Chile",            hy: "Չիլի" },
-    "Cyprus":         { fr: "Chypre",            en: "Cyprus",           hy: "Կիպրոս" },
-    "Czechia":        { fr: "Tchéquie",          en: "Czechia",          hy: "Չեխիա" },
-    "France":         { fr: "France",            en: "France",           hy: "Ֆրանսիա" },
-    "Germany":        { fr: "Allemagne",         en: "Germany",          hy: "Գերմանիա" },
-    "Greece":         { fr: "Grèce",             en: "Greece",           hy: "Հունաստան" },
-    "Hungary":        { fr: "Hongrie",           en: "Hungary",          hy: "Հունգարիա" },
-    "Italy":          { fr: "Italie",            en: "Italy",            hy: "Իտալիա" },
-    "Lebanon":        { fr: "Liban",             en: "Lebanon",          hy: "Լիբանան" },
-    "Netherlands":    { fr: "Pays-Bas",          en: "Netherlands",      hy: "Նիդեռլանդներ" },
-    "Romania":        { fr: "Roumanie",          en: "Romania",          hy: "Ռումինիա" },
-    "Russia":         { fr: "Russie",            en: "Russia",           hy: "Ռուսաստան" },
-    "Singapore":      { fr: "Singapour",         en: "Singapore",        hy: "Սինգապուր" },
-    "Spain":          { fr: "Espagne",           en: "Spain",            hy: "Իսպանիա" },
-    "Switzerland":    { fr: "Suisse",            en: "Switzerland",      hy: "Շվեյցարիա" },
-    "Türkiye":        { fr: "Türkiye",           en: "Türkiye",          hy: "Թուրքիա" },
-    "United Arab Emirates": { fr: "Émirats arabes unis", en: "United Arab Emirates", hy: "Արաբական Միացյալ Էմիրություններ" },
-    "United Kingdom": { fr: "Royaume-Uni",       en: "United Kingdom",   hy: "Միացյալ Թագավորություն" },
-    "United States":  { fr: "États-Unis",        en: "United States",    hy: "Միացյալ Նահանգներ" },
-    "Venezuela":      { fr: "Venezuela",         en: "Venezuela",        hy: "Վենեսուելա" }
+    "Argentina":      { fr: "Argentine",         en: "Argentina",        hy: "Արգենտինա",       ru: "Аргентина" },
+    "Armenia":        { fr: "Arménie",           en: "Armenia",          hy: "Հայաստան",        ru: "Армения" },
+    "Australia":      { fr: "Australie",         en: "Australia",        hy: "Ավստրալիա",       ru: "Австралия" },
+    "Austria":        { fr: "Autriche",          en: "Austria",          hy: "Ավստրիա",         ru: "Австрия" },
+    "Belgium":        { fr: "Belgique",          en: "Belgium",          hy: "Բելգիա",          ru: "Бельгия" },
+    "Brazil":         { fr: "Brésil",            en: "Brazil",           hy: "Բրազիլիա",        ru: "Бразилия" },
+    "Bulgaria":       { fr: "Bulgarie",          en: "Bulgaria",         hy: "Բուլղարիա",       ru: "Болгария" },
+    "Canada":         { fr: "Canada",            en: "Canada",           hy: "Կանադա",          ru: "Канада" },
+    "Chile":          { fr: "Chili",             en: "Chile",            hy: "Չիլի",            ru: "Чили" },
+    "Cyprus":         { fr: "Chypre",            en: "Cyprus",           hy: "Կիպրոս",          ru: "Кипр" },
+    "Czechia":        { fr: "Tchéquie",          en: "Czechia",          hy: "Չեխիա",           ru: "Чехия" },
+    "France":         { fr: "France",            en: "France",           hy: "Ֆրանսիա",         ru: "Франция" },
+    "Germany":        { fr: "Allemagne",         en: "Germany",          hy: "Գերմանիա",        ru: "Германия" },
+    "Greece":         { fr: "Grèce",             en: "Greece",           hy: "Հունաստան",       ru: "Греция" },
+    "Hungary":        { fr: "Hongrie",           en: "Hungary",          hy: "Հունգարիա",       ru: "Венгрия" },
+    "Italy":          { fr: "Italie",            en: "Italy",            hy: "Իտալիա",          ru: "Италия" },
+    "Lebanon":        { fr: "Liban",             en: "Lebanon",          hy: "Լիբանան",         ru: "Ливан" },
+    "Netherlands":    { fr: "Pays-Bas",          en: "Netherlands",      hy: "Նիդեռլանդներ",    ru: "Нидерланды" },
+    "Romania":        { fr: "Roumanie",          en: "Romania",          hy: "Ռումինիա",        ru: "Румыния" },
+    "Russia":         { fr: "Russie",            en: "Russia",           hy: "Ռուսաստան",       ru: "Россия" },
+    "Singapore":      { fr: "Singapour",         en: "Singapore",        hy: "Սինգապուր",       ru: "Сингапур" },
+    "Spain":          { fr: "Espagne",           en: "Spain",            hy: "Իսպանիա",         ru: "Испания" },
+    "Switzerland":    { fr: "Suisse",            en: "Switzerland",      hy: "Շվեյցարիա",       ru: "Швейцария" },
+    "Türkiye":        { fr: "Türkiye",           en: "Türkiye",          hy: "Թուրքիա",         ru: "Турция" },
+    "United Arab Emirates": { fr: "Émirats arabes unis", en: "United Arab Emirates", hy: "Արաբական Միացյալ Էմիրություններ", ru: "Объединённые Арабские Эмираты" },
+    "United Kingdom": { fr: "Royaume-Uni",       en: "United Kingdom",   hy: "Միացյալ Թագավորություն", ru: "Великобритания" },
+    "United States":  { fr: "États-Unis",        en: "United States",    hy: "Միացյալ Նահանգներ", ru: "США" },
+    "Venezuela":      { fr: "Venezuela",         en: "Venezuela",        hy: "Վենեսուելա",      ru: "Венесуэла" }
   };
 
   /* UI labels for the agenda chrome (count badge, no-region heading). */
   var UI = {
     fr: { count1: " évén.", countN: " évén.", region_unknown: "Autres lieux", noscript: "Voir l'agenda complet sur armenopole.com." },
     en: { count1: " event",  countN: " events", region_unknown: "Other locations", noscript: "See the full agenda on armenopole.com." },
-    hy: { count1: " միջոցառում", countN: " միջոցառում", region_unknown: "Այլ վայրեր", noscript: "Տե՛ս ամբողջական օրակարգը armenopole.com-ում:" }
+    hy: { count1: " միջոցառում", countN: " միջոցառում", region_unknown: "Այլ վայրեր", noscript: "Տե՛ս ամբողջական օրակարգը armenopole.com-ում:" },
+    /* Le russe a trois formes de pluriel (1 событие / 2 события / 5 событий) ;
+       l'abréviation « соб. » les évite, comme « évén. » en français. */
+    ru: { count1: " соб.", countN: " соб.", region_unknown: "Другие места", noscript: "Полная афиша — на armenopole.com." }
   };
 
-  var INTL_LOCALE = { fr: "fr-FR", en: "en-GB", hy: "hy-AM" };
+  var INTL_LOCALE = { fr: "fr-FR", en: "en-GB", hy: "hy-AM", ru: "ru-RU" };
 
   /* Open these countries by default — host country first. */
   var OPEN_BY_DEFAULT = { "Switzerland": true };

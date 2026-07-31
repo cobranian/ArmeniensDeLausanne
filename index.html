@@ -12,7 +12,7 @@
   <link rel="canonical" href="https://armeniensdelausanne.ch/" />
   <meta name="robots" content="index, follow" />
 
-  <!-- Pas de hreflang : l'i18n est côté client (js/i18n.js) et les trois
+  <!-- Pas de hreflang : l'i18n est côté client (js/i18n.js) et les quatre
        variantes ?lang= servent le même HTML sous le même canonical. -->
 
   <!-- Open Graph (aperçu au partage : Facebook, WhatsApp, LinkedIn…) -->
@@ -28,6 +28,7 @@
   <meta property="og:locale" content="fr_CH" />
   <meta property="og:locale:alternate" content="en_US" />
   <meta property="og:locale:alternate" content="hy_AM" />
+  <meta property="og:locale:alternate" content="ru_RU" />
 
   <!-- Twitter / X Card -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -46,7 +47,7 @@
         "url": "https://armeniensdelausanne.ch/",
         "name": "Arméniens de Lausanne",
         "description": "Revue continue de la communauté arménienne de Lausanne : histoire, culture, cuisine et vie associative.",
-        "inLanguage": ["fr", "en", "hy"],
+        "inLanguage": ["fr", "en", "hy", "ru"],
         "publisher": { "@id": "https://armeniensdelausanne.ch/#organization" }
       },
       {
@@ -58,7 +59,7 @@
         "logo": "https://armeniensdelausanne.ch/favicon-192.png",
         "image": "https://armeniensdelausanne.ch/Images/Armenan-Dancers.webp",
         "description": "Communauté arménienne de Lausanne et de Suisse romande : histoire, culture, cuisine, mémoire et vie associative.",
-        "knowsLanguage": ["hy", "fr", "en"],
+        "knowsLanguage": ["hy", "fr", "en", "ru"],
         "areaServed": [
           { "@type": "City", "name": "Lausanne" },
           { "@type": "Place", "name": "Suisse romande" }
@@ -79,7 +80,11 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Noto+Serif+Armenian:wght@400;500;700&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&display=swap" rel="stylesheet" />
+  <!-- Ni Fraunces ni Spectral ne couvrent le cyrillique : Literata prend le
+       relais dans la pile de polices, uniquement pour les glyphes russes.
+       Google sert le sous-ensemble cyrillique séparément — les visiteurs
+       FR / EN / HY ne le téléchargent pas. -->
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Literata:ital,opsz,wght@0,7..72,300..700;1,7..72,300..600&family=Noto+Serif+Armenian:wght@400;500;700&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="css/styles.css" />
 
@@ -96,12 +101,14 @@
     <!-- Barre utilitaire : commutateur de langue -->
     <div class="utility-bar">
       <div class="utility-inner">
-        <nav class="lang-switcher" aria-label="Langue / Language / Լեզու" data-i18n-aria-label="lang.switcher.label">
+        <nav class="lang-switcher" aria-label="Langue / Language / Լեզու / Язык" data-i18n-aria-label="lang.switcher.label">
           <button type="button" data-lang="fr" aria-current="true" lang="fr">FR</button>
           <span class="lang-sep" aria-hidden="true">·</span>
           <button type="button" data-lang="en" aria-current="false" lang="en">EN</button>
           <span class="lang-sep" aria-hidden="true">·</span>
           <button type="button" data-lang="hy" aria-current="false" lang="hy">ՀԱՅ</button>
+          <span class="lang-sep" aria-hidden="true">·</span>
+          <button type="button" data-lang="ru" aria-current="false" lang="ru">РУС</button>
         </nav>
       </div>
     </div>
@@ -914,6 +921,12 @@
               <a href="https://armenieinfo.ch/" target="_blank" rel="noopener">
                 <span class="fl-name">Arménie Info</span>
                 <span class="fl-desc" data-i18n="footer.links.armenieinfo">Actualité arménienne</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://armenianews.org/" target="_blank" rel="noopener">
+                <span class="fl-name">Armenia News</span>
+                <span class="fl-desc" data-i18n="footer.links.armenianews">Actualité arménienne en quatre langues</span>
               </a>
             </li>
             <li>
