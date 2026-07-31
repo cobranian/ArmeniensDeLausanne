@@ -748,7 +748,7 @@
       "events.eyebrow": "Ближайшие встречи",
       "events.title": "Афиша <em>сезона.</em>",
       "events.sub": "Армянские события в диаспоре и в Армении — по странам, регионам и городам.",
-      "events.source": "Источник:&nbsp;<a href=\"https://armenopole.com/ArmenianEvents\" target=\"_blank\" rel=\"noopener noreferrer\">armenopole.com</a>&nbsp;— срез от 16&nbsp;июля 2026&nbsp;года.",
+      "events.source": "Источник:&nbsp;<a href=\"https://armenopole.com/ArmenianEvents\" target=\"_blank\" rel=\"noopener noreferrer\">armenopole.com</a>&nbsp;— срез от 31&nbsp;июля 2026&nbsp;года.",
 
       /* contact */
       "contact.label": "Переписка",
