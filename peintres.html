@@ -283,6 +283,10 @@ footer{
 }
 footer a{ color:var(--pom); text-decoration:none; border-bottom:1px solid transparent; transition:border-color .3s; }
 footer a:hover{ border-color:var(--pom); }
+footer .f-links{ flex-basis:100%; display:flex; flex-wrap:wrap; gap:.35rem .6rem; align-items:baseline; margin-top:.4rem; }
+footer .f-links-label{ font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; margin-right:.4rem; }
+footer .f-sep{ opacity:.5; }
+footer .f-links a:focus-visible{ outline:2px solid var(--pom); outline-offset:3px; border-bottom-color:transparent; }
 
 /* ---- lightbox ------------------------------------------------------------ */
 .lightbox{
@@ -1724,6 +1728,14 @@ footer a:hover{ border-color:var(--pom); }
   <footer>
     <span data-i18n="footer.brand">Arméniens de Lausanne — Revue communautaire</span>
     <span><a href="index.html#culture" data-i18n="footer.back">← Retour à la revue</a></span>
+    <nav class="f-links" aria-label="Ressources arméniennes" data-i18n-aria="footer.links.aria">
+      <span class="f-links-label" data-i18n="footer.links.label">Ressources</span>
+      <a href="https://armenieinfo.ch/" target="_blank" rel="noopener">Arménie Info</a>
+      <span class="f-sep" aria-hidden="true">·</span>
+      <a href="https://armenianews.org/" target="_blank" rel="noopener">Armenia News</a>
+      <span class="f-sep" aria-hidden="true">·</span>
+      <a href="https://www.ecolearmeniennedelausanne.ch/" target="_blank" rel="noopener">École arménienne de Lausanne</a>
+    </nav>
   </footer>
 
 </div>
@@ -1814,6 +1826,8 @@ footer a:hover{ border-color:var(--pom); }
       "coda.src": "<span class=\"hy\" lang=\"hy\">Գույն</span> — Armenia",
       "footer.brand": "Armenians of Lausanne — Community review",
       "footer.back": "← Back to the review",
+      "footer.links.aria": "Armenian resources",
+      "footer.links.label": "Resources",
       "lb.dialog": "Enlarged artwork", "lb.close": "Close", "lb.prev": "Previous artwork", "lb.next": "Next artwork",
 
       "f.saryan.1": "<em>“Armenia”</em> <span class=\"yr\">· 1923</span>",
@@ -2099,6 +2113,8 @@ footer a:hover{ border-color:var(--pom); }
       "coda.src": "<span class=\"hy\" lang=\"hy\">Գույն</span> — Հայաստան",
       "footer.brand": "Լոզանի հայերը — Համայնքային հանդես",
       "footer.back": "← Վերադառնալ հանդես",
+      "footer.links.aria": "Հայկական աղբյուրներ",
+      "footer.links.label": "Աղբյուրներ",
       "lb.dialog": "Խոշորացված ստեղծագործություն", "lb.close": "Փակել", "lb.prev": "Նախորդ ստեղծագործությունը", "lb.next": "Հաջորդ ստեղծագործությունը",
 
       "f.saryan.1": "<em>«Հայաստան»</em> <span class=\"yr\">· 1923</span>",
@@ -2384,6 +2400,8 @@ footer a:hover{ border-color:var(--pom); }
       "coda.src": "<span class=\"hy\" lang=\"hy\">Գույն</span> — Армения",
       "footer.brand": "Армяне Лозанны — общинный журнал",
       "footer.back": "← Назад к журналу",
+      "footer.links.aria": "Армянские ресурсы",
+      "footer.links.label": "Ресурсы",
       "lb.dialog": "Увеличенная работа", "lb.close": "Закрыть", "lb.prev": "Предыдущая работа", "lb.next": "Следующая работа",
 
       "f.saryan.1": "<em>«Армения»</em> <span class=\"yr\">· 1923</span>",

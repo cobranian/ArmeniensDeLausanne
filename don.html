@@ -264,6 +264,10 @@ footer{
 }
 footer a{ color:var(--pom); text-decoration:none; border-bottom:1px solid transparent; transition:border-color .3s; }
 footer a:hover{ border-color:var(--pom); }
+footer .f-links{ flex-basis:100%; display:flex; flex-wrap:wrap; gap:.35rem .6rem; align-items:baseline; margin-top:.4rem; }
+footer .f-links-label{ font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; margin-right:.4rem; }
+footer .f-sep{ opacity:.5; }
+footer .f-links a:focus-visible{ outline:2px solid var(--pom); outline-offset:3px; border-bottom-color:transparent; }
 
 /* ---- révélation ---------------------------------------------------------- */
 /* Hidden state scoped under html.js : sans JavaScript, tout reste visible. */
@@ -403,6 +407,14 @@ html.js .reveal.in{ opacity:1; transform:none; }
   <footer>
     <span data-i18n="footer.brand">Arméniens de Lausanne — Revue communautaire</span>
     <span><a href="/" data-i18n="footer.back">← Retour à la revue</a></span>
+    <nav class="f-links" aria-label="Ressources arméniennes" data-i18n-aria="footer.links.aria">
+      <span class="f-links-label" data-i18n="footer.links.label">Ressources</span>
+      <a href="https://armenieinfo.ch/" target="_blank" rel="noopener">Arménie Info</a>
+      <span class="f-sep" aria-hidden="true">·</span>
+      <a href="https://armenianews.org/" target="_blank" rel="noopener">Armenia News</a>
+      <span class="f-sep" aria-hidden="true">·</span>
+      <a href="https://www.ecolearmeniennedelausanne.ch/" target="_blank" rel="noopener">École arménienne de Lausanne</a>
+    </nav>
   </footer>
 
 </div>
@@ -470,7 +482,9 @@ html.js .reveal.in{ opacity:1; transform:none; }
       "alt.ref": "Communication",
       "alt.ref.v": "Don — Arméniens de Lausanne",
       "footer.brand": "Arméniens de Lausanne — Revue communautaire",
-      "footer.back": "← Retour à la revue"
+      "footer.back": "← Retour à la revue",
+      "footer.links.aria": "Ressources arméniennes",
+      "footer.links.label": "Ressources"
     },
     en: {
       "meta.title": "Support the community — Armenians of Lausanne",
@@ -510,7 +524,9 @@ html.js .reveal.in{ opacity:1; transform:none; }
       "alt.ref": "Reference",
       "alt.ref.v": "Donation — Armenians of Lausanne",
       "footer.brand": "Armenians of Lausanne — Community review",
-      "footer.back": "← Back to the review"
+      "footer.back": "← Back to the review",
+      "footer.links.aria": "Armenian resources",
+      "footer.links.label": "Resources"
     },
     hy: {
       "meta.title": "Աջակցել համայնքին — Լոզանի հայերը",
@@ -550,7 +566,9 @@ html.js .reveal.in{ opacity:1; transform:none; }
       "alt.ref": "Հաղորդագրություն",
       "alt.ref.v": "Նվիրատվություն — Լոզանի հայերը",
       "footer.brand": "Լոզանի հայերը — Համայնքային հանդես",
-      "footer.back": "← Վերադառնալ հանդես"
+      "footer.back": "← Վերադառնալ հանդես",
+      "footer.links.aria": "Հայկական աղբյուրներ",
+      "footer.links.label": "Աղբյուրներ"
     },
     ru: {
       "meta.title": "Поддержать общину — Армяне Лозанны",
@@ -590,7 +608,9 @@ html.js .reveal.in{ opacity:1; transform:none; }
       "alt.ref": "Назначение платежа",
       "alt.ref.v": "Пожертвование — Армяне Лозанны",
       "footer.brand": "Армяне Лозанны — общинный журнал",
-      "footer.back": "← Назад к журналу"
+      "footer.back": "← Назад к журналу",
+      "footer.links.aria": "Армянские ресурсы",
+      "footer.links.label": "Ресурсы"
     }
   };
 

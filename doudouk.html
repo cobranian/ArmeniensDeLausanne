@@ -322,6 +322,10 @@ footer{ padding:clamp(2rem,5vh,3.5rem) 0; border-top:1px solid var(--bone-faint)
   font-family:var(--f-body); font-size:.8rem; color:var(--bone-dim); display:flex; flex-wrap:wrap; gap:.6rem 1.6rem; justify-content:space-between; }
 footer a{ color:var(--ember); text-decoration:none; border-bottom:1px solid transparent; transition:border-color .3s; }
 footer a:hover{ border-color:var(--ember); }
+footer .f-links{ flex-basis:100%; display:flex; flex-wrap:wrap; gap:.35rem .6rem; align-items:baseline; margin-top:.4rem; }
+footer .f-links-label{ font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; margin-right:.4rem; }
+footer .f-sep{ opacity:.5; }
+footer .f-links a:focus-visible{ outline:2px solid var(--ember); outline-offset:3px; border-bottom-color:transparent; }
 
 /* ---- révélation au défilement -------------------------------------------- */
 .reveal{ opacity:0; transform:translateY(26px); transition:opacity .9s var(--ease), transform .9s var(--ease); }
@@ -493,6 +497,14 @@ footer a:hover{ border-color:var(--ember); }
   <footer>
     <span data-i18n="footer.brand">Arméniens de Lausanne — Revue communautaire</span>
     <span><a href="/" data-i18n="footer.back">← Retour à la revue</a></span>
+    <nav class="f-links" aria-label="Ressources arméniennes" data-i18n-aria="footer.links.aria">
+      <span class="f-links-label" data-i18n="footer.links.label">Ressources</span>
+      <a href="https://armenieinfo.ch/" target="_blank" rel="noopener">Arménie Info</a>
+      <span class="f-sep" aria-hidden="true">·</span>
+      <a href="https://armenianews.org/" target="_blank" rel="noopener">Armenia News</a>
+      <span class="f-sep" aria-hidden="true">·</span>
+      <a href="https://www.ecolearmeniennedelausanne.ch/" target="_blank" rel="noopener">École arménienne de Lausanne</a>
+    </nav>
   </footer>
 
 </div>
@@ -542,7 +554,9 @@ footer a:hover{ border-color:var(--ember); }
       "coda.q": "Le doudouk pleure<br>ce que les mots <span class=\"em\">taisent.</span>",
       "coda.src": "<span class=\"hy\" lang=\"hy\">դուդուկ</span> — Arménie",
       "footer.brand": "Arméniens de Lausanne — Revue communautaire",
-      "footer.back": "← Retour à la revue"
+      "footer.back": "← Retour à la revue",
+      "footer.links.aria": "Ressources arméniennes",
+      "footer.links.label": "Ressources"
     },
     en: {
       "meta.title": "The Breath of Apricot Wood — The Duduk | Armenians of Lausanne",
@@ -582,7 +596,9 @@ footer a:hover{ border-color:var(--ember); }
       "coda.q": "The duduk weeps<br>what words <span class=\"em\">leave unsaid.</span>",
       "coda.src": "<span class=\"hy\" lang=\"hy\">դուդուկ</span> — Armenia",
       "footer.brand": "Armenians of Lausanne — Community review",
-      "footer.back": "← Back to the review"
+      "footer.back": "← Back to the review",
+      "footer.links.aria": "Armenian resources",
+      "footer.links.label": "Resources"
     },
     hy: {
       "meta.title": "Ծիրանի փայտի շունչը — Դուդուկ | Լոզանի հայերը",
@@ -622,7 +638,9 @@ footer a:hover{ border-color:var(--ember); }
       "coda.q": "Դուդուկը լալիս է այն,<br>ինչ բառերը <span class=\"em\">լռում են։</span>",
       "coda.src": "<span class=\"hy\" lang=\"hy\">դուդուկ</span> — Հայաստան",
       "footer.brand": "Լոզանի հայերը — Համայնքային հանդես",
-      "footer.back": "← Վերադառնալ հանդես"
+      "footer.back": "← Վերադառնալ հանդես",
+      "footer.links.aria": "Հայկական աղբյուրներ",
+      "footer.links.label": "Աղբյուրներ"
     },
     ru: {
       "meta.title": "Дыхание абрикосового дерева — Дудук | Армяне Лозанны",
@@ -662,7 +680,9 @@ footer a:hover{ border-color:var(--ember); }
       "coda.q": "Дудук оплакивает то,<br>о чём слова <span class=\"em\">молчат.</span>",
       "coda.src": "<span class=\"hy\" lang=\"hy\">դուդուկ</span> — Армения",
       "footer.brand": "Армяне Лозанны — общинный журнал",
-      "footer.back": "← Назад к журналу"
+      "footer.back": "← Назад к журналу",
+      "footer.links.aria": "Армянские ресурсы",
+      "footer.links.label": "Ресурсы"
     }
   };
 
